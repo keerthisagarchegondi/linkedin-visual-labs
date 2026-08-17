@@ -1,0 +1,239 @@
+project:
+  id: p01_bayesian_dice
+  name: Bayesian Dice Detective
+  hook: "Can AI tell a loaded die from a fair die?"
+  technical_description: "Sequential Bayesian model comparison for a six-sided die."
+
+model:
+  hypotheses:
+    fair:
+      id: H0
+      description: "All six faces have probability 1/6."
+      probabilities:
+        - 0.16666666666666666
+        - 0.16666666666666666
+        - 0.16666666666666666
+        - 0.16666666666666666
+        - 0.16666666666666666
+        - 0.16666666666666666
+
+    loaded:
+      id: H1
+      description: "Face probabilities are unknown under a symmetric Dirichlet prior."
+      dirichlet_alpha:
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+
+  prior_loaded_probability: 0.50
+
+decision:
+  loaded_threshold: 0.95
+  fair_threshold: 0.05
+
+  states:
+    loaded: LOADED
+    uncertain: UNCERTAIN
+    fair: FAIR
+
+simulation:
+  roll_count: 180
+
+  scenarios:
+    fair:
+      label: Fair die
+      probabilities:
+        - 0.16666666666666666
+        - 0.16666666666666666
+        - 0.16666666666666666
+        - 0.16666666666666666
+        - 0.16666666666666666
+        - 0.16666666666666666
+      seed: 101
+
+    mildly_loaded:
+      label: Mildly loaded die
+      probabilities:
+        - 0.15
+        - 0.15
+        - 0.15
+        - 0.15
+        - 0.15
+        - 0.25
+      seed: 202
+
+    clearly_loaded:
+      label: Clearly loaded die
+      probabilities:
+        - 0.12
+        - 0.12
+        - 0.12
+        - 0.12
+        - 0.12
+        - 0.40
+      seed: 1
+
+  showcase_scenario: clearly_loaded
+
+calibration:
+  repetitions_per_scenario: 1000
+  master_seed: 20260817
+
+  posterior_bucket_count: 10
+
+  prior_sensitivity:
+    - 0.10
+    - 0.25
+    - 0.50
+    - 0.75
+    - 0.90
+
+  primary_loaded_scenario: clearly_loaded
+
+outputs:
+  simulation:
+    path: outputs/p01_bayesian_dice/data/simulation.json
+
+  posterior_history:
+    path: outputs/p01_bayesian_dice/data/posterior_history.csv
+
+  validation:
+    path: outputs/p01_bayesian_dice/data/validation.json
+
+  video:
+    path: outputs/p01_bayesian_dice/video/can_ai_tell_loaded_die.mp4
+
+  manifest:
+    path: outputs/p01_bayesian_dice/manifests/can_ai_tell_loaded_die.json
+
+video:
+  width_px: 1080
+  height_px: 1350
+  frame_rate: 30
+  target_duration_seconds: 45
+
+  opening_hook: "How many rolls before the model becomes suspicious?"
+
+  technical_footer: "Bayesian inference · Dirichlet model · Sequential evidence · Python"
+
+  storyboard:
+    - beat: 1
+      id: opening
+      description: "A die begins rolling while the viewer does not know whether it is fair."
+
+    - beat: 2
+      id: early_evidence
+      description: "Face counts and posterior loaded-die probability begin updating."
+
+    - beat: 3
+      id: suspicious_streak
+      description: "A visually suspicious streak appears before enough evidence exists for a confident verdict."
+
+    - beat: 4
+      id: uncertainty
+      description: "The system explicitly remains uncertain rather than declaring the die loaded from the streak alone."
+
+    - beat: 5
+      id: accumulating_evidence
+      description: "Additional rolls update cumulative counts, predictive probabilities, and the suspicion gauge."
+
+    - beat: 6
+      id: threshold
+      description: "The sequential posterior eventually crosses a decision threshold if the evidence supports it."
+
+    - beat: 7
+      id: verdict
+      description: "The final model state and posterior probability are displayed."
+
+    - beat: 8
+      id: reveal
+      description: "The true generating face probabilities are revealed."
+
+    - beat: 9
+      id: technical_footer
+      description: "The technical footer identifies Bayesian inference, the Dirichlet model, sequential evidence, and Python."
+
+schemas:
+  simulation_json:
+    required_fields:
+      - project_id
+      - scenario_id
+      - scenario_label
+      - seed
+      - roll_count
+      - true_probabilities
+      - rolls
+      - final_counts
+
+  posterior_history_csv:
+    columns:
+      - roll_index
+      - observed_face
+      - count_1
+      - count_2
+      - count_3
+      - count_4
+      - count_5
+      - count_6
+      - log_marginal_h0
+      - log_marginal_h1
+      - log_bayes_factor_h1_h0
+      - posterior_loaded
+      - posterior_fair
+      - predictive_face_1
+      - predictive_face_2
+      - predictive_face_3
+      - predictive_face_4
+      - predictive_face_5
+      - predictive_face_6
+      - decision_state
+
+  validation_json:
+    required_fields:
+      - project_id
+      - repetitions_per_scenario
+      - false_positive_rate
+      - clearly_loaded_true_positive_rate
+      - clearly_loaded_miss_rate
+      - clearly_loaded_average_detection_roll
+      - mildly_loaded_detection_rate
+      - posterior_calibration_buckets
+      - prior_sensitivity
+
+acceptance:
+  configuration:
+    face_count: 6
+    probability_sum_tolerance: 1.0e-12
+    prior_probability_min: 0.0
+    prior_probability_max: 1.0
+
+  deterministic:
+    same_seed_same_sequence: true
+    different_seed_different_sequence: true
+
+  inference:
+    posterior_bounds:
+      minimum: 0.0
+      maximum: 1.0
+
+    predictive_probability_sum_tolerance: 1.0e-12
+    use_log_space: true
+    reject_non_finite_results: true
+
+  calibration:
+    maximum_false_positive_rate: 0.05
+    minimum_clearly_loaded_true_positive_rate: 0.95
+    maximum_clearly_loaded_miss_rate: 0.05
+    maximum_clearly_loaded_average_detection_roll: 90
+
+  media:
+    width_px: 1080
+    height_px: 1350
+    frame_rate: 30
+    codec: h264
+    pixel_format: yuv420p
+
+  manual_scoring_required: false
