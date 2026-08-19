@@ -29,7 +29,7 @@ class DicePipelineContext:
     project_paths: ProjectPaths
 
     def output_files(self) -> dict[str, Path]:
-        """Return canonical safe absolute output-file paths."""
+        """Return temporary legacy single-die output-file paths."""
         return {
             "simulation": safe_project_output_path(
                 self.configuration.project_id,
@@ -62,6 +62,73 @@ class DicePipelineContext:
                 repository_root=self.repository_root,
             ),
         }
+
+    def pair_output_files(self) -> dict[str, Path]:
+        """Return authoritative safe absolute pair-experiment output paths."""
+        project_output_root = self._project_output_root()
+
+        preview_directory = (project_output_root / "previews").resolve()
+
+        if preview_directory.parent != project_output_root:
+            raise RuntimeError("preview directory escaped Project 1 output root")
+
+        return {
+            "simulation": safe_project_output_path(
+                self.configuration.project_id,
+                "data",
+                "pair_simulation.json",
+                repository_root=self.repository_root,
+            ),
+            "history": safe_project_output_path(
+                self.configuration.project_id,
+                "data",
+                "pair_case_histories.csv",
+                repository_root=self.repository_root,
+            ),
+            "summary": safe_project_output_path(
+                self.configuration.project_id,
+                "data",
+                "pair_case_summary.json",
+                repository_root=self.repository_root,
+            ),
+            "validation": safe_project_output_path(
+                self.configuration.project_id,
+                "data",
+                "pair_validation.json",
+                repository_root=self.repository_root,
+            ),
+            "preview_directory": preview_directory,
+            "video": safe_project_output_path(
+                self.configuration.project_id,
+                "video",
+                "how_many_rolls_loaded_dice_pair.mp4",
+                repository_root=self.repository_root,
+            ),
+            "manifest": safe_project_output_path(
+                self.configuration.project_id,
+                "manifests",
+                "how_many_rolls_loaded_dice_pair.json",
+                repository_root=self.repository_root,
+            ),
+        }
+
+    def _project_output_root(self) -> Path:
+        """Resolve Project 1's validated output root via a shared category."""
+        anchor = safe_project_output_path(
+            self.configuration.project_id,
+            "data",
+            ".path-anchor",
+            repository_root=self.repository_root,
+        )
+
+        project_output_root = (anchor.parent.parent).resolve()
+
+        expected_root = (self.repository_root / "outputs" / self.configuration.project_id).resolve()
+
+        if project_output_root != expected_root:
+            raise RuntimeError("resolved Project 1 output root differs from expected root")
+
+        return project_output_root
 
 
 def build_pipeline_context(
