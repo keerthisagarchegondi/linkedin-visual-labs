@@ -111,3 +111,6 @@ ultralytics/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Generated project runtime artifacts
+/outputs/
