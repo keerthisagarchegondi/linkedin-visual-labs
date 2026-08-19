@@ -1,702 +1,762 @@
 # Bayesian Dice Detective
 
-## Project identity
+## Revised project contract
 
-Repository project ID:
+Viewer question:
 
-`p01_bayesian_dice`
+> How many rolls before knowing whether a pair of dice is loaded?
 
-Viewer hook:
+The revised experiment models a game in which two dice are rolled and only
+their sum is used for inference.
 
-> Can AI tell a loaded die from a fair die?
+Examples include Monopoly, Catan, backgammon, and other two-dice games.
 
-Technical description:
-
-> Sequential Bayesian model comparison for a six-sided die.
-
-The word **AI** is used only as an accessible content hook. The actual
-analytical method is Bayesian inference. This project does not use a neural
-network, reinforcement learning model, large language model, or external AI
+The word "AI" may be used in social-media copy, but the analytical method is
+Bayesian inference. The project does not use a neural network or external AI
 service.
 
 ---
 
-# 1. Viewer question
+# 1. Experimental question
 
-The project asks:
+Three kinds of six-sided dice exist:
 
-> Given only a sequential stream of die rolls, how much evidence is required
-> before an automated Bayesian system should become confident that the die is
-> loaded?
+- fair / unloaded;
+- partially loaded;
+- fully loaded.
 
-The important lesson is not that an unusual streak proves cheating.
+They form six unique unordered pair cases:
 
-The lesson is that isolated surprising observations and accumulated statistical
-evidence are different things.
+1. UU — Fair + Fair
+2. UP — Fair + Partially Loaded
+3. UF — Fair + Fully Loaded
+4. PP — Partially Loaded + Partially Loaded
+5. PF — Partially Loaded + Fully Loaded
+6. FF — Fully Loaded + Fully Loaded
 
-The system must therefore expose uncertainty throughout the sequence.
+Each case is rolled 10,000 times.
 
----
+The inference engine observes only:
 
-# 2. Statistical hypotheses
+`sum = die_1 + die_2`
 
-## H0 — fair die
+and therefore receives observations from 2 through 12.
 
-Under the fair-die hypothesis,
-
-\[
-H_0:
-p_1=p_2=p_3=p_4=p_5=p_6=\frac{1}{6}.
-\]
-
-For an ordered sequence of \(n\) observations, the log likelihood is
-
-\[
-\log p(x_{1:n}\mid H_0)
-=
-n\log\left(\frac{1}{6}\right).
-\]
-
-The implementation must calculate this in log space.
-
-## H1 — loaded die
-
-Under the loaded-die hypothesis, the six face probabilities are unknown:
-
-\[
-\mathbf{p}
-=
-(p_1,p_2,p_3,p_4,p_5,p_6).
-\]
-
-They follow the symmetric Dirichlet prior
-
-\[
-\mathbf{p}\mid H_1
-\sim
-\operatorname{Dirichlet}(1,1,1,1,1,1).
-\]
-
-Let
-
-\[
-\boldsymbol{\alpha}
-=
-(\alpha_1,\ldots,\alpha_6)
-\]
-
-and let
-
-\[
-n_i
-\]
-
-be the cumulative number of observations of face \(i\).
-
-The integrated marginal likelihood of the ordered sequence under H1 is
-
-\[
-p(x_{1:n}\mid H_1)
-=
-\frac{\Gamma(\alpha_0)}
-     {\Gamma(\alpha_0+n)}
-\prod_{i=1}^{6}
-\frac{\Gamma(\alpha_i+n_i)}
-     {\Gamma(\alpha_i)},
-\]
-
-where
-
-\[
-\alpha_0=\sum_{i=1}^{6}\alpha_i.
-\]
-
-The implementation must calculate the logarithm of this expression using
-log-gamma operations rather than multiplying probabilities directly.
-
-When working only with the count representation, the multinomial
-combinatorial factor is common to both hypotheses and therefore cancels from
-the Bayes factor.
+Individual die faces are retained for simulation provenance but are not
+available to the Bayesian inference algorithm.
 
 ---
 
-# 3. Prior model probability
+# 2. Die definitions
 
-The initial contract uses neutral prior model odds:
-
-\[
-P(H_1)=0.5
-\]
-
-and
+## U — fair die
 
 \[
-P(H_0)=0.5.
+p_U =
+(1/6,1/6,1/6,1/6,1/6,1/6)
 \]
 
-The sensitivity analysis in Project 1 — Step 5 will repeat the analysis using:
+## P — partially loaded die
 
-- 0.10
-- 0.25
-- 0.50
-- 0.75
-- 0.90
+\[
+p_P =
+(0.15,0.15,0.15,0.15,0.15,0.25)
+\]
 
-as prior loaded-die probabilities.
+## F — fully loaded die
+
+\[
+p_F =
+(0.12,0.12,0.12,0.12,0.12,0.40)
+\]
+
+Each vector must:
+
+- contain exactly six finite non-negative probabilities;
+- sum to one within numerical tolerance.
 
 ---
 
-# 4. Posterior model probability
+# 3. Pair-sum probability models
 
-After each observation, calculate
+For pair model \(M_{AB}\), let the two die probability vectors be \(p_A\) and
+\(p_B\).
 
-\[
-P(H_1\mid x_{1:n})
-\]
-
-from the model prior and the two marginal likelihoods.
-
-Numerically, the implementation must remain in log space until the final
-normalization.
-
-The posterior probability of the fair model is
+For observed sum \(s\),
 
 \[
-P(H_0\mid x_{1:n})
+P(S=s \mid M_{AB})
 =
-1-P(H_1\mid x_{1:n}).
+\sum_{\substack{i,j\in\{1,\dots,6\}\\i+j=s}}
+p_A(i)p_B(j).
 \]
 
-No configured roll count may cause floating-point underflow or non-finite
-posterior output.
+The sum distribution therefore contains eleven probabilities corresponding to:
+
+\[
+s \in \{2,3,\dots,12\}.
+\]
+
+The implementation must derive these distributions by convolution rather than
+hard-code them.
+
+Every derived sum probability vector must sum to one.
 
 ---
 
-# 5. Posterior predictive probabilities
+# 4. Six Bayesian hypotheses
 
-Under H1, the posterior predictive probability of face \(i\) after \(n\)
-observations is
+The model space is:
 
 \[
-P(X_{n+1}=i \mid x_{1:n},H_1)
+M_{UU}, M_{UP}, M_{UF}, M_{PP}, M_{PF}, M_{FF}.
+\]
+
+These are exact probability models rather than unknown Dirichlet alternatives.
+
+For cumulative sum counts \(n_2,\dots,n_{12}\), the log likelihood under model
+\(M\) is:
+
+\[
+\log p(x_{1:n}\mid M)
 =
-\frac{\alpha_i+n_i}
-     {\alpha_0+n}.
+\sum_{s=2}^{12}
+n_s \log q_{M,s},
 \]
 
-All six predictive probabilities must remain in the interval \([0,1]\) and
-sum to one within numerical tolerance.
+where \(q_{M,s}\) is the probability of sum \(s\) under model \(M\).
+
+All likelihood calculations must remain in log space.
 
 ---
 
-# 6. Decision states
+# 5. Model priors
 
-The project does not force every sequence into a binary verdict.
-
-The initial contract defines three states.
-
-## Loaded
-
-If
+The project begins neutral on the viewer-facing fair-versus-loaded question:
 
 \[
-P(H_1\mid x_{1:n}) \ge 0.95,
+P(\text{fully fair pair}) = 0.50
 \]
 
-the state is:
-
-`LOADED`
-
-## Fair
-
-If
+and:
 
 \[
-P(H_1\mid x_{1:n}) \le 0.05,
+P(\text{some loading}) = 0.50.
+\]
+
+The exact model priors are:
+
+\[
+P(M_{UU})=0.50
+\]
+
+and:
+
+\[
+P(M_{UP})
+=
+P(M_{UF})
+=
+P(M_{PP})
+=
+P(M_{PF})
+=
+P(M_{FF})
+=
+0.10.
+\]
+
+Therefore before any observation:
+
+\[
+P(\text{loaded})=0.50.
+\]
+
+---
+
+# 6. Posterior probabilities
+
+After every observed sum, calculate the posterior probability of all six exact
+models using log-space normalization.
+
+For model \(M_k\),
+
+\[
+P(M_k\mid x)
+=
+\frac{
+P(M_k)p(x\mid M_k)
+}{
+\sum_j P(M_j)p(x\mid M_j)
+}.
+\]
+
+The six posterior probabilities must:
+
+- remain in `[0,1]`;
+- sum to one within `1e-12`.
+
+---
+
+# 7. Viewer-facing loaded probability
+
+The pair is defined as fully fair only under `M_UU`.
+
+Therefore:
+
+\[
+P(\text{loaded}\mid x)
+=
+1-P(M_{UU}\mid x).
+\]
+
+And:
+
+\[
+P(\text{fair}\mid x)
+=
+P(M_{UU}\mid x).
+\]
+
+A pair is "loaded" whenever at least one component die is loaded.
+
+---
+
+# 8. Decision states
+
+## FAIR
+
+If:
+
+\[
+P(\text{loaded}\mid x)\le0.05
 \]
 
 the state is:
 
 `FAIR`
 
-## Uncertain
+## LOADED
 
-Otherwise the state is:
+If:
+
+\[
+P(\text{loaded}\mid x)\ge0.95
+\]
+
+the state is:
+
+`LOADED`
+
+## UNCERTAIN
+
+Otherwise:
 
 `UNCERTAIN`
 
-The **detection roll** for a loaded sequence is the first roll at which the
-loaded posterior reaches or exceeds 0.95.
+---
 
-A sequence may finish without a loaded detection roll.
+# 9. First threshold crossing
 
-That outcome must be represented explicitly rather than converted to a false
-positive value or an invented roll number.
+For diagnostic purposes retain:
+
+- first FAIR threshold crossing;
+- first LOADED threshold crossing.
+
+These values describe when the sequence first enters a confident region.
+
+They are not the headline result because the posterior may later leave that
+region.
 
 ---
 
-# 7. Deterministic simulation scenarios
+# 10. Stable decision roll
 
-Every scenario uses 180 rolls.
+The headline "number of rolls required" is the stable decision roll.
 
-## Fair die
+If the final decision is `LOADED`, the stable decision roll is the earliest
+roll \(r\) for which every classification from roll \(r\) through roll 10,000
+remains `LOADED`.
 
-Probabilities:
+If the final decision is `FAIR`, the stable decision roll is the earliest roll
+\(r\) for which every classification from roll \(r\) through roll 10,000
+remains `FAIR`.
 
-\[
-(1/6,1/6,1/6,1/6,1/6,1/6)
-\]
+If the final state is `UNCERTAIN`:
 
-Seed:
+`stable_decision_roll = null`
 
-`101`
-
-Purpose:
-
-- establish expected behavior under H0;
-- estimate sequential false-positive behavior;
-- demonstrate that ordinary random variation can look suspicious.
-
-## Mildly loaded die
-
-Probabilities:
-
-\[
-(0.15,0.15,0.15,0.15,0.15,0.25)
-\]
-
-Seed:
-
-`202`
-
-Purpose:
-
-- represent a difficult alternative;
-- demonstrate that weak bias may require substantial evidence;
-- prevent the project from implying that every loaded die is easy to detect.
-
-The mild scenario has no mandatory 95% detection-rate target.
-
-Its detection rate must be reported rather than optimized away.
-
-## Clearly loaded die
-
-Probabilities:
-
-\[
-(0.12,0.12,0.12,0.12,0.12,0.40)
-\]
-
-Seed:
-
-`1`
-
-Purpose:
-
-- provide a clearly distinguishable alternative;
-- support the initial LinkedIn narrative;
-- define the primary true-positive calibration benchmark.
-
-This is the initial showcase scenario.
+This avoids presenting a temporary random threshold crossing as the point where
+the model permanently resolved the question.
 
 ---
 
-# 8. Randomness contract
+# 11. Deterministic pair cases
 
-All randomness must use the shared deterministic random-state infrastructure.
+Every canonical case contains 10,000 pair rolls.
 
-Canonical implementation behavior:
+## UU
 
-- NumPy `Generator`
-- no global `numpy.random.seed`
-- no hidden mutable random state
-- explicit seed in every generated dataset
-- seed persisted in the generation manifest
+- Fair + Fair
+- seed: 1101
+- truth: FAIR
 
-Repeated execution using the same configuration and seed must reproduce the
-same roll sequence exactly.
+## UP
+
+- Fair + Partially Loaded
+- seed: 1102
+- truth: LOADED
+
+## UF
+
+- Fair + Fully Loaded
+- seed: 1103
+- truth: LOADED
+
+## PP
+
+- Partially Loaded + Partially Loaded
+- seed: 1104
+- truth: LOADED
+
+## PF
+
+- Partially Loaded + Fully Loaded
+- seed: 1105
+- truth: LOADED
+
+## FF
+
+- Fully Loaded + Fully Loaded
+- seed: 1106
+- truth: LOADED
+
+The seeds define canonical narrative datasets.
+
+No result value, posterior, threshold crossing, or stable decision roll may be
+hard-coded.
 
 ---
 
-# 9. Sequential inference contract
+# 12. Randomness contract
 
-After every roll, the inference history must contain:
+All canonical simulations must:
 
-- roll index;
-- observed face;
-- cumulative count of each face;
-- log marginal likelihood under H0;
-- log marginal likelihood under H1;
-- log Bayes factor H1 versus H0;
-- posterior loaded-die probability;
-- posterior fair-die probability;
-- six H1 posterior predictive probabilities;
-- current decision state.
+- use the repository's shared deterministic random infrastructure;
+- avoid hidden global random state;
+- persist the configured seed;
+- reproduce identical pair sequences for identical configuration and seed.
 
-The sequential history is part of the canonical analytical output, not a
-visualization-only intermediate.
+Different pair-case seeds must produce distinct complete canonical sequences.
 
 ---
 
-# 10. Output contract
+# 13. Pair simulation output
 
-## Simulation JSON
+Canonical path:
 
-Path:
+`outputs/p01_bayesian_dice/data/pair_simulation.json`
 
-`outputs/p01_bayesian_dice/data/simulation.json`
-
-Required fields:
-
-- `project_id`
-- `scenario_id`
-- `scenario_label`
-- `seed`
-- `roll_count`
-- `true_probabilities`
-- `rolls`
-- `final_counts`
-
-Faces are represented externally as integers 1 through 6.
-
-## Posterior history CSV
-
-Path:
-
-`outputs/p01_bayesian_dice/data/posterior_history.csv`
-
-Columns:
-
-1. `roll_index`
-2. `observed_face`
-3. `count_1`
-4. `count_2`
-5. `count_3`
-6. `count_4`
-7. `count_5`
-8. `count_6`
-9. `log_marginal_h0`
-10. `log_marginal_h1`
-11. `log_bayes_factor_h1_h0`
-12. `posterior_loaded`
-13. `posterior_fair`
-14. `predictive_face_1`
-15. `predictive_face_2`
-16. `predictive_face_3`
-17. `predictive_face_4`
-18. `predictive_face_5`
-19. `predictive_face_6`
-20. `decision_state`
-
-## Validation JSON
-
-Path:
-
-`outputs/p01_bayesian_dice/data/validation.json`
-
-Required analytical outputs:
-
-- false-positive rate;
-- clearly-loaded true-positive rate;
-- clearly-loaded miss rate;
-- clearly-loaded average detection roll;
-- mildly-loaded detection rate;
-- posterior calibration buckets;
-- prior sensitivity results.
-
-## Video
-
-Path:
-
-`outputs/p01_bayesian_dice/video/can_ai_tell_loaded_die.mp4`
-
-Specification:
-
-- 1080 × 1350
-- 4:5
-- H.264
-- yuv420p
-- 30 fps
-- approximately 45 seconds for the initial storyboard
-
-## Manifest
-
-Path:
-
-`outputs/p01_bayesian_dice/manifests/can_ai_tell_loaded_die.json`
-
-The shared foundation manifest fields remain authoritative.
-
-The manifest must include at minimum:
+The top-level payload contains:
 
 - project ID;
-- asset name;
-- generation timestamp;
-- Git commit when available;
-- configuration path;
-- random seed;
-- width;
-- height;
-- frame rate;
-- duration;
-- important result metrics.
+- 10,000-roll case size;
+- all six cases.
+
+Each case contains:
+
+- case ID;
+- readable label;
+- seed;
+- die type identifiers;
+- both face-probability vectors;
+- generated sum sequence;
+- final counts for sums 2 through 12.
+
+The simulation may retain individual faces for provenance, but inference must
+consume only the sum sequence.
 
 ---
 
-# 11. Calibration contract
+# 14. Sequential history output
 
-Project 1 — Step 5 will run 1,000 deterministic repetitions for each scenario.
+Canonical path:
 
-Primary metrics:
+`outputs/p01_bayesian_dice/data/pair_case_histories.csv`
 
-## False-positive rate
+For every one of the 60,000 observations store:
 
-Fraction of fair-die simulations that ever cross the loaded threshold.
+- case ID;
+- roll index;
+- observed sum;
+- cumulative counts for sums 2 through 12;
+- six model log likelihoods;
+- six posterior model probabilities;
+- posterior loaded probability;
+- posterior fair probability;
+- most likely exact model;
+- FAIR / UNCERTAIN / LOADED state.
 
-Initial acceptance target:
+---
+
+# 15. Pair summary output
+
+Canonical path:
+
+`outputs/p01_bayesian_dice/data/pair_case_summary.json`
+
+For each pair case store:
+
+- case ID;
+- label;
+- generating truth;
+- final posterior loaded;
+- final posterior fair;
+- final highest-probability exact model;
+- final decision state;
+- first FAIR threshold crossing;
+- first LOADED threshold crossing;
+- stable decision roll;
+- stable decision state;
+- final sum counts.
+
+---
+
+# 16. Experiment size
+
+Canonical experiment:
 
 \[
-FPR \le 0.05.
+6 \text{ cases}
+\times
+10,000 \text{ rolls}
+=
+60,000 \text{ observed sums}.
 \]
 
-## Clearly-loaded true-positive rate
-
-Fraction of clearly-loaded simulations that cross the loaded threshold.
-
-Initial acceptance target:
-
-\[
-TPR \ge 0.95.
-\]
-
-## Clearly-loaded miss rate
-
-Fraction of clearly-loaded simulations that never cross the loaded threshold.
-
-Initial acceptance target:
-
-\[
-MissRate \le 0.05.
-\]
-
-## Clearly-loaded average detection roll
-
-Mean first threshold-crossing roll among detected clearly-loaded simulations.
-
-Initial acceptance target:
-
-\[
-AverageDetectionRoll \le 90.
-\]
-
-## Mildly-loaded detection rate
-
-Report this value without imposing the clearly-loaded target.
-
-This is intentionally a harder scenario.
-
-## Posterior calibration
-
-Use 10 posterior buckets across \([0,1]\).
-
-For each non-empty bucket report:
-
-- observation count;
-- mean predicted loaded probability;
-- empirical loaded frequency.
-
-No manual bucket scoring is permitted.
-
-## Prior sensitivity
-
-Repeat the configured analysis using prior loaded probabilities:
-
-- 0.10
-- 0.25
-- 0.50
-- 0.75
-- 0.90
-
-The results must be machine-readable.
+All six cases must be evaluated.
 
 ---
 
-# 12. Video storyboard
+# 17. Square video contract
 
-The opening must immediately display:
+Canonical output:
 
-> How many rolls before the model becomes suspicious?
+`outputs/p01_bayesian_dice/video/how_many_rolls_loaded_dice_pair.mp4`
 
-Do not begin with an explanation of Bayes' theorem.
+Video specification:
 
-## Beat 1 — Unknown die
-
-A die begins rolling.
-
-The viewer is not told whether it is fair or loaded.
-
-## Beat 2 — Evidence begins
-
-Show:
-
-- observed face;
-- cumulative counts;
-- posterior loaded probability.
-
-## Beat 3 — Suspicious streak
-
-A visually suspicious streak occurs.
-
-The sequence is deterministic under the configured showcase seed.
-
-The streak is not itself treated as proof.
-
-## Beat 4 — Uncertainty
-
-The model remains visibly uncertain if the 0.95 loaded threshold has not been
-crossed.
-
-This is a core narrative requirement.
-
-## Beat 5 — Evidence accumulates
-
-More rolls arrive.
-
-Update:
-
-- counts;
-- posterior;
-- posterior predictive distribution;
-- suspicion gauge.
-
-## Beat 6 — Threshold event
-
-If the posterior reaches 0.95, visually mark the first threshold-crossing
-roll.
-
-Never fabricate a crossing if one does not occur.
-
-## Beat 7 — Final verdict
-
-Show:
-
-- final posterior loaded probability;
-- final state;
-- detection roll when applicable.
-
-## Beat 8 — Reveal
-
-Reveal the true six face probabilities only after the inference sequence has
-played out.
-
-## Beat 9 — Technical footer
-
-Display:
-
-> Bayesian inference · Dirichlet model · Sequential evidence · Python
-
-The video must remain understandable without audio.
+- width: 1080 px;
+- height: 1080 px;
+- aspect ratio: 1:1;
+- frame rate: 30 fps;
+- codec: H.264;
+- pixel format: yuv420p;
+- target duration: approximately 45 seconds.
 
 ---
 
-# 13. Acceptance criteria
+# 18. Video geometry
 
-Project 1 is not complete merely because a video renders.
+The canvas contains three major vertical sections.
 
-## Configuration
+## Heading
 
-- exactly six face probabilities per scenario;
-- every probability is finite and non-negative;
-- every scenario sums to one within `1e-12`;
-- fair scenario equals the uniform distribution;
-- mild and clear scenarios differ from the fair distribution;
-- clearly-loaded scenario is more strongly biased than mildly-loaded;
-- seeds are deterministic non-negative integers;
-- roll count is 180;
-- model prior probability is within `[0,1]`;
-- fair threshold is below loaded threshold.
+Coordinates:
 
-## Simulation
+- x = 0
+- y = 0
+- width = 1080
+- height = 40
 
-- same seed and probabilities reproduce the identical sequence;
-- different configured seeds do not reproduce the identical complete
-  sequence;
-- generated faces are always integers 1 through 6;
-- final counts sum to roll count.
+Text:
 
-## Inference
+> How many rolls before knowing whether a pair of dice is loaded?
 
-- all posterior values remain within `[0,1]`;
-- posterior fair plus posterior loaded equals one within tolerance;
-- predictive probabilities sum to one within `1e-12`;
-- log-space calculations are used;
-- no configured run produces NaN or infinity;
-- known small analytical cases match independently calculated values.
+The title must fit entirely within the assigned region.
 
-## Calibration
+## Six-panel analytical grid
 
-- false-positive rate is at most 0.05;
-- clearly-loaded true-positive rate is at least 0.95;
-- clearly-loaded miss rate is at most 0.05;
-- clearly-loaded average detection roll is at most 90;
-- mild-die performance is reported separately;
-- posterior calibration buckets are machine-readable;
-- prior sensitivity is machine-readable;
-- no human scoring is required.
+Coordinates:
 
-## Media
+- x = 0
+- y = 40
+- width = 1080
+- height = 1000
 
-- video is 1080 × 1350;
-- frame rate is 30 fps;
-- codec is H.264;
-- pixel format is yuv420p;
-- manifest is generated;
-- seed is persisted;
-- important result metrics are persisted.
+Grid:
 
----
+- 3 columns;
+- 2 rows;
+- each panel = 360 × 500.
 
-# 14. Scope exclusions
+Placement:
 
-The initial implementation does not include:
+Top row:
 
-- neural networks;
-- reinforcement learning;
-- external AI APIs;
-- model training;
-- physical camera-based die recognition;
-- live video inference;
-- change-point detection;
-- switching the die halfway through;
-- the future “rigged streak that is actually fair” variant.
+- UU
+- UP
+- UF
 
-Those variants remain future extensions.
+Bottom row:
+
+- PP
+- PF
+- FF
+
+## Results strip
+
+Coordinates:
+
+- x = 0
+- y = 1040
+- width = 1080
+- height = 40
+
+It contains six 180-pixel result cells.
+
+Each cell displays compactly:
+
+- case ID;
+- stable decision roll;
+- final P(load).
 
 ---
 
-# 15. Future-compatible variants
+# 19. Panel content
 
-The architecture must later be able to support:
+Every 360 × 500 panel displays:
 
-> This streak looks rigged. It isn't.
+1. pair-case title;
+2. current trial count;
+3. current `P(load)`;
+4. current status;
+5. loaded-posterior gauge;
+6. cumulative sum counts for 2 through 12;
+7. posterior-loaded trajectory.
 
-and:
+The six panels use the same component renderer and the same visual hierarchy.
 
-> I switched the die halfway. When did the model notice?
-
-Neither variant is part of the initial Project 1 implementation.
+No panel-specific hand-tuned layout is allowed.
 
 ---
 
-# 16. Definition of Step 1 success
+# 20. Animation semantics
 
-Project 1 — Step 1 succeeds when:
+All six experiments progress simultaneously.
 
-- the YAML configuration parses;
-- all deterministic scenarios validate;
-- the statistical formulas and decision states are documented;
+At any animation frame, every panel displays the same roll index.
+
+A nonlinear frame-to-roll mapping may accelerate long regions, but it must
+preserve:
+
+- roll ordering;
+- actual posterior trajectories;
+- actual threshold events;
+- actual stable-decision results.
+
+No posterior or decision value may be interpolated analytically between unseen
+rolls.
+
+The display may sample existing computed roll states for frames.
+
+---
+
+# 21. Visual-fit contract
+
+Every textual or graphical artist must remain inside its assigned region.
+
+Automated layout validation must cover:
+
+- title bounds;
+- six panel bounds;
+- panel headings;
+- metric labels;
+- metric values;
+- posterior gauges;
+- sum-count visualizations;
+- trajectory axes;
+- results strip;
+- final footer.
+
+Text clipping is a validation failure.
+
+Artist overlap outside intentionally shared chart elements is a validation
+failure.
+
+The implementation should automatically fit typography rather than assume a
+single font size will work.
+
+---
+
+# 22. Technical footer
+
+Use only the compact technical footer:
+
+> Bayesian inference · Pair-sum likelihoods · Sequential evidence · Python
+
+Do not include verbose sentences such as:
+
+> Transparent Bayesian model comparison — no neural network.
+
+inside analytical panels.
+
+---
+
+# 23. Preview-frame contract
+
+Before full MP4 encoding, generate representative ignored PNG frames.
+
+At minimum:
+
+- initial frame;
+- early evidence;
+- one frame near each unique stable-decision event;
+- roll 10,000;
+- final results frame.
+
+Every preview must be exactly:
+
+`1080 × 1080`
+
+and pass automated geometry checks.
+
+---
+
+# 24. Analytical acceptance criteria
+
+The revised analytical implementation must prove:
+
+- exactly three die types;
+- exactly six unique unordered pair cases;
+- exactly 10,000 rolls per case;
+- exactly 60,000 observed sums;
+- every observed sum is in 2 through 12;
+- all pair sum PMFs are derived by convolution;
+- every pair PMF sums to one;
+- all likelihoods are calculated in log space;
+- all six posterior probabilities remain in `[0,1]`;
+- all six model posteriors sum to one;
+- `P(load) = 1 - P(M_UU)`;
+- stable-decision calculations are internally consistent;
+- no non-finite numerical outputs occur.
+
+Expected final truth alignment:
+
+- UU → FAIR
+- UP → LOADED
+- UF → LOADED
+- PP → LOADED
+- PF → LOADED
+- FF → LOADED
+
+If a deterministic canonical case does not satisfy this expectation, the
+implementation must fail validation rather than silently change the data or
+thresholds.
+
+---
+
+# 25. Media acceptance criteria
+
+The final MP4 must be:
+
+- exactly 1080 × 1080;
+- 1:1;
+- 30 fps;
+- H.264;
+- yuv420p;
+- approximately 45 seconds.
+
+It must visibly contain:
+
+- one heading;
+- six pair-case panels;
+- all six current roll counts;
+- all six P(load) values;
+- all six decision states;
+- all six posterior gauges;
+- all six sum-count displays;
+- all six posterior trajectories;
+- one six-case results strip.
+
+No manual statistical scoring is required.
+
+---
+
+# 26. Transitional compatibility
+
+The current repository already contains working single-die implementations from
+the earlier Steps 2 through 5.
+
+During Revised Step 1 only, their YAML keys remain present so the repository
+continues passing its existing tests.
+
+They are not authoritative for the revised project.
+
+Revised Step 2 will migrate:
+
+- typed configuration;
+- domain models;
+- pipeline contracts;
+- tests
+
+to the pair-of-dice design.
+
+Only after that migration is green will the obsolete single-die compatibility
+contract be removed.
+
+---
+
+# 27. Revised project roadmap
+
+The remaining project is:
+
+## Revised Step 2
+
+Pair-dice typed configuration and domain-model migration.
+
+## Revised Step 3
+
+Deterministic six-case pair simulation.
+
+## Revised Step 4
+
+Six-model Bayesian sequential inference.
+
+## Revised Step 5
+
+Canonical 60,000-observation experiment and automated validation.
+
+## Revised Step 6
+
+1080 × 1080 six-panel visualization framework.
+
+## Revised Step 7
+
+Animation, CLI orchestration, manifest, and final video rendering.
+
+## Revised Step 8
+
+Documentation, CI, pull request, and merge.
+
+---
+
+# 28. Definition of Revised Step 1 success
+
+Revised Step 1 succeeds when:
+
+- the authoritative pair contract exists in YAML;
+- the documentation describes the pair experiment;
+- all three die vectors validate;
+- all six pair cases validate;
+- model priors sum to one;
+- prior P(load) equals 0.50;
+- video geometry sums exactly to 1080 × 1080;
+- panel geometry is exactly 360 × 500;
+- result cells are exactly 180 px wide;
 - output schemas are fixed;
-- storyboard beats are fixed;
-- acceptance criteria are machine-checkable;
-- no simulation or inference implementation has been prematurely added;
-- Ruff, mypy, pytest, and Git integrity remain green.
+- legacy committed Steps 2–5 remain operational during migration;
+- Ruff passes;
+- mypy passes;
+- pytest passes;
+- Git integrity passes.

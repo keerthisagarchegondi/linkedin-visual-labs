@@ -1,14 +1,371 @@
 project:
   id: p01_bayesian_dice
   name: Bayesian Dice Detective
-  hook: "Can AI tell a loaded die from a fair die?"
-  technical_description: "Sequential Bayesian model comparison for a six-sided die."
+  hook: "How many rolls before knowing whether a pair of dice is loaded?"
+  technical_description: "Sequential Bayesian model comparison over six pair-of-dice sum-distribution hypotheses."
+
+###############################################################################
+# REVISED AUTHORITATIVE PROJECT 1 CONTRACT
+###############################################################################
+
+pair_experiment:
+  authoritative: true
+
+  viewer_question: "How many rolls before knowing whether a pair of dice is loaded?"
+
+  observation:
+    type: pair_sum
+    minimum: 2
+    maximum: 12
+    individual_faces_visible_to_inference: false
+
+  roll_count_per_case: 10000
+
+  die_types:
+    unloaded:
+      id: U
+      label: Fair
+      probabilities:
+        - 0.16666666666666666
+        - 0.16666666666666666
+        - 0.16666666666666666
+        - 0.16666666666666666
+        - 0.16666666666666666
+        - 0.16666666666666666
+
+    partially_loaded:
+      id: P
+      label: Partially Loaded
+      probabilities:
+        - 0.15
+        - 0.15
+        - 0.15
+        - 0.15
+        - 0.15
+        - 0.25
+
+    fully_loaded:
+      id: F
+      label: Fully Loaded
+      probabilities:
+        - 0.12
+        - 0.12
+        - 0.12
+        - 0.12
+        - 0.12
+        - 0.40
+
+  pair_cases:
+    UU:
+      label: "Fair + Fair"
+      die_1: unloaded
+      die_2: unloaded
+      truth_loaded: false
+      seed: 1101
+
+    UP:
+      label: "Fair + Partially Loaded"
+      die_1: unloaded
+      die_2: partially_loaded
+      truth_loaded: true
+      seed: 1102
+
+    UF:
+      label: "Fair + Fully Loaded"
+      die_1: unloaded
+      die_2: fully_loaded
+      truth_loaded: true
+      seed: 1103
+
+    PP:
+      label: "Partially Loaded + Partially Loaded"
+      die_1: partially_loaded
+      die_2: partially_loaded
+      truth_loaded: true
+      seed: 1104
+
+    PF:
+      label: "Partially Loaded + Fully Loaded"
+      die_1: partially_loaded
+      die_2: fully_loaded
+      truth_loaded: true
+      seed: 1105
+
+    FF:
+      label: "Fully Loaded + Fully Loaded"
+      die_1: fully_loaded
+      die_2: fully_loaded
+      truth_loaded: true
+      seed: 1106
+
+  pair_order:
+    - UU
+    - UP
+    - UF
+    - PP
+    - PF
+    - FF
+
+  bayesian_models:
+    observation_support:
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+      - 12
+
+    sum_probabilities:
+      derive_by_convolution: true
+      hard_code_sum_pmf: false
+
+    model_priors:
+      UU: 0.50
+      UP: 0.10
+      UF: 0.10
+      PP: 0.10
+      PF: 0.10
+      FF: 0.10
+
+    loaded_probability_definition: "1 - posterior(M_UU)"
+
+  decision:
+    fair_threshold: 0.05
+    loaded_threshold: 0.95
+
+    states:
+      fair: FAIR
+      uncertain: UNCERTAIN
+      loaded: LOADED
+
+    headline_roll_metric: stable_decision_roll
+
+    stable_decision_definition:
+      require_same_final_state_through_end: true
+      use_first_threshold_crossing_as_headline: false
+
+  outputs:
+    simulation:
+      path: outputs/p01_bayesian_dice/data/pair_simulation.json
+
+    history:
+      path: outputs/p01_bayesian_dice/data/pair_case_histories.csv
+
+    summary:
+      path: outputs/p01_bayesian_dice/data/pair_case_summary.json
+
+    validation:
+      path: outputs/p01_bayesian_dice/data/pair_validation.json
+
+    preview_directory:
+      path: outputs/p01_bayesian_dice/previews
+
+    video:
+      path: outputs/p01_bayesian_dice/video/how_many_rolls_loaded_dice_pair.mp4
+
+    manifest:
+      path: outputs/p01_bayesian_dice/manifests/how_many_rolls_loaded_dice_pair.json
+
+  video:
+    width_px: 1080
+    height_px: 1080
+    aspect_ratio: "1:1"
+    frame_rate: 30
+    target_duration_seconds: 45
+
+    heading:
+      x_px: 0
+      y_px: 0
+      width_px: 1080
+      height_px: 40
+      text: "How many rolls before knowing whether a pair of dice is loaded?"
+
+    middle_grid:
+      x_px: 0
+      y_px: 40
+      width_px: 1080
+      height_px: 1000
+      columns: 3
+      rows: 2
+      panel_width_px: 360
+      panel_height_px: 500
+
+    panels:
+      - case_id: UU
+        row: 0
+        column: 0
+
+      - case_id: UP
+        row: 0
+        column: 1
+
+      - case_id: UF
+        row: 0
+        column: 2
+
+      - case_id: PP
+        row: 1
+        column: 0
+
+      - case_id: PF
+        row: 1
+        column: 1
+
+      - case_id: FF
+        row: 1
+        column: 2
+
+    result_strip:
+      x_px: 0
+      y_px: 1040
+      width_px: 1080
+      height_px: 40
+      cell_count: 6
+      cell_width_px: 180
+
+    panel_content:
+      - case_title
+      - trial_count
+      - posterior_loaded
+      - decision_status
+      - loaded_posterior_gauge
+      - sum_counts
+      - posterior_trajectory
+
+    result_content:
+      - case_id
+      - stable_decision_roll
+      - final_posterior_loaded
+
+    technical_footer: "Bayesian inference · Pair-sum likelihoods · Sequential evidence · Python"
+
+    typography:
+      auto_fit: true
+      enforce_region_bounds: true
+      allow_text_clipping: false
+      allow_artist_overlap: false
+
+  schemas:
+    pair_simulation_json:
+      required_fields:
+        - project_id
+        - roll_count_per_case
+        - cases
+
+      case_required_fields:
+        - case_id
+        - label
+        - seed
+        - die_1_type
+        - die_2_type
+        - die_1_probabilities
+        - die_2_probabilities
+        - sums
+        - final_sum_counts
+
+    pair_case_histories_csv:
+      columns:
+        - case_id
+        - roll_index
+        - observed_sum
+        - count_sum_2
+        - count_sum_3
+        - count_sum_4
+        - count_sum_5
+        - count_sum_6
+        - count_sum_7
+        - count_sum_8
+        - count_sum_9
+        - count_sum_10
+        - count_sum_11
+        - count_sum_12
+        - log_likelihood_UU
+        - log_likelihood_UP
+        - log_likelihood_UF
+        - log_likelihood_PP
+        - log_likelihood_PF
+        - log_likelihood_FF
+        - posterior_UU
+        - posterior_UP
+        - posterior_UF
+        - posterior_PP
+        - posterior_PF
+        - posterior_FF
+        - posterior_loaded
+        - posterior_fair
+        - top_model
+        - decision_state
+
+    pair_case_summary_json:
+      case_required_fields:
+        - case_id
+        - label
+        - truth_loaded
+        - final_posterior_loaded
+        - final_posterior_fair
+        - final_top_model
+        - final_decision_state
+        - first_fair_threshold_crossing
+        - first_loaded_threshold_crossing
+        - stable_decision_roll
+        - stable_decision_state
+        - final_sum_counts
+
+  acceptance:
+    expected_case_count: 6
+    rolls_per_case: 10000
+    total_observations: 60000
+    sum_minimum: 2
+    sum_maximum: 12
+    posterior_sum_tolerance: 1.0e-12
+
+    expected_final_truth_alignment:
+      UU: FAIR
+      UP: LOADED
+      UF: LOADED
+      PP: LOADED
+      PF: LOADED
+      FF: LOADED
+
+    require_stable_decision_for_all_cases: true
+    require_machine_readable_validation: true
+    manual_scoring_required: false
+
+    media:
+      width_px: 1080
+      height_px: 1080
+      frame_rate: 30
+      codec: h264
+      pixel_format: yuv420p
+
+    layout:
+      heading_height_px: 40
+      grid_height_px: 1000
+      result_height_px: 40
+      panel_width_px: 360
+      panel_height_px: 500
+      result_cell_width_px: 180
+      require_all_artists_inside_regions: true
+      require_no_text_clipping: true
+
+###############################################################################
+# TEMPORARY LEGACY COMPATIBILITY CONTRACT
+#
+# Steps 2–5 were implemented against these keys before the pair-of-dice
+# redesign. Revised Step 2 will migrate the typed code and then remove these
+# compatibility fields.
+###############################################################################
 
 model:
   hypotheses:
     fair:
       id: H0
-      description: "All six faces have probability 1/6."
+      description: "Legacy single-die compatibility model."
       probabilities:
         - 0.16666666666666666
         - 0.16666666666666666
@@ -19,7 +376,7 @@ model:
 
     loaded:
       id: H1
-      description: "Face probabilities are unknown under a symmetric Dirichlet prior."
+      description: "Legacy single-die compatibility model."
       dirichlet_alpha:
         - 1.0
         - 1.0
@@ -31,8 +388,8 @@ model:
   prior_loaded_probability: 0.50
 
 decision:
-  loaded_threshold: 0.95
   fair_threshold: 0.05
+  loaded_threshold: 0.95
 
   states:
     loaded: LOADED
@@ -81,7 +438,6 @@ simulation:
 calibration:
   repetitions_per_scenario: 1000
   master_seed: 20260817
-
   posterior_bucket_count: 10
 
   prior_sensitivity:
@@ -122,39 +478,7 @@ video:
   storyboard:
     - beat: 1
       id: opening
-      description: "A die begins rolling while the viewer does not know whether it is fair."
-
-    - beat: 2
-      id: early_evidence
-      description: "Face counts and posterior loaded-die probability begin updating."
-
-    - beat: 3
-      id: suspicious_streak
-      description: "A visually suspicious streak appears before enough evidence exists for a confident verdict."
-
-    - beat: 4
-      id: uncertainty
-      description: "The system explicitly remains uncertain rather than declaring the die loaded from the streak alone."
-
-    - beat: 5
-      id: accumulating_evidence
-      description: "Additional rolls update cumulative counts, predictive probabilities, and the suspicion gauge."
-
-    - beat: 6
-      id: threshold
-      description: "The sequential posterior eventually crosses a decision threshold if the evidence supports it."
-
-    - beat: 7
-      id: verdict
-      description: "The final model state and posterior probability are displayed."
-
-    - beat: 8
-      id: reveal
-      description: "The true generating face probabilities are revealed."
-
-    - beat: 9
-      id: technical_footer
-      description: "The technical footer identifies Bayesian inference, the Dirichlet model, sequential evidence, and Python."
+      description: "Legacy compatibility storyboard."
 
 schemas:
   simulation_json:
