@@ -1,0 +1,114 @@
+name: Project 1 - Bayesian Dice
+
+on:
+  push:
+    branches:
+      - main
+      - project/p01-bayesian-dice
+    paths:
+      - "configs/p01_bayesian_dice.yaml"
+      - "docs/projects/p01_bayesian_dice.md"
+      - "src/linkedin_visual_labs/projects/p01_bayesian_dice/**"
+      - "tests/projects/p01_bayesian_dice/**"
+      - ".github/workflows/p01-bayesian-dice.yml"
+      - "pyproject.toml"
+  pull_request:
+    paths:
+      - "configs/p01_bayesian_dice.yaml"
+      - "docs/projects/p01_bayesian_dice.md"
+      - "src/linkedin_visual_labs/projects/p01_bayesian_dice/**"
+      - "tests/projects/p01_bayesian_dice/**"
+      - ".github/workflows/p01-bayesian-dice.yml"
+      - "pyproject.toml"
+
+jobs:
+  project-1:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+
+      - name: Install project
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[dev]"
+
+      - name: Ruff format check
+        run: ruff format --check .
+
+      - name: Ruff lint
+        run: ruff check .
+
+      - name: Type check
+        run: mypy src tests
+
+      - name: Project 1 tests
+        run: pytest tests/projects/p01_bayesian_dice -q
+
+      - name: Verify deterministic pair-video schedule
+        run: |
+          python -m \
+            linkedin_visual_labs.projects.p01_bayesian_dice.pair_video \
+            schedule \
+            > /tmp/p01_schedule.json \
+            2> /tmp/p01_schedule.stderr
+
+          test ! -s /tmp/p01_schedule.stderr
+
+          python - <<'PY'
+          import json
+          from itertools import pairwise
+          from pathlib import Path
+
+          payload = json.loads(
+              Path(
+                  "/tmp/p01_schedule.json"
+              ).read_text(
+                  encoding="utf-8"
+              )
+          )
+
+          rolls = payload[
+              "roll_indices"
+          ]
+
+          assert payload[
+              "frame_rate"
+          ] == 30
+
+          assert payload[
+              "frame_count"
+          ] == 1_350
+
+          assert len(
+              rolls
+          ) == 1_350
+
+          assert rolls[
+              0
+          ] == 1
+
+          assert rolls[
+              -1
+          ] == 10_000
+
+          assert all(
+              second >= first
+              for first, second
+              in pairwise(
+                  rolls
+              )
+          )
+
+          print(
+              "PASS: Project 1 "
+              "deterministic video schedule"
+          )
+          PY
