@@ -1,0 +1,480 @@
+project:
+  id: p04_zombie_escape
+  name: Zombie Escape
+  authoritative: true
+  viewer_question: "Who escapes best: Dijkstra, ML, or Deep Learning?"
+  headline: "Zombie Escape: Dijkstra vs ML vs Deep Learning"
+  supporting_message: "Optimization finds the best route for the costs it knows. Learning can help estimate the danger it cannot see."
+
+experiment:
+  city_representation: synthetic_downtown_inspired
+  geographic_replica: false
+  deterministic: true
+
+  grid:
+    rows: 36
+    columns: 36
+    movement: four_neighbor
+    allow_diagonal: false
+    step_distance: 1.0
+
+  risk:
+    minimum: 0.0
+    maximum: 1.0
+    high_risk_threshold: 0.65
+    planner_risk_weight: 4.0
+    true_risk_visible_to_headline_methods: false
+
+  planner_cost:
+    formula: "travel_time_cost + planner_risk_weight * estimated_risk"
+    same_formula_for_all_headline_methods: true
+
+  terrain:
+    building:
+      traversable: false
+      speed_multiplier: 0.0
+
+    local_road:
+      traversable: true
+      speed_multiplier: 1.0
+
+    arterial:
+      traversable: true
+      speed_multiplier: 1.35
+
+    slow_terrain:
+      traversable: true
+      speed_multiplier: 0.70
+
+    open_space:
+      traversable: true
+      speed_multiplier: 0.85
+
+cities:
+  phoenix:
+    display_name: "Phoenix Downtown"
+    inspiration_only: true
+    seed: 4203
+
+    start:
+      row: 31
+      column: 4
+
+    destination:
+      row: 4
+      column: 31
+
+    profile:
+      block_density: low
+      intersection_density: low
+      arterial_width: wide
+      choke_point_density: low
+      hidden_risk_structure: dispersed
+      synthetic_barrier: none
+
+  new_york:
+    display_name: "New York Downtown"
+    inspiration_only: true
+    seed: 4201
+
+    start:
+      row: 33
+      column: 2
+
+    destination:
+      row: 2
+      column: 33
+
+    profile:
+      block_density: high
+      intersection_density: high
+      arterial_width: narrow
+      choke_point_density: high
+      hidden_risk_structure: strongly_clustered
+      synthetic_barrier: none
+
+  chicago:
+    display_name: "Chicago Downtown"
+    inspiration_only: true
+    seed: 4202
+
+    start:
+      row: 32
+      column: 3
+
+    destination:
+      row: 3
+      column: 32
+
+    profile:
+      block_density: medium
+      intersection_density: medium
+      arterial_width: medium
+      choke_point_density: high
+      hidden_risk_structure: clustered
+      synthetic_barrier: river_with_limited_bridges
+
+methods:
+  dijkstra:
+    display_name: "Dijkstra"
+    category: deterministic_baseline
+    risk_estimator: observed_visible_risk
+    route_planner: dijkstra
+    sees_true_hidden_risk: false
+
+  ml:
+    display_name: "ML + A*"
+    category: classical_machine_learning
+    risk_estimator: gradient_boosting
+    route_planner: astar
+    sees_true_hidden_risk: false
+
+  dl:
+    display_name: "CNN + A*"
+    category: deep_learning
+    risk_estimator: convolutional_neural_network
+    route_planner: astar
+    sees_true_hidden_risk: false
+
+oracle:
+  enabled: true
+  headline_contestant: false
+  display_name: "Oracle"
+  risk_estimator: true_hidden_risk
+  route_planner: astar
+  purpose: benchmark_regret_only
+
+training:
+  synthetic_training_cities: 2000
+  synthetic_validation_cities: 400
+  synthetic_benchmark_cities: 400
+
+  showcase_cities_excluded_from_training: true
+
+  seeds:
+    training: 4301
+    validation: 4302
+    benchmark: 4303
+    ml_model: 4304
+    dl_model: 4305
+
+  classical_ml:
+    model_family: gradient_boosting
+
+  deep_learning:
+    model_family: small_cnn
+
+evaluation:
+  reported_route_metrics:
+    - distance
+    - travel_time
+    - true_cumulative_risk
+    - maximum_local_true_risk
+    - high_risk_cells_crossed
+    - route_valid
+    - start
+    - destination
+    - oracle_risk_regret
+
+  per_city_winner:
+    direction: minimize
+    lexicographic_order:
+      - true_cumulative_risk
+      - high_risk_cells_crossed
+      - maximum_local_true_risk
+      - travel_time
+      - distance
+
+    numeric_tolerance: 1.0e-9
+
+    final_deterministic_tiebreak:
+      - dijkstra
+      - ml
+      - dl
+
+  overall_winner:
+    direction: maximize_city_wins_then_minimize_metrics
+
+    order:
+      - city_wins_descending
+      - mean_true_cumulative_risk_ascending
+      - mean_high_risk_cells_crossed_ascending
+      - mean_travel_time_ascending
+      - mean_distance_ascending
+
+    final_deterministic_tiebreak:
+      - dijkstra
+      - ml
+      - dl
+
+video:
+  width_px: 1080
+  height_px: 1080
+  aspect_ratio: "1:1"
+  frame_rate: 30
+  duration_seconds: 60.0
+  frame_count: 1800
+  dpi: 120
+
+  encoder:
+    codec: libx264
+    pixel_format: yuv420p
+    crf: 16
+    preset: medium
+    tune: animation
+    faststart: true
+
+  visual_quality:
+    enforce_region_bounds: true
+    allow_text_clipping: false
+    allow_unintended_text_overlap: false
+    auto_fit_typography: true
+
+    minimum_font_sizes_pt:
+      main_heading: 12.0
+      major_title: 9.0
+      primary_metric: 7.0
+      secondary_metric: 6.0
+      technical_footer: 5.0
+
+    minimum_route_stroke_px: 4
+    minimum_frontier_stroke_px: 2
+
+  scenes:
+    overview:
+      start_second: 0.0
+      duration_seconds: 5.0
+      frame_count: 150
+
+      heading:
+        x: 0
+        y: 0
+        width: 1080
+        height: 45
+
+      content:
+        x: 0
+        y: 45
+        width: 1080
+        height: 1035
+
+      grid:
+        rows: 3
+        columns: 3
+        cell_width: 360
+        cell_height: 345
+
+        row_order:
+          - phoenix
+          - new_york
+          - chicago
+
+        column_order:
+          - dijkstra
+          - ml
+          - dl
+
+    new_york:
+      start_second: 5.0
+      duration_seconds: 15.0
+      frame_count: 450
+      city: new_york
+
+      heading:
+        x: 0
+        y: 0
+        width: 1080
+        height: 45
+
+      layers:
+        dijkstra:
+          x: 0
+          y: 45
+          width: 1080
+          height: 330
+
+        ml:
+          x: 0
+          y: 375
+          width: 1080
+          height: 330
+
+        dl:
+          x: 0
+          y: 705
+          width: 1080
+          height: 330
+
+      layer_internal_geometry:
+        map_width: 780
+        metric_width: 300
+        height: 330
+
+      result:
+        x: 0
+        y: 1035
+        width: 1080
+        height: 45
+
+    chicago:
+      start_second: 20.0
+      duration_seconds: 15.0
+      frame_count: 450
+      city: chicago
+
+      heading:
+        x: 0
+        y: 0
+        width: 1080
+        height: 45
+
+      layers:
+        dijkstra:
+          x: 0
+          y: 45
+          width: 1080
+          height: 330
+
+        ml:
+          x: 0
+          y: 375
+          width: 1080
+          height: 330
+
+        dl:
+          x: 0
+          y: 705
+          width: 1080
+          height: 330
+
+      layer_internal_geometry:
+        map_width: 780
+        metric_width: 300
+        height: 330
+
+      result:
+        x: 0
+        y: 1035
+        width: 1080
+        height: 45
+
+    phoenix:
+      start_second: 35.0
+      duration_seconds: 15.0
+      frame_count: 450
+      city: phoenix
+
+      heading:
+        x: 0
+        y: 0
+        width: 1080
+        height: 45
+
+      layers:
+        dijkstra:
+          x: 0
+          y: 45
+          width: 1080
+          height: 330
+
+        ml:
+          x: 0
+          y: 375
+          width: 1080
+          height: 330
+
+        dl:
+          x: 0
+          y: 705
+          width: 1080
+          height: 330
+
+      layer_internal_geometry:
+        map_width: 780
+        metric_width: 300
+        height: 330
+
+      result:
+        x: 0
+        y: 1035
+        width: 1080
+        height: 45
+
+    summary:
+      start_second: 50.0
+      duration_seconds: 10.0
+      frame_count: 300
+
+      heading:
+        x: 0
+        y: 0
+        width: 1080
+        height: 45
+
+      comparison:
+        x: 0
+        y: 45
+        width: 1080
+        height: 855
+
+      takeaway:
+        x: 0
+        y: 900
+        width: 1080
+        height: 180
+
+  scene_order:
+    - overview
+    - new_york
+    - chicago
+    - phoenix
+    - summary
+
+  technical_footer: "Dijkstra · Gradient Boosting · CNN · A* · Python"
+
+outputs:
+  root: outputs/p04_zombie_escape
+
+  data:
+    cities: outputs/p04_zombie_escape/data/cities.json
+    training_dataset: outputs/p04_zombie_escape/data/training_dataset.parquet
+    predicted_risk_maps: outputs/p04_zombie_escape/data/predicted_risk_maps.json
+    routes: outputs/p04_zombie_escape/data/routes.json
+    evaluation_summary: outputs/p04_zombie_escape/data/evaluation_summary.json
+
+  models:
+    ml: outputs/p04_zombie_escape/models/ml_risk_model
+    dl: outputs/p04_zombie_escape/models/cnn_risk_model
+
+  previews:
+    directory: outputs/p04_zombie_escape/previews
+
+  images:
+    thumbnail: outputs/p04_zombie_escape/images/thumbnail.png
+
+  video:
+    final: outputs/p04_zombie_escape/video/zombie_escape_dijkstra_vs_ml_vs_dl.mp4
+
+  manifests:
+    final: outputs/p04_zombie_escape/manifests/zombie_escape_dijkstra_vs_ml_vs_dl.json
+
+acceptance:
+  require_three_showcase_cities: true
+  require_three_headline_methods: true
+  require_distinct_city_profiles: true
+  require_hidden_true_risk: true
+  require_same_planner_cost_formula: true
+  require_showcase_exclusion_from_training: true
+  require_all_routes_valid: true
+  require_oracle_regret: true
+  require_computed_winner: true
+  prohibit_hardcoded_winner: true
+  require_exact_1080_square_video: true
+  require_exact_1800_frames: true
+  require_exact_60_seconds: true
+  require_30_fps: true
+  require_h264: true
+  require_yuv420p: true
+  require_visual_geometry_validation: true
+  require_text_overlap_validation: true
+  require_generated_outputs_untracked: true
