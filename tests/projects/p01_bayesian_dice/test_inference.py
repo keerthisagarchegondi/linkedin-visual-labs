@@ -10,14 +10,16 @@ import pytest
 
 from linkedin_visual_labs.projects.p01_bayesian_dice import (
     DecisionState,
-    DiceInferenceError,
     load_dice_config,
+    simulate_scenario,
+)
+from linkedin_visual_labs.projects.p01_bayesian_dice.inference import (
+    DiceInferenceError,
     log_marginal_likelihood_h0,
     log_marginal_likelihood_h1,
     posterior_loaded_probability,
     posterior_predictive_probabilities,
     sequential_inference,
-    simulate_scenario,
     write_posterior_history_csv,
 )
 

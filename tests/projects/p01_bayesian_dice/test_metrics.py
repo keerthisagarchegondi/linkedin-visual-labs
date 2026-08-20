@@ -8,6 +8,9 @@ from pathlib import Path
 import pytest
 
 from linkedin_visual_labs.projects.p01_bayesian_dice import (
+    load_dice_config,
+)
+from linkedin_visual_labs.projects.p01_bayesian_dice.metrics import (
     CalibrationObservation,
     DiceCalibrationError,
     build_posterior_calibration_buckets,
@@ -15,7 +18,6 @@ from linkedin_visual_labs.projects.p01_bayesian_dice import (
     evaluate_acceptance,
     evaluate_calibration_observation,
     load_calibration_acceptance_targets,
-    load_dice_config,
     run_calibration,
     summarize_scenario_observations,
     write_validation_json,
