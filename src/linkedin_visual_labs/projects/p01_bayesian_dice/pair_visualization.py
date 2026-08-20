@@ -27,7 +27,16 @@ from linkedin_visual_labs.projects.p01_bayesian_dice.pair_inference import (
 
 FRAME_WIDTH_PX = 1080
 FRAME_HEIGHT_PX = 1080
-FRAME_DPI = 100
+FRAME_DPI = 120
+
+CASE_DISPLAY_LABELS: dict[str, str] = {
+    "UU": "Unloaded - Unloaded",
+    "UP": "Unloaded - Partially Loaded",
+    "UF": "Unloaded - Fully Loaded",
+    "PP": "Partially Loaded - Partially Loaded",
+    "PF": "Partially Loaded - Fully Loaded",
+    "FF": "Fully Loaded - Fully Loaded",
+}
 
 PANEL_BACKGROUND = "#111827"
 CANVAS_BACKGROUND = "#090D14"
@@ -151,6 +160,18 @@ class PairFrameRenderResult:
     path: Path
     roll_index: int
     validation: FrameValidationReport
+
+
+def case_display_label(
+    case_id: str,
+) -> str:
+    """Return the viewer-facing descriptive label for one canonical case."""
+    try:
+        return CASE_DISPLAY_LABELS[case_id]
+    except KeyError as exc:
+        allowed = ", ".join(PAIR_CASE_IDS)
+
+        raise PairVisualizationError(f"unknown case ID {case_id!r}; allowed: {allowed}") from exc
 
 
 def pixel_region_to_display_bounds(
@@ -363,7 +384,7 @@ def _render_pair_panel(
     TrackedText,
     ...,
 ]:
-    """Render one reusable analytical case panel."""
+    """Render one polished analytical case panel."""
     _configure_axes(
         axes,
         facecolor=PANEL_BACKGROUND,
@@ -373,13 +394,18 @@ def _render_pair_panel(
 
     tracked: list[TrackedText] = []
 
+    ###########################################################################
+    # CASE TITLE
+    ###########################################################################
+
     title = _add_panel_text(
         axes,
-        text=case_id,
-        x=0.04,
-        y=0.955,
-        fontsize=10.0,
+        text=case_display_label(case_id),
+        x=0.50,
+        y=0.953,
+        fontsize=9.0,
         weight="bold",
+        horizontal_alignment="center",
     )
 
     tracked.append(
@@ -387,36 +413,68 @@ def _render_pair_panel(
             name=f"{case_id}.title",
             artist=title,
             allowed_bounds=allowed_bounds,
-            overlap_group=f"{case_id}.top",
         )
     )
 
-    status = _add_panel_text(
+    ###########################################################################
+    # CURRENT STATE ROW
+    ###########################################################################
+
+    roll_text = _add_panel_text(
         axes,
-        text=(f"Roll {record.roll_index:,}   P(load) {record.posterior_loaded:.3f}"),
+        text=(f"Roll {record.roll_index:,}"),
         x=0.04,
-        y=0.910,
-        fontsize=6.5,
+        y=0.892,
+        fontsize=6.8,
+        color=TEXT_COLOR,
     )
 
     tracked.append(
         TrackedText(
-            name=f"{case_id}.status",
-            artist=status,
+            name=f"{case_id}.roll",
+            artist=roll_text,
             allowed_bounds=allowed_bounds,
-            overlap_group=f"{case_id}.top",
+            overlap_group=f"{case_id}.metrics",
         )
     )
 
-    decision = _add_panel_text(
+    probability_text = _add_panel_text(
         axes,
-        text=record.decision_state.value,
-        x=0.96,
-        y=0.955,
-        fontsize=7.0,
+        text=(f"Loaded Probability {record.posterior_loaded:.1%}"),
+        x=0.51,
+        y=0.892,
+        fontsize=6.7,
         weight="bold",
-        color=_decision_color(record.decision_state),
-        horizontal_alignment="right",
+        color=TEXT_COLOR,
+        horizontal_alignment="center",
+    )
+
+    tracked.append(
+        TrackedText(
+            name=f"{case_id}.probability",
+            artist=probability_text,
+            allowed_bounds=allowed_bounds,
+            overlap_group=f"{case_id}.metrics",
+        )
+    )
+
+    decision = axes.text(
+        0.96,
+        0.892,
+        record.decision_state.value,
+        transform=axes.transAxes,
+        ha="right",
+        va="center",
+        fontsize=6.3,
+        fontweight="bold",
+        color="#FFFFFF",
+        clip_on=True,
+        bbox={
+            "boxstyle": "round,pad=0.25",
+            "facecolor": _decision_color(record.decision_state),
+            "edgecolor": "none",
+            "alpha": 0.95,
+        },
     )
 
     tracked.append(
@@ -424,16 +482,21 @@ def _render_pair_panel(
             name=f"{case_id}.decision",
             artist=decision,
             allowed_bounds=allowed_bounds,
-            overlap_group=f"{case_id}.top",
+            overlap_group=f"{case_id}.metrics",
         )
     )
 
+    ###########################################################################
+    # LOADED PROBABILITY GAUGE
+    ###########################################################################
+
     gauge_label = _add_panel_text(
         axes,
-        text="LOADED POSTERIOR",
+        text="LOADED PROBABILITY",
         x=0.04,
-        y=0.835,
-        fontsize=5.0,
+        y=0.820,
+        fontsize=6.0,
+        weight="bold",
         color=MUTED_TEXT_COLOR,
     )
 
@@ -452,10 +515,10 @@ def _render_pair_panel(
                 0.775,
             ),
             0.92,
-            0.035,
+            0.030,
             facecolor=GAUGE_BACKGROUND,
             edgecolor=GRID_COLOR,
-            linewidth=0.5,
+            linewidth=0.6,
         )
     )
 
@@ -465,19 +528,24 @@ def _render_pair_panel(
                 0.04,
                 0.775,
             ),
-            0.92 * record.posterior_loaded,
-            0.035,
+            (0.92 * record.posterior_loaded),
+            0.030,
             facecolor=_decision_color(record.decision_state),
             edgecolor="none",
         )
     )
 
+    ###########################################################################
+    # CUMULATIVE SUM COUNTS
+    ###########################################################################
+
     counts_label = _add_panel_text(
         axes,
         text="CUMULATIVE SUM COUNTS",
         x=0.04,
-        y=0.720,
-        fontsize=5.0,
+        y=0.715,
+        fontsize=6.0,
+        weight="bold",
         color=MUTED_TEXT_COLOR,
     )
 
@@ -496,8 +564,8 @@ def _render_pair_panel(
         1,
     )
 
-    count_area_bottom = 0.385
-    count_area_height = 0.275
+    count_area_bottom = 0.470
+    count_area_height = 0.190
 
     bar_width = 0.057
     gap = 0.024
@@ -525,8 +593,8 @@ def _render_pair_panel(
             axes,
             text=str(index + 2),
             x=(x + bar_width / 2.0),
-            y=0.358,
-            fontsize=4.0,
+            y=0.443,
+            fontsize=5.0,
             color=MUTED_TEXT_COLOR,
             horizontal_alignment="center",
         )
@@ -539,12 +607,17 @@ def _render_pair_panel(
             )
         )
 
+    ###########################################################################
+    # LOADED PROBABILITY TRAJECTORY
+    ###########################################################################
+
     trajectory_label = _add_panel_text(
         axes,
-        text="P(LOAD) TRAJECTORY",
+        text="LOADED PROBABILITY TRAJECTORY",
         x=0.04,
-        y=0.310,
-        fontsize=5.0,
+        y=0.390,
+        fontsize=5.8,
+        weight="bold",
         color=MUTED_TEXT_COLOR,
     )
 
@@ -576,13 +649,14 @@ def _render_pair_panel(
             0.04 + 0.92 * (item.roll_index - first_roll) / denominator for item in trajectory
         )
 
-    y_values = tuple(0.075 + 0.190 * item.posterior_loaded for item in trajectory)
+    y_values = tuple(0.175 + 0.150 * item.posterior_loaded for item in trajectory)
 
     axes.plot(
         x_values,
         y_values,
-        linewidth=1.2,
+        linewidth=1.6,
         color=TRAJECTORY_COLOR,
+        solid_capstyle="round",
         clip_on=True,
     )
 
@@ -592,13 +666,13 @@ def _render_pair_panel(
             0.96,
         ),
         (
-            0.075 + 0.190 * 0.05,
-            0.075 + 0.190 * 0.05,
+            0.175 + 0.150 * 0.05,
+            0.175 + 0.150 * 0.05,
         ),
-        linewidth=0.45,
+        linewidth=0.6,
         linestyle="--",
         color=FAIR_COLOR,
-        alpha=0.7,
+        alpha=0.55,
     )
 
     axes.plot(
@@ -607,31 +681,59 @@ def _render_pair_panel(
             0.96,
         ),
         (
-            0.075 + 0.190 * 0.95,
-            0.075 + 0.190 * 0.95,
+            0.175 + 0.150 * 0.95,
+            0.175 + 0.150 * 0.95,
         ),
-        linewidth=0.45,
+        linewidth=0.6,
         linestyle="--",
         color=LOADED_COLOR,
-        alpha=0.7,
+        alpha=0.55,
+    )
+
+    ###########################################################################
+    # FINAL RESULT CARD
+    ###########################################################################
+
+    axes.add_patch(
+        Rectangle(
+            (
+                0.04,
+                0.030,
+            ),
+            0.92,
+            0.105,
+            facecolor=RESULT_BACKGROUND,
+            edgecolor=GRID_COLOR,
+            linewidth=0.8,
+        )
     )
 
     stable = case_result.stable_decision_roll
 
-    stable_text = _add_panel_text(
-        axes,
-        text=("Stable: " + ("—" if stable is None else f"{stable:,}")),
-        x=0.96,
-        y=0.310,
-        fontsize=5.0,
-        color=MUTED_TEXT_COLOR,
-        horizontal_alignment="right",
+    stable_label = "—" if stable is None else f"{stable:,}"
+
+    result_text = axes.text(
+        0.50,
+        0.083,
+        (
+            f"Stable Roll: {stable_label}\n"
+            f"Loaded Probability: "
+            f"{case_result.final_posterior_loaded:.1%}"
+        ),
+        transform=axes.transAxes,
+        ha="center",
+        va="center",
+        fontsize=6.6,
+        fontweight="bold",
+        linespacing=1.10,
+        color=TEXT_COLOR,
+        clip_on=True,
     )
 
     tracked.append(
         TrackedText(
-            name=f"{case_id}.stable",
-            artist=stable_text,
+            name=f"{case_id}.result",
+            artist=result_text,
             allowed_bounds=allowed_bounds,
         )
     )
@@ -648,33 +750,22 @@ def _render_heading(
     TrackedText,
     ...,
 ]:
+    """Render the primary viewer question without competing footer text."""
     _configure_axes(
         axes,
         facecolor=CANVAS_BACKGROUND,
     )
 
     title = axes.text(
-        0.012,
-        0.5,
+        0.50,
+        0.50,
         experiment.viewer_question,
         transform=axes.transAxes,
-        ha="left",
+        ha="center",
         va="center",
-        fontsize=10.5,
+        fontsize=12.5,
         fontweight="bold",
         color=TEXT_COLOR,
-        clip_on=True,
-    )
-
-    footer = axes.text(
-        0.988,
-        0.5,
-        experiment.video.technical_footer,
-        transform=axes.transAxes,
-        ha="right",
-        va="center",
-        fontsize=4.7,
-        color=MUTED_TEXT_COLOR,
         clip_on=True,
     )
 
@@ -683,13 +774,6 @@ def _render_heading(
             name="heading.title",
             artist=title,
             allowed_bounds=allowed_bounds,
-            overlap_group="heading",
-        ),
-        TrackedText(
-            name="heading.footer",
-            artist=footer,
-            allowed_bounds=allowed_bounds,
-            overlap_group="heading",
         ),
     )
 
@@ -703,71 +787,60 @@ def _render_result_strip(
     TrackedText,
     ...,
 ]:
+    """Render explanatory context and technical provenance below the panels."""
+    del inference
+
     _configure_axes(
         axes,
         facecolor=RESULT_BACKGROUND,
     )
 
-    tracked: list[TrackedText] = []
+    legend = axes.text(
+        0.50,
+        0.69,
+        (
+            "Stable Roll = earliest permanent decision"
+            "   •   "
+            "Loaded Probability = "
+            "1 - P(Unloaded - Unloaded)"
+        ),
+        transform=axes.transAxes,
+        ha="center",
+        va="center",
+        fontsize=5.5,
+        fontweight="bold",
+        color=TEXT_COLOR,
+        clip_on=True,
+    )
 
-    for index, case_id in enumerate(PAIR_CASE_IDS):
-        cell = result_cell_region(
-            experiment,
-            index,
-        )
+    technical_footer = axes.text(
+        0.50,
+        0.24,
+        experiment.video.technical_footer,
+        transform=axes.transAxes,
+        ha="center",
+        va="center",
+        fontsize=4.7,
+        color=MUTED_TEXT_COLOR,
+        clip_on=True,
+    )
 
-        cell_bounds = pixel_region_to_display_bounds(cell)
+    bounds = pixel_region_to_display_bounds(experiment.video.result_strip)
 
-        x_start = index / len(PAIR_CASE_IDS)
-
-        cell_width = 1.0 / len(PAIR_CASE_IDS)
-
-        if index > 0:
-            axes.plot(
-                (
-                    x_start,
-                    x_start,
-                ),
-                (
-                    0.0,
-                    1.0,
-                ),
-                transform=axes.transAxes,
-                color=GRID_COLOR,
-                linewidth=0.6,
-            )
-
-        result = inference.case(case_id)
-
-        stable = result.stable_decision_roll
-
-        stable_label = "—" if stable is None else f"{stable:,}"
-
-        label = f"{case_id} · R{stable_label} · P{result.final_posterior_loaded:.3f}"
-
-        text = axes.text(
-            (x_start + cell_width / 2.0),
-            0.5,
-            label,
-            transform=axes.transAxes,
-            ha="center",
-            va="center",
-            fontsize=5.2,
-            fontweight="bold",
-            color=_decision_color(result.final_decision_state),
-            clip_on=True,
-        )
-
-        tracked.append(
-            TrackedText(
-                name=f"result.{case_id}",
-                artist=text,
-                allowed_bounds=cell_bounds,
-                overlap_group="results",
-            )
-        )
-
-    return tuple(tracked)
+    return (
+        TrackedText(
+            name="result_strip.legend",
+            artist=legend,
+            allowed_bounds=bounds,
+            overlap_group="result_strip",
+        ),
+        TrackedText(
+            name="result_strip.technical_footer",
+            artist=technical_footer,
+            allowed_bounds=bounds,
+            overlap_group="result_strip",
+        ),
+    )
 
 
 def build_pair_dashboard_frame(

@@ -98,6 +98,7 @@ from linkedin_visual_labs.projects.p01_bayesian_dice.pair_metrics import (
 )
 from linkedin_visual_labs.projects.p01_bayesian_dice.pair_visualization import (
     AXES_BOUND_TOLERANCE_PX,
+    CASE_DISPLAY_LABELS,
     FRAME_DPI,
     FRAME_HEIGHT_PX,
     FRAME_WIDTH_PX,
@@ -111,6 +112,7 @@ from linkedin_visual_labs.projects.p01_bayesian_dice.pair_visualization import (
     TrackedAxes,
     TrackedText,
     build_pair_dashboard_frame,
+    case_display_label,
     panel_region,
     pixel_bounds_to_figure_rect,
     pixel_region_to_display_bounds,
@@ -165,6 +167,7 @@ from linkedin_visual_labs.projects.p01_bayesian_dice.simulation import (
 
 __all__ = [
     "AXES_BOUND_TOLERANCE_PX",
+    "CASE_DISPLAY_LABELS",
     "DEFAULT_CONFIG_PATH",
     "DIE_TYPE_IDS",
     "FACE_COUNT",
@@ -249,6 +252,7 @@ __all__ = [
     "build_pipeline_context",
     "build_posterior_calibration_buckets",
     "calibration_seed",
+    "case_display_label",
     "count_faces",
     "count_pair_sums",
     "cumulative_pair_sum_records",
