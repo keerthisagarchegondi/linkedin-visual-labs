@@ -1,762 +1,503 @@
-# Bayesian Dice Detective
+# Project 1 — Bayesian Dice Detective
 
-## Revised project contract
+## Question
 
-Viewer question:
+**How many rolls before knowing whether a pair of dice is loaded?**
 
-> How many rolls before knowing whether a pair of dice is loaded?
+This project is a deterministic Bayesian experiment and visualization that
+compares six possible pair-of-dice models using only the observed sum of each
+pair roll.
 
-The revised experiment models a game in which two dice are rolled and only
-their sum is used for inference.
+## Experiment
 
-Examples include Monopoly, Catan, backgammon, and other two-dice games.
+Each physical die is one of three types:
 
-The word "AI" may be used in social-media copy, but the analytical method is
-Bayesian inference. The project does not use a neural network or external AI
-service.
+| Type | Meaning | Face probabilities 1–6 |
+|---|---|---|
+| U | Unloaded | 1/6 for every face |
+| P | Partially loaded | 0.15, 0.15, 0.15, 0.15, 0.15, 0.25 |
+| F | Fully loaded | 0.12, 0.12, 0.12, 0.12, 0.12, 0.40 |
 
----
+The six unordered pair models are:
 
-# 1. Experimental question
+| Internal ID | Viewer-facing label |
+|---|---|
+| UU | Unloaded - Unloaded |
+| UP | Unloaded - Partially Loaded |
+| UF | Unloaded - Fully Loaded |
+| PP | Partially Loaded - Partially Loaded |
+| PF | Partially Loaded - Fully Loaded |
+| FF | Fully Loaded - Fully Loaded |
 
-Three kinds of six-sided dice exist:
+Internal IDs remain stable machine-readable identifiers. Viewer-facing
+visualizations use the descriptive labels.
 
-- fair / unloaded;
-- partially loaded;
-- fully loaded.
+## Observation model
 
-They form six unique unordered pair cases:
+The simulation retains both physical die faces for provenance.
 
-1. UU — Fair + Fair
-2. UP — Fair + Partially Loaded
-3. UF — Fair + Fully Loaded
-4. PP — Partially Loaded + Partially Loaded
-5. PF — Partially Loaded + Fully Loaded
-6. FF — Fully Loaded + Fully Loaded
+Bayesian inference receives only:
 
-Each case is rolled 10,000 times.
+```text
+pair sum ∈ {2, 3, ..., 12}
+```
 
-The inference engine observes only:
+The eleven-value pair-sum probability mass function for each model is derived
+by convolution from the two constituent die probability distributions.
 
-`sum = die_1 + die_2`
+Pair-sum PMFs are never hard-coded.
 
-and therefore receives observations from 2 through 12.
+## Bayesian models
 
-Individual die faces are retained for simulation provenance but are not
-available to the Bayesian inference algorithm.
+The six exact models are:
 
----
+```text
+M_UU
+M_UP
+M_UF
+M_PP
+M_PF
+M_FF
+```
 
-# 2. Die definitions
+All six pair-sum PMFs are required to be distinct.
 
-## U — fair die
+## Priors
 
-\[
-p_U =
-(1/6,1/6,1/6,1/6,1/6,1/6)
-\]
+The prior model probabilities are:
 
-## P — partially loaded die
-
-\[
-p_P =
-(0.15,0.15,0.15,0.15,0.15,0.25)
-\]
-
-## F — fully loaded die
-
-\[
-p_F =
-(0.12,0.12,0.12,0.12,0.12,0.40)
-\]
-
-Each vector must:
-
-- contain exactly six finite non-negative probabilities;
-- sum to one within numerical tolerance.
-
----
-
-# 3. Pair-sum probability models
-
-For pair model \(M_{AB}\), let the two die probability vectors be \(p_A\) and
-\(p_B\).
-
-For observed sum \(s\),
-
-\[
-P(S=s \mid M_{AB})
-=
-\sum_{\substack{i,j\in\{1,\dots,6\}\\i+j=s}}
-p_A(i)p_B(j).
-\]
-
-The sum distribution therefore contains eleven probabilities corresponding to:
-
-\[
-s \in \{2,3,\dots,12\}.
-\]
-
-The implementation must derive these distributions by convolution rather than
-hard-code them.
-
-Every derived sum probability vector must sum to one.
-
----
-
-# 4. Six Bayesian hypotheses
-
-The model space is:
-
-\[
-M_{UU}, M_{UP}, M_{UF}, M_{PP}, M_{PF}, M_{FF}.
-\]
-
-These are exact probability models rather than unknown Dirichlet alternatives.
-
-For cumulative sum counts \(n_2,\dots,n_{12}\), the log likelihood under model
-\(M\) is:
-
-\[
-\log p(x_{1:n}\mid M)
-=
-\sum_{s=2}^{12}
-n_s \log q_{M,s},
-\]
-
-where \(q_{M,s}\) is the probability of sum \(s\) under model \(M\).
-
-All likelihood calculations must remain in log space.
-
----
-
-# 5. Model priors
-
-The project begins neutral on the viewer-facing fair-versus-loaded question:
-
-\[
-P(\text{fully fair pair}) = 0.50
-\]
-
-and:
-
-\[
-P(\text{some loading}) = 0.50.
-\]
-
-The exact model priors are:
-
-\[
-P(M_{UU})=0.50
-\]
-
-and:
-
-\[
-P(M_{UP})
-=
-P(M_{UF})
-=
-P(M_{PP})
-=
-P(M_{PF})
-=
-P(M_{FF})
-=
-0.10.
-\]
-
-Therefore before any observation:
-
-\[
-P(\text{loaded})=0.50.
-\]
-
----
-
-# 6. Posterior probabilities
-
-After every observed sum, calculate the posterior probability of all six exact
-models using log-space normalization.
-
-For model \(M_k\),
-
-\[
-P(M_k\mid x)
-=
-\frac{
-P(M_k)p(x\mid M_k)
-}{
-\sum_j P(M_j)p(x\mid M_j)
-}.
-\]
-
-The six posterior probabilities must:
-
-- remain in `[0,1]`;
-- sum to one within `1e-12`.
-
----
-
-# 7. Viewer-facing loaded probability
-
-The pair is defined as fully fair only under `M_UU`.
+```text
+P(M_UU) = 0.50
+P(M_UP) = 0.10
+P(M_UF) = 0.10
+P(M_PP) = 0.10
+P(M_PF) = 0.10
+P(M_FF) = 0.10
+```
 
 Therefore:
 
-\[
-P(\text{loaded}\mid x)
-=
-1-P(M_{UU}\mid x).
-\]
+```text
+P(fair)   = P(M_UU)
+P(loaded) = 1 - P(M_UU)
+```
 
-And:
+The video reports the latter quantity as **Loaded Probability**.
 
-\[
-P(\text{fair}\mid x)
-=
-P(M_{UU}\mid x).
-\]
+## Sequential Bayesian inference
 
-A pair is "loaded" whenever at least one component die is loaded.
+For cumulative pair-sum counts `n_s` and model probabilities `q_M,s`:
 
----
+```text
+log L_M = Σ_s n_s log(q_M,s)
+```
 
-# 8. Decision states
+Posterior normalization is performed in log space.
 
-## FAIR
+The implementation also applies an explicit floating-point normalization after
+exponentiation so posterior probabilities remain numerically normalized during
+long 10,000-roll sequences.
 
-If:
+## Decision thresholds
 
-\[
-P(\text{loaded}\mid x)\le0.05
-\]
+The sequential classification thresholds are:
 
-the state is:
+```text
+FAIR      if P(loaded) <= 0.05
 
-`FAIR`
+UNCERTAIN if 0.05 < P(loaded) < 0.95
 
-## LOADED
+LOADED    if P(loaded) >= 0.95
+```
 
-If:
+## Headline metric
 
-\[
-P(\text{loaded}\mid x)\ge0.95
-\]
+The headline result is **Stable Roll**, not the first threshold crossing.
 
-the state is:
+For a case whose final state is FAIR or LOADED, the Stable Roll is the earliest
+roll after which every remaining roll through roll 10,000 retains that same
+final decision state.
 
-`LOADED`
+The first FAIR and LOADED threshold crossings are retained only as diagnostic
+metrics.
 
-## UNCERTAIN
+## Canonical experiment
 
-Otherwise:
+The canonical experiment contains:
 
-`UNCERTAIN`
+```text
+10,000 pair rolls per case
+6 cases
+60,000 observed pair sums
+```
 
----
+Canonical deterministic seeds are:
 
-# 9. First threshold crossing
+| Case | Seed |
+|---|---:|
+| UU | 1101 |
+| UP | 1102 |
+| UF | 1103 |
+| PP | 1104 |
+| PF | 1105 |
+| FF | 1106 |
 
-For diagnostic purposes retain:
+The required final truth alignment is:
 
-- first FAIR threshold crossing;
-- first LOADED threshold crossing.
+```text
+UU -> FAIR
+UP -> LOADED
+UF -> LOADED
+PP -> LOADED
+PF -> LOADED
+FF -> LOADED
+```
 
-These values describe when the sequence first enters a confident region.
+Automated validation fails if a canonical case does not produce the required
+truth-aligned final state.
 
-They are not the headline result because the posterior may later leave that
-region.
+## Canonical data artifacts
 
----
+Generated runtime artifacts live under the ignored `outputs/` tree:
 
-# 10. Stable decision roll
+```text
+outputs/p01_bayesian_dice/data/pair_simulation.json
+outputs/p01_bayesian_dice/data/pair_case_histories.csv
+outputs/p01_bayesian_dice/data/pair_case_summary.json
+outputs/p01_bayesian_dice/data/pair_validation.json
+```
 
-The headline "number of rolls required" is the stable decision roll.
+The canonical pair history contains exactly 60,000 inference records.
 
-If the final decision is `LOADED`, the stable decision roll is the earliest
-roll \(r\) for which every classification from roll \(r\) through roll 10,000
-remains `LOADED`.
+## Authoritative implementation
 
-If the final decision is `FAIR`, the stable decision roll is the earliest roll
-\(r\) for which every classification from roll \(r\) through roll 10,000
-remains `FAIR`.
+The authoritative pair-dice execution path is implemented through:
 
-If the final state is `UNCERTAIN`:
-
-`stable_decision_roll = null`
-
-This avoids presenting a temporary random threshold crossing as the point where
-the model permanently resolved the question.
-
----
-
-# 11. Deterministic pair cases
-
-Every canonical case contains 10,000 pair rolls.
-
-## UU
-
-- Fair + Fair
-- seed: 1101
-- truth: FAIR
-
-## UP
-
-- Fair + Partially Loaded
-- seed: 1102
-- truth: LOADED
-
-## UF
-
-- Fair + Fully Loaded
-- seed: 1103
-- truth: LOADED
-
-## PP
-
-- Partially Loaded + Partially Loaded
-- seed: 1104
-- truth: LOADED
-
-## PF
-
-- Partially Loaded + Fully Loaded
-- seed: 1105
-- truth: LOADED
-
-## FF
-
-- Fully Loaded + Fully Loaded
-- seed: 1106
-- truth: LOADED
-
-The seeds define canonical narrative datasets.
-
-No result value, posterior, threshold crossing, or stable decision roll may be
-hard-coded.
-
----
-
-# 12. Randomness contract
-
-All canonical simulations must:
-
-- use the repository's shared deterministic random infrastructure;
-- avoid hidden global random state;
-- persist the configured seed;
-- reproduce identical pair sequences for identical configuration and seed.
-
-Different pair-case seeds must produce distinct complete canonical sequences.
-
----
-
-# 13. Pair simulation output
-
-Canonical path:
-
-`outputs/p01_bayesian_dice/data/pair_simulation.json`
-
-The top-level payload contains:
-
-- project ID;
-- 10,000-roll case size;
-- all six cases.
-
-Each case contains:
-
-- case ID;
-- readable label;
-- seed;
-- die type identifiers;
-- both face-probability vectors;
-- generated sum sequence;
-- final counts for sums 2 through 12.
-
-The simulation may retain individual faces for provenance, but inference must
-consume only the sum sequence.
-
----
-
-# 14. Sequential history output
-
-Canonical path:
-
-`outputs/p01_bayesian_dice/data/pair_case_histories.csv`
-
-For every one of the 60,000 observations store:
-
-- case ID;
-- roll index;
-- observed sum;
-- cumulative counts for sums 2 through 12;
-- six model log likelihoods;
-- six posterior model probabilities;
-- posterior loaded probability;
-- posterior fair probability;
-- most likely exact model;
-- FAIR / UNCERTAIN / LOADED state.
-
----
-
-# 15. Pair summary output
-
-Canonical path:
-
-`outputs/p01_bayesian_dice/data/pair_case_summary.json`
-
-For each pair case store:
-
-- case ID;
-- label;
-- generating truth;
-- final posterior loaded;
-- final posterior fair;
-- final highest-probability exact model;
-- final decision state;
-- first FAIR threshold crossing;
-- first LOADED threshold crossing;
-- stable decision roll;
-- stable decision state;
-- final sum counts.
-
----
-
-# 16. Experiment size
-
-Canonical experiment:
-
-\[
-6 \text{ cases}
-\times
-10,000 \text{ rolls}
-=
-60,000 \text{ observed sums}.
-\]
-
-All six cases must be evaluated.
-
----
-
-# 17. Square video contract
-
-Canonical output:
-
-`outputs/p01_bayesian_dice/video/how_many_rolls_loaded_dice_pair.mp4`
-
-Video specification:
-
-- width: 1080 px;
-- height: 1080 px;
-- aspect ratio: 1:1;
-- frame rate: 30 fps;
-- codec: H.264;
-- pixel format: yuv420p;
-- target duration: approximately 45 seconds.
-
----
-
-# 18. Video geometry
-
-The canvas contains three major vertical sections.
-
-## Heading
-
-Coordinates:
-
-- x = 0
-- y = 0
-- width = 1080
-- height = 40
-
-Text:
-
-> How many rolls before knowing whether a pair of dice is loaded?
-
-The title must fit entirely within the assigned region.
-
-## Six-panel analytical grid
-
-Coordinates:
-
-- x = 0
-- y = 40
-- width = 1080
-- height = 1000
-
-Grid:
-
-- 3 columns;
-- 2 rows;
-- each panel = 360 × 500.
-
-Placement:
-
+```text
+config.py
+models.py
+simulation.py
+pair_inference.py
+pair_metrics.py
+pair_visualization.py
+pair_video.py
+pipeline.py
+```
+
+Legacy single-die compatibility modules may remain in the repository while
+compatibility tests are retained, but they are not part of the authoritative
+Project 1 execution path and are not exposed through the Project 1 package-root
+API.
+
+## Visualization contract
+
+The production video uses:
+
+```text
+1080 x 1080 pixels
+1:1 aspect ratio
+30 fps
+approximately 45 seconds
+1,350 scheduled frames
+H.264
+yuv420p
+```
+
+The six analytical panels are synchronized to the same actual Bayesian roll
+index.
+
+The nonlinear frame schedule may repeat or skip real roll indices to improve
+visual pacing, but posterior probabilities are never interpolated.
+
+Every canonical Stable Roll is explicitly represented in the frame schedule.
+
+## Viewer-facing panel content
+
+Each panel displays:
+
+- descriptive case name,
+- current real roll index,
+- Loaded Probability,
+- FAIR / UNCERTAIN / LOADED decision badge,
+- cumulative pair-sum counts for sums 2 through 12,
+- Loaded Probability trajectory,
+- final Stable Roll,
+- final Loaded Probability.
+
+The internal IDs `UU`, `UP`, `UF`, `PP`, `PF`, and `FF` remain machine-readable
+keys but are not used as the primary viewer-facing case names.
+
+## Viewer-facing case names
+
+```text
+UU -> Unloaded - Unloaded
+UP -> Unloaded - Partially Loaded
+UF -> Unloaded - Fully Loaded
+PP -> Partially Loaded - Partially Loaded
+PF -> Partially Loaded - Fully Loaded
+FF -> Fully Loaded - Fully Loaded
+```
+
+## Video layout
+
+The square canvas is divided into:
+
+```text
+Heading:
+x=0
+y=0
+width=1080
+height=40
+
+Analytical grid:
+x=0
+y=40
+width=1080
+height=1000
+
+3 columns x 2 rows
+each panel = 360 x 500
+
+Bottom explanatory strip:
+x=0
+y=1040
+width=1080
+height=40
+```
+
+The panel order is:
+
+```text
 Top row:
-
-- UU
-- UP
-- UF
+UU, UP, UF
 
 Bottom row:
+PP, PF, FF
+```
 
-- PP
-- PF
-- FF
+## Visual quality contract
 
-## Results strip
+The renderer automatically validates:
 
-Coordinates:
+- exact 1080 x 1080 canvas dimensions,
+- analytical panel bounds,
+- text bounds,
+- clipping,
+- tracked text overlap,
+- synchronized roll state,
+- readable minimum typography.
 
-- x = 0
-- y = 1040
-- width = 1080
-- height = 40
+The final visual design uses descriptive case titles, larger typography,
+decision badges, analytical charts, and dedicated per-panel result cards.
 
-It contains six 180-pixel result cells.
+## Production video artifact
 
-Each cell displays compactly:
+The final production video is generated at:
 
-- case ID;
-- stable decision roll;
-- final P(load).
+```text
+outputs/p01_bayesian_dice/video/how_many_rolls_loaded_dice_pair.mp4
+```
 
----
+## Video manifest
 
-# 19. Panel content
+The production manifest is generated at:
 
-Every 360 × 500 panel displays:
+```text
+outputs/p01_bayesian_dice/manifests/how_many_rolls_loaded_dice_pair.json
+```
 
-1. pair-case title;
-2. current trial count;
-3. current `P(load)`;
-4. current status;
-5. loaded-posterior gauge;
-6. cumulative sum counts for 2 through 12;
-7. posterior-loaded trajectory.
+The manifest records:
 
-The six panels use the same component renderer and the same visual hierarchy.
+- project identity,
+- experiment question,
+- observation model,
+- Stable Roll headline metric,
+- frame schedule metadata,
+- encoder settings,
+- media probe metadata,
+- automated media validation,
+- video SHA-256,
+- canonical input SHA-256 hashes,
+- final results for all six cases.
 
-No panel-specific hand-tuned layout is allowed.
+## Deterministic frame schedule
 
----
+The canonical schedule uses:
 
-# 20. Animation semantics
+```text
+30 fps
+45 seconds
+1,350 frames
+roll 1 as the first state
+roll 10,000 as the final state
+```
 
-All six experiments progress simultaneously.
+Roll indices are monotonically non-decreasing.
 
-At any animation frame, every panel displays the same roll index.
+The schedule is deliberately nonlinear so early evidence and decision
+transitions receive more screen time.
 
-A nonlinear frame-to-roll mapping may accelerate long regions, but it must
-preserve:
+Only real Bayesian states are rendered.
 
-- roll ordering;
-- actual posterior trajectories;
-- actual threshold events;
-- actual stable-decision results.
+No posterior interpolation is permitted.
 
-No posterior or decision value may be interpolated analytically between unseen
-rolls.
+## Reproduce the schedule
 
-The display may sample existing computed roll states for frames.
+Run:
 
----
+```bash
+python -m \
+    linkedin_visual_labs.projects.p01_bayesian_dice.pair_video \
+    schedule
+```
 
-# 21. Visual-fit contract
+## Render the production video
 
-Every textual or graphical artist must remain inside its assigned region.
+Run:
 
-Automated layout validation must cover:
+```bash
+python -m \
+    linkedin_visual_labs.projects.p01_bayesian_dice.pair_video \
+    render
+```
 
-- title bounds;
-- six panel bounds;
-- panel headings;
-- metric labels;
-- metric values;
-- posterior gauges;
-- sum-count visualizations;
-- trajectory axes;
-- results strip;
-- final footer.
+## Validate the production video
 
-Text clipping is a validation failure.
+Run:
 
-Artist overlap outside intentionally shared chart elements is a validation
-failure.
+```bash
+python -m \
+    linkedin_visual_labs.projects.p01_bayesian_dice.pair_video \
+    validate
+```
 
-The implementation should automatically fit typography rather than assume a
-single font size will work.
+The media validation contract verifies the expected:
 
----
-
-# 22. Technical footer
-
-Use only the compact technical footer:
-
-> Bayesian inference · Pair-sum likelihoods · Sequential evidence · Python
-
-Do not include verbose sentences such as:
-
-> Transparent Bayesian model comparison — no neural network.
-
-inside analytical panels.
-
----
-
-# 23. Preview-frame contract
-
-Before full MP4 encoding, generate representative ignored PNG frames.
-
-At minimum:
-
-- initial frame;
-- early evidence;
-- one frame near each unique stable-decision event;
-- roll 10,000;
-- final results frame.
-
-Every preview must be exactly:
-
-`1080 × 1080`
-
-and pass automated geometry checks.
-
----
-
-# 24. Analytical acceptance criteria
-
-The revised analytical implementation must prove:
-
-- exactly three die types;
-- exactly six unique unordered pair cases;
-- exactly 10,000 rolls per case;
-- exactly 60,000 observed sums;
-- every observed sum is in 2 through 12;
-- all pair sum PMFs are derived by convolution;
-- every pair PMF sums to one;
-- all likelihoods are calculated in log space;
-- all six posterior probabilities remain in `[0,1]`;
-- all six model posteriors sum to one;
-- `P(load) = 1 - P(M_UU)`;
-- stable-decision calculations are internally consistent;
-- no non-finite numerical outputs occur.
-
-Expected final truth alignment:
-
-- UU → FAIR
-- UP → LOADED
-- UF → LOADED
-- PP → LOADED
-- PF → LOADED
-- FF → LOADED
-
-If a deterministic canonical case does not satisfy this expectation, the
-implementation must fail validation rather than silently change the data or
-thresholds.
-
----
-
-# 25. Media acceptance criteria
-
-The final MP4 must be:
-
-- exactly 1080 × 1080;
-- 1:1;
-- 30 fps;
-- H.264;
-- yuv420p;
-- approximately 45 seconds.
-
-It must visibly contain:
-
-- one heading;
-- six pair-case panels;
-- all six current roll counts;
-- all six P(load) values;
-- all six decision states;
-- all six posterior gauges;
-- all six sum-count displays;
-- all six posterior trajectories;
-- one six-case results strip.
-
-No manual statistical scoring is required.
-
----
-
-# 26. Transitional compatibility
-
-The current repository already contains working single-die implementations from
-the earlier Steps 2 through 5.
-
-During Revised Step 1 only, their YAML keys remain present so the repository
-continues passing its existing tests.
-
-They are not authoritative for the revised project.
-
-Revised Step 2 will migrate:
-
-- typed configuration;
-- domain models;
-- pipeline contracts;
-- tests
-
-to the pair-of-dice design.
-
-Only after that migration is green will the obsolete single-die compatibility
-contract be removed.
-
----
-
-# 27. Revised project roadmap
-
-The remaining project is:
-
-## Revised Step 2
-
-Pair-dice typed configuration and domain-model migration.
-
-## Revised Step 3
-
-Deterministic six-case pair simulation.
-
-## Revised Step 4
-
-Six-model Bayesian sequential inference.
-
-## Revised Step 5
-
-Canonical 60,000-observation experiment and automated validation.
-
-## Revised Step 6
-
-1080 × 1080 six-panel visualization framework.
-
-## Revised Step 7
-
-Animation, CLI orchestration, manifest, and final video rendering.
-
-## Revised Step 8
-
-Documentation, CI, pull request, and merge.
-
----
-
-# 28. Definition of Revised Step 1 success
-
-Revised Step 1 succeeds when:
-
-- the authoritative pair contract exists in YAML;
-- the documentation describes the pair experiment;
-- all three die vectors validate;
-- all six pair cases validate;
-- model priors sum to one;
-- prior P(load) equals 0.50;
-- video geometry sums exactly to 1080 × 1080;
-- panel geometry is exactly 360 × 500;
-- result cells are exactly 180 px wide;
-- output schemas are fixed;
-- legacy committed Steps 2–5 remain operational during migration;
-- Ruff passes;
-- mypy passes;
-- pytest passes;
-- Git integrity passes.
+```text
+1080 x 1080
+30 fps
+1,350 frames
+approximately 45 seconds
+H.264
+yuv420p
+```
+
+## Source-quality validation
+
+Run:
+
+```bash
+ruff format --check .
+ruff check .
+mypy src tests
+pytest
+```
+
+## Statistical validation
+
+The canonical statistical validation verifies:
+
+- authoritative pair experiment is enabled,
+- exactly six canonical cases exist,
+- exactly 10,000 rolls exist per case,
+- exactly 60,000 total history rows exist,
+- inference consumes pair sums rather than individual die faces,
+- posterior probabilities remain normalized,
+- cumulative pair-sum counts remain internally consistent,
+- every final canonical decision matches truth,
+- every case has a Stable Roll,
+- each Stable Roll is the earliest permanently stable decision,
+- final threshold classification agrees with the final posterior.
+
+## Media validation
+
+The production media validation verifies:
+
+- exact frame width,
+- exact frame height,
+- H.264 codec,
+- yuv420p pixel format,
+- 30 fps frame rate,
+- 1,350-frame count,
+- approximately 45-second duration.
+
+## Manifest integrity
+
+The manifest includes SHA-256 hashes for:
+
+```text
+pair_simulation.json
+pair_case_histories.csv
+pair_case_summary.json
+pair_validation.json
+how_many_rolls_loaded_dice_pair.mp4
+```
+
+This connects the rendered artifact to the deterministic canonical experiment
+that produced it.
+
+## Generated-output policy
+
+Generated runtime artifacts are intentionally excluded from Git.
+
+The repository tracks:
+
+- source code,
+- configuration,
+- tests,
+- documentation,
+- CI configuration.
+
+The repository does not track:
+
+- generated canonical JSON,
+- generated CSV histories,
+- preview images,
+- production MP4 files,
+- generated manifests.
+
+## Determinism
+
+Project 1 is reproducible because the following are deterministic:
+
+- die probability definitions,
+- pair-model definitions,
+- priors,
+- decision thresholds,
+- seeds,
+- pair simulation,
+- pair-sum convolution,
+- Bayesian inference,
+- Stable Roll calculation,
+- frame-schedule construction,
+- media-validation rules.
+
+## Release acceptance
+
+Project 1 is release-ready only when all of the following pass:
+
+```text
+Ruff formatting
+Ruff lint
+mypy
+full pytest suite
+Project 1 tests
+canonical statistical validation
+frame-schedule validation
+visual geometry validation
+media validation
+manifest hash validation
+Git diff integrity
+generated-output isolation
+```
+
+## Final Project 1 contract
+
+Project 1 answers one question:
+
+> **How many rolls before knowing whether a pair of dice is loaded?**
+
+It does so through a deterministic six-model Bayesian experiment, evaluates
+60,000 pair-sum observations, reports the earliest permanently stable
+classification for every case, and renders those results as a synchronized,
+validated production video.
