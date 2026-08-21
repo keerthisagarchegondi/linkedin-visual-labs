@@ -1,5 +1,15 @@
 """Project 2 — Zombie Escape public API."""
 
+from linkedin_visual_labs.projects.p04_zombie_escape.city_generator import (
+    GeneratedCity,
+    HiddenRiskHotspot,
+    ZombieZone,
+    generate_all_cities,
+    generate_city,
+    terrain_is_traversable,
+    terrain_speed_multiplier,
+    validate_terrain_contract,
+)
 from linkedin_visual_labs.projects.p04_zombie_escape.config import (
     DEFAULT_CONFIG_PATH,
     load_zombie_config,
@@ -58,6 +68,11 @@ from linkedin_visual_labs.projects.p04_zombie_escape.pipeline import (
     ZombiePipelineContext,
     build_pipeline_context,
 )
+from linkedin_visual_labs.projects.p04_zombie_escape.serialization import (
+    generated_cities_payload,
+    serialize_generated_cities,
+    write_generated_cities,
+)
 
 __all__ = [
     "DEFAULT_CONFIG_PATH",
@@ -70,9 +85,11 @@ __all__ = [
     "EncoderDefinition",
     "EvaluationDefinition",
     "ExperimentDefinition",
+    "GeneratedCity",
     "GridCell",
     "GridDefinition",
     "GridPosition",
+    "HiddenRiskHotspot",
     "LayerInternalGeometry",
     "MethodCategory",
     "MethodId",
@@ -105,9 +122,18 @@ __all__ = [
     "ZombieModelError",
     "ZombiePipelineContext",
     "ZombieProjectConfig",
+    "ZombieZone",
     "are_adjacent",
     "build_pipeline_context",
     "four_neighbors",
+    "generate_all_cities",
+    "generate_city",
+    "generated_cities_payload",
     "load_zombie_config",
+    "serialize_generated_cities",
+    "terrain_is_traversable",
+    "terrain_speed_multiplier",
     "validate_grid_position",
+    "validate_terrain_contract",
+    "write_generated_cities",
 ]

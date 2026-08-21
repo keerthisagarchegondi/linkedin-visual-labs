@@ -8,12 +8,18 @@ from collections.abc import Sequence
 
 import typer
 
+from linkedin_visual_labs.projects.p04_zombie_escape.city_generator import (
+    generate_all_cities,
+)
 from linkedin_visual_labs.projects.p04_zombie_escape.models import (
     CityId,
     MethodId,
 )
 from linkedin_visual_labs.projects.p04_zombie_escape.pipeline import (
     build_pipeline_context,
+)
+from linkedin_visual_labs.projects.p04_zombie_escape.serialization import (
+    write_generated_cities,
 )
 
 CLI_HELP = "Dynamic Zombie Escape Planner — Dijkstra vs ML vs Deep Learning"
@@ -26,7 +32,6 @@ app = typer.Typer(
 )
 
 _FUTURE_COMMANDS = (
-    "generate-cities",
     "train-ml",
     "train-dl",
     "solve-routes",
@@ -74,6 +79,20 @@ def _doctor_payload() -> dict[str, object]:
     }
 
 
+def _generate_cities() -> str:
+    """Generate all showcase cities and return the output path."""
+    context = build_pipeline_context()
+
+    cities = generate_all_cities(context.configuration)
+
+    output_path = write_generated_cities(
+        context,
+        cities,
+    )
+
+    return str(output_path)
+
+
 @app.command("doctor")
 def doctor_command() -> None:
     """Validate and summarize the typed Project 2 contract."""
@@ -86,6 +105,12 @@ def doctor_command() -> None:
     )
 
 
+@app.command("generate-cities")
+def generate_cities_command() -> None:
+    """Generate deterministic showcase cities and write cities.json."""
+    typer.echo(_generate_cities())
+
+
 def _reserved_command(
     command: str,
 ) -> None:
@@ -93,12 +118,6 @@ def _reserved_command(
     raise typer.BadParameter(
         f"{command!r} is reserved and will be implemented in a later Project 2 step"
     )
-
-
-@app.command("generate-cities")
-def generate_cities_command() -> None:
-    """Reserved for Revised Step 3."""
-    _reserved_command("generate-cities")
 
 
 @app.command("train-ml")
@@ -166,6 +185,11 @@ def build_parser() -> argparse.ArgumentParser:
         help=("Validate and summarize the typed Project 2 contract."),
     )
 
+    subparsers.add_parser(
+        "generate-cities",
+        help=("Generate deterministic showcase cities and write cities.json."),
+    )
+
     for command in _FUTURE_COMMANDS:
         subparsers.add_parser(
             command,
@@ -191,6 +215,11 @@ def main(
                 sort_keys=True,
             )
         )
+
+        return 0
+
+    if args.command == "generate-cities":
+        print(_generate_cities())
 
         return 0
 

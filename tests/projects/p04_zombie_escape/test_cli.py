@@ -148,7 +148,7 @@ def test_zombie_without_subcommand_shows_help_successfully() -> None:
     assert "doctor" in combined
 
 
-def test_future_command_is_explicitly_reserved() -> None:
+def test_generate_cities_command_is_operational() -> None:
     completed = subprocess.run(
         (
             sys.executable,
@@ -157,11 +157,11 @@ def test_future_command_is_explicitly_reserved() -> None:
             "zombie",
             "generate-cities",
         ),
-        check=False,
+        check=True,
         capture_output=True,
         text=True,
     )
 
-    assert completed.returncode != 0
+    assert completed.stderr == ""
 
-    assert "implemented in a later Project 2 step" in (completed.stdout + completed.stderr)
+    assert "outputs/p04_zombie_escape/data/cities.json" in completed.stdout
