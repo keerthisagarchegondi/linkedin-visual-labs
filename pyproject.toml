@@ -27,6 +27,9 @@ dependencies = [
   "rich>=13.9",
   "scipy>=1.14",
   "typer>=0.12",
+    "scikit-learn>=1.6",
+    "pyarrow>=18",
+    "joblib>=1.4",
 ]
 
 [project.optional-dependencies]

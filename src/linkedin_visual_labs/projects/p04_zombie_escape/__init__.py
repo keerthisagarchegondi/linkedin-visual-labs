@@ -19,6 +19,25 @@ from linkedin_visual_labs.projects.p04_zombie_escape.grid import (
     four_neighbors,
     validate_grid_position,
 )
+from linkedin_visual_labs.projects.p04_zombie_escape.ml_features import (
+    FEATURE_COLUMNS,
+    LABEL_COLUMN,
+    observable_features,
+    showcase_feature_frame,
+    validate_no_feature_leakage,
+)
+from linkedin_visual_labs.projects.p04_zombie_escape.ml_model import (
+    RiskModelMetrics,
+    TrainedMLRiskModel,
+    persist_ml_risk_model,
+    predict_risk,
+    train_ml_risk_model,
+)
+from linkedin_visual_labs.projects.p04_zombie_escape.ml_pipeline import (
+    MLPipelineResult,
+    predict_showcase_risk_maps,
+    run_ml_pipeline,
+)
 from linkedin_visual_labs.projects.p04_zombie_escape.models import (
     AcceptanceDefinition,
     CityDefinition,
@@ -94,6 +113,8 @@ from linkedin_visual_labs.projects.p04_zombie_escape.serialization import (
 
 __all__ = [
     "DEFAULT_CONFIG_PATH",
+    "FEATURE_COLUMNS",
+    "LABEL_COLUMN",
     "AcceptanceDefinition",
     "CityDefinition",
     "CityId",
@@ -109,6 +130,7 @@ __all__ = [
     "GridPosition",
     "HiddenRiskHotspot",
     "LayerInternalGeometry",
+    "MLPipelineResult",
     "MethodCategory",
     "MethodId",
     "MethodLayerDefinition",
@@ -127,6 +149,7 @@ __all__ = [
     "RiskDefinition",
     "RiskEstimator",
     "RiskLookup",
+    "RiskModelMetrics",
     "RouteEvaluation",
     "RouteMetrics",
     "RoutePlanner",
@@ -135,6 +158,7 @@ __all__ = [
     "SummarySceneDefinition",
     "TerrainDefinition",
     "TerrainType",
+    "TrainedMLRiskModel",
     "TrainingDefinition",
     "TrainingSeeds",
     "TypographyDefinition",
@@ -159,14 +183,22 @@ __all__ = [
     "generated_cities_payload",
     "load_zombie_config",
     "mapping_risk_lookup",
+    "observable_features",
     "observed_dijkstra_route",
     "observed_risk_lookup",
     "oracle_astar_route",
+    "persist_ml_risk_model",
+    "predict_risk",
+    "predict_showcase_risk_maps",
+    "run_ml_pipeline",
     "serialize_generated_cities",
+    "showcase_feature_frame",
     "terrain_is_traversable",
     "terrain_speed_multiplier",
+    "train_ml_risk_model",
     "true_risk_lookup",
     "validate_grid_position",
+    "validate_no_feature_leakage",
     "validate_path_legality",
     "validate_terrain_contract",
     "write_generated_cities",

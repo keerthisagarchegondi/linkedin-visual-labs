@@ -11,6 +11,9 @@ import typer
 from linkedin_visual_labs.projects.p04_zombie_escape.city_generator import (
     generate_all_cities,
 )
+from linkedin_visual_labs.projects.p04_zombie_escape.ml_pipeline import (
+    run_ml_pipeline,
+)
 from linkedin_visual_labs.projects.p04_zombie_escape.models import (
     CityId,
     MethodId,
@@ -32,7 +35,6 @@ app = typer.Typer(
 )
 
 _FUTURE_COMMANDS = (
-    "train-ml",
     "train-dl",
     "solve-routes",
     "evaluate",
@@ -122,8 +124,24 @@ def _reserved_command(
 
 @app.command("train-ml")
 def train_ml_command() -> None:
-    """Reserved for Revised Step 5."""
-    _reserved_command("train-ml")
+    """Run the deterministic classical ML risk pipeline."""
+    context = build_pipeline_context()
+
+    result = run_ml_pipeline(context)
+
+    typer.echo(
+        json.dumps(
+            {
+                "training_dataset": str(result.training_dataset_path),
+                "model": str(result.model_path),
+                "metadata": str(result.metadata_path),
+                "predicted_risk_maps": str(result.predicted_risk_maps_path),
+                "routes": str(result.routes_path),
+            },
+            indent=2,
+            sort_keys=True,
+        )
+    )
 
 
 @app.command("train-dl")
@@ -190,6 +208,14 @@ def build_parser() -> argparse.ArgumentParser:
         help=("Generate deterministic showcase cities and write cities.json."),
     )
 
+    subparsers.add_parser(
+        "train-ml",
+        help=(
+            "Generate training data, train Gradient Boosting, "
+            "predict showcase risk, and route with ML+A*."
+        ),
+    )
+
     for command in _FUTURE_COMMANDS:
         subparsers.add_parser(
             command,
@@ -220,6 +246,15 @@ def main(
 
     if args.command == "generate-cities":
         print(_generate_cities())
+
+        return 0
+
+    if args.command == "train-ml":
+        context = build_pipeline_context()
+
+        result = run_ml_pipeline(context)
+
+        print(result.metadata_path)
 
         return 0
 
