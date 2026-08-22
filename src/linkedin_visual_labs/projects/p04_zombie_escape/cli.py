@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 from collections.abc import Sequence
+from pathlib import Path
 
 import typer
 
@@ -29,6 +30,7 @@ from linkedin_visual_labs.projects.p04_zombie_escape.pipeline import (
 from linkedin_visual_labs.projects.p04_zombie_escape.serialization import (
     write_generated_cities,
 )
+from linkedin_visual_labs.projects.p04_zombie_escape.visualization import render_preview_frames
 
 CLI_HELP = "Dynamic Zombie Escape Planner — Dijkstra vs ML vs Deep Learning"
 
@@ -40,7 +42,6 @@ app = typer.Typer(
 )
 
 _FUTURE_COMMANDS = (
-    "render-previews",
     "render-video",
     "validate",
     "run-all",
@@ -182,8 +183,18 @@ def evaluate_command() -> None:
 
 @app.command("render-previews")
 def render_previews_command() -> None:
-    """Reserved for Revised Step 8."""
-    _reserved_command("render-previews")
+    """Render deterministic Step 8 preview frames."""
+    artifacts = render_preview_frames(
+        data_directory=Path("outputs/p04_zombie_escape/data"),
+        output_directory=Path("outputs/p04_zombie_escape/images/previews"),
+    )
+
+    typer.echo(f"opening_board={artifacts.opening_board}")
+
+    for city_path in artifacts.city_frames:
+        typer.echo(f"city_frame={city_path}")
+
+    typer.echo(f"final_summary={artifacts.final_summary}")
 
 
 @app.command("render-video")
