@@ -15,6 +15,7 @@ from linkedin_visual_labs.projects.p04_zombie_escape.dl_pipeline import (
     run_dl_pipeline,
     solve_all_routes_from_persisted_predictions,
 )
+from linkedin_visual_labs.projects.p04_zombie_escape.evaluation import run_evaluation
 from linkedin_visual_labs.projects.p04_zombie_escape.ml_pipeline import (
     run_ml_pipeline,
 )
@@ -39,7 +40,6 @@ app = typer.Typer(
 )
 
 _FUTURE_COMMANDS = (
-    "evaluate",
     "render-previews",
     "render-video",
     "validate",
@@ -166,8 +166,18 @@ def _reserved_command(
 
 @app.command("evaluate")
 def evaluate_command() -> None:
-    """Reserved for Revised Step 7."""
-    _reserved_command("evaluate")
+    """Evaluate persisted Dijkstra, ML, and DL routes."""
+    context = build_pipeline_context()
+
+    routes_path = context.resolve_output_path(context.outputs.data.routes)
+
+    artifacts = run_evaluation(routes_path)
+
+    typer.echo(f"evaluation_summary={artifacts.summary_path}")
+
+    typer.echo(f"route_comparison={artifacts.route_comparison_path}")
+
+    typer.echo(f"overall_comparison={artifacts.overall_comparison_path}")
 
 
 @app.command("render-previews")
