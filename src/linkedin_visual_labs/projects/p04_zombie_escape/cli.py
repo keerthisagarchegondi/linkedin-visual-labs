@@ -1,4 +1,4 @@
-"""CLI scaffold for Project 2 — Zombie Escape."""
+"""CLI for Project 2 — Zombie Escape."""
 
 from __future__ import annotations
 
@@ -10,6 +10,10 @@ import typer
 
 from linkedin_visual_labs.projects.p04_zombie_escape.city_generator import (
     generate_all_cities,
+)
+from linkedin_visual_labs.projects.p04_zombie_escape.dl_pipeline import (
+    run_dl_pipeline,
+    solve_all_routes_from_persisted_predictions,
 )
 from linkedin_visual_labs.projects.p04_zombie_escape.ml_pipeline import (
     run_ml_pipeline,
@@ -35,8 +39,6 @@ app = typer.Typer(
 )
 
 _FUTURE_COMMANDS = (
-    "train-dl",
-    "solve-routes",
     "evaluate",
     "render-previews",
     "render-video",
@@ -81,20 +83,6 @@ def _doctor_payload() -> dict[str, object]:
     }
 
 
-def _generate_cities() -> str:
-    """Generate all showcase cities and return the output path."""
-    context = build_pipeline_context()
-
-    cities = generate_all_cities(context.configuration)
-
-    output_path = write_generated_cities(
-        context,
-        cities,
-    )
-
-    return str(output_path)
-
-
 @app.command("doctor")
 def doctor_command() -> None:
     """Validate and summarize the typed Project 2 contract."""
@@ -109,25 +97,21 @@ def doctor_command() -> None:
 
 @app.command("generate-cities")
 def generate_cities_command() -> None:
-    """Generate deterministic showcase cities and write cities.json."""
-    typer.echo(_generate_cities())
+    """Generate deterministic showcase cities."""
+    context = build_pipeline_context()
 
-
-def _reserved_command(
-    command: str,
-) -> None:
-    """Fail clearly for a command reserved for a later Project 2 step."""
-    raise typer.BadParameter(
-        f"{command!r} is reserved and will be implemented in a later Project 2 step"
+    output = write_generated_cities(
+        context,
+        generate_all_cities(context.configuration),
     )
+
+    typer.echo(str(output))
 
 
 @app.command("train-ml")
 def train_ml_command() -> None:
     """Run the deterministic classical ML risk pipeline."""
-    context = build_pipeline_context()
-
-    result = run_ml_pipeline(context)
+    result = run_ml_pipeline(build_pipeline_context())
 
     typer.echo(
         json.dumps(
@@ -146,14 +130,38 @@ def train_ml_command() -> None:
 
 @app.command("train-dl")
 def train_dl_command() -> None:
-    """Reserved for Revised Step 6."""
-    _reserved_command("train-dl")
+    """Train deterministic CNN, predict risk, and generate DL routes."""
+    result = run_dl_pipeline(build_pipeline_context())
+
+    typer.echo(
+        json.dumps(
+            {
+                "checkpoint": str(result.checkpoint_path),
+                "metadata": str(result.metadata_path),
+                "predicted_risk_maps": str(result.predicted_risk_maps_path),
+                "routes": str(result.routes_path),
+            },
+            indent=2,
+            sort_keys=True,
+        )
+    )
 
 
 @app.command("solve-routes")
 def solve_routes_command() -> None:
-    """Reserved for Revised Step 4."""
-    _reserved_command("solve-routes")
+    """Rebuild all headline routes from persisted prediction maps."""
+    output = solve_all_routes_from_persisted_predictions(build_pipeline_context())
+
+    typer.echo(str(output))
+
+
+def _reserved_command(
+    command: str,
+) -> None:
+    """Fail clearly for a command reserved for a later Project 2 step."""
+    raise typer.BadParameter(
+        f"{command!r} is reserved and will be implemented in a later Project 2 step"
+    )
 
 
 @app.command("evaluate")
@@ -182,7 +190,7 @@ def validate_command() -> None:
 
 @app.command("run-all")
 def run_all_command() -> None:
-    """Reserved for the final Project 2 pipeline."""
+    """Reserved for final Project 2 pipeline integration."""
     _reserved_command("run-all")
 
 
@@ -198,29 +206,15 @@ def build_parser() -> argparse.ArgumentParser:
         required=True,
     )
 
-    subparsers.add_parser(
+    for command in (
         "doctor",
-        help=("Validate and summarize the typed Project 2 contract."),
-    )
-
-    subparsers.add_parser(
         "generate-cities",
-        help=("Generate deterministic showcase cities and write cities.json."),
-    )
-
-    subparsers.add_parser(
         "train-ml",
-        help=(
-            "Generate training data, train Gradient Boosting, "
-            "predict showcase risk, and route with ML+A*."
-        ),
-    )
-
-    for command in _FUTURE_COMMANDS:
-        subparsers.add_parser(
-            command,
-            help=("Reserved Project 2 command; implemented in a later revised step."),
-        )
+        "train-dl",
+        "solve-routes",
+        *_FUTURE_COMMANDS,
+    ):
+        subparsers.add_parser(command)
 
     return parser
 
@@ -228,7 +222,7 @@ def build_parser() -> argparse.ArgumentParser:
 def main(
     argv: Sequence[str] | None = None,
 ) -> int:
-    """Run Project 2 programmatically through the argparse adapter."""
+    """Run Project 2 programmatically."""
     parser = build_parser()
 
     args = parser.parse_args(argv)
@@ -245,16 +239,33 @@ def main(
         return 0
 
     if args.command == "generate-cities":
-        print(_generate_cities())
+        context = build_pipeline_context()
+
+        print(
+            write_generated_cities(
+                context,
+                generate_all_cities(context.configuration),
+            )
+        )
 
         return 0
 
     if args.command == "train-ml":
-        context = build_pipeline_context()
+        ml_result = run_ml_pipeline(build_pipeline_context())
 
-        result = run_ml_pipeline(context)
+        print(ml_result.metadata_path)
 
-        print(result.metadata_path)
+        return 0
+
+    if args.command == "train-dl":
+        dl_result = run_dl_pipeline(build_pipeline_context())
+
+        print(dl_result.metadata_path)
+
+        return 0
+
+    if args.command == "solve-routes":
+        print(solve_all_routes_from_persisted_predictions(build_pipeline_context()))
 
         return 0
 
