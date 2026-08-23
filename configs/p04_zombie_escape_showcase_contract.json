@@ -1,0 +1,5343 @@
+{
+  "accepted_divergence": {
+    "accepted": true,
+    "accepted_city_count": 3,
+    "cities": [
+      {
+        "accepted": true,
+        "city_id": "new_york",
+        "common_destination": [
+          2,
+          33
+        ],
+        "common_start": [
+          33,
+          2
+        ],
+        "exact_unique_route_count": 3,
+        "maximum_edge_jaccard": 0.76,
+        "maximum_route_separation": 3,
+        "mean_edge_jaccard": 0.557491919844861,
+        "minimum_edge_jaccard": 0.4065934065934066,
+        "pairwise": [
+          {
+            "cell_jaccard": 0.7866666666666666,
+            "common_prefix_fraction": 0.5606060606060606,
+            "common_prefix_steps": 37,
+            "edge_jaccard": 0.76,
+            "left_method": "dijkstra",
+            "left_steps": 66,
+            "maximum_cell_separation": 3,
+            "right_method": "ml",
+            "right_steps": 66,
+            "shared_cells": 59,
+            "shared_edges": 57
+          },
+          {
+            "cell_jaccard": 0.5294117647058824,
+            "common_prefix_fraction": 0.6935483870967742,
+            "common_prefix_steps": 43,
+            "edge_jaccard": 0.5058823529411764,
+            "left_method": "dijkstra",
+            "left_steps": 66,
+            "maximum_cell_separation": 3,
+            "right_method": "dl",
+            "right_steps": 62,
+            "shared_cells": 45,
+            "shared_edges": 43
+          },
+          {
+            "cell_jaccard": 0.42857142857142855,
+            "common_prefix_fraction": 0.5967741935483871,
+            "common_prefix_steps": 37,
+            "edge_jaccard": 0.4065934065934066,
+            "left_method": "ml",
+            "left_steps": 66,
+            "maximum_cell_separation": 3,
+            "right_method": "dl",
+            "right_steps": 62,
+            "shared_cells": 39,
+            "shared_edges": 37
+          }
+        ],
+        "rejection_reasons": [],
+        "visibly_divergent_pair_count": 3
+      },
+      {
+        "accepted": true,
+        "city_id": "chicago",
+        "common_destination": [
+          3,
+          32
+        ],
+        "common_start": [
+          32,
+          3
+        ],
+        "exact_unique_route_count": 3,
+        "maximum_edge_jaccard": 0.5802469135802469,
+        "maximum_route_separation": 4,
+        "mean_edge_jaccard": 0.48555046932075646,
+        "minimum_edge_jaccard": 0.4157303370786517,
+        "pairwise": [
+          {
+            "cell_jaccard": 0.5,
+            "common_prefix_fraction": 0.015625,
+            "common_prefix_steps": 1,
+            "edge_jaccard": 0.4606741573033708,
+            "left_method": "dijkstra",
+            "left_steps": 66,
+            "maximum_cell_separation": 4,
+            "right_method": "ml",
+            "right_steps": 64,
+            "shared_cells": 44,
+            "shared_edges": 41
+          },
+          {
+            "cell_jaccard": 0.6049382716049383,
+            "common_prefix_fraction": 0.0,
+            "common_prefix_steps": 0,
+            "edge_jaccard": 0.5802469135802469,
+            "left_method": "dijkstra",
+            "left_steps": 66,
+            "maximum_cell_separation": 4,
+            "right_method": "dl",
+            "right_steps": 62,
+            "shared_cells": 49,
+            "shared_edges": 47
+          },
+          {
+            "cell_jaccard": 0.45454545454545453,
+            "common_prefix_fraction": 0.0,
+            "common_prefix_steps": 0,
+            "edge_jaccard": 0.4157303370786517,
+            "left_method": "ml",
+            "left_steps": 64,
+            "maximum_cell_separation": 4,
+            "right_method": "dl",
+            "right_steps": 62,
+            "shared_cells": 40,
+            "shared_edges": 37
+          }
+        ],
+        "rejection_reasons": [],
+        "visibly_divergent_pair_count": 3
+      },
+      {
+        "accepted": true,
+        "city_id": "phoenix",
+        "common_destination": [
+          4,
+          31
+        ],
+        "common_start": [
+          31,
+          4
+        ],
+        "exact_unique_route_count": 3,
+        "maximum_edge_jaccard": 0.9285714285714286,
+        "maximum_route_separation": 19,
+        "mean_edge_jaccard": 0.3851251840942563,
+        "minimum_edge_jaccard": 0.1134020618556701,
+        "pairwise": [
+          {
+            "cell_jaccard": 0.13402061855670103,
+            "common_prefix_fraction": 0.14814814814814814,
+            "common_prefix_steps": 8,
+            "edge_jaccard": 0.1134020618556701,
+            "left_method": "dijkstra",
+            "left_steps": 54,
+            "maximum_cell_separation": 19,
+            "right_method": "ml",
+            "right_steps": 54,
+            "shared_cells": 13,
+            "shared_edges": 11
+          },
+          {
+            "cell_jaccard": 0.13402061855670103,
+            "common_prefix_fraction": 0.14814814814814814,
+            "common_prefix_steps": 8,
+            "edge_jaccard": 0.1134020618556701,
+            "left_method": "dijkstra",
+            "left_steps": 54,
+            "maximum_cell_separation": 19,
+            "right_method": "dl",
+            "right_steps": 54,
+            "shared_cells": 13,
+            "shared_edges": 11
+          },
+          {
+            "cell_jaccard": 0.9642857142857143,
+            "common_prefix_fraction": 0.5925925925925926,
+            "common_prefix_steps": 32,
+            "edge_jaccard": 0.9285714285714286,
+            "left_method": "ml",
+            "left_steps": 54,
+            "maximum_cell_separation": 1,
+            "right_method": "dl",
+            "right_steps": 54,
+            "shared_cells": 54,
+            "shared_edges": 52
+          }
+        ],
+        "rejection_reasons": [],
+        "visibly_divergent_pair_count": 2
+      }
+    ]
+  },
+  "accepted_showcase_seeds": {
+    "chicago": 5324,
+    "new_york": 5224,
+    "phoenix": 5424
+  },
+  "attempts": [
+    {
+      "accepted": false,
+      "candidate_index": 0,
+      "divergence": {
+        "accepted": false,
+        "accepted_city_count": 1,
+        "cities": [
+          {
+            "accepted": false,
+            "city_id": "new_york",
+            "common_destination": [
+              2,
+              33
+            ],
+            "common_start": [
+              33,
+              2
+            ],
+            "exact_unique_route_count": 2,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 3,
+            "mean_edge_jaccard": 0.7073170731707318,
+            "minimum_edge_jaccard": 0.5609756097560976,
+            "pairwise": [
+              {
+                "cell_jaccard": 0.5853658536585366,
+                "common_prefix_fraction": 0.7419354838709677,
+                "common_prefix_steps": 46,
+                "edge_jaccard": 0.5609756097560976,
+                "left_method": "dijkstra",
+                "left_steps": 66,
+                "maximum_cell_separation": 3,
+                "right_method": "ml",
+                "right_steps": 62,
+                "shared_cells": 48,
+                "shared_edges": 46
+              },
+              {
+                "cell_jaccard": 0.5853658536585366,
+                "common_prefix_fraction": 0.7419354838709677,
+                "common_prefix_steps": 46,
+                "edge_jaccard": 0.5609756097560976,
+                "left_method": "dijkstra",
+                "left_steps": 66,
+                "maximum_cell_separation": 3,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 48,
+                "shared_edges": 46
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "ml",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "at least one method pair is effectively identical"
+            ],
+            "visibly_divergent_pair_count": 2
+          },
+          {
+            "accepted": true,
+            "city_id": "chicago",
+            "common_destination": [
+              3,
+              32
+            ],
+            "common_start": [
+              32,
+              3
+            ],
+            "exact_unique_route_count": 3,
+            "maximum_edge_jaccard": 0.589041095890411,
+            "maximum_route_separation": 6,
+            "mean_edge_jaccard": 0.5018152909201014,
+            "minimum_edge_jaccard": 0.3488372093023256,
+            "pairwise": [
+              {
+                "cell_jaccard": 0.6164383561643836,
+                "common_prefix_fraction": 0.1724137931034483,
+                "common_prefix_steps": 10,
+                "edge_jaccard": 0.5675675675675675,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 6,
+                "right_method": "ml",
+                "right_steps": 58,
+                "shared_cells": 45,
+                "shared_edges": 42
+              },
+              {
+                "cell_jaccard": 0.6388888888888888,
+                "common_prefix_fraction": 0.5344827586206896,
+                "common_prefix_steps": 31,
+                "edge_jaccard": 0.589041095890411,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 3,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 46,
+                "shared_edges": 43
+              },
+              {
+                "cell_jaccard": 0.40476190476190477,
+                "common_prefix_fraction": 0.1724137931034483,
+                "common_prefix_steps": 10,
+                "edge_jaccard": 0.3488372093023256,
+                "left_method": "ml",
+                "left_steps": 58,
+                "maximum_cell_separation": 6,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 34,
+                "shared_edges": 30
+              }
+            ],
+            "rejection_reasons": [],
+            "visibly_divergent_pair_count": 3
+          },
+          {
+            "accepted": false,
+            "city_id": "phoenix",
+            "common_destination": [
+              4,
+              31
+            ],
+            "common_start": [
+              31,
+              4
+            ],
+            "exact_unique_route_count": 1,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 0,
+            "mean_edge_jaccard": 1.0,
+            "minimum_edge_jaccard": 1.0,
+            "pairwise": [
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 54,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 54,
+                "maximum_cell_separation": 0,
+                "right_method": "ml",
+                "right_steps": 54,
+                "shared_cells": 55,
+                "shared_edges": 54
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 54,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 54,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 54,
+                "shared_cells": 55,
+                "shared_edges": 54
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 54,
+                "edge_jaccard": 1.0,
+                "left_method": "ml",
+                "left_steps": 54,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 54,
+                "shared_cells": 55,
+                "shared_edges": 54
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "fewer than two visibly divergent method pairs",
+              "mean edge overlap exceeds showcase threshold",
+              "at least one method pair is effectively identical",
+              "routes do not separate sufficiently on the map"
+            ],
+            "visibly_divergent_pair_count": 0
+          }
+        ]
+      },
+      "seeds": {
+        "chicago": 5301,
+        "new_york": 5201,
+        "phoenix": 5401
+      }
+    },
+    {
+      "accepted": false,
+      "candidate_index": 1,
+      "divergence": {
+        "accepted": false,
+        "accepted_city_count": 0,
+        "cities": [
+          {
+            "accepted": false,
+            "city_id": "new_york",
+            "common_destination": [
+              2,
+              33
+            ],
+            "common_start": [
+              33,
+              2
+            ],
+            "exact_unique_route_count": 1,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 0,
+            "mean_edge_jaccard": 1.0,
+            "minimum_edge_jaccard": 1.0,
+            "pairwise": [
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "ml",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "ml",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "fewer than two visibly divergent method pairs",
+              "mean edge overlap exceeds showcase threshold",
+              "at least one method pair is effectively identical",
+              "routes do not separate sufficiently on the map"
+            ],
+            "visibly_divergent_pair_count": 0
+          },
+          {
+            "accepted": false,
+            "city_id": "chicago",
+            "common_destination": [
+              3,
+              32
+            ],
+            "common_start": [
+              32,
+              3
+            ],
+            "exact_unique_route_count": 1,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 0,
+            "mean_edge_jaccard": 1.0,
+            "minimum_edge_jaccard": 1.0,
+            "pairwise": [
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 58,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 0,
+                "right_method": "ml",
+                "right_steps": 58,
+                "shared_cells": 59,
+                "shared_edges": 58
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 58,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 59,
+                "shared_edges": 58
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 58,
+                "edge_jaccard": 1.0,
+                "left_method": "ml",
+                "left_steps": 58,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 59,
+                "shared_edges": 58
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "fewer than two visibly divergent method pairs",
+              "mean edge overlap exceeds showcase threshold",
+              "at least one method pair is effectively identical",
+              "routes do not separate sufficiently on the map"
+            ],
+            "visibly_divergent_pair_count": 0
+          },
+          {
+            "accepted": false,
+            "city_id": "phoenix",
+            "common_destination": [
+              4,
+              31
+            ],
+            "common_start": [
+              31,
+              4
+            ],
+            "exact_unique_route_count": 2,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 5,
+            "mean_edge_jaccard": 0.49659863945578236,
+            "minimum_edge_jaccard": 0.24489795918367346,
+            "pairwise": [
+              {
+                "cell_jaccard": 0.27835051546391754,
+                "common_prefix_fraction": 0.0,
+                "common_prefix_steps": 0,
+                "edge_jaccard": 0.24489795918367346,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 5,
+                "right_method": "ml",
+                "right_steps": 64,
+                "shared_cells": 27,
+                "shared_edges": 24
+              },
+              {
+                "cell_jaccard": 0.27835051546391754,
+                "common_prefix_fraction": 0.0,
+                "common_prefix_steps": 0,
+                "edge_jaccard": 0.24489795918367346,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 5,
+                "right_method": "dl",
+                "right_steps": 64,
+                "shared_cells": 27,
+                "shared_edges": 24
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 64,
+                "edge_jaccard": 1.0,
+                "left_method": "ml",
+                "left_steps": 64,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 64,
+                "shared_cells": 65,
+                "shared_edges": 64
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "at least one method pair is effectively identical"
+            ],
+            "visibly_divergent_pair_count": 2
+          }
+        ]
+      },
+      "seeds": {
+        "chicago": 5302,
+        "new_york": 5202,
+        "phoenix": 5402
+      }
+    },
+    {
+      "accepted": false,
+      "candidate_index": 2,
+      "divergence": {
+        "accepted": false,
+        "accepted_city_count": 0,
+        "cities": [
+          {
+            "accepted": false,
+            "city_id": "new_york",
+            "common_destination": [
+              2,
+              33
+            ],
+            "common_start": [
+              33,
+              2
+            ],
+            "exact_unique_route_count": 2,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 9,
+            "mean_edge_jaccard": 0.5102040816326531,
+            "minimum_edge_jaccard": 0.2653061224489796,
+            "pairwise": [
+              {
+                "cell_jaccard": 0.2857142857142857,
+                "common_prefix_fraction": 0.3064516129032258,
+                "common_prefix_steps": 19,
+                "edge_jaccard": 0.2653061224489796,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 9,
+                "right_method": "ml",
+                "right_steps": 62,
+                "shared_cells": 28,
+                "shared_edges": 26
+              },
+              {
+                "cell_jaccard": 0.2857142857142857,
+                "common_prefix_fraction": 0.3064516129032258,
+                "common_prefix_steps": 19,
+                "edge_jaccard": 0.2653061224489796,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 9,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 28,
+                "shared_edges": 26
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "ml",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "at least one method pair is effectively identical"
+            ],
+            "visibly_divergent_pair_count": 2
+          },
+          {
+            "accepted": false,
+            "city_id": "chicago",
+            "common_destination": [
+              3,
+              32
+            ],
+            "common_start": [
+              32,
+              3
+            ],
+            "exact_unique_route_count": 2,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 2,
+            "mean_edge_jaccard": 0.913978494623656,
+            "minimum_edge_jaccard": 0.8709677419354839,
+            "pairwise": [
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 58,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 0,
+                "right_method": "ml",
+                "right_steps": 58,
+                "shared_cells": 59,
+                "shared_edges": 58
+              },
+              {
+                "cell_jaccard": 0.9032258064516129,
+                "common_prefix_fraction": 0.0,
+                "common_prefix_steps": 0,
+                "edge_jaccard": 0.8709677419354839,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 2,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 56,
+                "shared_edges": 54
+              },
+              {
+                "cell_jaccard": 0.9032258064516129,
+                "common_prefix_fraction": 0.0,
+                "common_prefix_steps": 0,
+                "edge_jaccard": 0.8709677419354839,
+                "left_method": "ml",
+                "left_steps": 58,
+                "maximum_cell_separation": 2,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 56,
+                "shared_edges": 54
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "fewer than two visibly divergent method pairs",
+              "mean edge overlap exceeds showcase threshold",
+              "at least one method pair is effectively identical",
+              "routes do not separate sufficiently on the map"
+            ],
+            "visibly_divergent_pair_count": 0
+          },
+          {
+            "accepted": false,
+            "city_id": "phoenix",
+            "common_destination": [
+              4,
+              31
+            ],
+            "common_start": [
+              31,
+              4
+            ],
+            "exact_unique_route_count": 2,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 5,
+            "mean_edge_jaccard": 0.5228070175438596,
+            "minimum_edge_jaccard": 0.28421052631578947,
+            "pairwise": [
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 58,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 0,
+                "right_method": "ml",
+                "right_steps": 58,
+                "shared_cells": 59,
+                "shared_edges": 58
+              },
+              {
+                "cell_jaccard": 0.30526315789473685,
+                "common_prefix_fraction": 0.0,
+                "common_prefix_steps": 0,
+                "edge_jaccard": 0.28421052631578947,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 5,
+                "right_method": "dl",
+                "right_steps": 64,
+                "shared_cells": 29,
+                "shared_edges": 27
+              },
+              {
+                "cell_jaccard": 0.30526315789473685,
+                "common_prefix_fraction": 0.0,
+                "common_prefix_steps": 0,
+                "edge_jaccard": 0.28421052631578947,
+                "left_method": "ml",
+                "left_steps": 58,
+                "maximum_cell_separation": 5,
+                "right_method": "dl",
+                "right_steps": 64,
+                "shared_cells": 29,
+                "shared_edges": 27
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "at least one method pair is effectively identical"
+            ],
+            "visibly_divergent_pair_count": 2
+          }
+        ]
+      },
+      "seeds": {
+        "chicago": 5303,
+        "new_york": 5203,
+        "phoenix": 5403
+      }
+    },
+    {
+      "accepted": false,
+      "candidate_index": 3,
+      "divergence": {
+        "accepted": false,
+        "accepted_city_count": 1,
+        "cities": [
+          {
+            "accepted": false,
+            "city_id": "new_york",
+            "common_destination": [
+              2,
+              33
+            ],
+            "common_start": [
+              33,
+              2
+            ],
+            "exact_unique_route_count": 2,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 9,
+            "mean_edge_jaccard": 0.7000000000000001,
+            "minimum_edge_jaccard": 0.55,
+            "pairwise": [
+              {
+                "cell_jaccard": 0.575,
+                "common_prefix_fraction": 0.5967741935483871,
+                "common_prefix_steps": 37,
+                "edge_jaccard": 0.55,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 9,
+                "right_method": "ml",
+                "right_steps": 62,
+                "shared_cells": 46,
+                "shared_edges": 44
+              },
+              {
+                "cell_jaccard": 0.575,
+                "common_prefix_fraction": 0.5967741935483871,
+                "common_prefix_steps": 37,
+                "edge_jaccard": 0.55,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 9,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 46,
+                "shared_edges": 44
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "ml",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "at least one method pair is effectively identical"
+            ],
+            "visibly_divergent_pair_count": 2
+          },
+          {
+            "accepted": true,
+            "city_id": "chicago",
+            "common_destination": [
+              3,
+              32
+            ],
+            "common_start": [
+              32,
+              3
+            ],
+            "exact_unique_route_count": 3,
+            "maximum_edge_jaccard": 0.6571428571428571,
+            "maximum_route_separation": 12,
+            "mean_edge_jaccard": 0.45270133503516474,
+            "minimum_edge_jaccard": 0.30337078651685395,
+            "pairwise": [
+              {
+                "cell_jaccard": 0.6857142857142857,
+                "common_prefix_fraction": 0.7068965517241379,
+                "common_prefix_steps": 41,
+                "edge_jaccard": 0.6571428571428571,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 6,
+                "right_method": "ml",
+                "right_steps": 58,
+                "shared_cells": 48,
+                "shared_edges": 46
+              },
+              {
+                "cell_jaccard": 0.3258426966292135,
+                "common_prefix_fraction": 0.3793103448275862,
+                "common_prefix_steps": 22,
+                "edge_jaccard": 0.30337078651685395,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 12,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 29,
+                "shared_edges": 27
+              },
+              {
+                "cell_jaccard": 0.42168674698795183,
+                "common_prefix_fraction": 0.3793103448275862,
+                "common_prefix_steps": 22,
+                "edge_jaccard": 0.39759036144578314,
+                "left_method": "ml",
+                "left_steps": 58,
+                "maximum_cell_separation": 12,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 35,
+                "shared_edges": 33
+              }
+            ],
+            "rejection_reasons": [],
+            "visibly_divergent_pair_count": 3
+          },
+          {
+            "accepted": false,
+            "city_id": "phoenix",
+            "common_destination": [
+              4,
+              31
+            ],
+            "common_start": [
+              31,
+              4
+            ],
+            "exact_unique_route_count": 1,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 0,
+            "mean_edge_jaccard": 1.0,
+            "minimum_edge_jaccard": 1.0,
+            "pairwise": [
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 64,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 64,
+                "maximum_cell_separation": 0,
+                "right_method": "ml",
+                "right_steps": 64,
+                "shared_cells": 65,
+                "shared_edges": 64
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 64,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 64,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 64,
+                "shared_cells": 65,
+                "shared_edges": 64
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 64,
+                "edge_jaccard": 1.0,
+                "left_method": "ml",
+                "left_steps": 64,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 64,
+                "shared_cells": 65,
+                "shared_edges": 64
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "fewer than two visibly divergent method pairs",
+              "mean edge overlap exceeds showcase threshold",
+              "at least one method pair is effectively identical",
+              "routes do not separate sufficiently on the map"
+            ],
+            "visibly_divergent_pair_count": 0
+          }
+        ]
+      },
+      "seeds": {
+        "chicago": 5304,
+        "new_york": 5204,
+        "phoenix": 5404
+      }
+    },
+    {
+      "accepted": false,
+      "candidate_index": 4,
+      "divergence": {
+        "accepted": false,
+        "accepted_city_count": 0,
+        "cities": [
+          {
+            "accepted": false,
+            "city_id": "new_york",
+            "common_destination": [
+              2,
+              33
+            ],
+            "common_start": [
+              33,
+              2
+            ],
+            "exact_unique_route_count": 2,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 3,
+            "mean_edge_jaccard": 0.7000000000000001,
+            "minimum_edge_jaccard": 0.55,
+            "pairwise": [
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "ml",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              },
+              {
+                "cell_jaccard": 0.575,
+                "common_prefix_fraction": 0.016129032258064516,
+                "common_prefix_steps": 1,
+                "edge_jaccard": 0.55,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 3,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 46,
+                "shared_edges": 44
+              },
+              {
+                "cell_jaccard": 0.575,
+                "common_prefix_fraction": 0.016129032258064516,
+                "common_prefix_steps": 1,
+                "edge_jaccard": 0.55,
+                "left_method": "ml",
+                "left_steps": 62,
+                "maximum_cell_separation": 3,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 46,
+                "shared_edges": 44
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "at least one method pair is effectively identical"
+            ],
+            "visibly_divergent_pair_count": 2
+          },
+          {
+            "accepted": false,
+            "city_id": "chicago",
+            "common_destination": [
+              3,
+              32
+            ],
+            "common_start": [
+              32,
+              3
+            ],
+            "exact_unique_route_count": 2,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 6,
+            "mean_edge_jaccard": 0.670995670995671,
+            "minimum_edge_jaccard": 0.5064935064935064,
+            "pairwise": [
+              {
+                "cell_jaccard": 0.5526315789473685,
+                "common_prefix_fraction": 0.41379310344827586,
+                "common_prefix_steps": 24,
+                "edge_jaccard": 0.5064935064935064,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 6,
+                "right_method": "ml",
+                "right_steps": 58,
+                "shared_cells": 42,
+                "shared_edges": 39
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 58,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 59,
+                "shared_edges": 58
+              },
+              {
+                "cell_jaccard": 0.5526315789473685,
+                "common_prefix_fraction": 0.41379310344827586,
+                "common_prefix_steps": 24,
+                "edge_jaccard": 0.5064935064935064,
+                "left_method": "ml",
+                "left_steps": 58,
+                "maximum_cell_separation": 6,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 42,
+                "shared_edges": 39
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "at least one method pair is effectively identical"
+            ],
+            "visibly_divergent_pair_count": 2
+          },
+          {
+            "accepted": false,
+            "city_id": "phoenix",
+            "common_destination": [
+              4,
+              31
+            ],
+            "common_start": [
+              31,
+              4
+            ],
+            "exact_unique_route_count": 1,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 0,
+            "mean_edge_jaccard": 1.0,
+            "minimum_edge_jaccard": 1.0,
+            "pairwise": [
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 64,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 64,
+                "maximum_cell_separation": 0,
+                "right_method": "ml",
+                "right_steps": 64,
+                "shared_cells": 65,
+                "shared_edges": 64
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 64,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 64,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 64,
+                "shared_cells": 65,
+                "shared_edges": 64
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 64,
+                "edge_jaccard": 1.0,
+                "left_method": "ml",
+                "left_steps": 64,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 64,
+                "shared_cells": 65,
+                "shared_edges": 64
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "fewer than two visibly divergent method pairs",
+              "mean edge overlap exceeds showcase threshold",
+              "at least one method pair is effectively identical",
+              "routes do not separate sufficiently on the map"
+            ],
+            "visibly_divergent_pair_count": 0
+          }
+        ]
+      },
+      "seeds": {
+        "chicago": 5305,
+        "new_york": 5205,
+        "phoenix": 5405
+      }
+    },
+    {
+      "accepted": false,
+      "candidate_index": 5,
+      "divergence": {
+        "accepted": false,
+        "accepted_city_count": 1,
+        "cities": [
+          {
+            "accepted": false,
+            "city_id": "new_york",
+            "common_destination": [
+              2,
+              33
+            ],
+            "common_start": [
+              33,
+              2
+            ],
+            "exact_unique_route_count": 1,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 0,
+            "mean_edge_jaccard": 1.0,
+            "minimum_edge_jaccard": 1.0,
+            "pairwise": [
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "ml",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "ml",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "fewer than two visibly divergent method pairs",
+              "mean edge overlap exceeds showcase threshold",
+              "at least one method pair is effectively identical",
+              "routes do not separate sufficiently on the map"
+            ],
+            "visibly_divergent_pair_count": 0
+          },
+          {
+            "accepted": true,
+            "city_id": "chicago",
+            "common_destination": [
+              3,
+              32
+            ],
+            "common_start": [
+              32,
+              3
+            ],
+            "exact_unique_route_count": 3,
+            "maximum_edge_jaccard": 0.8787878787878788,
+            "maximum_route_separation": 28,
+            "mean_edge_jaccard": 0.3159177986764194,
+            "minimum_edge_jaccard": 0.034482758620689655,
+            "pairwise": [
+              {
+                "cell_jaccard": 0.05172413793103448,
+                "common_prefix_fraction": 0.06896551724137931,
+                "common_prefix_steps": 4,
+                "edge_jaccard": 0.034482758620689655,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 28,
+                "right_method": "ml",
+                "right_steps": 62,
+                "shared_cells": 6,
+                "shared_edges": 4
+              },
+              {
+                "cell_jaccard": 0.05172413793103448,
+                "common_prefix_fraction": 0.06896551724137931,
+                "common_prefix_steps": 4,
+                "edge_jaccard": 0.034482758620689655,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 28,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 6,
+                "shared_edges": 4
+              },
+              {
+                "cell_jaccard": 0.9090909090909091,
+                "common_prefix_fraction": 0.9193548387096774,
+                "common_prefix_steps": 57,
+                "edge_jaccard": 0.8787878787878788,
+                "left_method": "ml",
+                "left_steps": 62,
+                "maximum_cell_separation": 1,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 60,
+                "shared_edges": 58
+              }
+            ],
+            "rejection_reasons": [],
+            "visibly_divergent_pair_count": 2
+          },
+          {
+            "accepted": false,
+            "city_id": "phoenix",
+            "common_destination": [
+              4,
+              31
+            ],
+            "common_start": [
+              31,
+              4
+            ],
+            "exact_unique_route_count": 1,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 0,
+            "mean_edge_jaccard": 1.0,
+            "minimum_edge_jaccard": 1.0,
+            "pairwise": [
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 54,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 54,
+                "maximum_cell_separation": 0,
+                "right_method": "ml",
+                "right_steps": 54,
+                "shared_cells": 55,
+                "shared_edges": 54
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 54,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 54,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 54,
+                "shared_cells": 55,
+                "shared_edges": 54
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 54,
+                "edge_jaccard": 1.0,
+                "left_method": "ml",
+                "left_steps": 54,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 54,
+                "shared_cells": 55,
+                "shared_edges": 54
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "fewer than two visibly divergent method pairs",
+              "mean edge overlap exceeds showcase threshold",
+              "at least one method pair is effectively identical",
+              "routes do not separate sufficiently on the map"
+            ],
+            "visibly_divergent_pair_count": 0
+          }
+        ]
+      },
+      "seeds": {
+        "chicago": 5306,
+        "new_york": 5206,
+        "phoenix": 5406
+      }
+    },
+    {
+      "accepted": false,
+      "candidate_index": 6,
+      "divergence": {
+        "accepted": false,
+        "accepted_city_count": 1,
+        "cities": [
+          {
+            "accepted": false,
+            "city_id": "new_york",
+            "common_destination": [
+              2,
+              33
+            ],
+            "common_start": [
+              33,
+              2
+            ],
+            "exact_unique_route_count": 2,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 3,
+            "mean_edge_jaccard": 0.7000000000000001,
+            "minimum_edge_jaccard": 0.55,
+            "pairwise": [
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "ml",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              },
+              {
+                "cell_jaccard": 0.575,
+                "common_prefix_fraction": 0.016129032258064516,
+                "common_prefix_steps": 1,
+                "edge_jaccard": 0.55,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 3,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 46,
+                "shared_edges": 44
+              },
+              {
+                "cell_jaccard": 0.575,
+                "common_prefix_fraction": 0.016129032258064516,
+                "common_prefix_steps": 1,
+                "edge_jaccard": 0.55,
+                "left_method": "ml",
+                "left_steps": 62,
+                "maximum_cell_separation": 3,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 46,
+                "shared_edges": 44
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "at least one method pair is effectively identical"
+            ],
+            "visibly_divergent_pair_count": 2
+          },
+          {
+            "accepted": false,
+            "city_id": "chicago",
+            "common_destination": [
+              3,
+              32
+            ],
+            "common_start": [
+              32,
+              3
+            ],
+            "exact_unique_route_count": 1,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 0,
+            "mean_edge_jaccard": 1.0,
+            "minimum_edge_jaccard": 1.0,
+            "pairwise": [
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 58,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 0,
+                "right_method": "ml",
+                "right_steps": 58,
+                "shared_cells": 59,
+                "shared_edges": 58
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 58,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 59,
+                "shared_edges": 58
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 58,
+                "edge_jaccard": 1.0,
+                "left_method": "ml",
+                "left_steps": 58,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 59,
+                "shared_edges": 58
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "fewer than two visibly divergent method pairs",
+              "mean edge overlap exceeds showcase threshold",
+              "at least one method pair is effectively identical",
+              "routes do not separate sufficiently on the map"
+            ],
+            "visibly_divergent_pair_count": 0
+          },
+          {
+            "accepted": true,
+            "city_id": "phoenix",
+            "common_destination": [
+              4,
+              31
+            ],
+            "common_start": [
+              31,
+              4
+            ],
+            "exact_unique_route_count": 3,
+            "maximum_edge_jaccard": 0.25,
+            "maximum_route_separation": 21,
+            "mean_edge_jaccard": 0.16240981240981242,
+            "minimum_edge_jaccard": 0.08571428571428572,
+            "pairwise": [
+              {
+                "cell_jaccard": 0.1717171717171717,
+                "common_prefix_fraction": 0.0,
+                "common_prefix_steps": 0,
+                "edge_jaccard": 0.15151515151515152,
+                "left_method": "dijkstra",
+                "left_steps": 60,
+                "maximum_cell_separation": 15,
+                "right_method": "ml",
+                "right_steps": 54,
+                "shared_cells": 17,
+                "shared_edges": 15
+              },
+              {
+                "cell_jaccard": 0.2708333333333333,
+                "common_prefix_fraction": 0.25,
+                "common_prefix_steps": 15,
+                "edge_jaccard": 0.25,
+                "left_method": "dijkstra",
+                "left_steps": 60,
+                "maximum_cell_separation": 6,
+                "right_method": "dl",
+                "right_steps": 60,
+                "shared_cells": 26,
+                "shared_edges": 24
+              },
+              {
+                "cell_jaccard": 0.10476190476190476,
+                "common_prefix_fraction": 0.0,
+                "common_prefix_steps": 0,
+                "edge_jaccard": 0.08571428571428572,
+                "left_method": "ml",
+                "left_steps": 54,
+                "maximum_cell_separation": 21,
+                "right_method": "dl",
+                "right_steps": 60,
+                "shared_cells": 11,
+                "shared_edges": 9
+              }
+            ],
+            "rejection_reasons": [],
+            "visibly_divergent_pair_count": 3
+          }
+        ]
+      },
+      "seeds": {
+        "chicago": 5307,
+        "new_york": 5207,
+        "phoenix": 5407
+      }
+    },
+    {
+      "accepted": false,
+      "candidate_index": 7,
+      "divergence": {
+        "accepted": false,
+        "accepted_city_count": 1,
+        "cities": [
+          {
+            "accepted": false,
+            "city_id": "new_york",
+            "common_destination": [
+              2,
+              33
+            ],
+            "common_start": [
+              33,
+              2
+            ],
+            "exact_unique_route_count": 2,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 6,
+            "mean_edge_jaccard": 0.5368421052631579,
+            "minimum_edge_jaccard": 0.30526315789473685,
+            "pairwise": [
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "ml",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              },
+              {
+                "cell_jaccard": 0.3263157894736842,
+                "common_prefix_fraction": 0.06451612903225806,
+                "common_prefix_steps": 4,
+                "edge_jaccard": 0.30526315789473685,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 6,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 31,
+                "shared_edges": 29
+              },
+              {
+                "cell_jaccard": 0.3263157894736842,
+                "common_prefix_fraction": 0.06451612903225806,
+                "common_prefix_steps": 4,
+                "edge_jaccard": 0.30526315789473685,
+                "left_method": "ml",
+                "left_steps": 62,
+                "maximum_cell_separation": 6,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 31,
+                "shared_edges": 29
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "at least one method pair is effectively identical"
+            ],
+            "visibly_divergent_pair_count": 2
+          },
+          {
+            "accepted": true,
+            "city_id": "chicago",
+            "common_destination": [
+              3,
+              32
+            ],
+            "common_start": [
+              32,
+              3
+            ],
+            "exact_unique_route_count": 3,
+            "maximum_edge_jaccard": 0.6811594202898551,
+            "maximum_route_separation": 12,
+            "mean_edge_jaccard": 0.29689440993788824,
+            "minimum_edge_jaccard": 0.10476190476190476,
+            "pairwise": [
+              {
+                "cell_jaccard": 0.1346153846153846,
+                "common_prefix_fraction": 0.034482758620689655,
+                "common_prefix_steps": 2,
+                "edge_jaccard": 0.10476190476190476,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 12,
+                "right_method": "ml",
+                "right_steps": 58,
+                "shared_cells": 14,
+                "shared_edges": 11
+              },
+              {
+                "cell_jaccard": 0.7101449275362319,
+                "common_prefix_fraction": 0.27586206896551724,
+                "common_prefix_steps": 16,
+                "edge_jaccard": 0.6811594202898551,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 5,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 49,
+                "shared_edges": 47
+              },
+              {
+                "cell_jaccard": 0.1346153846153846,
+                "common_prefix_fraction": 0.034482758620689655,
+                "common_prefix_steps": 2,
+                "edge_jaccard": 0.10476190476190476,
+                "left_method": "ml",
+                "left_steps": 58,
+                "maximum_cell_separation": 12,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 14,
+                "shared_edges": 11
+              }
+            ],
+            "rejection_reasons": [],
+            "visibly_divergent_pair_count": 3
+          },
+          {
+            "accepted": false,
+            "city_id": "phoenix",
+            "common_destination": [
+              4,
+              31
+            ],
+            "common_start": [
+              31,
+              4
+            ],
+            "exact_unique_route_count": 1,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 0,
+            "mean_edge_jaccard": 1.0,
+            "minimum_edge_jaccard": 1.0,
+            "pairwise": [
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 54,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 54,
+                "maximum_cell_separation": 0,
+                "right_method": "ml",
+                "right_steps": 54,
+                "shared_cells": 55,
+                "shared_edges": 54
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 54,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 54,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 54,
+                "shared_cells": 55,
+                "shared_edges": 54
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 54,
+                "edge_jaccard": 1.0,
+                "left_method": "ml",
+                "left_steps": 54,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 54,
+                "shared_cells": 55,
+                "shared_edges": 54
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "fewer than two visibly divergent method pairs",
+              "mean edge overlap exceeds showcase threshold",
+              "at least one method pair is effectively identical",
+              "routes do not separate sufficiently on the map"
+            ],
+            "visibly_divergent_pair_count": 0
+          }
+        ]
+      },
+      "seeds": {
+        "chicago": 5308,
+        "new_york": 5208,
+        "phoenix": 5408
+      }
+    },
+    {
+      "accepted": false,
+      "candidate_index": 8,
+      "divergence": {
+        "accepted": false,
+        "accepted_city_count": 1,
+        "cities": [
+          {
+            "accepted": true,
+            "city_id": "new_york",
+            "common_destination": [
+              2,
+              33
+            ],
+            "common_start": [
+              33,
+              2
+            ],
+            "exact_unique_route_count": 3,
+            "maximum_edge_jaccard": 0.6756756756756757,
+            "maximum_route_separation": 3,
+            "mean_edge_jaccard": 0.539644700880656,
+            "minimum_edge_jaccard": 0.39325842696629215,
+            "pairwise": [
+              {
+                "cell_jaccard": 0.7027027027027027,
+                "common_prefix_fraction": 0.25806451612903225,
+                "common_prefix_steps": 16,
+                "edge_jaccard": 0.6756756756756757,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 3,
+                "right_method": "ml",
+                "right_steps": 62,
+                "shared_cells": 52,
+                "shared_edges": 50
+              },
+              {
+                "cell_jaccard": 0.575,
+                "common_prefix_fraction": 0.016129032258064516,
+                "common_prefix_steps": 1,
+                "edge_jaccard": 0.55,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 3,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 46,
+                "shared_edges": 44
+              },
+              {
+                "cell_jaccard": 0.4157303370786517,
+                "common_prefix_fraction": 0.016129032258064516,
+                "common_prefix_steps": 1,
+                "edge_jaccard": 0.39325842696629215,
+                "left_method": "ml",
+                "left_steps": 62,
+                "maximum_cell_separation": 3,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 37,
+                "shared_edges": 35
+              }
+            ],
+            "rejection_reasons": [],
+            "visibly_divergent_pair_count": 3
+          },
+          {
+            "accepted": false,
+            "city_id": "chicago",
+            "common_destination": [
+              3,
+              32
+            ],
+            "common_start": [
+              32,
+              3
+            ],
+            "exact_unique_route_count": 2,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 3,
+            "mean_edge_jaccard": 0.8208955223880597,
+            "minimum_edge_jaccard": 0.7313432835820896,
+            "pairwise": [
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 58,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 0,
+                "right_method": "ml",
+                "right_steps": 58,
+                "shared_cells": 59,
+                "shared_edges": 58
+              },
+              {
+                "cell_jaccard": 0.7611940298507462,
+                "common_prefix_fraction": 0.8103448275862069,
+                "common_prefix_steps": 47,
+                "edge_jaccard": 0.7313432835820896,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 3,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 51,
+                "shared_edges": 49
+              },
+              {
+                "cell_jaccard": 0.7611940298507462,
+                "common_prefix_fraction": 0.8103448275862069,
+                "common_prefix_steps": 47,
+                "edge_jaccard": 0.7313432835820896,
+                "left_method": "ml",
+                "left_steps": 58,
+                "maximum_cell_separation": 3,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 51,
+                "shared_edges": 49
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "at least one method pair is effectively identical"
+            ],
+            "visibly_divergent_pair_count": 2
+          },
+          {
+            "accepted": false,
+            "city_id": "phoenix",
+            "common_destination": [
+              4,
+              31
+            ],
+            "common_start": [
+              31,
+              4
+            ],
+            "exact_unique_route_count": 1,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 0,
+            "mean_edge_jaccard": 1.0,
+            "minimum_edge_jaccard": 1.0,
+            "pairwise": [
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 64,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 64,
+                "maximum_cell_separation": 0,
+                "right_method": "ml",
+                "right_steps": 64,
+                "shared_cells": 65,
+                "shared_edges": 64
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 64,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 64,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 64,
+                "shared_cells": 65,
+                "shared_edges": 64
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 64,
+                "edge_jaccard": 1.0,
+                "left_method": "ml",
+                "left_steps": 64,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 64,
+                "shared_cells": 65,
+                "shared_edges": 64
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "fewer than two visibly divergent method pairs",
+              "mean edge overlap exceeds showcase threshold",
+              "at least one method pair is effectively identical",
+              "routes do not separate sufficiently on the map"
+            ],
+            "visibly_divergent_pair_count": 0
+          }
+        ]
+      },
+      "seeds": {
+        "chicago": 5309,
+        "new_york": 5209,
+        "phoenix": 5409
+      }
+    },
+    {
+      "accepted": false,
+      "candidate_index": 9,
+      "divergence": {
+        "accepted": false,
+        "accepted_city_count": 0,
+        "cities": [
+          {
+            "accepted": false,
+            "city_id": "new_york",
+            "common_destination": [
+              2,
+              33
+            ],
+            "common_start": [
+              33,
+              2
+            ],
+            "exact_unique_route_count": 1,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 0,
+            "mean_edge_jaccard": 1.0,
+            "minimum_edge_jaccard": 1.0,
+            "pairwise": [
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "ml",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "ml",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "fewer than two visibly divergent method pairs",
+              "mean edge overlap exceeds showcase threshold",
+              "at least one method pair is effectively identical",
+              "routes do not separate sufficiently on the map"
+            ],
+            "visibly_divergent_pair_count": 0
+          },
+          {
+            "accepted": false,
+            "city_id": "chicago",
+            "common_destination": [
+              3,
+              32
+            ],
+            "common_start": [
+              32,
+              3
+            ],
+            "exact_unique_route_count": 2,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 4,
+            "mean_edge_jaccard": 0.7543859649122807,
+            "minimum_edge_jaccard": 0.631578947368421,
+            "pairwise": [
+              {
+                "cell_jaccard": 0.68,
+                "common_prefix_fraction": 0.46774193548387094,
+                "common_prefix_steps": 29,
+                "edge_jaccard": 0.631578947368421,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 4,
+                "right_method": "ml",
+                "right_steps": 62,
+                "shared_cells": 51,
+                "shared_edges": 48
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              },
+              {
+                "cell_jaccard": 0.68,
+                "common_prefix_fraction": 0.46774193548387094,
+                "common_prefix_steps": 29,
+                "edge_jaccard": 0.631578947368421,
+                "left_method": "ml",
+                "left_steps": 62,
+                "maximum_cell_separation": 4,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 51,
+                "shared_edges": 48
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "at least one method pair is effectively identical"
+            ],
+            "visibly_divergent_pair_count": 2
+          },
+          {
+            "accepted": false,
+            "city_id": "phoenix",
+            "common_destination": [
+              4,
+              31
+            ],
+            "common_start": [
+              31,
+              4
+            ],
+            "exact_unique_route_count": 2,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 5,
+            "mean_edge_jaccard": 0.49659863945578236,
+            "minimum_edge_jaccard": 0.24489795918367346,
+            "pairwise": [
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 58,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 0,
+                "right_method": "ml",
+                "right_steps": 58,
+                "shared_cells": 59,
+                "shared_edges": 58
+              },
+              {
+                "cell_jaccard": 0.27835051546391754,
+                "common_prefix_fraction": 0.0,
+                "common_prefix_steps": 0,
+                "edge_jaccard": 0.24489795918367346,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 5,
+                "right_method": "dl",
+                "right_steps": 64,
+                "shared_cells": 27,
+                "shared_edges": 24
+              },
+              {
+                "cell_jaccard": 0.27835051546391754,
+                "common_prefix_fraction": 0.0,
+                "common_prefix_steps": 0,
+                "edge_jaccard": 0.24489795918367346,
+                "left_method": "ml",
+                "left_steps": 58,
+                "maximum_cell_separation": 5,
+                "right_method": "dl",
+                "right_steps": 64,
+                "shared_cells": 27,
+                "shared_edges": 24
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "at least one method pair is effectively identical"
+            ],
+            "visibly_divergent_pair_count": 2
+          }
+        ]
+      },
+      "seeds": {
+        "chicago": 5310,
+        "new_york": 5210,
+        "phoenix": 5410
+      }
+    },
+    {
+      "accepted": false,
+      "candidate_index": 10,
+      "divergence": {
+        "accepted": false,
+        "accepted_city_count": 0,
+        "cities": [
+          {
+            "accepted": false,
+            "city_id": "new_york",
+            "common_destination": [
+              2,
+              33
+            ],
+            "common_start": [
+              33,
+              2
+            ],
+            "exact_unique_route_count": 2,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 6,
+            "mean_edge_jaccard": 0.627906976744186,
+            "minimum_edge_jaccard": 0.4418604651162791,
+            "pairwise": [
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "ml",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              },
+              {
+                "cell_jaccard": 0.46511627906976744,
+                "common_prefix_fraction": 0.5967741935483871,
+                "common_prefix_steps": 37,
+                "edge_jaccard": 0.4418604651162791,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 6,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 40,
+                "shared_edges": 38
+              },
+              {
+                "cell_jaccard": 0.46511627906976744,
+                "common_prefix_fraction": 0.5967741935483871,
+                "common_prefix_steps": 37,
+                "edge_jaccard": 0.4418604651162791,
+                "left_method": "ml",
+                "left_steps": 62,
+                "maximum_cell_separation": 6,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 40,
+                "shared_edges": 38
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "at least one method pair is effectively identical"
+            ],
+            "visibly_divergent_pair_count": 2
+          },
+          {
+            "accepted": false,
+            "city_id": "chicago",
+            "common_destination": [
+              3,
+              32
+            ],
+            "common_start": [
+              32,
+              3
+            ],
+            "exact_unique_route_count": 2,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 2,
+            "mean_edge_jaccard": 0.8383838383838383,
+            "minimum_edge_jaccard": 0.7575757575757576,
+            "pairwise": [
+              {
+                "cell_jaccard": 0.7878787878787878,
+                "common_prefix_fraction": 0.034482758620689655,
+                "common_prefix_steps": 2,
+                "edge_jaccard": 0.7575757575757576,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 2,
+                "right_method": "ml",
+                "right_steps": 58,
+                "shared_cells": 52,
+                "shared_edges": 50
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 58,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 59,
+                "shared_edges": 58
+              },
+              {
+                "cell_jaccard": 0.7878787878787878,
+                "common_prefix_fraction": 0.034482758620689655,
+                "common_prefix_steps": 2,
+                "edge_jaccard": 0.7575757575757576,
+                "left_method": "ml",
+                "left_steps": 58,
+                "maximum_cell_separation": 2,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 52,
+                "shared_edges": 50
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "at least one method pair is effectively identical",
+              "routes do not separate sufficiently on the map"
+            ],
+            "visibly_divergent_pair_count": 2
+          },
+          {
+            "accepted": false,
+            "city_id": "phoenix",
+            "common_destination": [
+              4,
+              31
+            ],
+            "common_start": [
+              31,
+              4
+            ],
+            "exact_unique_route_count": 1,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 0,
+            "mean_edge_jaccard": 1.0,
+            "minimum_edge_jaccard": 1.0,
+            "pairwise": [
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 54,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 54,
+                "maximum_cell_separation": 0,
+                "right_method": "ml",
+                "right_steps": 54,
+                "shared_cells": 55,
+                "shared_edges": 54
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 54,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 54,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 54,
+                "shared_cells": 55,
+                "shared_edges": 54
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 54,
+                "edge_jaccard": 1.0,
+                "left_method": "ml",
+                "left_steps": 54,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 54,
+                "shared_cells": 55,
+                "shared_edges": 54
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "fewer than two visibly divergent method pairs",
+              "mean edge overlap exceeds showcase threshold",
+              "at least one method pair is effectively identical",
+              "routes do not separate sufficiently on the map"
+            ],
+            "visibly_divergent_pair_count": 0
+          }
+        ]
+      },
+      "seeds": {
+        "chicago": 5311,
+        "new_york": 5211,
+        "phoenix": 5411
+      }
+    },
+    {
+      "accepted": false,
+      "candidate_index": 11,
+      "divergence": {
+        "accepted": false,
+        "accepted_city_count": 0,
+        "cities": [
+          {
+            "accepted": false,
+            "city_id": "new_york",
+            "common_destination": [
+              2,
+              33
+            ],
+            "common_start": [
+              33,
+              2
+            ],
+            "exact_unique_route_count": 1,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 0,
+            "mean_edge_jaccard": 1.0,
+            "minimum_edge_jaccard": 1.0,
+            "pairwise": [
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "ml",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "ml",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "fewer than two visibly divergent method pairs",
+              "mean edge overlap exceeds showcase threshold",
+              "at least one method pair is effectively identical",
+              "routes do not separate sufficiently on the map"
+            ],
+            "visibly_divergent_pair_count": 0
+          },
+          {
+            "accepted": false,
+            "city_id": "chicago",
+            "common_destination": [
+              3,
+              32
+            ],
+            "common_start": [
+              32,
+              3
+            ],
+            "exact_unique_route_count": 1,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 0,
+            "mean_edge_jaccard": 1.0,
+            "minimum_edge_jaccard": 1.0,
+            "pairwise": [
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 58,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 0,
+                "right_method": "ml",
+                "right_steps": 58,
+                "shared_cells": 59,
+                "shared_edges": 58
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 58,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 59,
+                "shared_edges": 58
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 58,
+                "edge_jaccard": 1.0,
+                "left_method": "ml",
+                "left_steps": 58,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 59,
+                "shared_edges": 58
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "fewer than two visibly divergent method pairs",
+              "mean edge overlap exceeds showcase threshold",
+              "at least one method pair is effectively identical",
+              "routes do not separate sufficiently on the map"
+            ],
+            "visibly_divergent_pair_count": 0
+          },
+          {
+            "accepted": false,
+            "city_id": "phoenix",
+            "common_destination": [
+              4,
+              31
+            ],
+            "common_start": [
+              31,
+              4
+            ],
+            "exact_unique_route_count": 1,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 0,
+            "mean_edge_jaccard": 1.0,
+            "minimum_edge_jaccard": 1.0,
+            "pairwise": [
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 54,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 54,
+                "maximum_cell_separation": 0,
+                "right_method": "ml",
+                "right_steps": 54,
+                "shared_cells": 55,
+                "shared_edges": 54
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 54,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 54,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 54,
+                "shared_cells": 55,
+                "shared_edges": 54
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 54,
+                "edge_jaccard": 1.0,
+                "left_method": "ml",
+                "left_steps": 54,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 54,
+                "shared_cells": 55,
+                "shared_edges": 54
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "fewer than two visibly divergent method pairs",
+              "mean edge overlap exceeds showcase threshold",
+              "at least one method pair is effectively identical",
+              "routes do not separate sufficiently on the map"
+            ],
+            "visibly_divergent_pair_count": 0
+          }
+        ]
+      },
+      "seeds": {
+        "chicago": 5312,
+        "new_york": 5212,
+        "phoenix": 5412
+      }
+    },
+    {
+      "accepted": false,
+      "candidate_index": 12,
+      "divergence": {
+        "accepted": false,
+        "accepted_city_count": 1,
+        "cities": [
+          {
+            "accepted": false,
+            "city_id": "new_york",
+            "common_destination": [
+              2,
+              33
+            ],
+            "common_start": [
+              33,
+              2
+            ],
+            "exact_unique_route_count": 2,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 3,
+            "mean_edge_jaccard": 0.8309859154929576,
+            "minimum_edge_jaccard": 0.7464788732394366,
+            "pairwise": [
+              {
+                "cell_jaccard": 0.7746478873239436,
+                "common_prefix_fraction": 0.20967741935483872,
+                "common_prefix_steps": 13,
+                "edge_jaccard": 0.7464788732394366,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 3,
+                "right_method": "ml",
+                "right_steps": 62,
+                "shared_cells": 55,
+                "shared_edges": 53
+              },
+              {
+                "cell_jaccard": 0.7746478873239436,
+                "common_prefix_fraction": 0.20967741935483872,
+                "common_prefix_steps": 13,
+                "edge_jaccard": 0.7464788732394366,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 3,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 55,
+                "shared_edges": 53
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "ml",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "at least one method pair is effectively identical"
+            ],
+            "visibly_divergent_pair_count": 2
+          },
+          {
+            "accepted": true,
+            "city_id": "chicago",
+            "common_destination": [
+              3,
+              32
+            ],
+            "common_start": [
+              32,
+              3
+            ],
+            "exact_unique_route_count": 3,
+            "maximum_edge_jaccard": 0.5733333333333334,
+            "maximum_route_separation": 6,
+            "mean_edge_jaccard": 0.2646240179573513,
+            "minimum_edge_jaccard": 0.09090909090909091,
+            "pairwise": [
+              {
+                "cell_jaccard": 0.1588785046728972,
+                "common_prefix_fraction": 0.016666666666666666,
+                "common_prefix_steps": 1,
+                "edge_jaccard": 0.12962962962962962,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 6,
+                "right_method": "ml",
+                "right_steps": 60,
+                "shared_cells": 17,
+                "shared_edges": 14
+              },
+              {
+                "cell_jaccard": 0.11926605504587157,
+                "common_prefix_fraction": 0.0,
+                "common_prefix_steps": 0,
+                "edge_jaccard": 0.09090909090909091,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 6,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 13,
+                "shared_edges": 10
+              },
+              {
+                "cell_jaccard": 0.6,
+                "common_prefix_fraction": 0.0,
+                "common_prefix_steps": 0,
+                "edge_jaccard": 0.5733333333333334,
+                "left_method": "ml",
+                "left_steps": 60,
+                "maximum_cell_separation": 3,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 45,
+                "shared_edges": 43
+              }
+            ],
+            "rejection_reasons": [],
+            "visibly_divergent_pair_count": 3
+          },
+          {
+            "accepted": false,
+            "city_id": "phoenix",
+            "common_destination": [
+              4,
+              31
+            ],
+            "common_start": [
+              31,
+              4
+            ],
+            "exact_unique_route_count": 1,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 0,
+            "mean_edge_jaccard": 1.0,
+            "minimum_edge_jaccard": 1.0,
+            "pairwise": [
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 54,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 54,
+                "maximum_cell_separation": 0,
+                "right_method": "ml",
+                "right_steps": 54,
+                "shared_cells": 55,
+                "shared_edges": 54
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 54,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 54,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 54,
+                "shared_cells": 55,
+                "shared_edges": 54
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 54,
+                "edge_jaccard": 1.0,
+                "left_method": "ml",
+                "left_steps": 54,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 54,
+                "shared_cells": 55,
+                "shared_edges": 54
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "fewer than two visibly divergent method pairs",
+              "mean edge overlap exceeds showcase threshold",
+              "at least one method pair is effectively identical",
+              "routes do not separate sufficiently on the map"
+            ],
+            "visibly_divergent_pair_count": 0
+          }
+        ]
+      },
+      "seeds": {
+        "chicago": 5313,
+        "new_york": 5213,
+        "phoenix": 5413
+      }
+    },
+    {
+      "accepted": false,
+      "candidate_index": 13,
+      "divergence": {
+        "accepted": false,
+        "accepted_city_count": 1,
+        "cities": [
+          {
+            "accepted": true,
+            "city_id": "new_york",
+            "common_destination": [
+              2,
+              33
+            ],
+            "common_start": [
+              33,
+              2
+            ],
+            "exact_unique_route_count": 3,
+            "maximum_edge_jaccard": 0.6756756756756757,
+            "maximum_route_separation": 9,
+            "mean_edge_jaccard": 0.575975250393855,
+            "minimum_edge_jaccard": 0.4418604651162791,
+            "pairwise": [
+              {
+                "cell_jaccard": 0.46511627906976744,
+                "common_prefix_fraction": 0.06451612903225806,
+                "common_prefix_steps": 4,
+                "edge_jaccard": 0.4418604651162791,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 9,
+                "right_method": "ml",
+                "right_steps": 62,
+                "shared_cells": 40,
+                "shared_edges": 38
+              },
+              {
+                "cell_jaccard": 0.7027027027027027,
+                "common_prefix_fraction": 0.25806451612903225,
+                "common_prefix_steps": 16,
+                "edge_jaccard": 0.6756756756756757,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 3,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 52,
+                "shared_edges": 50
+              },
+              {
+                "cell_jaccard": 0.6363636363636364,
+                "common_prefix_fraction": 0.06451612903225806,
+                "common_prefix_steps": 4,
+                "edge_jaccard": 0.6103896103896104,
+                "left_method": "ml",
+                "left_steps": 62,
+                "maximum_cell_separation": 6,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 49,
+                "shared_edges": 47
+              }
+            ],
+            "rejection_reasons": [],
+            "visibly_divergent_pair_count": 3
+          },
+          {
+            "accepted": false,
+            "city_id": "chicago",
+            "common_destination": [
+              3,
+              32
+            ],
+            "common_start": [
+              32,
+              3
+            ],
+            "exact_unique_route_count": 2,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 13,
+            "mean_edge_jaccard": 0.5355805243445694,
+            "minimum_edge_jaccard": 0.30337078651685395,
+            "pairwise": [
+              {
+                "cell_jaccard": 0.3258426966292135,
+                "common_prefix_fraction": 0.27586206896551724,
+                "common_prefix_steps": 16,
+                "edge_jaccard": 0.30337078651685395,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 13,
+                "right_method": "ml",
+                "right_steps": 58,
+                "shared_cells": 29,
+                "shared_edges": 27
+              },
+              {
+                "cell_jaccard": 0.3258426966292135,
+                "common_prefix_fraction": 0.27586206896551724,
+                "common_prefix_steps": 16,
+                "edge_jaccard": 0.30337078651685395,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 13,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 29,
+                "shared_edges": 27
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 58,
+                "edge_jaccard": 1.0,
+                "left_method": "ml",
+                "left_steps": 58,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 59,
+                "shared_edges": 58
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "at least one method pair is effectively identical"
+            ],
+            "visibly_divergent_pair_count": 2
+          },
+          {
+            "accepted": false,
+            "city_id": "phoenix",
+            "common_destination": [
+              4,
+              31
+            ],
+            "common_start": [
+              31,
+              4
+            ],
+            "exact_unique_route_count": 1,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 0,
+            "mean_edge_jaccard": 1.0,
+            "minimum_edge_jaccard": 1.0,
+            "pairwise": [
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 54,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 54,
+                "maximum_cell_separation": 0,
+                "right_method": "ml",
+                "right_steps": 54,
+                "shared_cells": 55,
+                "shared_edges": 54
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 54,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 54,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 54,
+                "shared_cells": 55,
+                "shared_edges": 54
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 54,
+                "edge_jaccard": 1.0,
+                "left_method": "ml",
+                "left_steps": 54,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 54,
+                "shared_cells": 55,
+                "shared_edges": 54
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "fewer than two visibly divergent method pairs",
+              "mean edge overlap exceeds showcase threshold",
+              "at least one method pair is effectively identical",
+              "routes do not separate sufficiently on the map"
+            ],
+            "visibly_divergent_pair_count": 0
+          }
+        ]
+      },
+      "seeds": {
+        "chicago": 5314,
+        "new_york": 5214,
+        "phoenix": 5414
+      }
+    },
+    {
+      "accepted": false,
+      "candidate_index": 14,
+      "divergence": {
+        "accepted": false,
+        "accepted_city_count": 1,
+        "cities": [
+          {
+            "accepted": false,
+            "city_id": "new_york",
+            "common_destination": [
+              2,
+              33
+            ],
+            "common_start": [
+              33,
+              2
+            ],
+            "exact_unique_route_count": 2,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 6,
+            "mean_edge_jaccard": 0.7402597402597403,
+            "minimum_edge_jaccard": 0.6103896103896104,
+            "pairwise": [
+              {
+                "cell_jaccard": 0.6363636363636364,
+                "common_prefix_fraction": 0.06451612903225806,
+                "common_prefix_steps": 4,
+                "edge_jaccard": 0.6103896103896104,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 6,
+                "right_method": "ml",
+                "right_steps": 62,
+                "shared_cells": 49,
+                "shared_edges": 47
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              },
+              {
+                "cell_jaccard": 0.6363636363636364,
+                "common_prefix_fraction": 0.06451612903225806,
+                "common_prefix_steps": 4,
+                "edge_jaccard": 0.6103896103896104,
+                "left_method": "ml",
+                "left_steps": 62,
+                "maximum_cell_separation": 6,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 49,
+                "shared_edges": 47
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "at least one method pair is effectively identical"
+            ],
+            "visibly_divergent_pair_count": 2
+          },
+          {
+            "accepted": true,
+            "city_id": "chicago",
+            "common_destination": [
+              3,
+              32
+            ],
+            "common_start": [
+              32,
+              3
+            ],
+            "exact_unique_route_count": 3,
+            "maximum_edge_jaccard": 0.8412698412698413,
+            "maximum_route_separation": 5,
+            "mean_edge_jaccard": 0.6305821594147895,
+            "minimum_edge_jaccard": 0.5061728395061729,
+            "pairwise": [
+              {
+                "cell_jaccard": 0.569620253164557,
+                "common_prefix_fraction": 0.7413793103448276,
+                "common_prefix_steps": 43,
+                "edge_jaccard": 0.5443037974683544,
+                "left_method": "dijkstra",
+                "left_steps": 64,
+                "maximum_cell_separation": 3,
+                "right_method": "ml",
+                "right_steps": 58,
+                "shared_cells": 45,
+                "shared_edges": 43
+              },
+              {
+                "cell_jaccard": 0.5308641975308642,
+                "common_prefix_fraction": 0.7068965517241379,
+                "common_prefix_steps": 41,
+                "edge_jaccard": 0.5061728395061729,
+                "left_method": "dijkstra",
+                "left_steps": 64,
+                "maximum_cell_separation": 5,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 43,
+                "shared_edges": 41
+              },
+              {
+                "cell_jaccard": 0.873015873015873,
+                "common_prefix_fraction": 0.7068965517241379,
+                "common_prefix_steps": 41,
+                "edge_jaccard": 0.8412698412698413,
+                "left_method": "ml",
+                "left_steps": 58,
+                "maximum_cell_separation": 2,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 55,
+                "shared_edges": 53
+              }
+            ],
+            "rejection_reasons": [],
+            "visibly_divergent_pair_count": 3
+          },
+          {
+            "accepted": false,
+            "city_id": "phoenix",
+            "common_destination": [
+              4,
+              31
+            ],
+            "common_start": [
+              31,
+              4
+            ],
+            "exact_unique_route_count": 2,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 27,
+            "mean_edge_jaccard": 0.34545454545454546,
+            "minimum_edge_jaccard": 0.01818181818181818,
+            "pairwise": [
+              {
+                "cell_jaccard": 0.03636363636363636,
+                "common_prefix_fraction": 0.037037037037037035,
+                "common_prefix_steps": 2,
+                "edge_jaccard": 0.01818181818181818,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 27,
+                "right_method": "ml",
+                "right_steps": 54,
+                "shared_cells": 4,
+                "shared_edges": 2
+              },
+              {
+                "cell_jaccard": 0.03636363636363636,
+                "common_prefix_fraction": 0.037037037037037035,
+                "common_prefix_steps": 2,
+                "edge_jaccard": 0.01818181818181818,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 27,
+                "right_method": "dl",
+                "right_steps": 54,
+                "shared_cells": 4,
+                "shared_edges": 2
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 54,
+                "edge_jaccard": 1.0,
+                "left_method": "ml",
+                "left_steps": 54,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 54,
+                "shared_cells": 55,
+                "shared_edges": 54
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "at least one method pair is effectively identical"
+            ],
+            "visibly_divergent_pair_count": 2
+          }
+        ]
+      },
+      "seeds": {
+        "chicago": 5315,
+        "new_york": 5215,
+        "phoenix": 5415
+      }
+    },
+    {
+      "accepted": false,
+      "candidate_index": 15,
+      "divergence": {
+        "accepted": false,
+        "accepted_city_count": 0,
+        "cities": [
+          {
+            "accepted": false,
+            "city_id": "new_york",
+            "common_destination": [
+              2,
+              33
+            ],
+            "common_start": [
+              33,
+              2
+            ],
+            "exact_unique_route_count": 1,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 0,
+            "mean_edge_jaccard": 1.0,
+            "minimum_edge_jaccard": 1.0,
+            "pairwise": [
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "ml",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "ml",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "fewer than two visibly divergent method pairs",
+              "mean edge overlap exceeds showcase threshold",
+              "at least one method pair is effectively identical",
+              "routes do not separate sufficiently on the map"
+            ],
+            "visibly_divergent_pair_count": 0
+          },
+          {
+            "accepted": false,
+            "city_id": "chicago",
+            "common_destination": [
+              3,
+              32
+            ],
+            "common_start": [
+              32,
+              3
+            ],
+            "exact_unique_route_count": 2,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 2,
+            "mean_edge_jaccard": 0.6977777777777777,
+            "minimum_edge_jaccard": 0.5466666666666666,
+            "pairwise": [
+              {
+                "cell_jaccard": 0.5733333333333334,
+                "common_prefix_fraction": 0.7068965517241379,
+                "common_prefix_steps": 41,
+                "edge_jaccard": 0.5466666666666666,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 2,
+                "right_method": "ml",
+                "right_steps": 58,
+                "shared_cells": 43,
+                "shared_edges": 41
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 58,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 59,
+                "shared_edges": 58
+              },
+              {
+                "cell_jaccard": 0.5733333333333334,
+                "common_prefix_fraction": 0.7068965517241379,
+                "common_prefix_steps": 41,
+                "edge_jaccard": 0.5466666666666666,
+                "left_method": "ml",
+                "left_steps": 58,
+                "maximum_cell_separation": 2,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 43,
+                "shared_edges": 41
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "at least one method pair is effectively identical",
+              "routes do not separate sufficiently on the map"
+            ],
+            "visibly_divergent_pair_count": 2
+          },
+          {
+            "accepted": false,
+            "city_id": "phoenix",
+            "common_destination": [
+              4,
+              31
+            ],
+            "common_start": [
+              31,
+              4
+            ],
+            "exact_unique_route_count": 1,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 0,
+            "mean_edge_jaccard": 1.0,
+            "minimum_edge_jaccard": 1.0,
+            "pairwise": [
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 54,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 54,
+                "maximum_cell_separation": 0,
+                "right_method": "ml",
+                "right_steps": 54,
+                "shared_cells": 55,
+                "shared_edges": 54
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 54,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 54,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 54,
+                "shared_cells": 55,
+                "shared_edges": 54
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 54,
+                "edge_jaccard": 1.0,
+                "left_method": "ml",
+                "left_steps": 54,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 54,
+                "shared_cells": 55,
+                "shared_edges": 54
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "fewer than two visibly divergent method pairs",
+              "mean edge overlap exceeds showcase threshold",
+              "at least one method pair is effectively identical",
+              "routes do not separate sufficiently on the map"
+            ],
+            "visibly_divergent_pair_count": 0
+          }
+        ]
+      },
+      "seeds": {
+        "chicago": 5316,
+        "new_york": 5216,
+        "phoenix": 5416
+      }
+    },
+    {
+      "accepted": false,
+      "candidate_index": 16,
+      "divergence": {
+        "accepted": false,
+        "accepted_city_count": 1,
+        "cities": [
+          {
+            "accepted": false,
+            "city_id": "new_york",
+            "common_destination": [
+              2,
+              33
+            ],
+            "common_start": [
+              33,
+              2
+            ],
+            "exact_unique_route_count": 1,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 0,
+            "mean_edge_jaccard": 1.0,
+            "minimum_edge_jaccard": 1.0,
+            "pairwise": [
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "ml",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "ml",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "fewer than two visibly divergent method pairs",
+              "mean edge overlap exceeds showcase threshold",
+              "at least one method pair is effectively identical",
+              "routes do not separate sufficiently on the map"
+            ],
+            "visibly_divergent_pair_count": 0
+          },
+          {
+            "accepted": false,
+            "city_id": "chicago",
+            "common_destination": [
+              3,
+              32
+            ],
+            "common_start": [
+              32,
+              3
+            ],
+            "exact_unique_route_count": 1,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 0,
+            "mean_edge_jaccard": 1.0,
+            "minimum_edge_jaccard": 1.0,
+            "pairwise": [
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 58,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 0,
+                "right_method": "ml",
+                "right_steps": 58,
+                "shared_cells": 59,
+                "shared_edges": 58
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 58,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 59,
+                "shared_edges": 58
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 58,
+                "edge_jaccard": 1.0,
+                "left_method": "ml",
+                "left_steps": 58,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 59,
+                "shared_edges": 58
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "fewer than two visibly divergent method pairs",
+              "mean edge overlap exceeds showcase threshold",
+              "at least one method pair is effectively identical",
+              "routes do not separate sufficiently on the map"
+            ],
+            "visibly_divergent_pair_count": 0
+          },
+          {
+            "accepted": true,
+            "city_id": "phoenix",
+            "common_destination": [
+              4,
+              31
+            ],
+            "common_start": [
+              31,
+              4
+            ],
+            "exact_unique_route_count": 3,
+            "maximum_edge_jaccard": 0.7419354838709677,
+            "maximum_route_separation": 6,
+            "mean_edge_jaccard": 0.5228278503084547,
+            "minimum_edge_jaccard": 0.3670886075949367,
+            "pairwise": [
+              {
+                "cell_jaccard": 0.7741935483870968,
+                "common_prefix_fraction": 0.8148148148148148,
+                "common_prefix_steps": 44,
+                "edge_jaccard": 0.7419354838709677,
+                "left_method": "dijkstra",
+                "left_steps": 54,
+                "maximum_cell_separation": 1,
+                "right_method": "ml",
+                "right_steps": 54,
+                "shared_cells": 48,
+                "shared_edges": 46
+              },
+              {
+                "cell_jaccard": 0.5068493150684932,
+                "common_prefix_fraction": 0.25925925925925924,
+                "common_prefix_steps": 14,
+                "edge_jaccard": 0.4594594594594595,
+                "left_method": "dijkstra",
+                "left_steps": 54,
+                "maximum_cell_separation": 6,
+                "right_method": "dl",
+                "right_steps": 54,
+                "shared_cells": 37,
+                "shared_edges": 34
+              },
+              {
+                "cell_jaccard": 0.41025641025641024,
+                "common_prefix_fraction": 0.25925925925925924,
+                "common_prefix_steps": 14,
+                "edge_jaccard": 0.3670886075949367,
+                "left_method": "ml",
+                "left_steps": 54,
+                "maximum_cell_separation": 6,
+                "right_method": "dl",
+                "right_steps": 54,
+                "shared_cells": 32,
+                "shared_edges": 29
+              }
+            ],
+            "rejection_reasons": [],
+            "visibly_divergent_pair_count": 3
+          }
+        ]
+      },
+      "seeds": {
+        "chicago": 5317,
+        "new_york": 5217,
+        "phoenix": 5417
+      }
+    },
+    {
+      "accepted": false,
+      "candidate_index": 17,
+      "divergence": {
+        "accepted": false,
+        "accepted_city_count": 0,
+        "cities": [
+          {
+            "accepted": false,
+            "city_id": "new_york",
+            "common_destination": [
+              2,
+              33
+            ],
+            "common_start": [
+              33,
+              2
+            ],
+            "exact_unique_route_count": 2,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 9,
+            "mean_edge_jaccard": 0.7000000000000001,
+            "minimum_edge_jaccard": 0.55,
+            "pairwise": [
+              {
+                "cell_jaccard": 0.575,
+                "common_prefix_fraction": 0.45161290322580644,
+                "common_prefix_steps": 28,
+                "edge_jaccard": 0.55,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 9,
+                "right_method": "ml",
+                "right_steps": 62,
+                "shared_cells": 46,
+                "shared_edges": 44
+              },
+              {
+                "cell_jaccard": 0.575,
+                "common_prefix_fraction": 0.45161290322580644,
+                "common_prefix_steps": 28,
+                "edge_jaccard": 0.55,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 9,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 46,
+                "shared_edges": 44
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "ml",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "at least one method pair is effectively identical"
+            ],
+            "visibly_divergent_pair_count": 2
+          },
+          {
+            "accepted": false,
+            "city_id": "chicago",
+            "common_destination": [
+              3,
+              32
+            ],
+            "common_start": [
+              32,
+              3
+            ],
+            "exact_unique_route_count": 2,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 6,
+            "mean_edge_jaccard": 0.7714285714285714,
+            "minimum_edge_jaccard": 0.6571428571428571,
+            "pairwise": [
+              {
+                "cell_jaccard": 0.6857142857142857,
+                "common_prefix_fraction": 0.7068965517241379,
+                "common_prefix_steps": 41,
+                "edge_jaccard": 0.6571428571428571,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 6,
+                "right_method": "ml",
+                "right_steps": 58,
+                "shared_cells": 48,
+                "shared_edges": 46
+              },
+              {
+                "cell_jaccard": 0.6857142857142857,
+                "common_prefix_fraction": 0.7068965517241379,
+                "common_prefix_steps": 41,
+                "edge_jaccard": 0.6571428571428571,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 6,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 48,
+                "shared_edges": 46
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 58,
+                "edge_jaccard": 1.0,
+                "left_method": "ml",
+                "left_steps": 58,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 59,
+                "shared_edges": 58
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "at least one method pair is effectively identical"
+            ],
+            "visibly_divergent_pair_count": 2
+          },
+          {
+            "accepted": false,
+            "city_id": "phoenix",
+            "common_destination": [
+              4,
+              31
+            ],
+            "common_start": [
+              31,
+              4
+            ],
+            "exact_unique_route_count": 2,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 1,
+            "mean_edge_jaccard": 0.9402985074626865,
+            "minimum_edge_jaccard": 0.9104477611940298,
+            "pairwise": [
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 64,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 64,
+                "maximum_cell_separation": 0,
+                "right_method": "ml",
+                "right_steps": 64,
+                "shared_cells": 65,
+                "shared_edges": 64
+              },
+              {
+                "cell_jaccard": 0.9402985074626866,
+                "common_prefix_fraction": 0.953125,
+                "common_prefix_steps": 61,
+                "edge_jaccard": 0.9104477611940298,
+                "left_method": "dijkstra",
+                "left_steps": 64,
+                "maximum_cell_separation": 1,
+                "right_method": "dl",
+                "right_steps": 64,
+                "shared_cells": 63,
+                "shared_edges": 61
+              },
+              {
+                "cell_jaccard": 0.9402985074626866,
+                "common_prefix_fraction": 0.953125,
+                "common_prefix_steps": 61,
+                "edge_jaccard": 0.9104477611940298,
+                "left_method": "ml",
+                "left_steps": 64,
+                "maximum_cell_separation": 1,
+                "right_method": "dl",
+                "right_steps": 64,
+                "shared_cells": 63,
+                "shared_edges": 61
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "fewer than two visibly divergent method pairs",
+              "mean edge overlap exceeds showcase threshold",
+              "at least one method pair is effectively identical",
+              "routes do not separate sufficiently on the map"
+            ],
+            "visibly_divergent_pair_count": 0
+          }
+        ]
+      },
+      "seeds": {
+        "chicago": 5318,
+        "new_york": 5218,
+        "phoenix": 5418
+      }
+    },
+    {
+      "accepted": false,
+      "candidate_index": 18,
+      "divergence": {
+        "accepted": false,
+        "accepted_city_count": 1,
+        "cities": [
+          {
+            "accepted": false,
+            "city_id": "new_york",
+            "common_destination": [
+              2,
+              33
+            ],
+            "common_start": [
+              33,
+              2
+            ],
+            "exact_unique_route_count": 1,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 0,
+            "mean_edge_jaccard": 1.0,
+            "minimum_edge_jaccard": 1.0,
+            "pairwise": [
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "ml",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "ml",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "fewer than two visibly divergent method pairs",
+              "mean edge overlap exceeds showcase threshold",
+              "at least one method pair is effectively identical",
+              "routes do not separate sufficiently on the map"
+            ],
+            "visibly_divergent_pair_count": 0
+          },
+          {
+            "accepted": false,
+            "city_id": "chicago",
+            "common_destination": [
+              3,
+              32
+            ],
+            "common_start": [
+              32,
+              3
+            ],
+            "exact_unique_route_count": 2,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 2,
+            "mean_edge_jaccard": 0.670995670995671,
+            "minimum_edge_jaccard": 0.5064935064935064,
+            "pairwise": [
+              {
+                "cell_jaccard": 0.5324675324675324,
+                "common_prefix_fraction": 0.0,
+                "common_prefix_steps": 0,
+                "edge_jaccard": 0.5064935064935064,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 2,
+                "right_method": "ml",
+                "right_steps": 58,
+                "shared_cells": 41,
+                "shared_edges": 39
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 58,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 59,
+                "shared_edges": 58
+              },
+              {
+                "cell_jaccard": 0.5324675324675324,
+                "common_prefix_fraction": 0.0,
+                "common_prefix_steps": 0,
+                "edge_jaccard": 0.5064935064935064,
+                "left_method": "ml",
+                "left_steps": 58,
+                "maximum_cell_separation": 2,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 41,
+                "shared_edges": 39
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "at least one method pair is effectively identical",
+              "routes do not separate sufficiently on the map"
+            ],
+            "visibly_divergent_pair_count": 2
+          },
+          {
+            "accepted": true,
+            "city_id": "phoenix",
+            "common_destination": [
+              4,
+              31
+            ],
+            "common_start": [
+              31,
+              4
+            ],
+            "exact_unique_route_count": 3,
+            "maximum_edge_jaccard": 0.875,
+            "maximum_route_separation": 5,
+            "mean_edge_jaccard": 0.4816723940435281,
+            "minimum_edge_jaccard": 0.27835051546391754,
+            "pairwise": [
+              {
+                "cell_jaccard": 0.3125,
+                "common_prefix_fraction": 0.45,
+                "common_prefix_steps": 27,
+                "edge_jaccard": 0.2916666666666667,
+                "left_method": "dijkstra",
+                "left_steps": 60,
+                "maximum_cell_separation": 5,
+                "right_method": "ml",
+                "right_steps": 64,
+                "shared_cells": 30,
+                "shared_edges": 28
+              },
+              {
+                "cell_jaccard": 0.90625,
+                "common_prefix_fraction": 0.9333333333333333,
+                "common_prefix_steps": 56,
+                "edge_jaccard": 0.875,
+                "left_method": "dijkstra",
+                "left_steps": 60,
+                "maximum_cell_separation": 1,
+                "right_method": "dl",
+                "right_steps": 60,
+                "shared_cells": 58,
+                "shared_edges": 56
+              },
+              {
+                "cell_jaccard": 0.29896907216494845,
+                "common_prefix_fraction": 0.45,
+                "common_prefix_steps": 27,
+                "edge_jaccard": 0.27835051546391754,
+                "left_method": "ml",
+                "left_steps": 64,
+                "maximum_cell_separation": 5,
+                "right_method": "dl",
+                "right_steps": 60,
+                "shared_cells": 29,
+                "shared_edges": 27
+              }
+            ],
+            "rejection_reasons": [],
+            "visibly_divergent_pair_count": 2
+          }
+        ]
+      },
+      "seeds": {
+        "chicago": 5319,
+        "new_york": 5219,
+        "phoenix": 5419
+      }
+    },
+    {
+      "accepted": false,
+      "candidate_index": 19,
+      "divergence": {
+        "accepted": false,
+        "accepted_city_count": 1,
+        "cities": [
+          {
+            "accepted": false,
+            "city_id": "new_york",
+            "common_destination": [
+              2,
+              33
+            ],
+            "common_start": [
+              33,
+              2
+            ],
+            "exact_unique_route_count": 2,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 6,
+            "mean_edge_jaccard": 0.7402597402597403,
+            "minimum_edge_jaccard": 0.6103896103896104,
+            "pairwise": [
+              {
+                "cell_jaccard": 0.6363636363636364,
+                "common_prefix_fraction": 0.20967741935483872,
+                "common_prefix_steps": 13,
+                "edge_jaccard": 0.6103896103896104,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 6,
+                "right_method": "ml",
+                "right_steps": 62,
+                "shared_cells": 49,
+                "shared_edges": 47
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              },
+              {
+                "cell_jaccard": 0.6363636363636364,
+                "common_prefix_fraction": 0.20967741935483872,
+                "common_prefix_steps": 13,
+                "edge_jaccard": 0.6103896103896104,
+                "left_method": "ml",
+                "left_steps": 62,
+                "maximum_cell_separation": 6,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 49,
+                "shared_edges": 47
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "at least one method pair is effectively identical"
+            ],
+            "visibly_divergent_pair_count": 2
+          },
+          {
+            "accepted": true,
+            "city_id": "chicago",
+            "common_destination": [
+              3,
+              32
+            ],
+            "common_start": [
+              32,
+              3
+            ],
+            "exact_unique_route_count": 3,
+            "maximum_edge_jaccard": 0.7575757575757576,
+            "maximum_route_separation": 12,
+            "mean_edge_jaccard": 0.4189409442508018,
+            "minimum_edge_jaccard": 0.1958762886597938,
+            "pairwise": [
+              {
+                "cell_jaccard": 0.7878787878787878,
+                "common_prefix_fraction": 0.034482758620689655,
+                "common_prefix_steps": 2,
+                "edge_jaccard": 0.7575757575757576,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 2,
+                "right_method": "ml",
+                "right_steps": 58,
+                "shared_cells": 52,
+                "shared_edges": 50
+              },
+              {
+                "cell_jaccard": 0.3258426966292135,
+                "common_prefix_fraction": 0.27586206896551724,
+                "common_prefix_steps": 16,
+                "edge_jaccard": 0.30337078651685395,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 12,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 29,
+                "shared_edges": 27
+              },
+              {
+                "cell_jaccard": 0.22916666666666666,
+                "common_prefix_fraction": 0.034482758620689655,
+                "common_prefix_steps": 2,
+                "edge_jaccard": 0.1958762886597938,
+                "left_method": "ml",
+                "left_steps": 58,
+                "maximum_cell_separation": 12,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 22,
+                "shared_edges": 19
+              }
+            ],
+            "rejection_reasons": [],
+            "visibly_divergent_pair_count": 3
+          },
+          {
+            "accepted": false,
+            "city_id": "phoenix",
+            "common_destination": [
+              4,
+              31
+            ],
+            "common_start": [
+              31,
+              4
+            ],
+            "exact_unique_route_count": 1,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 0,
+            "mean_edge_jaccard": 1.0,
+            "minimum_edge_jaccard": 1.0,
+            "pairwise": [
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 54,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 54,
+                "maximum_cell_separation": 0,
+                "right_method": "ml",
+                "right_steps": 54,
+                "shared_cells": 55,
+                "shared_edges": 54
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 54,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 54,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 54,
+                "shared_cells": 55,
+                "shared_edges": 54
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 54,
+                "edge_jaccard": 1.0,
+                "left_method": "ml",
+                "left_steps": 54,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 54,
+                "shared_cells": 55,
+                "shared_edges": 54
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "fewer than two visibly divergent method pairs",
+              "mean edge overlap exceeds showcase threshold",
+              "at least one method pair is effectively identical",
+              "routes do not separate sufficiently on the map"
+            ],
+            "visibly_divergent_pair_count": 0
+          }
+        ]
+      },
+      "seeds": {
+        "chicago": 5320,
+        "new_york": 5220,
+        "phoenix": 5420
+      }
+    },
+    {
+      "accepted": false,
+      "candidate_index": 20,
+      "divergence": {
+        "accepted": false,
+        "accepted_city_count": 1,
+        "cities": [
+          {
+            "accepted": true,
+            "city_id": "new_york",
+            "common_destination": [
+              2,
+              33
+            ],
+            "common_start": [
+              33,
+              2
+            ],
+            "exact_unique_route_count": 3,
+            "maximum_edge_jaccard": 0.6103896103896104,
+            "maximum_route_separation": 9,
+            "mean_edge_jaccard": 0.4755457308648798,
+            "minimum_edge_jaccard": 0.3617021276595745,
+            "pairwise": [
+              {
+                "cell_jaccard": 0.4772727272727273,
+                "common_prefix_fraction": 0.0,
+                "common_prefix_steps": 0,
+                "edge_jaccard": 0.45454545454545453,
+                "left_method": "dijkstra",
+                "left_steps": 66,
+                "maximum_cell_separation": 3,
+                "right_method": "ml",
+                "right_steps": 62,
+                "shared_cells": 42,
+                "shared_edges": 40
+              },
+              {
+                "cell_jaccard": 0.3829787234042553,
+                "common_prefix_fraction": 0.0,
+                "common_prefix_steps": 0,
+                "edge_jaccard": 0.3617021276595745,
+                "left_method": "dijkstra",
+                "left_steps": 66,
+                "maximum_cell_separation": 9,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 36,
+                "shared_edges": 34
+              },
+              {
+                "cell_jaccard": 0.6363636363636364,
+                "common_prefix_fraction": 0.20967741935483872,
+                "common_prefix_steps": 13,
+                "edge_jaccard": 0.6103896103896104,
+                "left_method": "ml",
+                "left_steps": 62,
+                "maximum_cell_separation": 6,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 49,
+                "shared_edges": 47
+              }
+            ],
+            "rejection_reasons": [],
+            "visibly_divergent_pair_count": 3
+          },
+          {
+            "accepted": false,
+            "city_id": "chicago",
+            "common_destination": [
+              3,
+              32
+            ],
+            "common_start": [
+              32,
+              3
+            ],
+            "exact_unique_route_count": 2,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 4,
+            "mean_edge_jaccard": 0.46417445482866043,
+            "minimum_edge_jaccard": 0.19626168224299065,
+            "pairwise": [
+              {
+                "cell_jaccard": 0.23809523809523808,
+                "common_prefix_fraction": 0.0,
+                "common_prefix_steps": 0,
+                "edge_jaccard": 0.19626168224299065,
+                "left_method": "dijkstra",
+                "left_steps": 66,
+                "maximum_cell_separation": 4,
+                "right_method": "ml",
+                "right_steps": 62,
+                "shared_cells": 25,
+                "shared_edges": 21
+              },
+              {
+                "cell_jaccard": 0.23809523809523808,
+                "common_prefix_fraction": 0.0,
+                "common_prefix_steps": 0,
+                "edge_jaccard": 0.19626168224299065,
+                "left_method": "dijkstra",
+                "left_steps": 66,
+                "maximum_cell_separation": 4,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 25,
+                "shared_edges": 21
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "ml",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "at least one method pair is effectively identical"
+            ],
+            "visibly_divergent_pair_count": 2
+          },
+          {
+            "accepted": false,
+            "city_id": "phoenix",
+            "common_destination": [
+              4,
+              31
+            ],
+            "common_start": [
+              31,
+              4
+            ],
+            "exact_unique_route_count": 2,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 1,
+            "mean_edge_jaccard": 0.9523809523809524,
+            "minimum_edge_jaccard": 0.9285714285714286,
+            "pairwise": [
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 54,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 54,
+                "maximum_cell_separation": 0,
+                "right_method": "ml",
+                "right_steps": 54,
+                "shared_cells": 55,
+                "shared_edges": 54
+              },
+              {
+                "cell_jaccard": 0.9642857142857143,
+                "common_prefix_fraction": 0.48148148148148145,
+                "common_prefix_steps": 26,
+                "edge_jaccard": 0.9285714285714286,
+                "left_method": "dijkstra",
+                "left_steps": 54,
+                "maximum_cell_separation": 1,
+                "right_method": "dl",
+                "right_steps": 54,
+                "shared_cells": 54,
+                "shared_edges": 52
+              },
+              {
+                "cell_jaccard": 0.9642857142857143,
+                "common_prefix_fraction": 0.48148148148148145,
+                "common_prefix_steps": 26,
+                "edge_jaccard": 0.9285714285714286,
+                "left_method": "ml",
+                "left_steps": 54,
+                "maximum_cell_separation": 1,
+                "right_method": "dl",
+                "right_steps": 54,
+                "shared_cells": 54,
+                "shared_edges": 52
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "fewer than two visibly divergent method pairs",
+              "mean edge overlap exceeds showcase threshold",
+              "at least one method pair is effectively identical",
+              "routes do not separate sufficiently on the map"
+            ],
+            "visibly_divergent_pair_count": 0
+          }
+        ]
+      },
+      "seeds": {
+        "chicago": 5321,
+        "new_york": 5221,
+        "phoenix": 5421
+      }
+    },
+    {
+      "accepted": false,
+      "candidate_index": 21,
+      "divergence": {
+        "accepted": false,
+        "accepted_city_count": 1,
+        "cities": [
+          {
+            "accepted": false,
+            "city_id": "new_york",
+            "common_destination": [
+              2,
+              33
+            ],
+            "common_start": [
+              33,
+              2
+            ],
+            "exact_unique_route_count": 2,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 3,
+            "mean_edge_jaccard": 0.6363636363636364,
+            "minimum_edge_jaccard": 0.45454545454545453,
+            "pairwise": [
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 66,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 66,
+                "maximum_cell_separation": 0,
+                "right_method": "ml",
+                "right_steps": 66,
+                "shared_cells": 67,
+                "shared_edges": 66
+              },
+              {
+                "cell_jaccard": 0.4772727272727273,
+                "common_prefix_fraction": 0.0,
+                "common_prefix_steps": 0,
+                "edge_jaccard": 0.45454545454545453,
+                "left_method": "dijkstra",
+                "left_steps": 66,
+                "maximum_cell_separation": 3,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 42,
+                "shared_edges": 40
+              },
+              {
+                "cell_jaccard": 0.4772727272727273,
+                "common_prefix_fraction": 0.0,
+                "common_prefix_steps": 0,
+                "edge_jaccard": 0.45454545454545453,
+                "left_method": "ml",
+                "left_steps": 66,
+                "maximum_cell_separation": 3,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 42,
+                "shared_edges": 40
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "at least one method pair is effectively identical"
+            ],
+            "visibly_divergent_pair_count": 2
+          },
+          {
+            "accepted": true,
+            "city_id": "chicago",
+            "common_destination": [
+              3,
+              32
+            ],
+            "common_start": [
+              32,
+              3
+            ],
+            "exact_unique_route_count": 3,
+            "maximum_edge_jaccard": 0.7222222222222222,
+            "maximum_route_separation": 4,
+            "mean_edge_jaccard": 0.5102969842907924,
+            "minimum_edge_jaccard": 0.3263157894736842,
+            "pairwise": [
+              {
+                "cell_jaccard": 0.3617021276595745,
+                "common_prefix_fraction": 0.46774193548387094,
+                "common_prefix_steps": 29,
+                "edge_jaccard": 0.3263157894736842,
+                "left_method": "dijkstra",
+                "left_steps": 64,
+                "maximum_cell_separation": 4,
+                "right_method": "ml",
+                "right_steps": 62,
+                "shared_cells": 34,
+                "shared_edges": 31
+              },
+              {
+                "cell_jaccard": 0.5058823529411764,
+                "common_prefix_fraction": 0.6290322580645161,
+                "common_prefix_steps": 39,
+                "edge_jaccard": 0.4823529411764706,
+                "left_method": "dijkstra",
+                "left_steps": 64,
+                "maximum_cell_separation": 1,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 43,
+                "shared_edges": 41
+              },
+              {
+                "cell_jaccard": 0.75,
+                "common_prefix_fraction": 0.46774193548387094,
+                "common_prefix_steps": 29,
+                "edge_jaccard": 0.7222222222222222,
+                "left_method": "ml",
+                "left_steps": 62,
+                "maximum_cell_separation": 4,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 54,
+                "shared_edges": 52
+              }
+            ],
+            "rejection_reasons": [],
+            "visibly_divergent_pair_count": 3
+          },
+          {
+            "accepted": false,
+            "city_id": "phoenix",
+            "common_destination": [
+              4,
+              31
+            ],
+            "common_start": [
+              31,
+              4
+            ],
+            "exact_unique_route_count": 2,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 1,
+            "mean_edge_jaccard": 0.9402985074626865,
+            "minimum_edge_jaccard": 0.9104477611940298,
+            "pairwise": [
+              {
+                "cell_jaccard": 0.9402985074626866,
+                "common_prefix_fraction": 0.953125,
+                "common_prefix_steps": 61,
+                "edge_jaccard": 0.9104477611940298,
+                "left_method": "dijkstra",
+                "left_steps": 64,
+                "maximum_cell_separation": 1,
+                "right_method": "ml",
+                "right_steps": 64,
+                "shared_cells": 63,
+                "shared_edges": 61
+              },
+              {
+                "cell_jaccard": 0.9402985074626866,
+                "common_prefix_fraction": 0.953125,
+                "common_prefix_steps": 61,
+                "edge_jaccard": 0.9104477611940298,
+                "left_method": "dijkstra",
+                "left_steps": 64,
+                "maximum_cell_separation": 1,
+                "right_method": "dl",
+                "right_steps": 64,
+                "shared_cells": 63,
+                "shared_edges": 61
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 64,
+                "edge_jaccard": 1.0,
+                "left_method": "ml",
+                "left_steps": 64,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 64,
+                "shared_cells": 65,
+                "shared_edges": 64
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "fewer than two visibly divergent method pairs",
+              "mean edge overlap exceeds showcase threshold",
+              "at least one method pair is effectively identical",
+              "routes do not separate sufficiently on the map"
+            ],
+            "visibly_divergent_pair_count": 0
+          }
+        ]
+      },
+      "seeds": {
+        "chicago": 5322,
+        "new_york": 5222,
+        "phoenix": 5422
+      }
+    },
+    {
+      "accepted": false,
+      "candidate_index": 22,
+      "divergence": {
+        "accepted": false,
+        "accepted_city_count": 0,
+        "cities": [
+          {
+            "accepted": false,
+            "city_id": "new_york",
+            "common_destination": [
+              2,
+              33
+            ],
+            "common_start": [
+              33,
+              2
+            ],
+            "exact_unique_route_count": 1,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 0,
+            "mean_edge_jaccard": 1.0,
+            "minimum_edge_jaccard": 1.0,
+            "pairwise": [
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "ml",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 62,
+                "edge_jaccard": 1.0,
+                "left_method": "ml",
+                "left_steps": 62,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 63,
+                "shared_edges": 62
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "fewer than two visibly divergent method pairs",
+              "mean edge overlap exceeds showcase threshold",
+              "at least one method pair is effectively identical",
+              "routes do not separate sufficiently on the map"
+            ],
+            "visibly_divergent_pair_count": 0
+          },
+          {
+            "accepted": false,
+            "city_id": "chicago",
+            "common_destination": [
+              3,
+              32
+            ],
+            "common_start": [
+              32,
+              3
+            ],
+            "exact_unique_route_count": 2,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 2,
+            "mean_edge_jaccard": 0.8941798941798943,
+            "minimum_edge_jaccard": 0.8412698412698413,
+            "pairwise": [
+              {
+                "cell_jaccard": 0.873015873015873,
+                "common_prefix_fraction": 0.7068965517241379,
+                "common_prefix_steps": 41,
+                "edge_jaccard": 0.8412698412698413,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 2,
+                "right_method": "ml",
+                "right_steps": 58,
+                "shared_cells": 55,
+                "shared_edges": 53
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 58,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 58,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 59,
+                "shared_edges": 58
+              },
+              {
+                "cell_jaccard": 0.873015873015873,
+                "common_prefix_fraction": 0.7068965517241379,
+                "common_prefix_steps": 41,
+                "edge_jaccard": 0.8412698412698413,
+                "left_method": "ml",
+                "left_steps": 58,
+                "maximum_cell_separation": 2,
+                "right_method": "dl",
+                "right_steps": 58,
+                "shared_cells": 55,
+                "shared_edges": 53
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "mean edge overlap exceeds showcase threshold",
+              "at least one method pair is effectively identical",
+              "routes do not separate sufficiently on the map"
+            ],
+            "visibly_divergent_pair_count": 2
+          },
+          {
+            "accepted": false,
+            "city_id": "phoenix",
+            "common_destination": [
+              4,
+              31
+            ],
+            "common_start": [
+              31,
+              4
+            ],
+            "exact_unique_route_count": 1,
+            "maximum_edge_jaccard": 1.0,
+            "maximum_route_separation": 0,
+            "mean_edge_jaccard": 1.0,
+            "minimum_edge_jaccard": 1.0,
+            "pairwise": [
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 64,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 64,
+                "maximum_cell_separation": 0,
+                "right_method": "ml",
+                "right_steps": 64,
+                "shared_cells": 65,
+                "shared_edges": 64
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 64,
+                "edge_jaccard": 1.0,
+                "left_method": "dijkstra",
+                "left_steps": 64,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 64,
+                "shared_cells": 65,
+                "shared_edges": 64
+              },
+              {
+                "cell_jaccard": 1.0,
+                "common_prefix_fraction": 1.0,
+                "common_prefix_steps": 64,
+                "edge_jaccard": 1.0,
+                "left_method": "ml",
+                "left_steps": 64,
+                "maximum_cell_separation": 0,
+                "right_method": "dl",
+                "right_steps": 64,
+                "shared_cells": 65,
+                "shared_edges": 64
+              }
+            ],
+            "rejection_reasons": [
+              "fewer than three unique headline routes",
+              "fewer than two visibly divergent method pairs",
+              "mean edge overlap exceeds showcase threshold",
+              "at least one method pair is effectively identical",
+              "routes do not separate sufficiently on the map"
+            ],
+            "visibly_divergent_pair_count": 0
+          }
+        ]
+      },
+      "seeds": {
+        "chicago": 5323,
+        "new_york": 5223,
+        "phoenix": 5423
+      }
+    },
+    {
+      "accepted": true,
+      "candidate_index": 23,
+      "divergence": {
+        "accepted": true,
+        "accepted_city_count": 3,
+        "cities": [
+          {
+            "accepted": true,
+            "city_id": "new_york",
+            "common_destination": [
+              2,
+              33
+            ],
+            "common_start": [
+              33,
+              2
+            ],
+            "exact_unique_route_count": 3,
+            "maximum_edge_jaccard": 0.76,
+            "maximum_route_separation": 3,
+            "mean_edge_jaccard": 0.557491919844861,
+            "minimum_edge_jaccard": 0.4065934065934066,
+            "pairwise": [
+              {
+                "cell_jaccard": 0.7866666666666666,
+                "common_prefix_fraction": 0.5606060606060606,
+                "common_prefix_steps": 37,
+                "edge_jaccard": 0.76,
+                "left_method": "dijkstra",
+                "left_steps": 66,
+                "maximum_cell_separation": 3,
+                "right_method": "ml",
+                "right_steps": 66,
+                "shared_cells": 59,
+                "shared_edges": 57
+              },
+              {
+                "cell_jaccard": 0.5294117647058824,
+                "common_prefix_fraction": 0.6935483870967742,
+                "common_prefix_steps": 43,
+                "edge_jaccard": 0.5058823529411764,
+                "left_method": "dijkstra",
+                "left_steps": 66,
+                "maximum_cell_separation": 3,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 45,
+                "shared_edges": 43
+              },
+              {
+                "cell_jaccard": 0.42857142857142855,
+                "common_prefix_fraction": 0.5967741935483871,
+                "common_prefix_steps": 37,
+                "edge_jaccard": 0.4065934065934066,
+                "left_method": "ml",
+                "left_steps": 66,
+                "maximum_cell_separation": 3,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 39,
+                "shared_edges": 37
+              }
+            ],
+            "rejection_reasons": [],
+            "visibly_divergent_pair_count": 3
+          },
+          {
+            "accepted": true,
+            "city_id": "chicago",
+            "common_destination": [
+              3,
+              32
+            ],
+            "common_start": [
+              32,
+              3
+            ],
+            "exact_unique_route_count": 3,
+            "maximum_edge_jaccard": 0.5802469135802469,
+            "maximum_route_separation": 4,
+            "mean_edge_jaccard": 0.48555046932075646,
+            "minimum_edge_jaccard": 0.4157303370786517,
+            "pairwise": [
+              {
+                "cell_jaccard": 0.5,
+                "common_prefix_fraction": 0.015625,
+                "common_prefix_steps": 1,
+                "edge_jaccard": 0.4606741573033708,
+                "left_method": "dijkstra",
+                "left_steps": 66,
+                "maximum_cell_separation": 4,
+                "right_method": "ml",
+                "right_steps": 64,
+                "shared_cells": 44,
+                "shared_edges": 41
+              },
+              {
+                "cell_jaccard": 0.6049382716049383,
+                "common_prefix_fraction": 0.0,
+                "common_prefix_steps": 0,
+                "edge_jaccard": 0.5802469135802469,
+                "left_method": "dijkstra",
+                "left_steps": 66,
+                "maximum_cell_separation": 4,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 49,
+                "shared_edges": 47
+              },
+              {
+                "cell_jaccard": 0.45454545454545453,
+                "common_prefix_fraction": 0.0,
+                "common_prefix_steps": 0,
+                "edge_jaccard": 0.4157303370786517,
+                "left_method": "ml",
+                "left_steps": 64,
+                "maximum_cell_separation": 4,
+                "right_method": "dl",
+                "right_steps": 62,
+                "shared_cells": 40,
+                "shared_edges": 37
+              }
+            ],
+            "rejection_reasons": [],
+            "visibly_divergent_pair_count": 3
+          },
+          {
+            "accepted": true,
+            "city_id": "phoenix",
+            "common_destination": [
+              4,
+              31
+            ],
+            "common_start": [
+              31,
+              4
+            ],
+            "exact_unique_route_count": 3,
+            "maximum_edge_jaccard": 0.9285714285714286,
+            "maximum_route_separation": 19,
+            "mean_edge_jaccard": 0.3851251840942563,
+            "minimum_edge_jaccard": 0.1134020618556701,
+            "pairwise": [
+              {
+                "cell_jaccard": 0.13402061855670103,
+                "common_prefix_fraction": 0.14814814814814814,
+                "common_prefix_steps": 8,
+                "edge_jaccard": 0.1134020618556701,
+                "left_method": "dijkstra",
+                "left_steps": 54,
+                "maximum_cell_separation": 19,
+                "right_method": "ml",
+                "right_steps": 54,
+                "shared_cells": 13,
+                "shared_edges": 11
+              },
+              {
+                "cell_jaccard": 0.13402061855670103,
+                "common_prefix_fraction": 0.14814814814814814,
+                "common_prefix_steps": 8,
+                "edge_jaccard": 0.1134020618556701,
+                "left_method": "dijkstra",
+                "left_steps": 54,
+                "maximum_cell_separation": 19,
+                "right_method": "dl",
+                "right_steps": 54,
+                "shared_cells": 13,
+                "shared_edges": 11
+              },
+              {
+                "cell_jaccard": 0.9642857142857143,
+                "common_prefix_fraction": 0.5925925925925926,
+                "common_prefix_steps": 32,
+                "edge_jaccard": 0.9285714285714286,
+                "left_method": "ml",
+                "left_steps": 54,
+                "maximum_cell_separation": 1,
+                "right_method": "dl",
+                "right_steps": 54,
+                "shared_cells": 54,
+                "shared_edges": 52
+              }
+            ],
+            "rejection_reasons": [],
+            "visibly_divergent_pair_count": 2
+          }
+        ]
+      },
+      "seeds": {
+        "chicago": 5324,
+        "new_york": 5224,
+        "phoenix": 5424
+      }
+    }
+  ],
+  "candidate_order_was_frozen_before_search": true,
+  "immutable_seeds": {
+    "benchmark": 4303,
+    "dl": 4305,
+    "ml": 4304,
+    "training": 4301,
+    "validation": 4302
+  },
+  "schema_version": 1,
+  "search_contract": {
+    "acceptance": {
+      "maximum_mean_edge_jaccard": 0.88,
+      "maximum_pair_edge_jaccard": 0.97,
+      "minimum_maximum_route_separation": 3,
+      "minimum_unique_route_count": 3,
+      "minimum_visibly_divergent_pairs": 2,
+      "visible_pair_max_edge_jaccard": 0.85
+    },
+    "candidate_order_is_frozen": true,
+    "candidate_showcase_seeds": [
+      {
+        "candidate_index": 0,
+        "chicago": 5301,
+        "new_york": 5201,
+        "phoenix": 5401
+      },
+      {
+        "candidate_index": 1,
+        "chicago": 5302,
+        "new_york": 5202,
+        "phoenix": 5402
+      },
+      {
+        "candidate_index": 2,
+        "chicago": 5303,
+        "new_york": 5203,
+        "phoenix": 5403
+      },
+      {
+        "candidate_index": 3,
+        "chicago": 5304,
+        "new_york": 5204,
+        "phoenix": 5404
+      },
+      {
+        "candidate_index": 4,
+        "chicago": 5305,
+        "new_york": 5205,
+        "phoenix": 5405
+      },
+      {
+        "candidate_index": 5,
+        "chicago": 5306,
+        "new_york": 5206,
+        "phoenix": 5406
+      },
+      {
+        "candidate_index": 6,
+        "chicago": 5307,
+        "new_york": 5207,
+        "phoenix": 5407
+      },
+      {
+        "candidate_index": 7,
+        "chicago": 5308,
+        "new_york": 5208,
+        "phoenix": 5408
+      },
+      {
+        "candidate_index": 8,
+        "chicago": 5309,
+        "new_york": 5209,
+        "phoenix": 5409
+      },
+      {
+        "candidate_index": 9,
+        "chicago": 5310,
+        "new_york": 5210,
+        "phoenix": 5410
+      },
+      {
+        "candidate_index": 10,
+        "chicago": 5311,
+        "new_york": 5211,
+        "phoenix": 5411
+      },
+      {
+        "candidate_index": 11,
+        "chicago": 5312,
+        "new_york": 5212,
+        "phoenix": 5412
+      },
+      {
+        "candidate_index": 12,
+        "chicago": 5313,
+        "new_york": 5213,
+        "phoenix": 5413
+      },
+      {
+        "candidate_index": 13,
+        "chicago": 5314,
+        "new_york": 5214,
+        "phoenix": 5414
+      },
+      {
+        "candidate_index": 14,
+        "chicago": 5315,
+        "new_york": 5215,
+        "phoenix": 5415
+      },
+      {
+        "candidate_index": 15,
+        "chicago": 5316,
+        "new_york": 5216,
+        "phoenix": 5416
+      },
+      {
+        "candidate_index": 16,
+        "chicago": 5317,
+        "new_york": 5217,
+        "phoenix": 5417
+      },
+      {
+        "candidate_index": 17,
+        "chicago": 5318,
+        "new_york": 5218,
+        "phoenix": 5418
+      },
+      {
+        "candidate_index": 18,
+        "chicago": 5319,
+        "new_york": 5219,
+        "phoenix": 5419
+      },
+      {
+        "candidate_index": 19,
+        "chicago": 5320,
+        "new_york": 5220,
+        "phoenix": 5420
+      },
+      {
+        "candidate_index": 20,
+        "chicago": 5321,
+        "new_york": 5221,
+        "phoenix": 5421
+      },
+      {
+        "candidate_index": 21,
+        "chicago": 5322,
+        "new_york": 5222,
+        "phoenix": 5422
+      },
+      {
+        "candidate_index": 22,
+        "chicago": 5323,
+        "new_york": 5223,
+        "phoenix": 5423
+      },
+      {
+        "candidate_index": 23,
+        "chicago": 5324,
+        "new_york": 5224,
+        "phoenix": 5424
+      }
+    ],
+    "common_objective": "travel_time + 4.0 * estimated_zombie_risk",
+    "estimator_contract": {
+      "dijkstra": "observed visible risk -> Dijkstra",
+      "dl": "observable multi-channel grid tensor -> CNN predicted risk -> A*",
+      "ml": "observable engineered features -> Gradient Boosting predicted risk -> A*"
+    },
+    "fairness_rules": [
+      "All headline planners receive the same physical city geometry.",
+      "All headline planners receive the same Camp A and Safe Zone.",
+      "All headline planners use the same travel-time cost semantics.",
+      "All headline planners use risk weight 4.0.",
+      "The only headline planning difference is the risk estimator.",
+      "Hidden true risk is forbidden during headline route inference.",
+      "True risk may be used only after routing for evaluation.",
+      "The Oracle remains benchmark-only and is never eligible to win."
+    ],
+    "headline_methods": [
+      "dijkstra",
+      "ml",
+      "dl"
+    ],
+    "immutable_seeds": {
+      "benchmark": 4303,
+      "dl": 4305,
+      "ml": 4304,
+      "training": 4301,
+      "validation": 4302
+    },
+    "original_showcase_seeds": {
+      "chicago": 4202,
+      "new_york": 4201,
+      "phoenix": 4203
+    },
+    "schema_version": 1,
+    "selection_policy": "first_acceptable_candidate",
+    "showcase_is_not_benchmark": true,
+    "showcase_seed_search_may_not_modify_benchmark_seed": true,
+    "showcase_seed_search_may_not_modify_dl_seed": true,
+    "showcase_seed_search_may_not_modify_ml_seed": true,
+    "showcase_seed_search_may_not_modify_training_seed": true,
+    "showcase_seed_search_may_not_modify_validation_seed": true
+  },
+  "selected_candidate_index": 23,
+  "selection_policy": "first_acceptable_candidate",
+  "showcase_is_not_benchmark": true,
+  "step": "3R"
+}
