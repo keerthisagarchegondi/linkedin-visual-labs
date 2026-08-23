@@ -201,8 +201,29 @@ def render_previews_command() -> None:
 
 @app.command("render-video")
 def render_video_command() -> None:
-    """Reserved for Revised Step 9."""
-    _reserved_command("render-video")
+    """Render and validate the canonical revised 60-second comparison video."""
+    from linkedin_visual_labs.projects.p04_zombie_escape.video import (
+        render_canonical_video,
+        validate_canonical_video,
+    )
+
+    result = render_canonical_video()
+
+    validation = validate_canonical_video(result.video_path)
+
+    typer.echo(f"Rendered: {result.video_path}")
+
+    typer.echo(f"Duration: {validation.duration_seconds:.3f} s")
+
+    typer.echo(f"Dimensions: {validation.width}x{validation.height}")
+
+    typer.echo(f"FPS: {validation.fps:.3f}")
+
+    typer.echo(f"Frames: {validation.frame_count}")
+
+    typer.echo(f"Codec: {validation.codec}")
+
+    typer.echo(f"Pixel format: {validation.pixel_format}")
 
 
 @app.command("validate")
