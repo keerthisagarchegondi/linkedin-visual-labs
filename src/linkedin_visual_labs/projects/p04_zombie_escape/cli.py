@@ -17,6 +17,9 @@ from linkedin_visual_labs.projects.p04_zombie_escape.dl_pipeline import (
     solve_all_routes_from_persisted_predictions,
 )
 from linkedin_visual_labs.projects.p04_zombie_escape.evaluation import run_evaluation
+from linkedin_visual_labs.projects.p04_zombie_escape.mission_visualization import (
+    render_preview_frames,
+)
 from linkedin_visual_labs.projects.p04_zombie_escape.ml_pipeline import (
     run_ml_pipeline,
 )
@@ -30,7 +33,6 @@ from linkedin_visual_labs.projects.p04_zombie_escape.pipeline import (
 from linkedin_visual_labs.projects.p04_zombie_escape.serialization import (
     write_generated_cities,
 )
-from linkedin_visual_labs.projects.p04_zombie_escape.visualization import render_preview_frames
 
 CLI_HELP = "Dynamic Zombie Escape Planner — Dijkstra vs ML vs Deep Learning"
 
