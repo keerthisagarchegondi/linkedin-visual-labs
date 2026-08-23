@@ -42,6 +42,9 @@ dev = [
   "pytest-cov>=6.0",
   "ruff>=0.8",
   "types-PyYAML>=6.0",
+    "pandas-stubs",
+    "joblib-stubs",
+    "scikit-learn-stubs",
 ]
 
 [project.scripts]
