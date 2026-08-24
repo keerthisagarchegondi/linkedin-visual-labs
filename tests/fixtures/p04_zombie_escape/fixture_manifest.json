@@ -1,0 +1,35 @@
+{
+  "files": {
+    "cities.json": {
+      "bytes": 720369,
+      "sha256": "1869b72f8d66a74e6b6e80f69ae8c8332f903fc45b348b52c3017c42cf99617a"
+    },
+    "evaluation_summary.json": {
+      "bytes": 15010,
+      "sha256": "b7c1cba775433544920ff47b80d3a6f6007cc7d6da1b6de3ce797e65b06f44b7"
+    },
+    "overall_comparison.csv": {
+      "bytes": 857,
+      "sha256": "3b4ce01a060911da7eed7aed5a1c02f8cbe35b3f5ad388533171509ccbeb7725"
+    },
+    "predicted_risk_maps.json": {
+      "bytes": 641156,
+      "sha256": "4ebcf04ac942236f7e7c5ba0d3cdf666a87002dc9ed5996d9e07bc837d162746"
+    },
+    "route_comparison.csv": {
+      "bytes": 3140,
+      "sha256": "19d8ef2048e78e6a7e1d419028bb4b2dd0d60c86aff6a549ce1babe5400e3d73"
+    },
+    "routes.json": {
+      "bytes": 64324,
+      "sha256": "b3a2a8edb71d1d67fc09213216bfb447922bc8a2d2a87e5728d16b3d9a86d43d"
+    },
+    "search_traces.json": {
+      "bytes": 6356532,
+      "sha256": "b6647489a1e789573af4367765833e10eddefc4b8f525af37899bb87ce90372b"
+    }
+  },
+  "project_id": "p04_zombie_escape",
+  "purpose": "Deterministic committed regression fixtures for CI; copied from the frozen Project 2 showcase artifacts.",
+  "source_runtime_directory": "outputs/p04_zombie_escape/data"
+}
