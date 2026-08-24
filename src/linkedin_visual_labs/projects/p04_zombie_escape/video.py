@@ -2337,7 +2337,7 @@ def _render_opening(
                 70,
                 250,
             ),
-            "DIJKSTRA vs ML vs DEEP LEARNING",
+            "DIJKSTRA vs ML vs DL",
             fill=TEXT,
             font=title,
         )
