@@ -56,7 +56,7 @@ def _payloads() -> tuple[
     dict[str, object],
     dict[str, object],
 ]:
-    return load_visual_payloads(Path("outputs/p04_zombie_escape/data"))
+    return load_visual_payloads(Path("tests/fixtures/p04_zombie_escape/data"))
 
 
 def test_exact_frame_geometry() -> None:

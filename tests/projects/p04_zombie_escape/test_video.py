@@ -31,7 +31,7 @@ from linkedin_visual_labs.projects.p04_zombie_escape.visualization import (
     _city_payload,
 )
 
-DATA = Path("outputs/p04_zombie_escape/data")
+DATA = Path("tests/fixtures/p04_zombie_escape/data")
 
 
 def test_schedule_is_exactly_sixty_seconds() -> None:

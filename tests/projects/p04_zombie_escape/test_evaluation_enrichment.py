@@ -14,7 +14,7 @@ from linkedin_visual_labs.projects.p04_zombie_escape.evaluation_enrichment impor
     build_method_metrics,
 )
 
-DATA = Path("outputs/p04_zombie_escape/data")
+DATA = Path("tests/fixtures/p04_zombie_escape/data")
 
 
 def _payload(

@@ -1,0 +1,382 @@
+{
+  "cities": [
+    {
+      "best_headline_realized_objective": 117.68035913649405,
+      "city_id": "phoenix",
+      "methods": {
+        "dijkstra": {
+          "best_headline_realized_objective": 117.68035913649405,
+          "city_winner": false,
+          "distance": 54.0,
+          "high_risk_cells_crossed": 10,
+          "maximum_local_true_risk": 0.7980421900868163,
+          "normalized_objective_regret": 0.10691836313439863,
+          "oracle_risk_regret": 7.326771455192857,
+          "oracle_true_cumulative_risk": 15.23886617191618,
+          "realized_objective": 130.26255050843616,
+          "route_valid": true,
+          "travel_time": 40.0,
+          "true_cumulative_risk": 22.565637627109037
+        },
+        "dl": {
+          "best_headline_realized_objective": 117.68035913649405,
+          "city_winner": false,
+          "distance": 54.0,
+          "high_risk_cells_crossed": 1,
+          "maximum_local_true_risk": 0.65162073524235,
+          "normalized_objective_regret": 0.0002077442736567073,
+          "oracle_risk_regret": 4.187335467390449,
+          "oracle_true_cumulative_risk": 15.23886617191618,
+          "realized_objective": 117.70480655722652,
+          "route_valid": true,
+          "travel_time": 40.0,
+          "true_cumulative_risk": 19.42620163930663
+        },
+        "ml": {
+          "best_headline_realized_objective": 117.68035913649405,
+          "city_winner": true,
+          "distance": 54.0,
+          "high_risk_cells_crossed": 1,
+          "maximum_local_true_risk": 0.65162073524235,
+          "normalized_objective_regret": 0.0,
+          "oracle_risk_regret": 4.181223612207331,
+          "oracle_true_cumulative_risk": 15.23886617191618,
+          "realized_objective": 117.68035913649405,
+          "route_valid": true,
+          "travel_time": 40.0,
+          "true_cumulative_risk": 19.420089784123512
+        }
+      },
+      "oracle": {
+        "eligible_for_winner": false,
+        "role": "true-risk benchmark only",
+        "true_cumulative_risk": 15.23886617191618
+      },
+      "winner_method": "ml"
+    },
+    {
+      "best_headline_realized_objective": 81.0889106004926,
+      "city_id": "new_york",
+      "methods": {
+        "dijkstra": {
+          "best_headline_realized_objective": 81.0889106004926,
+          "city_winner": false,
+          "distance": 66.0,
+          "high_risk_cells_crossed": 0,
+          "maximum_local_true_risk": 0.270456787580257,
+          "normalized_objective_regret": 0.016063399035047162,
+          "oracle_risk_regret": 0.0,
+          "oracle_true_cumulative_risk": 8.531486909382409,
+          "realized_objective": 82.39147412878557,
+          "route_valid": true,
+          "travel_time": 54.85185185185185,
+          "true_cumulative_risk": 6.8849055692334336
+        },
+        "dl": {
+          "best_headline_realized_objective": 81.0889106004926,
+          "city_winner": true,
+          "distance": 62.0,
+          "high_risk_cells_crossed": 0,
+          "maximum_local_true_risk": 0.3939582161408143,
+          "normalized_objective_regret": 0.0,
+          "oracle_risk_regret": 0.0,
+          "oracle_true_cumulative_risk": 8.531486909382409,
+          "realized_objective": 81.0889106004926,
+          "route_valid": true,
+          "travel_time": 46.96296296296296,
+          "true_cumulative_risk": 8.531486909382409
+        },
+        "ml": {
+          "best_headline_realized_objective": 81.0889106004926,
+          "city_winner": false,
+          "distance": 66.0,
+          "high_risk_cells_crossed": 0,
+          "maximum_local_true_risk": 0.270456787580257,
+          "normalized_objective_regret": 0.020388604416828326,
+          "oracle_risk_regret": 0.0,
+          "oracle_true_cumulative_risk": 8.531486909382409,
+          "realized_objective": 82.7422003213176,
+          "route_valid": true,
+          "travel_time": 55.629629629629626,
+          "true_cumulative_risk": 6.778142672921992
+        }
+      },
+      "oracle": {
+        "eligible_for_winner": false,
+        "role": "true-risk benchmark only",
+        "true_cumulative_risk": 8.531486909382409
+      },
+      "winner_method": "dl"
+    },
+    {
+      "best_headline_realized_objective": 130.85631853153862,
+      "city_id": "chicago",
+      "methods": {
+        "dijkstra": {
+          "best_headline_realized_objective": 130.85631853153862,
+          "city_winner": false,
+          "distance": 66.0,
+          "high_risk_cells_crossed": 6,
+          "maximum_local_true_risk": 0.8096278756578308,
+          "normalized_objective_regret": 0.06314980884997812,
+          "oracle_risk_regret": 3.008615402015444,
+          "oracle_true_cumulative_risk": 17.173468508505245,
+          "realized_objective": 139.11987003361713,
+          "route_valid": true,
+          "travel_time": 58.39153439153439,
+          "true_cumulative_risk": 20.18208391052069
+        },
+        "dl": {
+          "best_headline_realized_objective": 130.85631853153862,
+          "city_winner": true,
+          "distance": 62.0,
+          "high_risk_cells_crossed": 6,
+          "maximum_local_true_risk": 0.8096278756578308,
+          "normalized_objective_regret": 0.0,
+          "oracle_risk_regret": 2.6556904894587774,
+          "oracle_true_cumulative_risk": 17.173468508505245,
+          "realized_objective": 130.85631853153862,
+          "route_valid": true,
+          "travel_time": 51.53968253968254,
+          "true_cumulative_risk": 19.829158997964022
+        },
+        "ml": {
+          "best_headline_realized_objective": 130.85631853153862,
+          "city_winner": false,
+          "distance": 64.0,
+          "high_risk_cells_crossed": 6,
+          "maximum_local_true_risk": 0.8096278756578308,
+          "normalized_objective_regret": 0.024593179696214593,
+          "oracle_risk_regret": 1.8160538342866843,
+          "oracle_true_cumulative_risk": 17.173468508505245,
+          "realized_objective": 134.07449148756984,
+          "route_valid": true,
+          "travel_time": 58.116402116402114,
+          "true_cumulative_risk": 18.98952234279193
+        }
+      },
+      "oracle": {
+        "eligible_for_winner": false,
+        "role": "true-risk benchmark only",
+        "true_cumulative_risk": 17.173468508505245
+      },
+      "winner_method": "dl"
+    }
+  ],
+  "city_winner_tie_break": [
+    "realized_objective",
+    "true_cumulative_risk",
+    "travel_time",
+    "distance",
+    "method_order"
+  ],
+  "comparison_tables": {
+    "overall": "overall_comparison.csv",
+    "routes": "route_comparison.csv"
+  },
+  "cross_city_normalization": {
+    "formula": "(method_realized_objective - best_headline_realized_objective) / best_headline_realized_objective",
+    "metric": "normalized_objective_regret",
+    "reference": "best headline method within city"
+  },
+  "evaluation_objective": {
+    "formula": "travel_time + 4.0 * true_cumulative_risk",
+    "risk_weight": 4.0
+  },
+  "headline_methods": [
+    "dijkstra",
+    "ml",
+    "dl"
+  ],
+  "oracle": {
+    "eligible_for_winner": false,
+    "role": "true-risk benchmark only"
+  },
+  "overall": {
+    "methods": [
+      {
+        "city_wins": 0,
+        "mean_distance": 62.0,
+        "mean_normalized_objective_regret": 0.062043857006474634,
+        "mean_oracle_risk_regret": 3.445128952402767,
+        "mean_realized_objective": 117.25796489027964,
+        "mean_travel_time": 51.08112874779541,
+        "mean_true_cumulative_risk": 16.544209035621055,
+        "method_id": "dijkstra"
+      },
+      {
+        "city_wins": 1,
+        "mean_distance": 61.333333333333336,
+        "mean_normalized_objective_regret": 0.014993928037680973,
+        "mean_oracle_risk_regret": 1.9990924821646718,
+        "mean_realized_objective": 111.49901698179383,
+        "mean_travel_time": 51.24867724867725,
+        "mean_true_cumulative_risk": 15.062584933279146,
+        "method_id": "ml"
+      },
+      {
+        "city_wins": 2,
+        "mean_distance": 59.333333333333336,
+        "mean_normalized_objective_regret": 6.924809121890243e-05,
+        "mean_oracle_risk_regret": 2.2810086522830755,
+        "mean_realized_objective": 109.88334522975258,
+        "mean_travel_time": 46.16754850088183,
+        "mean_true_cumulative_risk": 15.928949182217687,
+        "method_id": "dl"
+      }
+    ],
+    "winner_method": "dl"
+  },
+  "overall_winner_tie_break": [
+    "mean_normalized_objective_regret",
+    "city_wins_descending",
+    "mean_true_cumulative_risk",
+    "mean_travel_time",
+    "method_order"
+  ],
+  "revised_step_7r": {
+    "method_metrics": {
+      "chicago/dijkstra": {
+        "blocked_edge_count": 354,
+        "expanded_node_count": 1038,
+        "expansions_per_final_edge": 15.727272727272727,
+        "final_route_edge_count": 66,
+        "maximum_edge_jaccard_vs_other_methods": 0.5802469135802469,
+        "maximum_route_separation_vs_other_methods": 7,
+        "mean_edge_jaccard_vs_other_methods": 0.5204605354418088,
+        "minimum_edge_jaccard_vs_other_methods": 0.4606741573033708,
+        "rejected_tree_edge_count": 989,
+        "route_unique_vs_other_methods": true,
+        "search_efficiency_ratio": 0.06358381502890173,
+        "search_tree_edge_count": 1055,
+        "tree_edges_per_final_edge": 15.984848484848484
+      },
+      "chicago/dl": {
+        "blocked_edge_count": 344,
+        "expanded_node_count": 1014,
+        "expansions_per_final_edge": 16.35483870967742,
+        "final_route_edge_count": 62,
+        "maximum_edge_jaccard_vs_other_methods": 0.5802469135802469,
+        "maximum_route_separation_vs_other_methods": 9,
+        "mean_edge_jaccard_vs_other_methods": 0.4979886253294493,
+        "minimum_edge_jaccard_vs_other_methods": 0.4157303370786517,
+        "rejected_tree_edge_count": 976,
+        "route_unique_vs_other_methods": true,
+        "search_efficiency_ratio": 0.0611439842209073,
+        "search_tree_edge_count": 1038,
+        "tree_edges_per_final_edge": 16.741935483870968
+      },
+      "chicago/ml": {
+        "blocked_edge_count": 343,
+        "expanded_node_count": 1008,
+        "expansions_per_final_edge": 15.75,
+        "final_route_edge_count": 64,
+        "maximum_edge_jaccard_vs_other_methods": 0.4606741573033708,
+        "maximum_route_separation_vs_other_methods": 9,
+        "mean_edge_jaccard_vs_other_methods": 0.43820224719101125,
+        "minimum_edge_jaccard_vs_other_methods": 0.4157303370786517,
+        "rejected_tree_edge_count": 971,
+        "route_unique_vs_other_methods": true,
+        "search_efficiency_ratio": 0.06349206349206349,
+        "search_tree_edge_count": 1035,
+        "tree_edges_per_final_edge": 16.171875
+      },
+      "new_york/dijkstra": {
+        "blocked_edge_count": 1082,
+        "expanded_node_count": 707,
+        "expansions_per_final_edge": 10.712121212121213,
+        "final_route_edge_count": 66,
+        "maximum_edge_jaccard_vs_other_methods": 0.76,
+        "maximum_route_separation_vs_other_methods": 6,
+        "mean_edge_jaccard_vs_other_methods": 0.6329411764705882,
+        "minimum_edge_jaccard_vs_other_methods": 0.5058823529411764,
+        "rejected_tree_edge_count": 645,
+        "route_unique_vs_other_methods": true,
+        "search_efficiency_ratio": 0.09335219236209336,
+        "search_tree_edge_count": 711,
+        "tree_edges_per_final_edge": 10.772727272727273
+      },
+      "new_york/dl": {
+        "blocked_edge_count": 1080,
+        "expanded_node_count": 706,
+        "expansions_per_final_edge": 11.387096774193548,
+        "final_route_edge_count": 62,
+        "maximum_edge_jaccard_vs_other_methods": 0.5058823529411764,
+        "maximum_route_separation_vs_other_methods": 4,
+        "mean_edge_jaccard_vs_other_methods": 0.4562378797672915,
+        "minimum_edge_jaccard_vs_other_methods": 0.4065934065934066,
+        "rejected_tree_edge_count": 650,
+        "route_unique_vs_other_methods": true,
+        "search_efficiency_ratio": 0.08781869688385269,
+        "search_tree_edge_count": 712,
+        "tree_edges_per_final_edge": 11.483870967741936
+      },
+      "new_york/ml": {
+        "blocked_edge_count": 1083,
+        "expanded_node_count": 709,
+        "expansions_per_final_edge": 10.742424242424242,
+        "final_route_edge_count": 66,
+        "maximum_edge_jaccard_vs_other_methods": 0.76,
+        "maximum_route_separation_vs_other_methods": 6,
+        "mean_edge_jaccard_vs_other_methods": 0.5832967032967034,
+        "minimum_edge_jaccard_vs_other_methods": 0.4065934065934066,
+        "rejected_tree_edge_count": 650,
+        "route_unique_vs_other_methods": true,
+        "search_efficiency_ratio": 0.0930888575458392,
+        "search_tree_edge_count": 716,
+        "tree_edges_per_final_edge": 10.848484848484848
+      },
+      "phoenix/dijkstra": {
+        "blocked_edge_count": 276,
+        "expanded_node_count": 1106,
+        "expansions_per_final_edge": 20.48148148148148,
+        "final_route_edge_count": 54,
+        "maximum_edge_jaccard_vs_other_methods": 0.1134020618556701,
+        "maximum_route_separation_vs_other_methods": 36,
+        "mean_edge_jaccard_vs_other_methods": 0.1134020618556701,
+        "minimum_edge_jaccard_vs_other_methods": 0.1134020618556701,
+        "rejected_tree_edge_count": 1063,
+        "route_unique_vs_other_methods": true,
+        "search_efficiency_ratio": 0.048824593128390596,
+        "search_tree_edge_count": 1117,
+        "tree_edges_per_final_edge": 20.685185185185187
+      },
+      "phoenix/dl": {
+        "blocked_edge_count": 269,
+        "expanded_node_count": 1085,
+        "expansions_per_final_edge": 20.09259259259259,
+        "final_route_edge_count": 54,
+        "maximum_edge_jaccard_vs_other_methods": 0.9285714285714286,
+        "maximum_route_separation_vs_other_methods": 36,
+        "mean_edge_jaccard_vs_other_methods": 0.5209867452135494,
+        "minimum_edge_jaccard_vs_other_methods": 0.1134020618556701,
+        "rejected_tree_edge_count": 1047,
+        "route_unique_vs_other_methods": true,
+        "search_efficiency_ratio": 0.04976958525345622,
+        "search_tree_edge_count": 1101,
+        "tree_edges_per_final_edge": 20.38888888888889
+      },
+      "phoenix/ml": {
+        "blocked_edge_count": 269,
+        "expanded_node_count": 1077,
+        "expansions_per_final_edge": 19.944444444444443,
+        "final_route_edge_count": 54,
+        "maximum_edge_jaccard_vs_other_methods": 0.9285714285714286,
+        "maximum_route_separation_vs_other_methods": 36,
+        "mean_edge_jaccard_vs_other_methods": 0.5209867452135494,
+        "minimum_edge_jaccard_vs_other_methods": 0.1134020618556701,
+        "rejected_tree_edge_count": 1046,
+        "route_unique_vs_other_methods": true,
+        "search_efficiency_ratio": 0.05013927576601671,
+        "search_tree_edge_count": 1100,
+        "tree_edges_per_final_edge": 20.37037037037037
+      }
+    },
+    "route_divergence_is_descriptive_only": true,
+    "search_efficiency_is_descriptive_only": true,
+    "winner_logic_changed": false,
+    "winner_source": "canonical evaluation.py"
+  },
+  "schema_version": 1,
+  "stage": "step7_evaluated"
+}

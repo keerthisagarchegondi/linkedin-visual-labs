@@ -25,7 +25,7 @@ from linkedin_visual_labs.projects.p04_zombie_escape.visualization import (
 
 
 def _data_directory() -> Path:
-    return Path("outputs/p04_zombie_escape/data")
+    return Path("tests/fixtures/p04_zombie_escape/data")
 
 
 def test_visual_contract_uses_square_1080_canvas() -> None:

@@ -33,7 +33,7 @@ from linkedin_visual_labs.projects.p04_zombie_escape.visualization import (
 
 
 def _routes() -> dict[str, object]:
-    _, _, routes, _ = load_visual_payloads(Path("outputs/p04_zombie_escape/data"))
+    _, _, routes, _ = load_visual_payloads(Path("tests/fixtures/p04_zombie_escape/data"))
 
     return routes
 
