@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
+from types import MappingProxyType
 from typing import Protocol
 
 from linkedin_visual_labs.projects.p02_monopoly_ai.board import (
@@ -476,14 +477,16 @@ class GameEngine:
                 owned_asset_ids=tuple(player.owned_asset_ids),
                 bankrupt=player.bankrupt,
             ),
-            properties={
-                asset_id: PropertyView(
-                    asset_id=asset_id,
-                    owner_id=state.owner_id,
-                    house_count=state.house_count,
-                )
-                for asset_id, state in self.state.properties.items()
-            },
+            properties=MappingProxyType(
+                {
+                    asset_id: PropertyView(
+                        asset_id=asset_id,
+                        owner_id=state.owner_id,
+                        house_count=state.house_count,
+                    )
+                    for asset_id, state in self.state.properties.items()
+                }
+            ),
         )
 
     def _snapshot(self) -> None:
