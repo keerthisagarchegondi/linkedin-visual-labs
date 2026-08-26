@@ -121,3 +121,23 @@ def deterministic_tie_rank(
         byteorder="big",
         signed=False,
     )
+
+
+def derive_game_seed(
+    master_seed: int,
+    game_index: int,
+) -> int:
+    """Derive the canonical deterministic seed for one tournament game."""
+
+    if game_index < 0:
+        raise ValueError("game_index cannot be negative")
+
+    raw = f"{NAMESPACE}:{master_seed}:{game_index}"
+
+    digest = hashlib.sha256(raw.encode("utf-8")).digest()
+
+    return int.from_bytes(
+        digest[:8],
+        byteorder="big",
+        signed=False,
+    )
