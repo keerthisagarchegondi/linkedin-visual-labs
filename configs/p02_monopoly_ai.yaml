@@ -1,0 +1,1813 @@
+project:
+  project_id: "p02_monopoly_ai"
+  project_name: "Monopoly AI Landlord Arena"
+  project_number: 3
+
+  technical_description: >-
+    Autonomous rule-based strategy agents evaluated through
+    Monte Carlo simulation in a simplified property-investment game.
+
+  viewer_question: >-
+    Four landlord strategies. 10,000 games. Which one survives?
+
+  analytical_question: >-
+    When four autonomous landlord strategies repeatedly allocate capital
+    under uncertainty, which strategy wins most often, and what risk does
+    it take to get there?
+
+  disclaimer: >-
+    Unofficial analytical simulation. Not affiliated with or endorsed
+    by Hasbro.
+
+intellectual_property:
+  use_original_board_art: true
+  use_original_property_names: true
+  use_original_icons: true
+  use_original_typography: true
+
+  prohibited:
+    - "Monopoly logo"
+    - "Hasbro board artwork"
+    - "official card artwork"
+    - "official visual board design"
+    - "official fonts"
+    - "official player-token artwork"
+
+  agent_description: "Autonomous rule-based strategy agents"
+
+  prohibited_agent_description:
+    - "reinforcement-learning agents"
+    - "RL agents"
+
+simulation:
+  board_size: 40
+  starting_cash: 1500
+  go_salary: 200
+  dice_count: 2
+  die_sides: 6
+
+  extra_turn_on_doubles: false
+  three_doubles_to_jail: false
+
+  maximum_turns: 500
+
+  bank:
+    unlimited_liquidity: true
+
+  omitted_rules:
+    - "property auctions"
+    - "player-to-player trading"
+    - "mortgages"
+    - "hotels"
+    - "human negotiation"
+    - "reinforcement learning"
+    - "house-rule variants"
+
+board_space_taxonomy:
+  GO: 1
+  PROPERTY: 22
+  TRANSIT: 4
+  UTILITY: 2
+  CHANCE: 3
+  COMMUNITY: 3
+  TAX: 2
+  JAIL: 1
+  FREE_REST: 1
+  GO_TO_JAIL: 1
+
+property_groups:
+  - group_id: "G1"
+    label: "Harbor"
+    property_count: 2
+    house_cost: 50
+
+  - group_id: "G2"
+    label: "Copper"
+    property_count: 3
+    house_cost: 70
+
+  - group_id: "G3"
+    label: "Cedar"
+    property_count: 3
+    house_cost: 90
+
+  - group_id: "G4"
+    label: "Amber"
+    property_count: 3
+    house_cost: 110
+
+  - group_id: "G5"
+    label: "Crimson"
+    property_count: 3
+    house_cost: 130
+
+  - group_id: "G6"
+    label: "Gold"
+    property_count: 3
+    house_cost: 150
+
+  - group_id: "G7"
+    label: "Emerald"
+    property_count: 3
+    house_cost: 175
+
+  - group_id: "G8"
+    label: "Skyline"
+    property_count: 2
+    house_cost: 200
+
+rent_rules:
+  complete_group_unimproved_multiplier: 2
+
+  house_multipliers:
+    0: 1
+    1: 5
+    2: 12
+    3: 24
+    4: 40
+
+  maximum_houses_per_property: 4
+
+transit_rules:
+  purchase_price: 200
+  rent_by_transit_count:
+    1: 25
+    2: 50
+    3: 100
+    4: 200
+
+utility_rules:
+  purchase_price: 150
+  rent_multiplier_by_utility_count:
+    1: 4
+    2: 10
+
+jail_rules:
+  skip_turns: 1
+  cash_fine: 0
+  doubles_release: false
+  strategy_decision_required: false
+
+event_rules:
+  enabled: true
+  deterministic_seeded_decks: true
+  shuffle_once_per_game: true
+  cycle_when_exhausted: true
+
+  chance:
+    - event_id: "CH_ADVANCE_GO"
+      action: "MOVE_TO"
+      target_space: 0
+
+    - event_id: "CH_FORWARD_3"
+      action: "MOVE_RELATIVE"
+      spaces: 3
+
+    - event_id: "CH_BACK_3"
+      action: "MOVE_RELATIVE"
+      spaces: -3
+
+    - event_id: "CH_GO_TO_JAIL"
+      action: "GO_TO_JAIL"
+
+    - event_id: "CH_GAIN_100"
+      action: "CASH"
+      amount: 100
+
+    - event_id: "CH_PAY_100"
+      action: "CASH"
+      amount: -100
+
+  community:
+    - event_id: "CM_ADVANCE_GO"
+      action: "MOVE_TO"
+      target_space: 0
+
+    - event_id: "CM_GAIN_75"
+      action: "CASH"
+      amount: 75
+
+    - event_id: "CM_PAY_75"
+      action: "CASH"
+      amount: -75
+
+    - event_id: "CM_FORWARD_2"
+      action: "MOVE_RELATIVE"
+      spaces: 2
+
+    - event_id: "CM_BACK_2"
+      action: "MOVE_RELATIVE"
+      spaces: -2
+
+    - event_id: "CM_GO_TO_JAIL"
+      action: "GO_TO_JAIL"
+
+board:
+  spaces:
+    - index: 0
+      space_id: "GO"
+      name: "GO"
+      type: "GO"
+
+    - index: 1
+      space_id: "P01"
+      name: "Harbor Lane"
+      type: "PROPERTY"
+      group_id: "G1"
+      price: 80
+      base_rent: 8
+
+    - index: 2
+      space_id: "COMMUNITY_1"
+      name: "Community Event"
+      type: "COMMUNITY"
+
+    - index: 3
+      space_id: "P02"
+      name: "Harbor Point"
+      type: "PROPERTY"
+      group_id: "G1"
+      price: 100
+      base_rent: 10
+
+    - index: 4
+      space_id: "TAX_1"
+      name: "Municipal Tax"
+      type: "TAX"
+      amount: 100
+
+    - index: 5
+      space_id: "T01"
+      name: "North Transit Hub"
+      type: "TRANSIT"
+
+    - index: 6
+      space_id: "P03"
+      name: "Copper Avenue"
+      type: "PROPERTY"
+      group_id: "G2"
+      price: 120
+      base_rent: 12
+
+    - index: 7
+      space_id: "CHANCE_1"
+      name: "Chance Event"
+      type: "CHANCE"
+
+    - index: 8
+      space_id: "P04"
+      name: "Copper Square"
+      type: "PROPERTY"
+      group_id: "G2"
+      price: 140
+      base_rent: 14
+
+    - index: 9
+      space_id: "P05"
+      name: "Copper Heights"
+      type: "PROPERTY"
+      group_id: "G2"
+      price: 160
+      base_rent: 16
+
+    - index: 10
+      space_id: "JAIL"
+      name: "Jail"
+      type: "JAIL"
+
+    - index: 11
+      space_id: "P06"
+      name: "Cedar Street"
+      type: "PROPERTY"
+      group_id: "G3"
+      price: 180
+      base_rent: 18
+
+    - index: 12
+      space_id: "U01"
+      name: "Water Utility"
+      type: "UTILITY"
+
+    - index: 13
+      space_id: "P07"
+      name: "Cedar Market"
+      type: "PROPERTY"
+      group_id: "G3"
+      price: 200
+      base_rent: 20
+
+    - index: 14
+      space_id: "P08"
+      name: "Cedar Gardens"
+      type: "PROPERTY"
+      group_id: "G3"
+      price: 220
+      base_rent: 22
+
+    - index: 15
+      space_id: "T02"
+      name: "East Transit Hub"
+      type: "TRANSIT"
+
+    - index: 16
+      space_id: "P09"
+      name: "Amber Boulevard"
+      type: "PROPERTY"
+      group_id: "G4"
+      price: 240
+      base_rent: 24
+
+    - index: 17
+      space_id: "COMMUNITY_2"
+      name: "Community Event"
+      type: "COMMUNITY"
+
+    - index: 18
+      space_id: "P10"
+      name: "Amber Plaza"
+      type: "PROPERTY"
+      group_id: "G4"
+      price: 260
+      base_rent: 26
+
+    - index: 19
+      space_id: "P11"
+      name: "Amber Terrace"
+      type: "PROPERTY"
+      group_id: "G4"
+      price: 280
+      base_rent: 28
+
+    - index: 20
+      space_id: "FREE_REST"
+      name: "Free Rest"
+      type: "FREE_REST"
+
+    - index: 21
+      space_id: "P12"
+      name: "Crimson Way"
+      type: "PROPERTY"
+      group_id: "G5"
+      price: 300
+      base_rent: 30
+
+    - index: 22
+      space_id: "CHANCE_2"
+      name: "Chance Event"
+      type: "CHANCE"
+
+    - index: 23
+      space_id: "P13"
+      name: "Crimson Center"
+      type: "PROPERTY"
+      group_id: "G5"
+      price: 320
+      base_rent: 32
+
+    - index: 24
+      space_id: "P14"
+      name: "Crimson Park"
+      type: "PROPERTY"
+      group_id: "G5"
+      price: 340
+      base_rent: 34
+
+    - index: 25
+      space_id: "T03"
+      name: "South Transit Hub"
+      type: "TRANSIT"
+
+    - index: 26
+      space_id: "P15"
+      name: "Gold Avenue"
+      type: "PROPERTY"
+      group_id: "G6"
+      price: 360
+      base_rent: 36
+
+    - index: 27
+      space_id: "P16"
+      name: "Gold Exchange"
+      type: "PROPERTY"
+      group_id: "G6"
+      price: 380
+      base_rent: 38
+
+    - index: 28
+      space_id: "U02"
+      name: "Power Utility"
+      type: "UTILITY"
+
+    - index: 29
+      space_id: "P17"
+      name: "Gold Heights"
+      type: "PROPERTY"
+      group_id: "G6"
+      price: 400
+      base_rent: 40
+
+    - index: 30
+      space_id: "GO_TO_JAIL"
+      name: "Go To Jail"
+      type: "GO_TO_JAIL"
+
+    - index: 31
+      space_id: "P18"
+      name: "Emerald Avenue"
+      type: "PROPERTY"
+      group_id: "G7"
+      price: 420
+      base_rent: 42
+
+    - index: 32
+      space_id: "P19"
+      name: "Emerald Center"
+      type: "PROPERTY"
+      group_id: "G7"
+      price: 440
+      base_rent: 44
+
+    - index: 33
+      space_id: "COMMUNITY_3"
+      name: "Community Event"
+      type: "COMMUNITY"
+
+    - index: 34
+      space_id: "P20"
+      name: "Emerald Gardens"
+      type: "PROPERTY"
+      group_id: "G7"
+      price: 460
+      base_rent: 46
+
+    - index: 35
+      space_id: "T04"
+      name: "West Transit Hub"
+      type: "TRANSIT"
+
+    - index: 36
+      space_id: "CHANCE_3"
+      name: "Chance Event"
+      type: "CHANCE"
+
+    - index: 37
+      space_id: "P21"
+      name: "Skyline Drive"
+      type: "PROPERTY"
+      group_id: "G8"
+      price: 500
+      base_rent: 50
+
+    - index: 38
+      space_id: "TAX_2"
+      name: "Capital Assessment"
+      type: "TAX"
+      amount: 200
+
+    - index: 39
+      space_id: "P22"
+      name: "Skyline Tower"
+      type: "PROPERTY"
+      group_id: "G8"
+      price: 550
+      base_rent: 55
+
+player_state_contract:
+  fields:
+    - "player_id"
+    - "strategy_id"
+    - "seat_index"
+    - "cash"
+    - "position"
+    - "owned_asset_ids"
+    - "jail_turns_remaining"
+    - "bankrupt"
+    - "bankruptcy_turn"
+    - "total_rent_paid"
+    - "total_rent_collected"
+    - "minimum_cash_observed"
+
+economy_contract:
+  starting_cash: 1500
+
+  cash_sources:
+    - "starting cash"
+    - "passing GO"
+    - "positive event effects"
+    - "rent received"
+
+  cash_sinks:
+    - "property purchases"
+    - "house construction"
+    - "taxes"
+    - "negative event effects"
+    - "rent paid"
+
+  cash_transfers:
+    rent:
+      source: "tenant"
+      destination: "owner"
+
+  bank_is_counterparty_for:
+    - "property purchases"
+    - "house purchases"
+    - "taxes"
+    - "GO salary"
+    - "event cash effects"
+
+purchase_rules:
+  purchasable_space_types:
+    - "PROPERTY"
+    - "TRANSIT"
+    - "UTILITY"
+
+  requirements:
+    - "space is unowned"
+    - "player is active"
+    - "player has enough cash"
+    - "strategy returns BUY"
+    - "decision passes engine validation"
+
+  auctions_enabled: false
+
+ownership_rules:
+  maximum_owners_per_asset: 1
+
+  transferable_between_players:
+    normal_play: false
+    bankruptcy: true
+
+  mortgages_enabled: false
+  trading_enabled: false
+
+group_completion_rules:
+  complete_when: >-
+    One active player owns every PROPERTY asset in the group.
+
+  transit_counts_as_group: false
+  utility_counts_as_group: false
+
+house_development_rules:
+  enabled: true
+
+  eligibility:
+    - "player owns complete property group"
+    - "property is in that complete group"
+    - "player is not bankrupt"
+    - "player can afford house cost"
+    - "strategy returns BUILD"
+    - "build preserves even-development rule"
+
+  maximum_houses_per_property: 4
+
+  hotels_enabled: false
+
+  even_development_rule: >-
+    After a build action, the maximum house-count difference between
+    any two properties in the same group may not exceed one.
+
+cash_reserve_contract:
+  definition: >-
+    Strategy-specific minimum desired post-decision cash balance.
+
+  enforcement: >-
+    Reserve targets guide strategy decisions but are not enforced by
+    the game engine. The engine enforces only legality and affordability.
+
+jail_contract:
+  jail_space_index: 10
+
+  entry_sources:
+    - "GO_TO_JAIL board space"
+    - "GO_TO_JAIL event"
+
+  behavior:
+    skipped_turns: 1
+    cash_fine: 0
+    doubles_release: false
+
+  release: >-
+    The jailed player skips exactly one scheduled turn and is then
+    automatically released.
+
+bankruptcy_contract:
+  trigger: >-
+    A player is bankrupt when a required payment exceeds available cash.
+
+  asset_liquidation_or_mortgage: false
+
+  player_becomes_inactive_immediately: true
+
+  creditor_policy:
+    rent_bankruptcy: "transfer owned assets to creditor"
+    bank_bankruptcy: "return owned assets to bank"
+
+  houses_on_transferred_assets: >-
+    Houses remain attached to transferred properties when bankruptcy
+    occurs against another player.
+
+  houses_on_bank_return: >-
+    Houses are removed when assets return to the bank.
+
+turn_sequence:
+  - "START_TURN"
+  - "CHECK_JAIL"
+  - "ROLL_DICE"
+  - "MOVE"
+  - "APPLY_PASS_GO"
+  - "RESOLVE_LANDING"
+  - "RESOLVE_REQUIRED_PAYMENT"
+  - "REQUEST_PURCHASE_DECISION_IF_ELIGIBLE"
+  - "APPLY_PURCHASE_DECISION"
+  - "REQUEST_BUILD_DECISIONS"
+  - "APPLY_VALID_BUILD_DECISIONS"
+  - "CHECK_BANKRUPTCY"
+  - "END_TURN"
+
+game_phases:
+  - "SETUP"
+  - "ACTIVE"
+  - "TERMINATED_BANKRUPTCY"
+  - "TERMINATED_TURN_LIMIT"
+
+termination:
+  maximum_turns: 500
+
+  natural_termination:
+    active_players_remaining: 1
+
+  turn_limit_resolution:
+    enabled: true
+# ============================================================================
+# Project 3 — Step 1 — Sub-steps 1.26–1.50
+# ============================================================================
+
+winner_determination:
+  natural_termination:
+    condition: "exactly one active player remains"
+    winner: "sole active player"
+    winner_position: 1
+    compare_net_worth: false
+
+  terminal_net_worth:
+    formula: >-
+      Cash plus original purchase value of all currently owned assets
+      plus historical construction cost of all houses currently attached
+      to those owned properties.
+
+    components:
+      - "cash"
+      - "owned_asset_purchase_value"
+      - "house_investment_value"
+
+    asset_valuation:
+      PROPERTY: "configured purchase price"
+      TRANSIT: "configured purchase price"
+      UTILITY: "configured purchase price"
+
+    house_valuation: "configured construction cost"
+
+    speculative_resale_value: false
+
+  turn_limit:
+    condition: "maximum turn count reached with multiple active players"
+    eligible_for_win: "active players only"
+    primary_score: "terminal_net_worth"
+    highest_score_wins: true
+
+
+tie_breaking:
+  active_player_order:
+    - "terminal_net_worth_desc"
+    - "cash_desc"
+    - "total_rent_collected_desc"
+    - "completed_color_groups_desc"
+    - "owned_purchasable_assets_desc"
+    - "seeded_tie_break_rank"
+
+  bankrupt_player_order:
+    primary: "bankruptcy_turn_desc"
+    secondary: "bankruptcy_event_index_desc"
+    final: "seeded_tie_break_rank"
+
+  prohibited_fallbacks:
+    - "seat_index"
+    - "strategy_name_lexical_order"
+    - "iteration_order"
+
+  seeded_tie_break:
+    algorithm: "SHA-256"
+    stream_label: "tie_break"
+    scope: "per game"
+    deterministic: true
+
+
+bankruptcy_settlement_contract:
+  mandatory_payment_exceeds_cash:
+    transfer_available_cash: true
+    bankrupt_player_final_cash: 0
+    unpaid_balance_is_forgiven: true
+
+  rationale: >-
+    Mortgages, emergency asset sales, loans, and negotiation are omitted.
+    The bankrupt player transfers all available cash and then follows
+    the deterministic asset-transfer rules defined in the bankruptcy
+    contract.
+
+
+event_log_contract:
+  ordering:
+    field: "event_index"
+    starts_at: 0
+    monotonic: true
+    contiguous: true
+
+  required_fields:
+    - "game_id"
+    - "event_index"
+    - "turn_number"
+    - "event_type"
+    - "player_id"
+    - "strategy_id"
+    - "seat_index"
+    - "position_before"
+    - "position_after"
+    - "cash_before"
+    - "cash_after"
+    - "asset_id"
+    - "counterparty_player_id"
+    - "amount"
+    - "metadata"
+
+  nullable_fields:
+    - "player_id"
+    - "strategy_id"
+    - "seat_index"
+    - "position_before"
+    - "position_after"
+    - "cash_before"
+    - "cash_after"
+    - "asset_id"
+    - "counterparty_player_id"
+    - "amount"
+
+  event_types:
+    - "GAME_SETUP"
+    - "TURN_START"
+    - "JAIL_SKIP"
+    - "DICE_ROLL"
+    - "MOVE"
+    - "PASS_GO"
+    - "EVENT_DRAW"
+    - "CASH_TRANSFER"
+    - "PURCHASE_DECISION"
+    - "ASSET_PURCHASED"
+    - "BUILD_DECISION"
+    - "HOUSE_BUILT"
+    - "RENT_DUE"
+    - "BANKRUPTCY"
+    - "ASSET_TRANSFER"
+    - "TURN_END"
+    - "GAME_END"
+
+  replay_requirements:
+    deterministic_order: true
+    representative_game_video_source: true
+    human_readable_metadata: true
+
+
+seed_contract:
+  algorithm: "SHA-256"
+  namespace: "p02-monopoly-ai"
+
+  integer_encoding:
+    bytes: 8
+    byte_order: "big"
+    unsigned: true
+
+  game_seed_derivation: >-
+    SHA256(namespace + ":" + master_seed + ":" + game_index),
+    interpreted from the first 8 digest bytes as an unsigned
+    big-endian integer.
+
+  random_streams:
+    - "dice"
+    - "chance"
+    - "community"
+    - "tie_break"
+
+  stream_seed_derivation: >-
+    SHA256(namespace + ":" + game_seed + ":" + stream_label),
+    interpreted from the first 8 digest bytes as an unsigned
+    big-endian integer.
+
+  requirements:
+    python_hash_forbidden: true
+    same_seed_same_game: true
+    stream_isolation_required: true
+
+
+tournament_seed_contract:
+  canonical_master_seed: 73031
+  canonical_game_count: 10000
+
+  game_index_start: 0
+  game_index_end_exclusive: 10000
+
+  unique_game_seeds_required: true
+
+  reproducibility:
+    same_master_seed_same_tournament: true
+    different_master_seed_changes_game_seeds: true
+
+
+strategies:
+  canonical_order:
+    - "collector"
+    - "specialist"
+    - "cash_protector"
+    - "aggressive_builder"
+
+  seat_rotation:
+    cycle_length: 8
+
+    assignments:
+      - ["collector", "specialist", "cash_protector", "aggressive_builder"]
+      - ["specialist", "cash_protector", "aggressive_builder", "collector"]
+      - ["cash_protector", "aggressive_builder", "collector", "specialist"]
+      - ["aggressive_builder", "collector", "specialist", "cash_protector"]
+
+      - ["collector", "aggressive_builder", "cash_protector", "specialist"]
+      - ["aggressive_builder", "cash_protector", "specialist", "collector"]
+      - ["cash_protector", "specialist", "collector", "aggressive_builder"]
+      - ["specialist", "collector", "aggressive_builder", "cash_protector"]
+
+    canonical_tournament_expected_games_per_strategy: 10000
+    canonical_tournament_expected_games_per_strategy_per_seat: 2500
+
+  policies:
+    collector:
+      label: "Collector"
+
+      objective: >-
+        Maximize portfolio breadth by buying most legal assets that
+        remain affordable while keeping only a small cash reserve.
+
+      desired_cash_reserve: 150
+      development_cash_reserve: 200
+
+      purchase:
+        breadth_priority: true
+        preferred_property_groups: []
+        buy_transit: true
+        buy_utility: true
+        monopoly_completion_bonus: "moderate"
+
+      development:
+        enabled: true
+        intensity: "moderate"
+        maximum_builds_per_turn: 1
+
+    specialist:
+      label: "Specialist"
+
+      objective: >-
+        Concentrate capital in selected color groups and prioritize
+        completion of strategically preferred monopolies.
+
+      desired_cash_reserve: 350
+      development_cash_reserve: 400
+
+      purchase:
+        primary_property_groups:
+          - "G4"
+          - "G5"
+          - "G6"
+
+        secondary_property_groups:
+          - "G3"
+          - "G7"
+
+        low_priority_property_groups:
+          - "G1"
+          - "G2"
+          - "G8"
+
+        buy_transit: "selective"
+        buy_utility: "selective"
+        monopoly_completion_bonus: "very_high"
+
+      development:
+        enabled: true
+        intensity: "focused"
+        maximum_builds_per_turn: 2
+
+    cash_protector:
+      label: "Cash Protector"
+
+      objective: >-
+        Preserve liquidity, avoid unnecessary bankruptcy risk,
+        purchase selectively, and develop only with substantial
+        post-decision cash reserves.
+
+      desired_cash_reserve: 600
+      development_cash_reserve: 750
+
+      purchase:
+        breadth_priority: false
+        selectivity: "high"
+        buy_transit: "selective"
+        buy_utility: "selective"
+        monopoly_completion_bonus: "moderate"
+
+      development:
+        enabled: true
+        intensity: "cautious"
+        maximum_builds_per_turn: 1
+
+    aggressive_builder:
+      label: "Aggressive Builder"
+
+      objective: >-
+        Prioritize group completion and deploy capital rapidly into
+        houses while accepting substantially higher liquidity risk.
+
+      desired_cash_reserve: 75
+      development_cash_reserve: 75
+
+      purchase:
+        breadth_priority: false
+        monopoly_completion_bonus: "extreme"
+        buy_transit: true
+        buy_utility: true
+
+      development:
+        enabled: true
+        intensity: "aggressive"
+        maximum_builds_per_turn: 4
+
+
+strategy_decision_contract:
+  legal_actions:
+    - "BUY"
+    - "PASS"
+    - "BUILD"
+    - "HOLD_CASH"
+
+  purchase_phase_actions:
+    - "BUY"
+    - "PASS"
+
+  development_phase_actions:
+    - "BUILD"
+    - "HOLD_CASH"
+
+  required_decision_fields:
+    - "action"
+    - "reason_code"
+
+  optional_decision_fields:
+    - "asset_id"
+    - "property_id"
+
+  policy_state_access: "read_only"
+
+  policy_mutation_of_game_state: false
+
+
+engine_decision_validation:
+  authority: "game_engine"
+
+  invalid_decision_behavior:
+    silently_coerce: false
+    raise_domain_error: true
+    log_invalid_decision: true
+
+  purchase_validation:
+    - "action valid for purchase phase"
+    - "target asset exists"
+    - "target asset is purchasable"
+    - "target asset is unowned"
+    - "player is active"
+    - "player has enough cash"
+
+  build_validation:
+    - "action valid for development phase"
+    - "target property exists"
+    - "player owns target property"
+    - "player owns complete target color group"
+    - "player is active"
+    - "player can afford house"
+    - "property is below maximum house count"
+    - "build preserves even-development rule"
+
+  hold_validation:
+    - "HOLD_CASH valid only in development phase"
+
+  pass_validation:
+    - "PASS valid only in purchase phase"
+
+
+metrics:
+  primary:
+    tournament_win_rate:
+      numerator: "games won by strategy"
+      denominator: "completed tournament games"
+      higher_is_better: true
+      unit: "proportion"
+
+  bankruptcy_rate:
+    numerator: "games in which strategy becomes bankrupt"
+    denominator: "completed tournament games"
+    lower_is_better: true
+    unit: "proportion"
+
+  median_finishing_cash:
+    population: "all completed games for strategy"
+    bankrupt_finishing_cash: 0
+    statistic: "median"
+    higher_is_better: true
+    unit: "currency"
+
+  finishing_position_distribution:
+    positions:
+      - 1
+      - 2
+      - 3
+      - 4
+
+    ranking_contract:
+      active_players: "winner/tie-break ranking"
+      bankrupt_players: "later bankruptcy ranks higher"
+      active_players_always_rank_above_bankrupt_players: true
+
+  property_acquisition:
+    fields:
+      - "assets_acquired_total"
+      - "color_properties_acquired"
+      - "transit_assets_acquired"
+      - "utility_assets_acquired"
+      - "assets_owned_at_finish"
+
+  group_completion:
+    fields:
+      - "groups_completed_during_game"
+      - "groups_owned_complete_at_finish"
+      - "first_group_completion_turn"
+
+    nullable:
+      - "first_group_completion_turn"
+
+  house_development:
+    fields:
+      - "houses_built_total"
+      - "houses_owned_at_finish"
+      - "first_house_build_turn"
+
+    nullable:
+      - "first_house_build_turn"
+
+  rent:
+    fields:
+      - "total_rent_paid"
+      - "total_rent_collected"
+      - "net_rent"
+
+    net_rent_formula: "total_rent_collected - total_rent_paid"
+
+  cash_reserve:
+    fields:
+      - "minimum_cash_observed"
+      - "median_end_of_turn_cash"
+      - "mean_end_of_turn_cash"
+      - "turns_below_strategy_desired_reserve"
+
+    reserve_breach_definition: >-
+      End-of-turn cash is below the strategy's configured desired
+      cash reserve while the player remains active.
+
+  game_length:
+    fields:
+      - "turns_played"
+      - "termination_reason"
+
+    tournament_statistics:
+      - "mean_turns"
+      - "median_turns"
+      - "turn_limit_resolution_rate"
+
+
+confidence_intervals:
+  confidence_level: 0.95
+
+  binomial_proportions:
+    method: "Wilson score interval"
+    z_value: 1.959963984540054
+
+    applies_to:
+      - "tournament_win_rate"
+      - "bankruptcy_rate"
+
+  formula_contract:
+    center: >-
+      (p_hat + z^2/(2n)) / (1 + z^2/n)
+
+    half_width: >-
+      z * sqrt((p_hat*(1-p_hat)/n) + (z^2/(4*n^2)))
+      / (1 + z^2/n)
+
+  clipping:
+    minimum: 0.0
+    maximum: 1.0
+
+  median_finishing_cash:
+    headline_confidence_interval_required: false
+
+  deterministic_calculation: true
+# ============================================================================
+# Project 3 — Step 1 — Sub-steps 1.51–1.68
+# ============================================================================
+
+pairwise_comparison_contract:
+  canonical_pairs:
+    - ["collector", "specialist"]
+    - ["collector", "cash_protector"]
+    - ["collector", "aggressive_builder"]
+    - ["specialist", "cash_protector"]
+    - ["specialist", "aggressive_builder"]
+    - ["cash_protector", "aggressive_builder"]
+
+  primary_metric:
+    name: "head_to_head_superiority_rate"
+    numerator: "games where strategy_a finishes above strategy_b"
+    denominator: "games containing both strategies"
+    canonical_denominator: 10000
+    null_value: 0.5
+
+  descriptive_differences:
+    - "win_rate_difference"
+    - "bankruptcy_rate_difference"
+    - "median_finishing_cash_difference"
+
+  inferential_test:
+    method: "two-sided exact binomial test"
+    null_hypothesis: "head_to_head_superiority_rate = 0.5"
+    family_wise_alpha: 0.05
+    multiple_comparison_correction: "Holm"
+    comparison_count: 6
+
+  interpretation:
+    numerical_leader_allowed: true
+    statistically_supported_advantage_requires_adjusted_p_below_alpha: true
+    statistical_tie_label_when_not_supported: true
+
+
+fairness_acceptance:
+  hard_gates:
+    completed_games_exact: 10000
+    strategy_game_records_exact: 40000
+    strategies_per_game_exact: 4
+    appearances_per_strategy_exact: 10000
+    appearances_per_strategy_per_seat_exact: 2500
+    distinct_seats_per_game_exact: 4
+    winners_per_game_exact: 1
+    finishing_positions_per_game_exact: 4
+    impossible_ownership_states_allowed: 0
+    illegal_house_states_allowed: 0
+    unresolved_games_allowed: 0
+    win_rate_sum_target: 1.0
+    win_rate_sum_absolute_tolerance: 1.0e-12
+    reproducibility_hash_match_required: true
+
+  seat_effect_diagnostics:
+    overall_seat_win_rate_spread_max: 0.05
+    within_strategy_seat_win_rate_spread_max: 0.10
+
+  interpretation: >-
+    Exact seat exposure is the primary fairness control. Excessive
+    empirical seat effects trigger investigation even though every
+    strategy receives identical seat exposure.
+
+
+tournament_contract:
+  canonical_game_count: 10000
+  players_per_game: 4
+  strategy_count: 4
+  canonical_result_rows: 40000
+  canonical_master_seed: 73031
+  maximum_turns_per_game: 500
+
+  execution:
+    headless: true
+    rendering_during_tournament: false
+    bounded_execution: true
+    unbounded_multiprocessing: false
+    deterministic: true
+
+  required_outputs:
+    - "tournament_results.csv"
+    - "tournament_summary.json"
+    - "representative_game.json"
+    - "representative_game_events.json"
+
+
+representative_game_selection:
+  deterministic: true
+  manual_selection_forbidden: true
+  winner_identity_used_in_selection: false
+  seat_identity_used_in_selection: false
+
+  eligibility:
+    minimum_property_purchases: 1
+    minimum_rent_transfers: 1
+    minimum_group_completions: 1
+    minimum_houses_built: 1
+    minimum_reserve_breaches: 1
+
+  comparison_features:
+    - "turns_played"
+    - "total_property_purchases"
+    - "total_houses_built"
+    - "total_rent_transferred"
+    - "bankrupt_player_count"
+
+  center:
+    statistic: "tournament_median"
+
+  scale:
+    statistic: "median_absolute_deviation"
+    zero_scale_fallback: 1.0
+
+  distance:
+    method: "sum_absolute_standardized_distance"
+    lower_is_better: true
+
+  tie_break:
+    - "game_index_asc"
+
+
+tournament_results_csv_schema:
+  path: "outputs/p02_monopoly_ai/data/tournament_results.csv"
+  grain: "one row per strategy per game"
+  canonical_rows: 40000
+
+  columns:
+    - "game_id"
+    - "game_index"
+    - "game_seed"
+    - "strategy_id"
+    - "seat_index"
+    - "finishing_position"
+    - "won"
+    - "bankrupt"
+    - "bankruptcy_turn"
+    - "finishing_cash"
+    - "terminal_net_worth"
+    - "assets_acquired_total"
+    - "color_properties_acquired"
+    - "transit_assets_acquired"
+    - "utility_assets_acquired"
+    - "assets_owned_at_finish"
+    - "groups_completed_during_game"
+    - "groups_owned_complete_at_finish"
+    - "first_group_completion_turn"
+    - "houses_built_total"
+    - "houses_owned_at_finish"
+    - "first_house_build_turn"
+    - "total_rent_paid"
+    - "total_rent_collected"
+    - "net_rent"
+    - "minimum_cash_observed"
+    - "median_end_of_turn_cash"
+    - "mean_end_of_turn_cash"
+    - "turns_below_strategy_desired_reserve"
+    - "turns_played"
+    - "termination_reason"
+
+  nullable_columns:
+    - "bankruptcy_turn"
+    - "first_group_completion_turn"
+    - "first_house_build_turn"
+
+
+tournament_summary_json_schema:
+  path: "outputs/p02_monopoly_ai/data/tournament_summary.json"
+
+  top_level_fields:
+    - "schema_version"
+    - "project_id"
+    - "master_seed"
+    - "game_count"
+    - "strategy_order"
+    - "headline_result"
+    - "strategy_summary"
+    - "pairwise_comparisons"
+    - "fairness"
+    - "game_length"
+    - "representative_game"
+    - "validation"
+    - "artifact_hashes"
+
+  headline_result_fields:
+    - "numerical_winner"
+    - "numerical_winner_win_rate"
+    - "confidence_interval"
+    - "statistical_interpretation"
+
+  strategy_summary_fields:
+    - "strategy_id"
+    - "wins"
+    - "win_rate"
+    - "win_rate_ci_low"
+    - "win_rate_ci_high"
+    - "bankruptcies"
+    - "bankruptcy_rate"
+    - "bankruptcy_ci_low"
+    - "bankruptcy_ci_high"
+    - "median_finishing_cash"
+    - "mean_finishing_position"
+    - "position_distribution"
+    - "median_assets_acquired"
+    - "median_groups_completed"
+    - "median_houses_built"
+    - "median_rent_collected"
+    - "median_rent_paid"
+    - "median_minimum_cash"
+    - "reserve_breach_rate"
+
+  pairwise_fields:
+    - "strategy_a"
+    - "strategy_b"
+    - "a_finishes_above_b"
+    - "b_finishes_above_a"
+    - "head_to_head_superiority_rate_a"
+    - "win_rate_difference_a_minus_b"
+    - "bankruptcy_rate_difference_a_minus_b"
+    - "median_finishing_cash_difference_a_minus_b"
+    - "raw_p_value"
+    - "holm_adjusted_p_value"
+    - "statistically_supported"
+
+
+representative_game_schema:
+  summary_path: "outputs/p02_monopoly_ai/data/representative_game.json"
+  events_path: "outputs/p02_monopoly_ai/data/representative_game_events.json"
+
+  summary_fields:
+    - "schema_version"
+    - "game_id"
+    - "game_index"
+    - "game_seed"
+    - "selection_score"
+    - "selection_feature_values"
+    - "seat_assignment"
+    - "winner_strategy_id"
+    - "turns_played"
+    - "termination_reason"
+    - "final_players"
+    - "artifact_hash"
+
+  event_bundle_fields:
+    - "schema_version"
+    - "game_id"
+    - "game_index"
+    - "game_seed"
+    - "initial_state"
+    - "events"
+    - "final_state"
+
+  event_schema_source: "event_log_contract"
+  video_replay_source: true
+
+
+video_manifest_schema:
+  path: "outputs/p02_monopoly_ai/manifests/ai_landlord_arena.json"
+
+  top_level_fields:
+    - "schema_version"
+    - "project_id"
+    - "asset_name"
+    - "video_path"
+    - "media"
+    - "timeline"
+    - "tournament"
+    - "representative_game"
+    - "headline_result"
+    - "displayed_metrics"
+    - "input_artifact_hashes"
+    - "render_metadata"
+
+  media_fields:
+    - "width"
+    - "height"
+    - "fps"
+    - "frame_count"
+    - "duration_seconds"
+    - "codec"
+    - "pixel_format"
+
+  tournament_fields:
+    - "master_seed"
+    - "game_count"
+
+  representative_game_fields:
+    - "game_id"
+    - "game_index"
+    - "game_seed"
+
+  headline_result_fields:
+    - "numerical_winner"
+    - "win_rate"
+    - "win_rate_ci_low"
+    - "win_rate_ci_high"
+    - "statistical_interpretation"
+
+
+media_contract:
+  output_path: "outputs/p02_monopoly_ai/video/ai_landlord_arena.mp4"
+
+  width: 1080
+  height: 1080
+  fps: 30
+  duration_seconds: 60.0
+  frame_count: 1800
+
+  codec: "h264"
+  pixel_format: "yuv420p"
+  audio_required: false
+
+  title_safe_margin_px: 40
+  minimum_body_font_px: 22
+
+  intellectual_property:
+    original_visual_system_required: true
+    official_monopoly_artwork_forbidden: true
+    official_monopoly_logo_forbidden: true
+    official_card_artwork_forbidden: true
+
+  disclaimer_required: true
+
+
+video_layout:
+  canvas:
+    x: 0
+    y: 0
+    width: 1080
+    height: 1080
+
+  global_header:
+    x: 0
+    y: 0
+    width: 1080
+    height: 90
+
+  global_main:
+    x: 0
+    y: 90
+    width: 1080
+    height: 850
+
+  global_footer:
+    x: 0
+    y: 940
+    width: 1080
+    height: 140
+
+
+video_storyboard:
+  opening:
+    start_second: 0.0
+    end_second: 7.0
+
+    title: "4 STRATEGIES · 10,000 GAMES"
+
+    hook_lines:
+      - "Four landlord strategies."
+      - "10,000 games."
+      - "Which one survives?"
+
+    regions:
+      hook:
+        x: 70
+        y: 150
+        width: 940
+        height: 500
+
+      strategy_strip:
+        x: 70
+        y: 680
+        width: 940
+        height: 210
+
+    footer_text: >-
+      Autonomous rule-based strategy agents · Monte Carlo simulation
+
+    story_goal: >-
+      Establish the experiment immediately: four capital-allocation
+      philosophies face the same uncertain economic game.
+
+
+  strategy_introduction:
+    start_second: 7.0
+    end_second: 14.0
+
+    region:
+      x: 30
+      y: 145
+      width: 1020
+      height: 690
+
+    card_geometry:
+      width: 240
+      height: 690
+      horizontal_gap: 20
+
+    cards:
+      - strategy_id: "collector"
+        headline: "BUY BROADLY"
+        subline: "Small reserve"
+
+      - strategy_id: "specialist"
+        headline: "TARGET GROUPS"
+        subline: "Selective capital"
+
+      - strategy_id: "cash_protector"
+        headline: "KEEP CASH"
+        subline: "Survive shocks"
+
+      - strategy_id: "aggressive_builder"
+        headline: "BUILD FAST"
+        subline: "Accept liquidity risk"
+
+    story_goal: >-
+      Teach the viewer what makes the four investment policies
+      meaningfully different before showing any outcome.
+
+
+  representative_game:
+    start_second: 14.0
+    end_second: 31.0
+
+    board_region:
+      x: 30
+      y: 120
+      width: 690
+      height: 690
+
+    dashboard_region:
+      x: 740
+      y: 120
+      width: 310
+      height: 690
+
+    event_ticker_region:
+      x: 30
+      y: 830
+      width: 1020
+      height: 90
+
+    required_visual_events:
+      - "dice_roll"
+      - "movement"
+      - "property_purchase"
+      - "ownership_change"
+      - "rent_transfer"
+      - "group_completion"
+      - "house_build"
+      - "cash_balance_change"
+      - "reserve_warning"
+
+    story_goal: >-
+      Show how policy differences become real repeated economic
+      decisions: acquisition, rent, development, liquidity, and risk.
+
+
+  scale_up:
+    start_second: 31.0
+    end_second: 39.0
+
+    counter_region:
+      x: 70
+      y: 180
+      width: 940
+      height: 280
+
+    mini_game_region:
+      x: 70
+      y: 490
+      width: 940
+      height: 390
+
+    final_counter_value: 10000
+
+    key_line: "One game is a story. 10,000 games are evidence."
+
+    story_goal: >-
+      Shift the viewer from anecdotal gameplay to Monte Carlo evidence.
+
+
+  leaderboard:
+    start_second: 39.0
+    end_second: 50.0
+
+    leaderboard_region:
+      x: 70
+      y: 160
+      width: 940
+      height: 560
+
+    metric_strip:
+      x: 70
+      y: 740
+      width: 940
+      height: 170
+
+    primary_metric: "tournament_win_rate"
+
+    supporting_metrics:
+      - "bankruptcy_rate"
+      - "median_finishing_cash"
+
+    story_goal: >-
+      Reveal which strategy wins repeatedly while keeping risk and
+      resilience visible beside reward.
+
+
+  risk_reward:
+    start_second: 50.0
+    end_second: 55.0
+
+    metric_cards:
+      - x: 60
+        y: 230
+        width: 300
+        height: 360
+        metric: "highest_win_rate"
+
+      - x: 390
+        y: 230
+        width: 300
+        height: 360
+        metric: "lowest_bankruptcy_rate"
+
+      - x: 720
+        y: 230
+        width: 300
+        height: 360
+        metric: "highest_median_finishing_cash"
+
+    takeaway_region:
+      x: 60
+      y: 630
+      width: 960
+      height: 200
+
+    story_goal: >-
+      Demonstrate that the strategy with the most wins need not be
+      the safest or the most liquid strategy.
+
+
+  winner_summary:
+    start_second: 55.0
+    end_second: 60.0
+
+    headline_region:
+      x: 80
+      y: 160
+      width: 920
+      height: 120
+
+    winner_region:
+      x: 80
+      y: 300
+      width: 920
+      height: 310
+
+    lesson_region:
+      x: 80
+      y: 640
+      width: 920
+      height: 220
+
+    opening_line: "10,000 GAMES LATER..."
+
+    winner_source: "tournament_summary.headline_result"
+
+    takeaway_source: "data_driven_result_interpretation"
+
+    technical_footer: >-
+      Monte Carlo simulation · Strategy agents · Expected value · Python
+
+    disclaimer: >-
+      Unofficial analytical simulation. Not affiliated with or endorsed
+      by Hasbro.
+
+    story_goal: >-
+      End with the actual tournament winner and the risk-return lesson
+      supported by the simulation rather than a prewritten conclusion.
+
+
+video_traceability_contract:
+  hardcoded_winner_forbidden: true
+  hardcoded_result_metrics_forbidden: true
+
+  source_mapping:
+    strategy_labels:
+      source: "configs/p02_monopoly_ai.yaml"
+
+    representative_game_actions:
+      source: "representative_game_events.json"
+
+    leaderboard:
+      source: "tournament_summary.json"
+
+    win_rates:
+      source: "tournament_summary.json"
+
+    bankruptcy_rates:
+      source: "tournament_summary.json"
+
+    median_finishing_cash:
+      source: "tournament_summary.json"
+
+    confidence_intervals:
+      source: "tournament_summary.json"
+
+    final_winner:
+      source: "tournament_summary.headline_result"
+
+    representative_game_identity:
+      source: "representative_game.json"
+
+  manifest_hash_required_for:
+    - "tournament_results.csv"
+    - "tournament_summary.json"
+    - "representative_game.json"
+    - "representative_game_events.json"
+
+  displayed_numeric_value_must_match_source: true
+
+  representative_game_event_must_match_log: true
+
+  final_video_manifest_cross_check_required: true
+
+
+project_acceptance_criteria:
+  contract:
+    yaml_parses: true
+    rules_document_complete: true
+    strategy_document_complete: true
+    storyboard_document_complete: true
+
+  simulation:
+    deterministic_game_engine_required: true
+    impossible_state_count: 0
+    same_seed_reproducible: true
+    game_always_terminates: true
+
+  strategies:
+    canonical_strategy_count: 4
+    configuration_driven: true
+    policies_mutate_game_state: false
+
+  tournament:
+    completed_games: 10000
+    strategy_game_records: 40000
+    exact_seat_balance_required: true
+    deterministic_master_seed_required: true
+
+  statistics:
+    win_rate_required: true
+    bankruptcy_rate_required: true
+    median_finishing_cash_required: true
+    confidence_intervals_required: true
+    pairwise_comparisons_required: true
+    fairness_report_required: true
+
+  representative_game:
+    deterministic_selection_required: true
+    manual_cherry_pick_forbidden: true
+    event_log_replay_required: true
+
+  media:
+    width: 1080
+    height: 1080
+    fps: 30
+    frame_count: 1800
+    duration_seconds: 60.0
+    codec: "h264"
+    pixel_format: "yuv420p"
+    no_text_clipping: true
+    original_visual_system_required: true
+    disclaimer_required: true
+
+  ci:
+    ruff_required: true
+    mypy_required: true
+    pytest_required: true
+    git_diff_check_required: true
+
+  repository:
+    generated_outputs_ignored: true
+    pull_request_required: true
+    merged_main_validation_required: true
