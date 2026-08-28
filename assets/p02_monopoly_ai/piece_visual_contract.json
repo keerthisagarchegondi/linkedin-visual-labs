@@ -1,0 +1,28 @@
+{
+  "movement": {
+    "lift_fraction": 0.2,
+    "travel_end_fraction": 0.8,
+    "type": "lift_carry_drop"
+  },
+  "pieces": {
+    "aggressive_builder": "silver_construction_loader",
+    "cash_protector": "silver_armored_vault",
+    "collector": "silver_sports_coupe",
+    "specialist": "silver_yacht"
+  },
+  "render_contract": "rendered_3d_sprite",
+  "runtime_3d_renderer": null,
+  "schema_version": "1.0",
+  "source_family": "microsoft/fluentui-emoji",
+  "source_license": "MIT",
+  "source_style": "3D",
+  "transformation": [
+    "alpha_crop",
+    "square_normalization",
+    "metallic_luminance_mapping",
+    "contrast_enhancement",
+    "sharpness_enhancement",
+    "ground_shadow",
+    "strategy_accent_badge"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "assets": {
+    "aggressive_builder": "assets/p02_monopoly_ai/fluent_3d/aggressive_builder_source.png",
+    "cash_protector": "assets/p02_monopoly_ai/fluent_3d/cash_protector_source.png",
+    "collector": "assets/p02_monopoly_ai/fluent_3d/collector_source.png",
+    "specialist": "assets/p02_monopoly_ai/fluent_3d/specialist_source.png"
+  },
+  "license": "MIT",
+  "schema_version": "1.0",
+  "source": "microsoft/fluentui-emoji",
+  "source_style": "3D"
+}
