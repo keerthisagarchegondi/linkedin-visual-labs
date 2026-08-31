@@ -25,10 +25,11 @@
   ],
   "project_id": "p02_monopoly_ai",
   "renderer": {
+    "hash_normalization": "UTF-8 text with LF newlines",
     "origin": "ChatGPT Codex final cinematic render",
     "origin_filename": "render_v3_final.py",
     "repository_path": "src/linkedin_visual_labs/projects/p02_monopoly_ai/cinematic_v3_renderer.py",
-    "source_sha256": "f5b309eb3e781db82a9438b75548f84796d4afd5c8dd542c3e444d3259165f47"
+    "source_sha256": "2ebd78976bfaea28eef6ed1e25df8a9730bde62664041b6fa7c65bba9333fd95"
   },
   "runtime_dependencies": {
     "native_tools": [

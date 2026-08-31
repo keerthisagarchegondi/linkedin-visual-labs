@@ -164,4 +164,5 @@ def test_generate_cities_command_is_operational() -> None:
 
     assert completed.stderr == ""
 
-    assert "outputs/p04_zombie_escape/data/cities.json" in completed.stdout
+    normalized_stdout = completed.stdout.replace("\\", "/")
+    assert "outputs/p04_zombie_escape/data/cities.json" in normalized_stdout

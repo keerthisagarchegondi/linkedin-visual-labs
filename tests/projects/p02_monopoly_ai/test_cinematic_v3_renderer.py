@@ -20,8 +20,15 @@ PROVENANCE = ROOT / "assets" / "p02_monopoly_ai" / "cinematic_v3_provenance.json
 
 
 def _sha256(path: Path) -> str:
+    text = path.read_text(
+        encoding="utf-8-sig",
+    )
+
+    normalized = text.replace("\r\n", "\n").replace("\r", "\n")
+
     digest = hashlib.sha256()
-    digest.update(path.read_bytes())
+    digest.update(normalized.encode("utf-8"))
+
     return digest.hexdigest()
 
 
