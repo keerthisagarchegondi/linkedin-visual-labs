@@ -1,0 +1,46 @@
+{
+  "schema_version": "4.0",
+  "renderer": "cinematic-tabletop",
+  "media": {
+    "width": 1080,
+    "height": 1080,
+    "render_scale": 2,
+    "internal_width": 2160,
+    "internal_height": 2160,
+    "fps": 30,
+    "frame_count": 1800,
+    "duration_seconds": 60,
+    "codec": "h264",
+    "pixel_format": "yuv420p"
+  },
+  "story": {
+    "0_7": "dice -> movement -> purchase -> build -> rent -> cash shock -> survival question",
+    "7_14": "four strategies introduced while actively moving",
+    "14_31": "chronological representative-game mini-story",
+    "31_39": "single board pulls back into many boards and 10000-game counter",
+    "39_50": "animated win-rate leaderboard with graphical 95% Wilson intervals",
+    "50_55": "win rate vs bankruptcy vs median cash",
+    "55_60": "validated result, one-line methodology proof, disclaimer"
+  },
+  "visual_quality": {
+    "supersampled_rendering": true,
+    "perspective_tabletop_board": true,
+    "conventional_dice_pips": true,
+    "bold_high_contrast_typography": true,
+    "no_hazy_small_text": true,
+    "no_extra_board_border": true,
+    "no_popup_on_property_perimeter": true,
+    "physical_style_action_cards": true,
+    "piece_ground_shadows": true,
+    "depth_and_vignette": true,
+    "step7_original_board_language": true,
+    "step7_v6_metallic_pieces": true,
+    "completed_step7_png_backgrounds": false
+  },
+  "analytics": {
+    "validated_preview_context_only": true,
+    "real_representative_events_only": true,
+    "hardcoded_winner": false,
+    "wilson_ci": "graphical interval with decorative density profile; interval endpoints remain the statistical quantity"
+  }
+}

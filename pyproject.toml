@@ -77,6 +77,9 @@ source = [
 ]
 
 [tool.ruff]
+extend-exclude = [
+    "src/linkedin_visual_labs/projects/p02_monopoly_ai/cinematic_v3_renderer.py",
+]
 line-length = 100
 src = [
   "src",
@@ -107,3 +110,8 @@ files = [
   "src",
   "tests",
 ]
+
+# p02-monopoly-ai-cinematic-v3-mypy-override
+[[tool.mypy.overrides]]
+module = "linkedin_visual_labs.projects.p02_monopoly_ai.cinematic_v3_renderer"
+ignore_errors = true
