@@ -1,0 +1,69 @@
+{
+  "accepted_video": {
+    "codec": "h264",
+    "duration_seconds": 60,
+    "filename": "project3_property_trading_cinematic_v3_60s.mp4",
+    "fps": 30,
+    "frame_count": 1800,
+    "height": 1080,
+    "pixel_format": "yuv420p",
+    "sha256": "d018a85a1eda8cd31dfdb2e4e44c1ae349dc770b9b0c5318a51906c355a05501",
+    "width": 1080
+  },
+  "documentation": {
+    "project_document": "docs/projects/p02_monopoly_ai.md",
+    "rules": "docs/projects/p02_monopoly_ai_rules.md",
+    "storyboard": "docs/projects/p02_monopoly_ai_storyboard.md"
+  },
+  "project_id": "p02_monopoly_ai",
+  "project_name": "Monopoly AI Landlord Arena",
+  "project_number": 3,
+  "quality_gates_at_step8": {
+    "mypy": "pass",
+    "provenance": "pass",
+    "pytest": {
+      "passed": 633,
+      "status": "pass"
+    },
+    "ruff": "pass",
+    "ruff_format": "pass"
+  },
+  "representative_game": {
+    "game_index": 8721,
+    "winner": "specialist"
+  },
+  "result": {
+    "headline_winner": "collector",
+    "strategies": {
+      "aggressive_builder": {
+        "bankruptcy_rate": 0.4919,
+        "median_finishing_cash": 264.5,
+        "win_rate": 0.3128
+      },
+      "cash_protector": {
+        "bankruptcy_rate": 0.5242,
+        "median_finishing_cash": 0.0,
+        "win_rate": 0.1681
+      },
+      "collector": {
+        "bankruptcy_rate": 0.4026,
+        "median_finishing_cash": 1540.0,
+        "win_rate": 0.3772
+      },
+      "specialist": {
+        "bankruptcy_rate": 0.5353,
+        "median_finishing_cash": 0.0,
+        "win_rate": 0.1419
+      }
+    }
+  },
+  "schema_version": "1.0",
+  "simulation": {
+    "balanced_seat_count_per_strategy_per_seat": 2500,
+    "game_count": 10000,
+    "master_seed": 73031,
+    "strategy_game_rows": 40000
+  },
+  "status": "complete",
+  "step8_base_commit": "c8a2f6e7e2827dca7caec2e8c37b587584479142"
+}
