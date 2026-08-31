@@ -1,0 +1,80 @@
+{
+  "approval_phrase": "Preview set passed.",
+  "duration_seconds": 60,
+  "fps": 30,
+  "frame_count": 1800,
+  "frames": [
+    {
+      "filename": "01_dice_hit.png",
+      "sha256": "ff6edd5114492d6fc4d989b8e169c8e48d012ddd2ce726275c13cf581f223282",
+      "size_bytes": 265633
+    },
+    {
+      "filename": "02_piece_race.png",
+      "sha256": "a13e43ccb063ad437f408037fc1f6e426913cf1b18bb5e511a89a2c836d50a73",
+      "size_bytes": 119815
+    },
+    {
+      "filename": "03_property_purchase.png",
+      "sha256": "e5b96d1ab78c3712efa6018a407fe87de1d7c0649e98c9611d5d1f24a7a3f54e",
+      "size_bytes": 137780
+    },
+    {
+      "filename": "04_house_build.png",
+      "sha256": "64395ffaf79d5854b80e6a2b475302816ad9921ea29ab37adccc1aba61790215",
+      "size_bytes": 138748
+    },
+    {
+      "filename": "05_rent_hit.png",
+      "sha256": "abcd6a159a95116937c19abfc731b3b57c64433bc5022e20fffbf6a3b409ff7d",
+      "size_bytes": 134380
+    },
+    {
+      "filename": "06_cash_crash.png",
+      "sha256": "11593567e8811e063a012711e0989c72ff2590391cb3f038c9dfca08b13fefc5",
+      "size_bytes": 151267
+    },
+    {
+      "filename": "07_survival_question.png",
+      "sha256": "4cc4351f18179f5e837bf46bf8cb9a7e485563ca9766f69e5f6e20f8514cfd8f",
+      "size_bytes": 126176
+    },
+    {
+      "filename": "08_strategy_personalities.png",
+      "sha256": "5623b92c188dcb880378ce9526b0297e999dd92bfa491a12953d2331cb204a66",
+      "size_bytes": 156094
+    },
+    {
+      "filename": "09_gameplay_story.png",
+      "sha256": "5c17cb41be8d4c189f88ee6c96af5061a25d530cc180df183299a501023b1d71",
+      "size_bytes": 126444
+    },
+    {
+      "filename": "10_scale_10000.png",
+      "sha256": "46e58302e170e59ae9fa07414177b1e9b00ca415725082d4fbf597336e39f519",
+      "size_bytes": 141960
+    },
+    {
+      "filename": "11_leaderboard_ci.png",
+      "sha256": "76e9ec1e2fb1b0b746e9cc028fdb9cb3b87a1316a822628599c01c145d32bf3b",
+      "size_bytes": 128187
+    },
+    {
+      "filename": "12_risk_reward.png",
+      "sha256": "bd12c67f9aa8e74fa48f75ff3ff32997f2b8440790484d428a308fa5d52ca8c4",
+      "size_bytes": 109443
+    },
+    {
+      "filename": "13_result.png",
+      "sha256": "55a681ba49e29a13a47284795f73a8f46dfdac083913fd2e8b05b1ba71ea804f",
+      "size_bytes": 129418
+    }
+  ],
+  "height": 1080,
+  "motion_rule": "Approved PNGs are cinematic anchor compositions. The motion renderer may interpolate camera position, object motion, opacity, scale and temporal state, but must preserve their semantic truth and visual hierarchy.",
+  "project": "p02_monopoly_ai",
+  "status": "approved",
+  "step": "Project 3 - Step 8",
+  "visual_version": "V5",
+  "width": 1080
+}

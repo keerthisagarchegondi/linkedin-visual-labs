@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "project": "p02_monopoly_ai",
+  "purpose": "V5 cinematic still-frame art-direction laboratory",
+  "output": {
+    "width": 1080,
+    "height": 1080,
+    "internal_render_scale": 2,
+    "frame_count": 13
+  },
+  "visual_rules": {
+    "one_primary_idea_per_frame": true,
+    "large_foreground_objects": true,
+    "scene_specific_camera_framing": true,
+    "conventional_dice_pips": true,
+    "physical_style_cards": true,
+    "bold_mobile_readable_typography": true,
+    "strong_depth_and_shadows": true,
+    "minimal_dead_space": true,
+    "no_generic_dashboard_layout": true,
+    "no_small_global_player_hud_on_every_frame": true,
+    "no_step7_completed_png_backgrounds": true,
+    "reuse_step7_board_language": true,
+    "reuse_v6_metallic_pieces": true
+  },
+  "analytics": {
+    "validated_preview_context_only": true,
+    "real_representative_game_only": true,
+    "hardcoded_winner": false,
+    "wilson_ci_endpoints_are_statistical_quantity": true,
+    "density_curve_is_decorative_only": true
+  },
+  "frames": [
+    "01_dice_hit",
+    "02_piece_race",
+    "03_property_purchase",
+    "04_house_build",
+    "05_rent_hit",
+    "06_cash_crash",
+    "07_survival_question",
+    "08_strategy_personalities",
+    "09_gameplay_story",
+    "10_scale_10000",
+    "11_leaderboard_ci",
+    "12_risk_reward",
+    "13_result"
+  ]
+}

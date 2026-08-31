@@ -1,0 +1,98 @@
+{
+  "duration_seconds": 60,
+  "fps": 30,
+  "frame_count": 1800,
+  "scenes": [
+    {
+      "anchor": "01_dice_hit",
+      "camera": "full_board_to_dice_closeup",
+      "end": 1.0,
+      "id": "cold_open_dice",
+      "start": 0.0
+    },
+    {
+      "anchor": "02_piece_race",
+      "camera": "tracking_board_sector",
+      "end": 2.0,
+      "id": "cold_open_move",
+      "start": 1.0
+    },
+    {
+      "anchor": "03_property_purchase",
+      "camera": "property_closeup",
+      "end": 3.0,
+      "id": "cold_open_purchase",
+      "start": 2.0
+    },
+    {
+      "anchor": "04_house_build",
+      "camera": "property_closeup",
+      "end": 4.0,
+      "id": "cold_open_build",
+      "start": 3.0
+    },
+    {
+      "anchor": "05_rent_hit",
+      "camera": "rent_closeup",
+      "end": 5.0,
+      "id": "cold_open_rent",
+      "start": 4.0
+    },
+    {
+      "anchor": "06_cash_crash",
+      "camera": "liquidity_closeup",
+      "end": 6.0,
+      "id": "cold_open_cash",
+      "start": 5.0
+    },
+    {
+      "anchor": "07_survival_question",
+      "camera": "graphic_hero",
+      "end": 7.0,
+      "id": "cold_open_question",
+      "start": 6.0
+    },
+    {
+      "anchor": "08_strategy_personalities",
+      "camera": "four_strategy_portraits",
+      "end": 14.0,
+      "id": "strategies",
+      "start": 7.0
+    },
+    {
+      "anchor": "09_gameplay_story",
+      "camera": "full_board_establishing_then_acquire_expand_build_rent_cash_bankruptcy",
+      "end": 31.0,
+      "id": "representative_game",
+      "start": 14.0
+    },
+    {
+      "anchor": "10_scale_10000",
+      "camera": "1_to_4_to_9_to_25_to_10000",
+      "end": 39.0,
+      "id": "scale_10000",
+      "start": 31.0
+    },
+    {
+      "anchor": "11_leaderboard_ci",
+      "camera": "editorial_chart",
+      "end": 50.0,
+      "id": "leaderboard",
+      "start": 39.0
+    },
+    {
+      "anchor": "12_risk_reward",
+      "camera": "editorial_chart",
+      "end": 55.0,
+      "id": "risk_reward",
+      "start": 50.0
+    },
+    {
+      "anchor": "13_result",
+      "camera": "result_proof_disclaimer",
+      "end": 60.0,
+      "id": "result",
+      "start": 55.0
+    }
+  ]
+}

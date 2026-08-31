@@ -1,0 +1,46 @@
+{
+  "artifact": {
+    "codec": "h264",
+    "duration_seconds": 60,
+    "filename": "project3_property_trading_cinematic_v3_60s.mp4",
+    "fps": 30,
+    "frame_count": 1800,
+    "height": 1080,
+    "pixel_format": "yuv420p",
+    "sha256": "d018a85a1eda8cd31dfdb2e4e44c1ae349dc770b9b0c5318a51906c355a05501",
+    "size_bytes": 12356760,
+    "width": 1080
+  },
+  "canonical_inputs": [
+    "representative_game.json",
+    "representative_game_events.json",
+    "tournament_results.csv",
+    "tournament_summary.json"
+  ],
+  "notes": [
+    "The accepted cinematic renderer is preserved as the exact post-production source used for the approved V3 visual style.",
+    "Generated MP4 files and rendered frame sequences remain outside Git.",
+    "FFmpeg binaries, Python virtual environments, font files, and site-packages are not committed.",
+    "The earlier V5 preview/motion implementation is retained as supporting project history and semantic replay infrastructure, not claimed as the generator of the accepted final V3 MP4."
+  ],
+  "project_id": "p02_monopoly_ai",
+  "renderer": {
+    "origin": "ChatGPT Codex final cinematic render",
+    "origin_filename": "render_v3_final.py",
+    "repository_path": "src/linkedin_visual_labs/projects/p02_monopoly_ai/cinematic_v3_renderer.py",
+    "source_sha256": "f5b309eb3e781db82a9438b75548f84796d4afd5c8dd542c3e444d3259165f47"
+  },
+  "runtime_dependencies": {
+    "native_tools": [
+      "FFmpeg 9.0.1",
+      "FFprobe 9.0.1"
+    ],
+    "python": "3.13.x",
+    "python_packages": [
+      "Pillow",
+      "NumPy",
+      "PyYAML"
+    ]
+  },
+  "schema_version": "1.0"
+}
