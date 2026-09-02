@@ -1,13 +1,13 @@
 {
   "checkpoint": {
-    "label": "Project 3 complete; ready to design Project 4",
-    "phase": "closeout",
-    "project_id": "p02_monopoly_ai",
-    "project_name": "Monopoly AI Landlord Arena",
-    "project_number": 3,
-    "status": "complete",
-    "step": "9",
-    "substep": "9.5"
+    "label": "Expanded Project 4 contract and scaffold complete; ready for Step 2",
+    "phase": "foundation",
+    "project_id": "p25_retail_media_audience_decision",
+    "project_name": "Retail Media Audience Decision Studio",
+    "project_number": 4,
+    "status": "in_progress",
+    "step": "1",
+    "substep": "1.188"
   },
   "minimum_baseline": {
     "commit": "0557673c790dc900db7293586ce96931ede40c96",

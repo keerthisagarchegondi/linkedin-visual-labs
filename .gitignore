@@ -114,3 +114,7 @@ desktop.ini
 
 # Generated project runtime artifacts
 /outputs/
+
+# Project 4 - Retail Media Audience Decision Studio
+.cache/p25_retail_media_audience_decision/
+outputs/p25_retail_media_audience_decision/

@@ -31,8 +31,9 @@ dependencies = [
     "pyarrow>=18",
     "joblib>=1.4",
     "torch>=2.6",
+"scikit-uplift==0.5.1",
+"playwright>=1.55,<2",
 ]
-
 [project.optional-dependencies]
 dev = [
   "ipykernel>=6.29",

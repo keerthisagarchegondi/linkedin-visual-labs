@@ -1,0 +1,227 @@
+{
+  "schema_version": "2.0.0",
+  "project_number": 4,
+  "project_id": "p25_retail_media_audience_decision",
+  "project_name": "Retail Media Audience Decision Studio",
+  "package_path": "src/linkedin_visual_labs/projects/p25_retail_media_audience_decision",
+  "cli_namespace": "retail-media",
+  "feature_branch": "project/p25-retail-media-audience-decision",
+  "config_path": "configs/p25_retail_media_audience_decision.yaml",
+  "assets_path": "assets/p25_retail_media_audience_decision",
+  "documentation_path": "docs/projects/p25_retail_media_audience_decision.md",
+  "output_path": "outputs/p25_retail_media_audience_decision",
+  "business_objective": "Turn independent public retail, randomized experiment, media, and behavioral-funnel evidence into governed audience and activation decisions while preserving evidence-class boundaries.",
+  "viewer_question": "How would an analytics and data-product owner turn customer, experiment, funnel, and media evidence into governed audiences and defensible activation decisions?",
+  "primary_decision": "Identify valuable and actionable audiences, determine which interventions have causal evidence, distinguish attribution credit from incrementality, and recommend Scale, Retest, Maintain Holdout, Suppress, or Investigate.",
+  "evidence_policy": {
+    "cross_dataset_customer_identity_join_allowed": false,
+    "fabricated_cross_dataset_identity_allowed": false,
+    "raw_third_party_data_committed": false,
+    "synthetic_recruiter_facing_evidence_allowed": false,
+    "causal_claims_require_valid_causal_evidence": true,
+    "attribution_is_not_incrementality": true
+  },
+  "sources": [
+    {
+      "source_id": "dunnhumby_complete_journey",
+      "evidence_label": "RETAIL CUSTOMER BEHAVIOR",
+      "purpose": [
+        "true_rfm",
+        "basket_and_order_metrics",
+        "retail_sales",
+        "category_affinity",
+        "promotion_and_coupon_behavior"
+      ],
+      "license_status": "VERIFY_SOURCE_TERMS_BEFORE_ACQUISITION",
+      "raw_redistribution": false,
+      "required_for_full_dashboard": true
+    },
+    {
+      "source_id": "hillstrom",
+      "evidence_label": "REAL RANDOMIZED EXPERIMENT",
+      "interface": "sklift.datasets.fetch_hillstrom",
+      "purpose": [
+        "treatment_control_incrementality",
+        "uplift_modeling",
+        "offer_recommendation"
+      ],
+      "raw_redistribution": false,
+      "required_for_full_dashboard": true
+    },
+    {
+      "source_id": "criteo_attribution",
+      "evidence_label": "MEDIA ATTRIBUTION",
+      "purpose": [
+        "impressions",
+        "clicks",
+        "media_cost_index",
+        "conversions",
+        "multi_touch_attribution"
+      ],
+      "license": "CC BY-NC-SA 4.0",
+      "raw_redistribution": false,
+      "cost_semantics": "Transformed Criteo price; not literal advertiser spend.",
+      "required_for_full_dashboard": true
+    },
+    {
+      "source_id": "retailrocket",
+      "evidence_label": "BEHAVIORAL FUNNEL",
+      "purpose": [
+        "views",
+        "add_to_cart",
+        "transactions",
+        "behavioral_funnel"
+      ],
+      "license_status": "VERIFY_SOURCE_TERMS_BEFORE_ACQUISITION",
+      "raw_redistribution": false,
+      "required_for_full_dashboard": true
+    },
+    {
+      "source_id": "synthetic_attribution_fixture",
+      "evidence_label": "TEST FIXTURE ONLY",
+      "purpose": [
+        "attribution_unit_tests"
+      ],
+      "public_evidence": false,
+      "required_for_full_dashboard": false
+    }
+  ],
+  "visual_reference": {
+    "role": "canonical_art_direction_reference",
+    "binary_committed": false,
+    "source": "conversation_upload",
+    "width_px": 1536,
+    "height_px": 1024,
+    "sha256": "abe93962fc863ec9d21ef3574d7152b7759718b21c30e27cd160136dfb2360e3",
+    "product_title": "Retail Media Audience Decision Studio",
+    "theme": "dark_navy",
+    "required_regions": [
+      "left_navigation",
+      "top_header_actions",
+      "seven_kpi_cards",
+      "upper_three_panel_analytical_row",
+      "middle_analytical_and_funnel_row",
+      "lower_detail_tables",
+      "source_and_provenance_footer"
+    ],
+    "acceptance_rule": "Match composition, information density, hierarchy, dark-theme language, card geometry, and major panel placement closely; replace mock values and unsupported labels with validated Project 4 outputs."
+  },
+  "dashboard_kpis": [
+    "total_customers_or_households",
+    "orders_or_baskets",
+    "retail_sales",
+    "ad_impressions",
+    "ad_clicks",
+    "media_cost_index",
+    "attributed_efficiency"
+  ],
+  "metric_semantics": {
+    "gmv_equivalent": "retail_sales",
+    "literal_ad_spend_supported": false,
+    "literal_roas_supported": false,
+    "roas_fallback": "attributed_efficiency",
+    "criteo_cost_label": "Media Cost Index",
+    "incrementality": [
+      "incremental_visit_lift",
+      "incremental_conversion_lift",
+      "incremental_spend_per_customer",
+      "incremental_spend_per_1000_customers",
+      "confidence_classification"
+    ],
+    "funnel": [
+      "view",
+      "add_to_cart",
+      "transaction"
+    ]
+  },
+  "audience_contract": {
+    "primary_ml_segments_mutually_exclusive": true,
+    "secondary_activation_audiences_may_overlap": true,
+    "overlap_visual_uses_secondary_audiences_only": true,
+    "minimum_audience_size_enforced": true,
+    "taxonomy_version": "1.0.0"
+  },
+  "ml_contract": {
+    "true_rfm": true,
+    "behavioral_feature_engineering": true,
+    "category_feature_engineering": true,
+    "segmentation_algorithm": "KMeans",
+    "candidate_k": [
+      3,
+      4,
+      5,
+      6
+    ],
+    "projection": "PCA_2D_VISUALIZATION_ONLY",
+    "uplift_modeling": true,
+    "baseline_uplift_model": "TwoModels/T-Learner",
+    "uplift_evaluation": [
+      "uplift_at_k",
+      "qini_curve",
+      "qini_statistic",
+      "cumulative_gain"
+    ],
+    "deep_learning_core_v1": false,
+    "deep_learning_roadmap_only": true
+  },
+  "determinism": {
+    "master_seed": 20260902,
+    "stable_sorting": true,
+    "sampling_requires_explicit_seed": true,
+    "text_hashing": "LF_NORMALIZED_SHA256"
+  },
+  "privacy": {
+    "pii_allowed": false,
+    "raw_identifiers_public": false,
+    "segment_level_reporting": true,
+    "minimum_cell_size_required": true,
+    "source_specific_terms_must_be_respected": true
+  },
+  "outputs": {
+    "dashboard_html": "report/retail_media_audience_decision_studio.html",
+    "canonical_dashboard_png": "images/retail_media_audience_decision_studio_1536x1024.png",
+    "run_manifest": "manifests/run_manifest.json",
+    "validation_summary": "manifests/validation_summary.json",
+    "data_tables": [
+      "retail_kpis.csv",
+      "customer_features.parquet",
+      "category_performance.csv",
+      "audience_profiles.csv",
+      "audience_taxonomy.csv",
+      "audience_membership.csv",
+      "audience_overlap.csv",
+      "segment_offer_incrementality.csv",
+      "uplift_evaluation.csv",
+      "media_kpis.csv",
+      "media_timeseries.csv",
+      "conversion_funnel.csv",
+      "attribution_comparison.csv",
+      "attribution_method_sensitivity.csv",
+      "activation_recommendations.csv",
+      "executive_recommendations.csv",
+      "evidence_trace.csv"
+    ],
+    "model_artifacts": [
+      "segmentation_model.joblib",
+      "segmentation_preprocessor.joblib",
+      "uplift_mens_model.joblib",
+      "uplift_womens_model.joblib",
+      "model_evaluation.json"
+    ]
+  },
+  "completion_criteria": [
+    "Four public evidence classes remain analytically separate.",
+    "True RFM and ML segmentation are independently validated.",
+    "Uplift models are evaluated without post-treatment leakage.",
+    "Randomized incrementality is independently validated.",
+    "Five attribution methods reconcile to observed attribution value.",
+    "Dashboard values trace to validated machine-readable tables.",
+    "Canonical screenshot is exactly 1536x1024.",
+    "Visual acceptance-reference geometry is satisfied.",
+    "Ruff passes.",
+    "mypy passes.",
+    "pytest passes.",
+    "Feature branch is committed and pushed.",
+    "Strict continuity gate passes."
+  ]
+}

@@ -1,0 +1,98 @@
+schema_version: 2.0.0
+project:
+  number: 4
+  id: p25_retail_media_audience_decision
+  name: Retail Media Audience Decision Studio
+  seed: 20260902
+sources:
+  dunnhumby:
+    enabled: true
+    evidence_label: RETAIL CUSTOMER BEHAVIOR
+    cache_path: .cache/p25_retail_media_audience_decision/dunnhumby
+    terms_gate: verify_before_acquisition
+  hillstrom:
+    enabled: true
+    evidence_label: REAL RANDOMIZED EXPERIMENT
+    cache_path: .cache/p25_retail_media_audience_decision/hillstrom
+    target_col: all
+  criteo:
+    enabled: true
+    evidence_label: MEDIA ATTRIBUTION
+    cache_path: .cache/p25_retail_media_audience_decision/criteo
+    cost_label: Media Cost Index
+  retailrocket:
+    enabled: true
+    evidence_label: BEHAVIORAL FUNNEL
+    cache_path: .cache/p25_retail_media_audience_decision/retailrocket
+    terms_gate: verify_before_acquisition
+sampling:
+  criteo_max_rows: 2000000
+  deterministic: true
+  seed: 20260902
+rfm:
+  enabled: true
+  analysis_unit: household
+segmentation:
+  algorithm: kmeans
+  candidate_k:
+  - 3
+  - 4
+  - 5
+  - 6
+  random_state: 20260902
+  minimum_audience_size: 100
+  pca_components: 2
+uplift:
+  enabled: true
+  baseline: two_models_logistic_regression
+  random_state: 20260902
+  test_fraction: 0.25
+  evaluation:
+  - uplift_at_k
+  - qini
+  - cumulative_gain
+incrementality:
+  control: No E-Mail
+  treatments:
+  - Mens E-Mail
+  - Womens E-Mail
+  confidence_level: 0.95
+  bootstrap_repetitions: 500
+  bootstrap_seed: 20260902
+attribution:
+  methods:
+  - first_touch
+  - last_touch
+  - linear
+  - position_based
+  - time_decay
+  time_decay_half_life_seconds: 604800
+  floating_tolerance: 1.0e-09
+funnel:
+  stages:
+  - view
+  - add_to_cart
+  - transaction
+dashboard:
+  title: Retail Media Audience Decision Studio
+  width_px: 1536
+  height_px: 1024
+  theme: dark_navy
+  reference_sha256: abe93962fc863ec9d21ef3574d7152b7759718b21c30e27cd160136dfb2360e3
+  screenshot_renderer: playwright_chromium
+  self_contained_html: true
+  kpis:
+  - total_customers_or_households
+  - orders_or_baskets
+  - retail_sales
+  - ad_impressions
+  - ad_clicks
+  - media_cost_index
+  - attributed_efficiency
+outputs:
+  root: outputs/p25_retail_media_audience_decision
+  data: outputs/p25_retail_media_audience_decision/data
+  models: outputs/p25_retail_media_audience_decision/models
+  images: outputs/p25_retail_media_audience_decision/images
+  report: outputs/p25_retail_media_audience_decision/report
+  manifests: outputs/p25_retail_media_audience_decision/manifests

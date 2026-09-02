@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "p25_retail_media_audience_decision",
+  "reference_name": "Retail Media Audience Decision Studio preview",
+  "source": "conversation_upload",
+  "width_px": 1536,
+  "height_px": 1024,
+  "sha256": "abe93962fc863ec9d21ef3574d7152b7759718b21c30e27cd160136dfb2360e3",
+  "binary_committed": false,
+  "layout": {
+    "sidebar": true,
+    "header": true,
+    "kpi_cards": 7,
+    "upper_row_panels": 3,
+    "middle_row_panels": 4,
+    "lower_detail_tables": 2,
+    "footer_provenance": true
+  },
+  "visual_language": {
+    "theme": "dark_navy",
+    "dense_executive_dashboard": true,
+    "rounded_cards": true,
+    "subtle_borders": true,
+    "subtle_shadows": true,
+    "high_contrast_typography": true,
+    "multicolor_analytical_accents": true
+  },
+  "acceptance": {
+    "exact_viewport_required": true,
+    "data_values_must_be_generated": true,
+    "mock_values_must_not_be_hard_coded": true,
+    "fake_instacart_source_must_not_appear": true,
+    "unsupported_ad_spend_or_roas_claims_prohibited": true
+  }
+}

@@ -16,6 +16,9 @@ from linkedin_visual_labs.projects import (
     monopoly_app,
     zombie_app,
 )
+from linkedin_visual_labs.projects.p25_retail_media_audience_decision.cli import (
+    app as retail_media_app,
+)
 
 PACKAGE_DISTRIBUTION_NAME = "linkedin-visual-labs"
 
@@ -40,6 +43,11 @@ app.add_typer(
 app.add_typer(
     monopoly_app,
     name="monopoly",
+)
+
+app.add_typer(
+    retail_media_app,
+    name="retail-media",
 )
 
 
