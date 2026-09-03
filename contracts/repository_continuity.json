@@ -1,13 +1,13 @@
 {
   "checkpoint": {
-    "label": "Expanded Project 4 contract and scaffold complete; ready for Step 2",
-    "phase": "foundation",
+    "label": "Project 4 Step 2 complete with four real public evidence sources; ready for Step 3",
+    "phase": "ingestion",
     "project_id": "p25_retail_media_audience_decision",
     "project_name": "Retail Media Audience Decision Studio",
     "project_number": 4,
-    "status": "in_progress",
-    "step": "1",
-    "substep": "1.188"
+    "status": "complete",
+    "step": "2",
+    "substep": "2.61"
   },
   "minimum_baseline": {
     "commit": "0557673c790dc900db7293586ce96931ede40c96",

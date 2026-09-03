@@ -10,21 +10,34 @@ sources:
     evidence_label: RETAIL CUSTOMER BEHAVIOR
     cache_path: .cache/p25_retail_media_audience_decision/dunnhumby
     terms_gate: verify_before_acquisition
+    publisher_source: https://www.dunnhumby.com/source-files/
+    transport: https://www.kaggle.com/api/v1/datasets/download/frtgnn/dunnhumby-the-complete-journey
+    raw_redistribution: false
   hillstrom:
     enabled: true
     evidence_label: REAL RANDOMIZED EXPERIMENT
     cache_path: .cache/p25_retail_media_audience_decision/hillstrom
     target_col: all
+    publisher_source: Kevin Hillstrom MineThatData Email Analytics Challenge
+    transport: sklift.datasets.fetch_hillstrom
+    raw_redistribution: false
   criteo:
     enabled: true
     evidence_label: MEDIA ATTRIBUTION
     cache_path: .cache/p25_retail_media_audience_decision/criteo
     cost_label: Media Cost Index
+    publisher_source: https://ailab.criteo.com/criteo-attribution-modeling-bidding-dataset/
+    transport: https://huggingface.co/datasets/criteo/criteo-attribution-dataset/resolve/main/criteo_attribution_dataset.tsv.gz?download=true
+    expected_sha256: 94ac7a465564349bc7ba008602211d5990a3c53cc133abc0aadef61ea2391a98
+    raw_redistribution: false
   retailrocket:
     enabled: true
     evidence_label: BEHAVIORAL FUNNEL
     cache_path: .cache/p25_retail_media_audience_decision/retailrocket
     terms_gate: verify_before_acquisition
+    publisher_source: Retailrocket recommender system dataset
+    transport: https://www.kaggle.com/api/v1/datasets/download/retailrocket/ecommerce-dataset
+    raw_redistribution: false
 sampling:
   criteo_max_rows: 2000000
   deterministic: true
@@ -96,3 +109,12 @@ outputs:
   images: outputs/p25_retail_media_audience_decision/images
   report: outputs/p25_retail_media_audience_decision/report
   manifests: outputs/p25_retail_media_audience_decision/manifests
+ingestion:
+  raw_cache_root: .cache/p25_retail_media_audience_decision/raw
+  normalized_cache_root: .cache/p25_retail_media_audience_decision/normalized
+  provenance_root: .cache/p25_retail_media_audience_decision/provenance
+  normalized_format: parquet
+  raw_data_committed: false
+  normalized_data_committed: false
+  cross_source_identity_join_allowed: false
+  offline_mode_requires_existing_cache: true
