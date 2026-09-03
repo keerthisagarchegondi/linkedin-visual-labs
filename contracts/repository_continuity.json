@@ -1,13 +1,13 @@
 {
   "checkpoint": {
-    "label": "Project 4 Step 2 complete with four real public evidence sources; ready for Step 3",
-    "phase": "ingestion",
+    "label": "Project 4 Step 3 true RFM, retail customer feature store, category behavior, promotion behavior, and quantity-outlier governance complete; ready for Step 4",
+    "phase": "retail_customer_intelligence",
     "project_id": "p25_retail_media_audience_decision",
     "project_name": "Retail Media Audience Decision Studio",
     "project_number": 4,
     "status": "complete",
-    "step": "2",
-    "substep": "2.61"
+    "step": "3",
+    "substep": "3.39"
   },
   "minimum_baseline": {
     "commit": "0557673c790dc900db7293586ce96931ede40c96",
