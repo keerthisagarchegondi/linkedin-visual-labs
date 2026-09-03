@@ -148,7 +148,7 @@ def test_order_and_value_metrics() -> None:
     assert customer.loc[
         "h1",
         "items_per_basket",
-    ] == pytest.approx(2.0)
+    ] == pytest.approx(1.5)
 
     assert bool(
         customer.loc[
@@ -163,6 +163,15 @@ def test_order_and_value_metrics() -> None:
             "repeat_purchase_indicator",
         ]
     )
+    assert customer.loc[
+        "h1",
+        "average_line_items_per_basket",
+    ] == pytest.approx(1.5)
+
+    assert customer.loc[
+        "h1",
+        "raw_quantity_mean_per_basket",
+    ] == pytest.approx(2.0)
 
 
 def test_category_and_promotion_features() -> None:
@@ -382,16 +391,28 @@ def test_robust_basket_quantity_kpis() -> None:
 
     kpi = frames.retail_kpis.iloc[0]
 
-    assert kpi["average_units_per_basket"] == pytest.approx(7.0 / 3.0)
+    assert kpi["items_per_basket"] == pytest.approx(4.0 / 3.0)
 
     assert kpi["average_line_items_per_basket"] == pytest.approx(4.0 / 3.0)
 
-    assert kpi["median_units_per_basket"] == pytest.approx(3.0)
+    assert kpi["median_line_items_per_basket"] == pytest.approx(1.0)
 
-    assert kpi["p95_units_per_basket"] >= kpi["median_units_per_basket"]
+    assert kpi["average_distinct_products_per_basket"] == pytest.approx(4.0 / 3.0)
 
-    assert kpi["p99_units_per_basket"] >= kpi["p95_units_per_basket"]
+    assert kpi["median_distinct_products_per_basket"] == pytest.approx(1.0)
+
+    assert kpi["raw_quantity_mean_per_basket"] == pytest.approx(7.0 / 3.0)
+
+    assert kpi["raw_quantity_median_per_basket"] == pytest.approx(3.0)
+
+    assert kpi["raw_quantity_p99_per_basket"] >= kpi["raw_quantity_p95_per_basket"]
 
     assert bool(kpi["raw_quantity_metric_outlier_sensitive"])
 
-    assert frames.metadata["dashboard_items_per_basket_recommendation"]
+    assert frames.metadata["raw_quantity_classification"] == "NOT_EXECUTIVE_SAFE"
+
+    assert frames.metadata["basket_intensity_primary_metric"] == "average_line_items_per_basket"
+
+    assert (
+        frames.metadata["basket_variety_secondary_metric"] == "average_distinct_products_per_basket"
+    )

@@ -976,10 +976,69 @@ def build_feature_frames(
         0.0,
     )
 
-    household["items_per_basket"] = np.where(
-        household["frequency"] > 0,
-        household["total_items"] / household["frequency"],
-        0.0,
+    basket_structure = tx.groupby(
+        [
+            "household_id",
+            "basket_id",
+        ],
+        as_index=False,
+        sort=True,
+    ).agg(
+        raw_quantity=(
+            "quantity",
+            "sum",
+        ),
+        line_items=(
+            "product_id",
+            "size",
+        ),
+        distinct_products=(
+            "product_id",
+            "nunique",
+        ),
+    )
+
+    household_basket_structure = (
+        basket_structure.groupby(
+            "household_id",
+            as_index=False,
+            sort=True,
+        )
+        .agg(
+            average_line_items_per_basket=(
+                "line_items",
+                "mean",
+            ),
+            average_distinct_products_per_basket=(
+                "distinct_products",
+                "mean",
+            ),
+            raw_quantity_mean_per_basket=(
+                "raw_quantity",
+                "mean",
+            ),
+        )
+        .set_index("household_id")
+    )
+
+    household["average_line_items_per_basket"] = (
+        household["household_id"]
+        .map(household_basket_structure["average_line_items_per_basket"])
+        .fillna(0.0)
+    )
+
+    household["items_per_basket"] = household["average_line_items_per_basket"]
+
+    household["average_distinct_products_per_basket"] = (
+        household["household_id"]
+        .map(household_basket_structure["average_distinct_products_per_basket"])
+        .fillna(0.0)
+    )
+
+    household["raw_quantity_mean_per_basket"] = (
+        household["household_id"]
+        .map(household_basket_structure["raw_quantity_mean_per_basket"])
+        .fillna(0.0)
     )
 
     household["purchase_frequency_per_30d"] = household["frequency"] / observation_days * 30.0
@@ -1203,28 +1262,76 @@ def build_feature_frames(
         ]
     )
 
-    basket_units = pd.to_numeric(
+    basket_raw_quantity = pd.to_numeric(
         baskets["quantity"],
         errors="raise",
     ).astype("float64")
 
-    average_line_items_per_basket = len(tx) / total_baskets if total_baskets else 0.0
+    basket_line_items = (
+        tx.groupby(
+            [
+                "household_id",
+                "basket_id",
+            ],
+            sort=True,
+        )
+        .size()
+        .astype("float64")
+    )
 
-    median_units_per_basket = float(basket_units.median()) if total_baskets else 0.0
+    basket_distinct_products = (
+        tx.groupby(
+            [
+                "household_id",
+                "basket_id",
+            ],
+            sort=True,
+        )["product_id"]
+        .nunique()
+        .astype("float64")
+    )
 
-    p95_units_per_basket = float(basket_units.quantile(0.95)) if total_baskets else 0.0
+    average_line_items_per_basket = float(basket_line_items.mean()) if total_baskets else 0.0
 
-    p99_units_per_basket = float(basket_units.quantile(0.99)) if total_baskets else 0.0
+    median_line_items_per_basket = float(basket_line_items.median()) if total_baskets else 0.0
 
-    retail_kpis["average_units_per_basket"] = retail_kpis["items_per_basket"]
+    average_distinct_products_per_basket = (
+        float(basket_distinct_products.mean()) if total_baskets else 0.0
+    )
+
+    median_distinct_products_per_basket = (
+        float(basket_distinct_products.median()) if total_baskets else 0.0
+    )
+
+    raw_quantity_mean_per_basket = float(basket_raw_quantity.mean()) if total_baskets else 0.0
+
+    raw_quantity_median_per_basket = float(basket_raw_quantity.median()) if total_baskets else 0.0
+
+    raw_quantity_p95_per_basket = (
+        float(basket_raw_quantity.quantile(0.95)) if total_baskets else 0.0
+    )
+
+    raw_quantity_p99_per_basket = (
+        float(basket_raw_quantity.quantile(0.99)) if total_baskets else 0.0
+    )
+
+    retail_kpis["items_per_basket"] = average_line_items_per_basket
 
     retail_kpis["average_line_items_per_basket"] = average_line_items_per_basket
 
-    retail_kpis["median_units_per_basket"] = median_units_per_basket
+    retail_kpis["median_line_items_per_basket"] = median_line_items_per_basket
 
-    retail_kpis["p95_units_per_basket"] = p95_units_per_basket
+    retail_kpis["average_distinct_products_per_basket"] = average_distinct_products_per_basket
 
-    retail_kpis["p99_units_per_basket"] = p99_units_per_basket
+    retail_kpis["median_distinct_products_per_basket"] = median_distinct_products_per_basket
+
+    retail_kpis["raw_quantity_mean_per_basket"] = raw_quantity_mean_per_basket
+
+    retail_kpis["raw_quantity_median_per_basket"] = raw_quantity_median_per_basket
+
+    retail_kpis["raw_quantity_p95_per_basket"] = raw_quantity_p95_per_basket
+
+    retail_kpis["raw_quantity_p99_per_basket"] = raw_quantity_p99_per_basket
 
     retail_kpis["raw_quantity_metric_outlier_sensitive"] = True
 
@@ -1263,22 +1370,48 @@ def build_feature_frames(
     }
 
     metadata["items_per_basket_definition"] = (
-        "raw normalized QUANTITY summed by basket and averaged; "
-        "outlier-sensitive for weighted/bulk products"
+        "mean normalized transaction product-line count per "
+        "household-basket; executive-safe basket-intensity metric"
     )
 
-    metadata["dashboard_items_per_basket_recommendation"] = (
-        "use average_line_items_per_basket or median_units_per_basket "
-        "for an executive headline; retain average_units_per_basket "
-        "for raw quantity analysis"
+    metadata["items_per_basket_alias"] = "average_line_items_per_basket"
+
+    metadata["basket_intensity_primary_metric"] = "average_line_items_per_basket"
+
+    metadata["basket_variety_secondary_metric"] = "average_distinct_products_per_basket"
+
+    metadata["raw_quantity_policy"] = (
+        "normalized QUANTITY is retained only as a diagnostic because "
+        "its extreme concentration makes aggregate raw quantity "
+        "unsuitable for executive physical-unit interpretation"
     )
 
-    metadata["quantity_robustness_metrics"] = [
-        "average_line_items_per_basket",
-        "median_units_per_basket",
-        "p95_units_per_basket",
-        "p99_units_per_basket",
+    metadata["raw_quantity_classification"] = "NOT_EXECUTIVE_SAFE"
+
+    metadata["raw_quantity_diagnostic_metrics"] = [
+        "raw_quantity_mean_per_basket",
+        "raw_quantity_median_per_basket",
+        "raw_quantity_p95_per_basket",
+        "raw_quantity_p99_per_basket",
     ]
+
+    metadata["executive_safe_basket_metrics"] = [
+        "average_line_items_per_basket",
+        "median_line_items_per_basket",
+        "average_distinct_products_per_basket",
+        "median_distinct_products_per_basket",
+    ]
+
+    metadata["winsorization_policy"] = (
+        "do not winsorize raw quantity merely to manufacture an executive items-per-basket KPI"
+    )
+
+    metadata["quantity_diagnostic_evidence"] = {
+        "top_0_1pct_raw_quantity_share": 0.20398154141389507,
+        "top_0_5pct_raw_quantity_share": 0.725773633192551,
+        "top_1pct_raw_quantity_share": 0.9872814964839143,
+        "top_5pct_raw_quantity_share": 0.9889433909784253,
+    }
 
     result = RetailFeatureFrames(
         customer_features=household,
