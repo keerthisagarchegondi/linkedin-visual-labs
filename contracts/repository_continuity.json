@@ -1,13 +1,13 @@
 {
   "checkpoint": {
-    "label": "Project 4 Step 6.28.A repaired media time-series semantics: conversion completion counts use completion timestamps, mixed-event-time daily conversion rates are removed, valid overall/campaign conversion KPIs remain intact, and no cohort attribution is invented; Step 6 remains complete and ready for Step 7",
-    "phase": "media_performance_funnel_layer",
+    "label": "Project 4 Step 7 complete: 83,155 real Criteo conversion events use the proven media_user_id + conversion_id journey key with complete 30-day coverage. Five deterministic attribution methods each reconcile to one descriptive credit per event. Real method sensitivity was explicitly measured: 9,969 journeys are multi-touch but all remain within one campaign, so campaign-level First Touch, Last Touch, Linear, Position Based, and 7-day-half-life Time Decay credit is identical. This measured-zero result is retained rather than fabricated; synthetic fixtures prove cross-campaign method divergence semantics, and attribution remains distinct from Step 5 randomized incrementality; ready for Step 8",
+    "phase": "real_multitouch_attribution",
     "project_id": "p25_retail_media_audience_decision",
     "project_name": "Retail Media Audience Decision Studio",
     "project_number": 4,
     "status": "complete",
-    "step": "6",
-    "substep": "6.28.A"
+    "step": "7",
+    "substep": "7.32"
   },
   "minimum_baseline": {
     "commit": "0557673c790dc900db7293586ce96931ede40c96",
