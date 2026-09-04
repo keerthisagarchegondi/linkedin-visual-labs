@@ -1,13 +1,13 @@
 {
   "checkpoint": {
-    "label": "Project 4 Step 5 Hillstrom randomized incrementality, confidence intervals, deterministic spend bootstrap, TwoModels uplift ML, Qini/gain evaluation, leakage governance, and evidence-driven treatment recommendations complete; ready for Step 6",
-    "phase": "randomized_incrementality_uplift_ml",
+    "label": "Project 4 Step 6 Criteo impression/click/unique-conversion performance with transformed Media Cost Index, campaign and source-relative time evidence, plus source-separated Retailrocket view/add-to-cart/transaction event-volume funnel complete; ready for Step 7",
+    "phase": "media_performance_funnel_layer",
     "project_id": "p25_retail_media_audience_decision",
     "project_name": "Retail Media Audience Decision Studio",
     "project_number": 4,
     "status": "complete",
-    "step": "5",
-    "substep": "5.44"
+    "step": "6",
+    "substep": "6.33"
   },
   "minimum_baseline": {
     "commit": "0557673c790dc900db7293586ce96931ede40c96",
