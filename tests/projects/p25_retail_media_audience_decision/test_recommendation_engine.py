@@ -32,6 +32,8 @@ def _evidence(
     customer_value: bool = False,
     attribution: bool = False,
     raw_response: bool = False,
+    targeting_quality: float | None = 1.0,
+    targeting_eligible: bool = True,
 ) -> DecisionEvidence:
     return DecisionEvidence(
         recommendation_id=recommendation_id,
@@ -56,6 +58,8 @@ def _evidence(
         raw_response_signal=raw_response,
         source_artifact="test",
         source_record="row-1",
+        targeting_quality_score=targeting_quality,
+        targeting_action_eligible=targeting_eligible,
     )
 
 
@@ -241,3 +245,64 @@ def test_global_guard_rejects_noncausal_scale() -> None:
         return
 
     raise AssertionError("Noncausal Scale should have been rejected.")
+
+
+def test_negative_qini_blocks_scale() -> None:
+    result = classify_recommendation(
+        _evidence(
+            targeting_quality=-2.0,
+            targeting_eligible=True,
+        )
+    )
+
+    assert result.recommendation_class == "HOLDOUT_RECOMMENDED"
+
+    assert result.next_action == "MAINTAIN_HOLDOUT"
+
+    assert result.causal_evidence_present
+
+    assert result.targeting_quality_score is not None
+    assert result.targeting_quality_score <= 0
+
+
+def test_nonprioritized_population_cannot_scale() -> None:
+    result = classify_recommendation(
+        _evidence(
+            targeting_quality=5.0,
+            targeting_eligible=False,
+        )
+    )
+
+    assert result.recommendation_class == "HOLDOUT_RECOMMENDED"
+
+    assert result.next_action == "MAINTAIN_HOLDOUT"
+
+
+def test_positive_qini_prioritized_population_can_scale() -> None:
+    result = classify_recommendation(
+        _evidence(
+            targeting_quality=5.0,
+            targeting_eligible=True,
+        )
+    )
+
+    assert result.recommendation_class == "MEASURED_RECOMMENDATION"
+
+    assert result.next_action == "SCALE"
+
+    assert result.targeting_action_eligible
+
+
+def test_model_suppress_flag_does_not_override_positive_causal_effect() -> None:
+    result = classify_recommendation(
+        _evidence(
+            uplift=-0.01,
+            top20=-0.01,
+            targeting_quality=5.0,
+            targeting_eligible=False,
+        )
+    )
+
+    assert result.next_action == "MAINTAIN_HOLDOUT"
+
+    assert result.recommendation_class == "HOLDOUT_RECOMMENDED"

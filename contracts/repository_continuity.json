@@ -1,13 +1,13 @@
 {
   "checkpoint": {
-    "label": "Project 4 Step 8 complete: the decision engine consumes frozen Step 5 Hillstrom evidence instead of retraining uplift models. Canonical randomized ITT conversion effects and 95% confidence intervals are combined with frozen held-out T-learner uplift evaluation and the No E-Mail recommendation population. Dunnhumby value/segments remain activation hypotheses only; Criteo attribution and Retailrocket event funnels remain descriptive; privacy/minimum-audience rules and cross-source identity boundaries are enforced. Deterministic evidence-traced actions are ready for Step 9.",
+    "label": "Project 4 Step 8 post-audit repair complete. Scale eligibility is now constrained by frozen Step 5 targeting cohorts and held-out ranking quality. Positive treatment-level randomized ITT evidence is preserved without misrepresenting it as a randomized subgroup effect. Scale requires PRIORITIZE_RECOMMENDED_TREATMENT, positive held-out Qini, positive uplift, and positive randomized treatment effect. Mens E-Mail retains positive overall randomized evidence but receives no Scale because its frozen held-out Qini is negative. One prioritized Womens E-Mail cohort retains Scale with positive Qini. STANDARD_ELIGIBILITY cohorts remain in holdout, and Step 5 SUPPRESS_EMAIL remains a model-targeting flag rather than causal suppression. Retail, media, funnel, privacy, and source boundaries remain preserved.",
     "phase": "governed_recommendation_decision_engine",
     "project_id": "p25_retail_media_audience_decision",
     "project_name": "Retail Media Audience Decision Studio",
     "project_number": 4,
     "status": "complete",
     "step": "8",
-    "substep": "8.34"
+    "substep": "8.34.A.A"
   },
   "minimum_baseline": {
     "commit": "0557673c790dc900db7293586ce96931ede40c96",

@@ -71,6 +71,8 @@ class DecisionEvidence:
 
     source_artifact: str
     source_record: str
+    targeting_quality_score: float | None = None
+    targeting_action_eligible: bool = False
 
 
 @dataclass(frozen=True)
@@ -101,6 +103,8 @@ class Recommendation:
     source_record: str
 
     deterministic_priority: int
+    targeting_quality_score: float | None = None
+    targeting_action_eligible: bool = False
 
 
 def _float_scalar(
@@ -161,6 +165,10 @@ def classify_recommendation(
 
     uplift_nonpositive = evidence.uplift_score is not None and evidence.uplift_score <= 0
 
+    targeting_quality_positive = (
+        evidence.targeting_quality_score is not None and evidence.targeting_quality_score > 0
+    )
+
     # --------------------------------------------------------
     # 8.31 Minimum audience/privacy guardrail.
     # --------------------------------------------------------
@@ -189,6 +197,8 @@ def classify_recommendation(
                 "No activation decision is emitted for audiences "
                 f"below {PRIVACY_MIN_AUDIENCE_SIZE} records."
             ),
+            targeting_quality_score=evidence.targeting_quality_score,
+            targeting_action_eligible=evidence.targeting_action_eligible,
             source_artifact=evidence.source_artifact,
             source_record=evidence.source_record,
             deterministic_priority=50,
@@ -229,6 +239,8 @@ def classify_recommendation(
                 "Attribution credit and event-volume funnel ratios "
                 "cannot masquerade as randomized incrementality."
             ),
+            targeting_quality_score=evidence.targeting_quality_score,
+            targeting_action_eligible=evidence.targeting_action_eligible,
             source_artifact=evidence.source_artifact,
             source_record=evidence.source_record,
             deterministic_priority=40,
@@ -257,6 +269,8 @@ def classify_recommendation(
                     "below the activation-size threshold."
                 ),
                 guardrail_reason=("Retail value/behavior alone cannot establish treatment effect."),
+                targeting_quality_score=evidence.targeting_quality_score,
+                targeting_action_eligible=evidence.targeting_action_eligible,
                 source_artifact=evidence.source_artifact,
                 source_record=evidence.source_record,
                 deterministic_priority=45,
@@ -285,6 +299,8 @@ def classify_recommendation(
             guardrail_reason=(
                 "A randomized holdout is required before claiming incremental treatment impact."
             ),
+            targeting_quality_score=evidence.targeting_quality_score,
+            targeting_action_eligible=evidence.targeting_action_eligible,
             source_artifact=evidence.source_artifact,
             source_record=evidence.source_record,
             deterministic_priority=30,
@@ -318,6 +334,8 @@ def classify_recommendation(
                 "Only randomized Hillstrom evidence can directly drive "
                 "causal treatment actions in Project 4."
             ),
+            targeting_quality_score=evidence.targeting_quality_score,
+            targeting_action_eligible=evidence.targeting_action_eligible,
             source_artifact=evidence.source_artifact,
             source_record=evidence.source_record,
             deterministic_priority=50,
@@ -345,12 +363,19 @@ def classify_recommendation(
                 "the activation-size threshold."
             ),
             guardrail_reason=("Minimum activation audience size is required."),
+            targeting_quality_score=evidence.targeting_quality_score,
+            targeting_action_eligible=evidence.targeting_action_eligible,
             source_artifact=evidence.source_artifact,
             source_record=evidence.source_record,
             deterministic_priority=45,
         )
 
-    if positive_causal and uplift_positive:
+    if (
+        positive_causal
+        and uplift_positive
+        and evidence.targeting_action_eligible
+        and targeting_quality_positive
+    ):
         return Recommendation(
             recommendation_id=evidence.recommendation_id,
             evidence_domain=evidence.evidence_domain,
@@ -374,6 +399,8 @@ def classify_recommendation(
             guardrail_reason=(
                 "Scale only while retaining an experimental holdout for continued measurement."
             ),
+            targeting_quality_score=evidence.targeting_quality_score,
+            targeting_action_eligible=evidence.targeting_action_eligible,
             source_artifact=evidence.source_artifact,
             source_record=evidence.source_record,
             deterministic_priority=10,
@@ -402,6 +429,8 @@ def classify_recommendation(
             guardrail_reason=(
                 "Suppression is supported only inside the randomized evidence domain."
             ),
+            targeting_quality_score=evidence.targeting_quality_score,
+            targeting_action_eligible=evidence.targeting_action_eligible,
             source_artifact=evidence.source_artifact,
             source_record=evidence.source_record,
             deterministic_priority=15,
@@ -432,6 +461,8 @@ def classify_recommendation(
             guardrail_reason=(
                 "Maintain randomized holdout until causal and targeting evidence agree."
             ),
+            targeting_quality_score=evidence.targeting_quality_score,
+            targeting_action_eligible=evidence.targeting_action_eligible,
             source_artifact=evidence.source_artifact,
             source_record=evidence.source_record,
             deterministic_priority=20,
