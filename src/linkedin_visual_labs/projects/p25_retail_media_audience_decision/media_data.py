@@ -327,7 +327,7 @@ def build_media_frames(
             sort=True,
         )["conversion_id"]
         .nunique()
-        .rename("conversion_count")
+        .rename("conversion_completion_count")
         .reset_index()
     )
 
@@ -349,25 +349,13 @@ def build_media_frames(
     for column in (
         "impression_count",
         "click_count",
-        "conversion_count",
+        "conversion_completion_count",
     ):
         media_timeseries[column] = media_timeseries[column].astype(int)
 
     media_timeseries["ctr"] = np.where(
         media_timeseries["impression_count"] > 0,
         media_timeseries["click_count"] / media_timeseries["impression_count"],
-        0.0,
-    )
-
-    media_timeseries["conversion_rate_per_impression"] = np.where(
-        media_timeseries["impression_count"] > 0,
-        media_timeseries["conversion_count"] / media_timeseries["impression_count"],
-        0.0,
-    )
-
-    media_timeseries["conversion_rate_per_click"] = np.where(
-        media_timeseries["click_count"] > 0,
-        media_timeseries["conversion_count"] / media_timeseries["click_count"],
         0.0,
     )
 
@@ -378,6 +366,10 @@ def build_media_frames(
     media_timeseries["time_axis_type"] = TIME_AXIS_TYPE
 
     media_timeseries["cost_metric_label"] = COST_METRIC_LABEL
+
+    media_timeseries["conversion_time_basis"] = "CONVERSION_COMPLETION_TIMESTAMP"
+
+    media_timeseries["daily_conversion_rate_policy"] = "NOT_COMPUTED_MIXED_EVENT_TIME_DENOMINATOR"
 
     overall_impressions = _int_scalar(overall["impression_count"])
 
@@ -393,8 +385,8 @@ def build_media_frames(
     if _int_scalar(media_timeseries["click_count"].sum()) != overall_clicks:
         raise ValueError("Media time-series clicks do not reconcile.")
 
-    if _int_scalar(media_timeseries["conversion_count"].sum()) != overall_conversions:
-        raise ValueError("Media time-series conversions do not reconcile.")
+    if _int_scalar(media_timeseries["conversion_completion_count"].sum()) != overall_conversions:
+        raise ValueError("Media conversion-completion series does not reconcile.")
 
     if not np.isclose(
         _float_scalar(media_timeseries["media_cost_index"].sum()),
@@ -436,6 +428,24 @@ def build_media_frames(
         "time_axis_type": TIME_AXIS_TYPE,
         "validation": validation,
     }
+
+    metadata["media_timeseries_semantics"] = {
+        "impression_count": ("displayed impressions bucketed by impression timestamp"),
+        "click_count": ("clicked impressions bucketed by impression timestamp"),
+        "media_cost_index": ("transformed cost bucketed by impression timestamp"),
+        "conversion_completion_count": (
+            "deduplicated unique conversions bucketed by conversion completion timestamp"
+        ),
+        "ctr": ("clicks / impressions; numerator and denominator share impression timestamp basis"),
+    }
+
+    metadata["daily_conversion_rate_policy"] = (
+        "not computed because conversion completions use conversion "
+        "timestamps while impressions/clicks use impression timestamps; "
+        "same-day division would mix event-time populations"
+    )
+
+    metadata["conversion_cohort_attribution_policy"] = "not invented in Step 6"
 
     return MediaFrames(
         media_kpis=media_kpis,

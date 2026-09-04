@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from typing import Any, cast
+
 import numpy as np
 import pandas as pd
 import pytest
@@ -131,7 +133,7 @@ def test_time_series_reconciles_overall() -> None:
 
     assert int(frames.media_timeseries["click_count"].sum()) == int(overall["click_count"])
 
-    assert int(frames.media_timeseries["conversion_count"].sum()) == int(
+    assert int(frames.media_timeseries["conversion_completion_count"].sum()) == int(
         overall["conversion_count"]
     )
 
@@ -190,3 +192,116 @@ def test_media_source_evidence_is_explicit() -> None:
     assert set(frames.media_kpis["source_dataset"]) == {SOURCE_DATASET}
 
     assert SOURCE_DATASET == ("CRITEO_ATTRIBUTION")
+
+
+def test_timeseries_does_not_compute_mixed_time_conversion_rates() -> None:
+    frames = build_media_frames(
+        _fixture(),
+        expected_rows=None,
+    )
+
+    columns = set(frames.media_timeseries.columns)
+
+    assert "conversion_completion_count" in columns
+    assert "conversion_rate_per_impression" not in columns
+    assert "conversion_rate_per_click" not in columns
+
+    assert (
+        frames.media_timeseries["conversion_time_basis"].eq("CONVERSION_COMPLETION_TIMESTAMP").all()
+    )
+
+    assert (
+        frames.media_timeseries["daily_conversion_rate_policy"]
+        .eq("NOT_COMPUTED_MIXED_EVENT_TIME_DENOMINATOR")
+        .all()
+    )
+
+
+def test_conversion_completion_can_extend_beyond_impression_window() -> None:
+    frame = _fixture().copy()
+
+    converted_rows = frame.index[frame["conversion"] == 1].tolist()
+
+    frame.loc[
+        converted_rows[-1],
+        "conversion_timestamp",
+    ] = 3 * 86400
+
+    frames = build_media_frames(
+        frame,
+        expected_rows=None,
+    )
+
+    tail = frames.media_timeseries.loc[frames.media_timeseries["source_relative_day"] == 3].iloc[0]
+
+    assert (
+        int(
+            cast(
+                Any,
+                tail["impression_count"],
+            )
+        )
+        == 0
+    )
+
+    assert (
+        int(
+            cast(
+                Any,
+                tail["click_count"],
+            )
+        )
+        == 0
+    )
+
+    assert (
+        int(
+            cast(
+                Any,
+                tail["conversion_completion_count"],
+            )
+        )
+        == 1
+    )
+
+
+def test_overall_conversion_rates_remain_available() -> None:
+    frames = build_media_frames(
+        _fixture(),
+        expected_rows=None,
+    )
+
+    overall = frames.media_kpis.loc[frames.media_kpis["aggregation_level"] == "OVERALL"].iloc[0]
+
+    assert (
+        float(
+            cast(
+                Any,
+                overall["conversion_rate_per_impression"],
+            )
+        )
+        > 0.0
+    )
+
+    assert (
+        float(
+            cast(
+                Any,
+                overall["conversion_rate_per_click"],
+            )
+        )
+        > 0.0
+    )
+
+
+def test_timeseries_semantic_metadata_is_explicit() -> None:
+    frames = build_media_frames(
+        _fixture(),
+        expected_rows=None,
+    )
+
+    assert frames.metadata["conversion_cohort_attribution_policy"] == "not invented in Step 6"
+
+    policy = str(frames.metadata["daily_conversion_rate_policy"])
+
+    assert "same-day division would mix event-time populations" in policy
