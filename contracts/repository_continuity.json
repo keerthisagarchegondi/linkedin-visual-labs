@@ -1,13 +1,13 @@
 {
   "checkpoint": {
-    "label": "Project 4 Step 3 basket KPI semantics corrected to executive-safe line-item and distinct-product metrics; raw QUANTITY retained as diagnostic only; ready for Step 4",
-    "phase": "retail_customer_intelligence",
+    "label": "Project 4 Step 4 deterministic KMeans segmentation, model-layer median imputation, canonical numerical evidence, governed taxonomy, overlapping activation audiences, overlap evidence, and PCA visualization complete; ready for Step 5",
+    "phase": "ml_audience_segmentation_governed_taxonomy",
     "project_id": "p25_retail_media_audience_decision",
     "project_name": "Retail Media Audience Decision Studio",
     "project_number": 4,
     "status": "complete",
-    "step": "3",
-    "substep": "3.39.C"
+    "step": "4",
+    "substep": "4.62"
   },
   "minimum_baseline": {
     "commit": "0557673c790dc900db7293586ce96931ede40c96",
