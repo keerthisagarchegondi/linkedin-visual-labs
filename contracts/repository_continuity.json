@@ -1,13 +1,13 @@
 {
   "checkpoint": {
-    "label": "Project 4 Step 4 deterministic KMeans segmentation, model-layer median imputation, canonical numerical evidence, governed taxonomy, overlapping activation audiences, overlap evidence, and PCA visualization complete; ready for Step 5",
-    "phase": "ml_audience_segmentation_governed_taxonomy",
+    "label": "Project 4 Step 5 Hillstrom randomized incrementality, confidence intervals, deterministic spend bootstrap, TwoModels uplift ML, Qini/gain evaluation, leakage governance, and evidence-driven treatment recommendations complete; ready for Step 6",
+    "phase": "randomized_incrementality_uplift_ml",
     "project_id": "p25_retail_media_audience_decision",
     "project_name": "Retail Media Audience Decision Studio",
     "project_number": 4,
     "status": "complete",
-    "step": "4",
-    "substep": "4.62"
+    "step": "5",
+    "substep": "5.44"
   },
   "minimum_baseline": {
     "commit": "0557673c790dc900db7293586ce96931ede40c96",
