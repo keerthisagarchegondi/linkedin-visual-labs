@@ -1,0 +1,15 @@
+{
+  "classification": "synthetic_test_only",
+  "observed_days": 112,
+  "calendar_days": 117,
+  "source_rows": 50,
+  "selected_items": 40,
+  "series": 20,
+  "aggregate_rows": 2240,
+  "expected_formula": "0 when d divisible by 17; otherwise 3*s + 2*c + 4 + 2*(d modulo 7), zero-based store/category indices",
+  "files": {
+    "calendar.csv": "4ae07184a6cc80e64e09d14174619ed9a1dde9d2ab17f06da94939a38f6658af",
+    "expected_aggregates.csv": "c9606353f7d8fc98f2c60a046c784a4282e1c4be00baa1d935183cc97a36455e",
+    "sales_train_evaluation.csv": "0bfa6e58419d57239aebca472cee03827e70be515db44eb3e740dee14c231888"
+  }
+}

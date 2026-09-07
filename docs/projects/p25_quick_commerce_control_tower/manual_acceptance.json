@@ -1,0 +1,12 @@
+{
+  "result": "PASS",
+  "reviewed_by": "user",
+  "review_date": "2026-09-07",
+  "source": "Step 6D direct manual recruiter review recorded in validation.md",
+  "artifact_sha256": {
+    "reports/control_tower.html": "d545bdee07147b3635fb0f476a4befa3b723c71c2afc3daf74c7f5b339fb095b",
+    "images/champion_model_map.png": "7928a3cb47eabd1bfdc2aa2e659fd106fb3d33bcce4544920697b0251a47a2fa",
+    "video/forecast_model_arena.mp4": "e3b1a8acb4c28aef4b783ac748704252d6ac9a543581d853953397898ece4a64",
+    "video/forecast_to_labor_optimizer.mp4": "38228d0ea9ca93963e0d63c64fd6eaf916bff293418a9cfb0fe9897a3269d0bd"
+  }
+}

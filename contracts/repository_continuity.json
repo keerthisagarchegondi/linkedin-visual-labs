@@ -9,6 +9,9 @@
     "step": "9",
     "substep": "9.5"
   },
+  "environment_roots": {
+    "windows": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs"
+  },
   "minimum_baseline": {
     "commit": "0557673c790dc900db7293586ce96931ede40c96",
     "label": "Project 3 complete: Monopoly AI Landlord Arena"
