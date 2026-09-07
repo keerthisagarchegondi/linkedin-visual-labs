@@ -16,9 +16,15 @@ concurrency:
 jobs:
   quality:
     name: Python quality checks
+    # Keep the existing quality status dependent on every relocated check.
+    needs: zombie-dl
+    if: ${{ always() }}
     runs-on: ubuntu-latest
 
     steps:
+      - name: Require Zombie tests and full typing to pass
+        run: test "${{ needs.zombie-dl.result }}" = success
+
       - name: Check out repository
         uses: actions/checkout@v7
 
@@ -45,14 +51,40 @@ jobs:
       - name: Install project
         run: python -m pip install --editable ".[dev]"
 
+      - name: Verify lightweight installation
+        run: python -c "import importlib.util; assert importlib.util.find_spec('torch') is None"
+
       - name: Check formatting
         run: ruff format --check .
 
       - name: Run Ruff
         run: ruff check .
 
-      - name: Run mypy
-        run: mypy src tests
-
       - name: Run tests
-        run: pytest
+        run: pytest --ignore=tests/projects/p04_zombie_escape
+
+  zombie-dl:
+    name: Zombie deep learning and full strict typing
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+          cache: pip
+      - name: Install FFmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes ffmpeg
+      - name: Install CPU PyTorch and project extra
+        run: |
+          python -m pip install --upgrade pip setuptools wheel
+          python -m pip install "torch>=2.6" --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install --editable ".[dev,zombie-dl]"
+          python -c "import torch; assert torch.version.cuda is None"
+      - name: Run full strict mypy
+        run: mypy --strict src tests
+      - name: Run all Zombie tests
+        run: pytest tests/projects/p04_zombie_escape

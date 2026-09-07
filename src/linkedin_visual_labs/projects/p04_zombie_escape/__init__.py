@@ -1,5 +1,35 @@
 """Project 2 — Zombie Escape public API."""
 
+from importlib import import_module
+from typing import TYPE_CHECKING, Any
+
+if TYPE_CHECKING:
+    from linkedin_visual_labs.projects.p04_zombie_escape.dl_model import (
+        DLRiskMetrics,
+        TrainedDLRiskModel,
+        ZombieRiskCNN,
+        configure_deterministic_torch,
+        load_dl_checkpoint,
+        persist_dl_risk_model,
+        predict_dense_risk,
+        train_dl_risk_model,
+    )
+    from linkedin_visual_labs.projects.p04_zombie_escape.dl_pipeline import (
+        DLPipelineResult,
+        merge_dl_predictions,
+        predict_showcase_dl_risk_maps,
+        run_dl_pipeline,
+        solve_all_routes_from_persisted_predictions,
+    )
+    from linkedin_visual_labs.projects.p04_zombie_escape.dl_tensors import (
+        INPUT_CHANNEL_COUNT,
+        INPUT_CHANNELS,
+        TARGET_NAME,
+        CityTensor,
+        city_to_tensor,
+        validate_dl_input_contract,
+    )
+
 from linkedin_visual_labs.projects.p04_zombie_escape.city_generator import (
     GeneratedCity,
     HiddenRiskHotspot,
@@ -13,31 +43,6 @@ from linkedin_visual_labs.projects.p04_zombie_escape.city_generator import (
 from linkedin_visual_labs.projects.p04_zombie_escape.config import (
     DEFAULT_CONFIG_PATH,
     load_zombie_config,
-)
-from linkedin_visual_labs.projects.p04_zombie_escape.dl_model import (
-    DLRiskMetrics,
-    TrainedDLRiskModel,
-    ZombieRiskCNN,
-    configure_deterministic_torch,
-    load_dl_checkpoint,
-    persist_dl_risk_model,
-    predict_dense_risk,
-    train_dl_risk_model,
-)
-from linkedin_visual_labs.projects.p04_zombie_escape.dl_pipeline import (
-    DLPipelineResult,
-    merge_dl_predictions,
-    predict_showcase_dl_risk_maps,
-    run_dl_pipeline,
-    solve_all_routes_from_persisted_predictions,
-)
-from linkedin_visual_labs.projects.p04_zombie_escape.dl_tensors import (
-    INPUT_CHANNEL_COUNT,
-    INPUT_CHANNELS,
-    TARGET_NAME,
-    CityTensor,
-    city_to_tensor,
-    validate_dl_input_contract,
 )
 from linkedin_visual_labs.projects.p04_zombie_escape.evaluation import (
     HEADLINE_METHODS,
@@ -333,3 +338,44 @@ __all__ = [
     "write_generated_cities",
     "write_mission_contract",
 ]
+
+
+_DL_EXPORTS: dict[str, str] = {
+    "DLRiskMetrics": "dl_model",
+    "TrainedDLRiskModel": "dl_model",
+    "ZombieRiskCNN": "dl_model",
+    "configure_deterministic_torch": "dl_model",
+    "load_dl_checkpoint": "dl_model",
+    "persist_dl_risk_model": "dl_model",
+    "predict_dense_risk": "dl_model",
+    "train_dl_risk_model": "dl_model",
+    "DLPipelineResult": "dl_pipeline",
+    "merge_dl_predictions": "dl_pipeline",
+    "predict_showcase_dl_risk_maps": "dl_pipeline",
+    "run_dl_pipeline": "dl_pipeline",
+    "solve_all_routes_from_persisted_predictions": "dl_pipeline",
+    "INPUT_CHANNEL_COUNT": "dl_tensors",
+    "INPUT_CHANNELS": "dl_tensors",
+    "TARGET_NAME": "dl_tensors",
+    "CityTensor": "dl_tensors",
+    "city_to_tensor": "dl_tensors",
+    "validate_dl_input_contract": "dl_tensors",
+}
+
+
+def __getattr__(name: str) -> Any:
+    """Load optional deep-learning exports only when requested."""
+    module_name = _DL_EXPORTS.get(name)
+    if module_name is None:
+        raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+    try:
+        value = getattr(import_module(f"{__name__}.{module_name}"), name)
+    except ModuleNotFoundError as exc:
+        if exc.name == "torch":
+            raise ModuleNotFoundError(
+                "Zombie deep learning requires: pip install -e '.[zombie-dl]'",
+                name="torch",
+            ) from exc
+        raise
+    globals()[name] = value
+    return value
