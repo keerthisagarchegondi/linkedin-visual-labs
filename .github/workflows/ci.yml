@@ -61,7 +61,7 @@ jobs:
         run: ruff check .
 
       - name: Run tests
-        run: pytest --ignore=tests/projects/p04_zombie_escape
+        run: pytest --ignore=tests/projects/p04_zombie_escape -m "not monopoly_release_artifacts"
 
   zombie-dl:
     name: Zombie deep learning and full strict typing

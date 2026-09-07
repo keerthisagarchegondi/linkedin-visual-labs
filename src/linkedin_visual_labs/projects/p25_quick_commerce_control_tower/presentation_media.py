@@ -2,12 +2,14 @@
 
 from __future__ import annotations
 
+import os
 import re
 import subprocess
+import sys
+from importlib.metadata import distribution
 from pathlib import Path
 from typing import Any
 
-import imageio_ffmpeg  # type: ignore[import-untyped]
 import numpy as np
 from PIL import Image
 
@@ -30,14 +32,28 @@ FPS = 30
 
 
 def packaged_ffmpeg() -> tuple[Path, str]:
-    "Resolve the installed imageio-ffmpeg binary directly; ignore PATH/env overrides."
-    binaries = Path(imageio_ffmpeg.__file__).resolve().parent / "binaries"
-    candidates = sorted(
-        p for p in binaries.glob("ffmpeg-*") if p.is_file() and p.suffix in ("", ".exe")
+    """Resolve through the package API without shared environment/cache mutation."""
+    environment = os.environ.copy()
+    environment.pop("IMAGEIO_FFMPEG_EXE", None)
+    environment["PATH"] = ""
+    resolved = subprocess.run(
+        [
+            sys.executable,
+            "-I",
+            "-B",
+            "-c",
+            "import imageio_ffmpeg; print(imageio_ffmpeg.get_ffmpeg_exe())",
+        ],
+        env=environment,
+        check=True,
+        capture_output=True,
+        text=True,
     )
-    if len(candidates) != 1:
-        raise ValueError(f"Expected one packaged FFmpeg executable in {binaries}")
-    executable = candidates[0]
+    executable = Path(resolved.stdout.strip()).resolve()
+    package = distribution("imageio-ffmpeg")
+    owned_files = {Path(str(package.locate_file(file))).resolve() for file in package.files or ()}
+    if not executable.is_file() or executable not in owned_files:
+        raise ValueError("Resolver did not return an existing packaged FFmpeg executable")
     result = subprocess.run(
         [str(executable), "-version"], check=True, capture_output=True, text=True
     )

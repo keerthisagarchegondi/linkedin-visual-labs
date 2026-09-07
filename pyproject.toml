@@ -61,6 +61,9 @@ where = [
 ]
 
 [tool.pytest.ini_options]
+markers = [
+  "monopoly_release_artifacts: requires complete validated ignored Monopoly tournament/replay release artifacts",
+]
 addopts = [
   "-ra",
   "--strict-config",

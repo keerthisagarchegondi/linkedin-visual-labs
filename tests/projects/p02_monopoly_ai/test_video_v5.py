@@ -125,6 +125,7 @@ def test_v5_motion_primitives_are_bounded() -> None:
         assert 0.0 <= video_motion.ease_out_cubic(value) <= 1.0
 
 
+@pytest.mark.monopoly_release_artifacts
 @pytest.mark.parametrize(
     "frame_index",
     (
@@ -164,6 +165,7 @@ def test_v5_rendered_key_frames_are_1080_square(
     assert image.mode == "RGB"
 
 
+@pytest.mark.monopoly_release_artifacts
 def test_v5_frame_render_is_deterministic() -> None:
     context = load_video_context()
 

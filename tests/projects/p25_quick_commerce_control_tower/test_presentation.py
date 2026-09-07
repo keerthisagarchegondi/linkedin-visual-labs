@@ -439,7 +439,9 @@ def test_missing_packaged_binary_fails_closed(
     monkeypatch: pytest.MonkeyPatch,
     tmp_path: Path,
 ) -> None:
-    monkeypatch.setattr("imageio_ffmpeg.__file__", str(tmp_path / "__init__.py"))
+    from types import SimpleNamespace
+
+    monkeypatch.setattr(media, "distribution", lambda _: SimpleNamespace(files=()))
     with pytest.raises(ValueError, match="packaged FFmpeg"):
         media.packaged_ffmpeg()
 

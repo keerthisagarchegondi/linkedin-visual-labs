@@ -474,14 +474,19 @@ def evaluate_predictions(
     return EvaluationResult(tables)
 
 
+def resolve_validation_record(context: PipelineContext, validation_record: Path | str) -> Path:
+    """Keep repository-relative CLI paths, but authorize only this context's outputs."""
+    return ensure_path_within(
+        context.paths.repository_root / validation_record, context.paths.output_root
+    )
+
+
 def run_evaluation(context: PipelineContext, validation_record: Path | str) -> Path:
     """Use frozen real artifacts and hash-bound prior deterministic evidence; never refit."""
+    proof_path = resolve_validation_record(context, validation_record)
     prediction_path = context.resolve_output_path("data/predictions.parquet")
     daily_path = context.resolve_output_path("data/demand_daily.parquet")
     metadata = json.loads(prediction_path.with_suffix(".metadata.json").read_text())
-    proof_path = ensure_path_within(
-        context.paths.repository_root / validation_record, context.paths.repository_root
-    )
     proof = json.loads(proof_path.read_text())
     prediction_hash, daily_hash = file_hash(prediction_path), file_hash(daily_path)
     if (

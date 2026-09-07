@@ -101,6 +101,41 @@ The completed project contains:
 
 ## Quality gates
 
+### Clean-checkout tests and release-artifact tests
+
+The cinematic runtime tests marked `monopoly_release_artifacts` require the
+previously generated, validated release evidence under ignored
+`outputs/p02_monopoly_ai/`. This includes `step8_input_manifest.json`, its
+referenced representative-game summary/event bundle, and the validated
+tournament/preview inputs consumed by the runtime. A manifest alone is not
+sufficient. Keep the complete evidence bundle and its valid path references.
+
+These 33 cases validate the frozen tournament/replay story, including the named
+properties and measured results documented above. They are release-artifact
+integration tests, not miniature tournament fixtures. The tracked repository
+does not provide a generator for the Step 8 input manifest. Do not fabricate it
+or substitute a smaller tournament: the rules require 10,000 games, validated
+metrics and real representative-game events (rules sections 1.53, 1.56–1.58).
+
+Ordinary clean-checkout CI runs all other Monopoly tests:
+
+```bash
+python -m pytest tests/projects/p02_monopoly_ai -m "not monopoly_release_artifacts"
+```
+
+Before validating a Monopoly release, restore the complete validated evidence
+bundle locally and run from the repository root:
+
+```bash
+python -m pytest tests/projects/p02_monopoly_ai -m monopoly_release_artifacts
+```
+
+That command fails if required evidence is missing or invalid. The marker is
+excluded only by the generic clean-checkout workflow, not by global pytest
+configuration; plain `pytest` still includes these tests. No generated outputs
+should be committed. This preserves the release checks while keeping all 164
+ordinary Monopoly tests in clean-checkout CI.
+
 At Project 3 Step 8 closeout:
 
 - Ruff lint: PASS

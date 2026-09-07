@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import pytest
+
 from linkedin_visual_labs.projects.p02_monopoly_ai import preview_v5
 from linkedin_visual_labs.projects.p02_monopoly_ai.preview_v5 import (
     HEIGHT,
@@ -59,6 +61,7 @@ def test_v5_uses_conventional_dice_pips() -> None:
         assert len(PIPS[value]) == value
 
 
+@pytest.mark.monopoly_release_artifacts
 def test_v5_runtime_is_real_and_validated() -> None:
     runtime = load_runtime()
 
@@ -75,6 +78,7 @@ def test_v5_runtime_is_real_and_validated() -> None:
         assert 0.0 <= metric.ci_lower <= metric.ci_upper <= 1.0
 
 
+@pytest.mark.monopoly_release_artifacts
 def test_v5_ranking_uses_actual_metrics() -> None:
     runtime = load_runtime()
 
@@ -102,6 +106,7 @@ def test_v5_has_exactly_thirteen_renderers() -> None:
     assert len(PREVIEW_RENDERERS) == 13
 
 
+@pytest.mark.monopoly_release_artifacts
 def test_v5_replay_asset_mapping_is_purchase_derived_and_unique() -> None:
     mapping = preview_v5.replay_asset_index_map()
 
@@ -112,6 +117,7 @@ def test_v5_replay_asset_mapping_is_purchase_derived_and_unique() -> None:
     assert all(0 <= index < 40 for index in mapping.values())
 
 
+@pytest.mark.monopoly_release_artifacts
 def test_v5_selected_action_shots_use_real_semantic_events() -> None:
     runtime = preview_v5.load_runtime()
 
@@ -129,6 +135,7 @@ def test_v5_selected_action_shots_use_real_semantic_events() -> None:
     assert preview_v5.actual_bankruptcy_events(bankruptcy)
 
 
+@pytest.mark.monopoly_release_artifacts
 def test_v5_build_event_is_house_built_not_build_decision() -> None:
     runtime = preview_v5.load_runtime()
 
@@ -163,6 +170,7 @@ def test_v5_build_event_is_house_built_not_build_decision() -> None:
     assert houses_after >= 1
 
 
+@pytest.mark.monopoly_release_artifacts
 def test_v5_action_shots_resolve_real_named_properties() -> None:
     runtime = preview_v5.load_runtime()
 
@@ -189,6 +197,7 @@ def test_v5_action_shots_resolve_real_named_properties() -> None:
         assert not name.startswith("SPACE ")
 
 
+@pytest.mark.monopoly_release_artifacts
 def test_v5_frozen_story_sequence_is_strictly_chronological() -> None:
     runtime = preview_v5.load_runtime()
 
@@ -216,6 +225,7 @@ def test_v5_frozen_story_sequence_is_strictly_chronological() -> None:
     assert len(set(indexes)) == 6
 
 
+@pytest.mark.monopoly_release_artifacts
 def test_v5_selected_semantic_contract_matches_representative_game() -> None:
     runtime = preview_v5.load_runtime()
 
@@ -226,6 +236,7 @@ def test_v5_selected_semantic_contract_matches_representative_game() -> None:
     assert preview_v5.rent_property_name(runtime.story.rent_turn) == "Emerald Avenue"
 
 
+@pytest.mark.monopoly_release_artifacts
 def test_v5_piece_race_route_projects_inside_frame() -> None:
     runtime = preview_v5.load_runtime()
 
@@ -255,6 +266,7 @@ def test_v5_piece_race_route_projects_inside_frame() -> None:
     )
 
 
+@pytest.mark.monopoly_release_artifacts
 def test_v5_house_overlay_property_is_skyline_drive() -> None:
     runtime = preview_v5.load_runtime()
 
@@ -265,6 +277,7 @@ def test_v5_house_overlay_property_is_skyline_drive() -> None:
     assert preview_v5.semantic_event_type(preview_v5.build_event(turn)) == "HOUSE_BUILT"
 
 
+@pytest.mark.monopoly_release_artifacts
 def test_v5_story_display_details_match_event_specific_truth() -> None:
     runtime = preview_v5.load_runtime()
 
@@ -289,6 +302,7 @@ def test_v5_story_display_details_match_event_specific_truth() -> None:
     assert details[5] == "RENT BANKRUPTCY"
 
 
+@pytest.mark.monopoly_release_artifacts
 def test_v5_story_build_detail_uses_house_asset_not_turn_landing() -> None:
     runtime = preview_v5.load_runtime()
 
@@ -306,6 +320,7 @@ def test_v5_story_build_detail_uses_house_asset_not_turn_landing() -> None:
     )
 
 
+@pytest.mark.monopoly_release_artifacts
 def test_v5_story_rent_detail_uses_rent_asset_not_generic_turn_label() -> None:
     runtime = preview_v5.load_runtime()
 
