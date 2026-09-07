@@ -5,6 +5,8 @@ from __future__ import annotations
 from itertools import pairwise
 from pathlib import Path
 
+import pytest
+
 from linkedin_visual_labs.projects.p02_monopoly_ai.video import (
     DURATION_SECONDS,
     FPS,
@@ -98,6 +100,7 @@ def test_lift_carry_drop() -> None:
     assert abs(end[2]) < 1e-12
 
 
+@pytest.mark.monopoly_release_artifacts
 def test_runtime_uses_validated_metrics() -> None:
     runtime = load_runtime()
 
@@ -111,6 +114,7 @@ def test_runtime_uses_validated_metrics() -> None:
         assert 0.0 <= metric.ci_lower <= metric.ci_upper <= 1.0
 
 
+@pytest.mark.monopoly_release_artifacts
 def test_story_uses_real_turns() -> None:
     runtime = load_runtime()
 
@@ -123,6 +127,7 @@ def test_story_uses_real_turns() -> None:
     assert len(runtime.story.narrative_turns) >= 4
 
 
+@pytest.mark.monopoly_release_artifacts
 def test_ranking_matches_actual_maximum() -> None:
     runtime = load_runtime()
 

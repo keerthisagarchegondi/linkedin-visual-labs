@@ -12,10 +12,6 @@ import typer
 from linkedin_visual_labs.projects.p04_zombie_escape.city_generator import (
     generate_all_cities,
 )
-from linkedin_visual_labs.projects.p04_zombie_escape.dl_pipeline import (
-    run_dl_pipeline,
-    solve_all_routes_from_persisted_predictions,
-)
 from linkedin_visual_labs.projects.p04_zombie_escape.evaluation import run_evaluation
 from linkedin_visual_labs.projects.p04_zombie_escape.mission_visualization import (
     render_preview_frames,
@@ -134,6 +130,10 @@ def train_ml_command() -> None:
 @app.command("train-dl")
 def train_dl_command() -> None:
     """Train deterministic CNN, predict risk, and generate DL routes."""
+    from linkedin_visual_labs.projects.p04_zombie_escape import (
+        run_dl_pipeline,
+    )
+
     result = run_dl_pipeline(build_pipeline_context())
 
     typer.echo(
@@ -153,6 +153,10 @@ def train_dl_command() -> None:
 @app.command("solve-routes")
 def solve_routes_command() -> None:
     """Rebuild all headline routes from persisted prediction maps."""
+    from linkedin_visual_labs.projects.p04_zombie_escape import (
+        solve_all_routes_from_persisted_predictions,
+    )
+
     output = solve_all_routes_from_persisted_predictions(build_pipeline_context())
 
     typer.echo(str(output))
@@ -302,6 +306,10 @@ def main(
         return 0
 
     if args.command == "train-dl":
+        from linkedin_visual_labs.projects.p04_zombie_escape import (
+            run_dl_pipeline,
+        )
+
         dl_result = run_dl_pipeline(build_pipeline_context())
 
         print(dl_result.metadata_path)
@@ -309,6 +317,10 @@ def main(
         return 0
 
     if args.command == "solve-routes":
+        from linkedin_visual_labs.projects.p04_zombie_escape import (
+            solve_all_routes_from_persisted_predictions,
+        )
+
         print(solve_all_routes_from_persisted_predictions(build_pipeline_context()))
 
         return 0

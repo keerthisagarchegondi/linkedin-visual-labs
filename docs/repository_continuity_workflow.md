@@ -2,7 +2,7 @@
 
 This repository is developed from two working copies:
 
-- local Windows clone: `D:\linkedin-visual-labs`
+- local Windows clone: `D:\linkedin-visual-labs-git\linkedin-visual-labs`
 - GitHub Codespaces clone: `/workspaces/linkedin-visual-labs`
 
 They are two clones of the same GitHub repository. `origin` is the only transfer
@@ -16,7 +16,9 @@ in both clones concurrently.
   optional cross-clone fingerprint.
 - `scripts/update_continuity.py` updates the deterministic semantic checkpoint.
 - `contracts/repository_continuity.json` stores stable repository identity,
-  minimum completed-project baseline, and the latest semantic checkpoint.
+  minimum completed-project baseline, the latest semantic checkpoint, and the explicit
+  Windows checkout path in `environment_roots.windows`. The path is configuration,
+  not a reset of repository identity, ancestry or project baselines.
 - `tests/test_repository_continuity.py` validates the manifest and both CLI tools
   without network access.
 
@@ -25,7 +27,7 @@ in both clones concurrently.
 ### Windows
 
 ```powershell
-Set-Location "D:\linkedin-visual-labs"
+Set-Location "D:\linkedin-visual-labs-git\linkedin-visual-labs"
 & ".\.venv\Scripts\Activate.ps1"
 python scripts\continuity_gate.py --expected-branch "<branch>"
 ```

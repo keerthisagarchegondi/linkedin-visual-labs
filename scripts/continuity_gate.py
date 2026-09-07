@@ -11,7 +11,7 @@ import sys
 import tomllib
 from collections.abc import Sequence
 from dataclasses import dataclass
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 from typing import Any
 
 EXPECTED_REPOSITORY_KEY = "github.com/keerthisagarchegondi/linkedin-visual-labs"
@@ -156,11 +156,15 @@ def same_path(left: Path, right: Path) -> bool:
     return left_text == right_text
 
 
-def expected_environment_root() -> Path:
+def expected_environment_root(manifest: dict[str, Any], *, platform: str | None = None) -> Path:
     """Return the contracted root for the current platform."""
 
-    if os.name == "nt":
-        return Path(r"D:\linkedin-visual-labs")
+    if (os.name if platform is None else platform) == "nt":
+        roots = manifest.get("environment_roots")
+        value = roots.get("windows") if isinstance(roots, dict) else None
+        if not isinstance(value, str) or not PureWindowsPath(value).is_absolute():
+            raise ContinuityError("environment_roots.windows must be an absolute checkout path")
+        return Path(value)
 
     return Path("/workspaces/linkedin-visual-labs")
 
@@ -289,12 +293,15 @@ def main() -> int:
     print(f"Expected branch: {arguments.expected_branch}")
     print()
 
-    expected_root = expected_environment_root()
-    recorder.add(
-        "environment root",
-        same_path(root, expected_root),
-        f"actual={root}; expected={expected_root}",
-    )
+    try:
+        expected_root = expected_environment_root(load_manifest(root))
+        recorder.add(
+            "environment root",
+            same_path(root, expected_root),
+            f"actual={root}; expected={expected_root}",
+        )
+    except (ContinuityError, OSError, ValueError, TypeError) as exc:
+        recorder.add("environment root", False, str(exc))
 
     remotes: tuple[str, ...] = ()
 

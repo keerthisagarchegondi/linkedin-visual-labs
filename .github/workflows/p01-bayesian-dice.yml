@@ -40,14 +40,16 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e ".[dev]"
 
+      - name: Verify lightweight installation
+        run: python -c "import importlib.util; assert importlib.util.find_spec('torch') is None"
+
       - name: Ruff format check
         run: ruff format --check .
 
       - name: Ruff lint
         run: ruff check .
 
-      - name: Type check
-        run: mypy src tests
+      # Full strict typing (including optional DL) runs in CI / zombie-dl.
 
       - name: Project 1 tests
         run: pytest tests/projects/p01_bayesian_dice -q

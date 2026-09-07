@@ -1,0 +1,116 @@
+project_id: p25_quick_commerce_control_tower
+seed: 47
+acquisition:
+  record_id: '10203108'
+  sales_url: https://zenodo.org/records/10203108/files/sales_train_evaluation.csv?download=1
+  calendar_url: https://zenodo.org/records/10203108/files/calendar.csv?download=1
+  sales_md5: b806dfc9f30a745102b708c09951f6aa
+  calendar_md5: 3ffeab2991b0c8e861d008b39ea4c95c
+  expected_observed_days: 1941
+  timeout_seconds: 60.0
+  attempts: 3
+resources:
+  threads: 2
+  memory_limit: 1GB
+features:
+  lags: [28, 35, 42, 49, 56]
+  rolling_windows: [7, 14]
+  rolling_end_lag: 28
+paths:
+  raw_data: data/raw/p25_quick_commerce_control_tower
+  cache: .cache/p25_quick_commerce_control_tower
+  sql: sql/p25_quick_commerce_control_tower
+  output: outputs/p25_quick_commerce_control_tower
+data:
+  holdout_days: 28
+  categories: [FOODS, HOUSEHOLD]
+  expected_store_count: 10
+  expected_series_count: 20
+governance:
+  absolute_bias_guardrail: 0.10
+diagnostics:
+  # Fixed before inspecting Step 4 real scores; never tuned for a preferred winner.
+  disagreement_review_threshold: 0.50
+  minimum_subgroup_observations: 7
+  top_exceptions: 10
+  weights:
+    volume: 0.10
+    shortfall: 0.30
+    absolute_error: 0.25
+    bias_exposure: 0.15
+    disagreement_exposure: 0.10
+    repeated_miss_exposure: 0.10
+forecasting:
+  seasonal_naive:
+    lag: 28
+  holt_winters:
+    seasonal_periods: 7
+    seasonal: add
+    trend: add
+    damped_trend: true
+  hist_gradient_boosting:
+    max_iter: 200
+    learning_rate: 0.1
+    max_leaf_nodes: 31
+    l2_regularization: 1.0
+    early_stopping: false
+  mlp:
+    hidden_layer_sizes: [128, 64, 32]
+    activation: relu
+    solver: adam
+    max_iter: 500
+    alpha: 0.0001
+    learning_rate_init: 0.001
+    early_stopping: false
+labor:
+  classification: illustrative
+  # These are prototype assumptions, not measured operating values.
+  productivity_units_per_hour:
+    FOODS: 90.0
+    HOUSEHOLD: 60.0
+  minimum_staffing: 2
+  maximum_staffing: 12
+  shift_hours: 8.0
+  daily_network_hours: 480.0
+  cost_per_hour: 22.0
+  uncovered_hour_penalty: 100.0
+  # Fixed before scenario inspection; units are uncovered labor-hours per store-day.
+  critical_uncovered_hours: 8.0
+  solver_tolerance: 0.0000001
+  store_priority_weights:
+    CA_1: 1.0
+    CA_2: 1.0
+    CA_3: 1.0
+    CA_4: 1.0
+    TX_1: 1.0
+    TX_2: 1.0
+    TX_3: 1.0
+    WI_1: 1.0
+    WI_2: 1.0
+    WI_3: 1.0
+inventory:
+  # Independent synthetic snapshots, never observed inventory or replenishment decisions.
+  window_days: 7
+  on_hand_days_min: 0.0
+  on_hand_days_max: 7.0
+  expedite_below_days: 1.0
+  reorder_below_days: 2.0
+  monitor_below_days: 4.0
+  low_demand_units_per_day: 0.01
+scenarios:
+  - name: Base
+    demand_multiplier: 1.0
+    productivity_multiplier: 1.0
+    capacity_multiplier: 1.0
+  - name: +15% demand
+    demand_multiplier: 1.15
+    productivity_multiplier: 1.0
+    capacity_multiplier: 1.0
+  - name: -10% productivity
+    demand_multiplier: 1.0
+    productivity_multiplier: 0.90
+    capacity_multiplier: 1.0
+output:
+  width: 1080
+  height: 1350
+  fps: 30

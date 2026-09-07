@@ -26,6 +26,36 @@ The development stack is:
 4. Project virtual environment under `.venv`
 5. GitHub Actions for independent quality verification
 
+
+## Installation and optional deep learning
+
+Base installation is `python -m pip install -e .`; shared developer tools use
+`python -m pip install -e ".[dev]"`. Neither installs PyTorch.
+The default Codespaces setup uses the same lightweight dev extra.
+
+Only Zombie Escape (`p04_zombie_escape`, Project 2) uses PyTorch, in
+`dl_model.py` and `dl_tensors.py`; its DL pipeline and DL tests depend on them.
+Bayesian Dice, Monopoly and Project 5 do not require PyTorch.
+To run all tests or the full strict type check, install the Zombie extra.
+For the project's deterministic CPU training and CI:
+
+```bash
+python -m pip install "torch>=2.6" --index-url https://download.pytorch.org/whl/cpu
+python -m pip install -e ".[dev,zombie-dl]"
+mypy --strict src tests
+pytest
+```
+
+The CPU index follows [PyTorch's installation instructions](https://docs.pytorch.org/get-started/locally/).
+Installing `.[zombie-dl]` directly also provides PyTorch, but the default Linux
+distribution may include CUDA dependencies; the two-command CPU path avoids them.
+The generic CI job runs all non-Zombie tests with `.[dev]`; the dedicated
+`zombie-dl` CI job runs every Zombie test and full-repository strict mypy with
+CPU PyTorch. No tests are skipped overall. Bayesian Dice stays on `.[dev]`,
+with its full formatting, lint, tests and deterministic schedule checks.
+Full strict typing is centralized in the dedicated CI job.
+Ignored Monopoly production artifacts remain a separate runtime prerequisite.
+
 ## Foundation commands
 
 ```bash
