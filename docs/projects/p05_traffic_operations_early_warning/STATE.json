@@ -1,0 +1,2485 @@
+{
+  "schema_version": "1.0",
+  "project_display_name": "Project 6 \u2014 Traffic Flow Deterioration Early-Warning System",
+  "master_catalog_id": 5,
+  "master_catalog_name": "Traffic Vision and Congestion Warning",
+  "internal_package_name": "p05_traffic_operations_early_warning",
+  "canonical_repository_root": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs",
+  "branch": "project/p05-traffic-operations-early-warning",
+  "inspection_head": "7c253340c3fced632a9fe6797c5f9d00a9a94521",
+  "current_setup_step": "SETUP_STEP_6_B_C_COMPLETE",
+  "current_implementation_step": 14,
+  "last_verified_implementation_step": 14,
+  "implementation_status": "VERIFIED_REVISED_SCOPE_V3",
+  "implementation_steps": {
+    "1": "VERIFIED",
+    "2": "VERIFIED",
+    "3": "VERIFIED",
+    "4": "VERIFIED",
+    "5": "VERIFIED",
+    "6": "VERIFIED",
+    "7": "VERIFIED",
+    "8": "VERIFIED",
+    "9": "VERIFIED",
+    "10": "VERIFIED",
+    "11": "VERIFIED",
+    "12": "VERIFIED_REVISED_SCOPE_V3",
+    "13": "VERIFIED_REVISED_SCOPE_V3",
+    "14": "VERIFIED_REVISED_SCOPE_V3",
+    "15": "NOT_STARTED"
+  },
+  "takeover_plan_status": "COMPLETE_APPROVED",
+  "plan_audit_status": "COMPLETE_APPROVED_WITH_RUNTIME_VERIFICATION_OUTSTANDING",
+  "governance_status": "VERIFIED",
+  "source_status": "SOURCE_APPROVED",
+  "source_approved": true,
+  "runtime_status": "CPU_REAL_INFERENCE_VERIFIED",
+  "output_status": "VERIFIED_REVISED_SCOPE_V3",
+  "blocker_list": [
+    {
+      "id": "INDEPENDENT_VALIDATION",
+      "blocks": "Independent detection/tracking/physical outcome accuracy claims",
+      "reason": "Step11 independently verifies computation. No human-labelled accuracy or physical queue-absence claim is approved."
+    },
+    {
+      "id": "PUBLICATION_RIGHTS",
+      "blocks": "Public source-imagery distribution and final artifact publication; not internal preview/design review",
+      "reason": "Publication permission pending. User-authorized internal previews may use actual AI City footage; new presentation manifests must mark PENDING_SOURCE_PERMISSION."
+    }
+  ],
+  "governance_blockers": [],
+  "next_permitted_step": "Human review of current internal 4.C.C accelerated artifacts; Step 15 requires separate explicit authorization. Public source imagery remains pending permission.",
+  "next_step_requires_explicit_authorization": true,
+  "governance_validation": {
+    "status": "PASS",
+    "full_repository_baseline_run": false,
+    "implementation_tests_created": false,
+    "checks": [
+      {
+        "check": "01 canonical repository root unchanged",
+        "result": "PASS"
+      },
+      {
+        "check": "02 expected branch unchanged",
+        "result": "PASS"
+      },
+      {
+        "check": "03 no prohibited repository accessed",
+        "result": "PASS"
+      },
+      {
+        "check": "04 required documentation directory exists",
+        "result": "PASS"
+      },
+      {
+        "check": "05 all nine meaningful required documents exist",
+        "result": "PASS"
+      },
+      {
+        "check": "06 STATE.json parses",
+        "result": "PASS"
+      },
+      {
+        "check": "07 required state fields present and truthful",
+        "result": "PASS"
+      },
+      {
+        "check": "08 no unfinished markers",
+        "result": "PASS"
+      },
+      {
+        "check": "09 all 15 numbered steps retain independent gates",
+        "result": "PASS"
+      },
+      {
+        "check": "10 product/source/metric/output truthfulness reviewed",
+        "result": "PASS"
+      },
+      {
+        "check": "11 visible queue and warning independence documented",
+        "result": "PASS"
+      },
+      {
+        "check": "12 original timestamps documented",
+        "result": "PASS"
+      },
+      {
+        "check": "13 privacy prohibitions documented",
+        "result": "PASS"
+      },
+      {
+        "check": "14 analytical preview values classified PREVIEW_ONLY",
+        "result": "PASS"
+      },
+      {
+        "check": "15 scoped Project 6 ignore rules preserve existing rules",
+        "result": "PASS"
+      },
+      {
+        "check": "16 actual preview contract ignored; 18-file pack preserved",
+        "result": "PASS"
+      },
+      {
+        "check": "17 raw source path ignored",
+        "result": "PASS"
+      },
+      {
+        "check": "18 generated output path ignored",
+        "result": "PASS"
+      },
+      {
+        "check": "19 weights/model caches/temp frames/logs/private permissions covered",
+        "result": "PASS"
+      },
+      {
+        "check": "20 no source video staged",
+        "result": "PASS"
+      },
+      {
+        "check": "21 no detector model staged",
+        "result": "PASS"
+      },
+      {
+        "check": "22 no analytical output staged",
+        "result": "PASS"
+      },
+      {
+        "check": "23 no private source-license material staged",
+        "result": "PASS"
+      },
+      {
+        "check": "24 HEAD unchanged; no commit created",
+        "result": "PASS"
+      },
+      {
+        "check": "25 no push performed",
+        "result": "PASS"
+      },
+      {
+        "check": "26 implementation Step 1 not started; no package/tests/config scaffold",
+        "result": "PASS"
+      },
+      {
+        "check": "27 no CV or other package installed",
+        "result": "PASS"
+      },
+      {
+        "check": "28 no source footage processed",
+        "result": "PASS"
+      },
+      {
+        "check": "29 no model inference run",
+        "result": "PASS"
+      },
+      {
+        "check": "30 only AGENTS.md/.gitignore and nine governance documents changed",
+        "result": "PASS"
+      }
+    ],
+    "method": "Bounded PowerShell documentation/JSON assertions, read-only Git scope/preservation/ignore checks, SHA256 comparison, and complete authored-change review. No full repository baseline or implementation tests run.",
+    "validated_file_sha256": [
+      {
+        "path": "AGENTS.md",
+        "sha256": "37e6be33ab53842a637298e3ca7c91b5a10fbe4800386397d733edb0aad490b9"
+      },
+      {
+        "path": ".gitignore",
+        "sha256": "2b3906650a50f2cbed49a980caed0f215f062ba4ab2e5d3c564bdc934d91f6bf"
+      },
+      {
+        "path": "docs/projects/p05_traffic_operations_early_warning/CLAIM_REGISTER.md",
+        "sha256": "249adf6b0fd372a120ce5fa829dae644ef15b1790fdb74021baae2c1c73a8a4a"
+      },
+      {
+        "path": "docs/projects/p05_traffic_operations_early_warning/CONTINUITY.md",
+        "sha256": "eaae451a46d5a02d1e8c1156405d084c7028c8327fe331e6f8bb5bf8d1bb5508"
+      },
+      {
+        "path": "docs/projects/p05_traffic_operations_early_warning/IMPLEMENTATION_PLAN.md",
+        "sha256": "1eccd3852eec3aa90e4e87982e72d4089f7defdbda2efd56b6b959148c74e5e0"
+      },
+      {
+        "path": "docs/projects/p05_traffic_operations_early_warning/METRIC_CONTRACT.md",
+        "sha256": "378eba3fc065e2b3bfb9b9847832440a60d0633e3fed77736ef22cb0f2bf5714"
+      },
+      {
+        "path": "docs/projects/p05_traffic_operations_early_warning/OUTPUT_CONTRACT.md",
+        "sha256": "5266a8498046751b9948ad8383d7eb5ffd578ec2cc949f86cc766d763d1dc22b"
+      },
+      {
+        "path": "docs/projects/p05_traffic_operations_early_warning/PRODUCT_CONTRACT.md",
+        "sha256": "1193a2e2d317872f3eb2699074fa3bb033451c3d449cfc30c48d892d6cf5658b"
+      },
+      {
+        "path": "docs/projects/p05_traffic_operations_early_warning/REQUIREMENT_TRACEABILITY.md",
+        "sha256": "5c4495b298f0722c3554c0d061fc4f6f6325d2a4fced54f4cb98c3a64ff30293"
+      },
+      {
+        "path": "docs/projects/p05_traffic_operations_early_warning/SOURCE_CONTRACT.md",
+        "sha256": "37696d035c0ddf4410734c3e7701dca06ae0564f8d6cbf0b4efa43c2939ee466"
+      }
+    ],
+    "preview_sha256_check": "PASS: all 18 preview files unchanged from pre-edit hashes",
+    "baseline_file_sha256_check": "PASS: pyproject.toml and contracts/repository_continuity.json unchanged",
+    "validation_history": [
+      "Initial bounded validator failed because SOURCE_CONTRACT.md lacked the explicit PREVIEW_ONLY token; corrected the document and reran successfully.",
+      "All governance checks passed before transitioning governance_status to VERIFIED; implementation remains NOT_STARTED."
+    ]
+  },
+  "baseline_status": "VERIFIED",
+  "baseline_verification": {
+    "status": "PASS",
+    "scope": "Project 6 \u2014 Setup Step 6 \u2014 Sub-step 6.B.C",
+    "head": "7c253340c3fced632a9fe6797c5f9d00a9a94521",
+    "governance_regression": "NONE",
+    "full_repository_baseline_run": true,
+    "implementation_step_started": false,
+    "command_timestamp_semantics": "Recovery times are tool dispatch/completion observation timestamps, including orchestration and approval latency; first tournament duration was not separately instrumented.",
+    "recovery": {
+      "command": "& ./.venv/Scripts/python.exe -B -m linkedin_visual_labs monopoly recover-release",
+      "exit_code": 0,
+      "start_requested_at_utc": "2026-09-11T20:32:18.45Z",
+      "completion_observed_at_utc": "2026-09-11T20:53:18.585Z",
+      "games": 10000,
+      "master_seed": 73031,
+      "full_replay_games": 10000,
+      "full_replay_reported_elapsed_seconds": 610,
+      "byte_identical_artifacts": 4,
+      "representative_game_index": 8721,
+      "representative_game_seed": "1774958463897564025",
+      "stages": [
+        "PREFLIGHT",
+        "TOURNAMENT",
+        "FULL_VALIDATION",
+        "EVIDENCE_ADMISSION",
+        "MANIFEST_FREEZE",
+        "SPRITES",
+        "PREVIEW_ANCHORS",
+        "FINAL_VALIDATION",
+        "RECOVERY_RECEIPT"
+      ],
+      "bundle_validation": "PASS",
+      "receipt_validation": "PASS",
+      "sprite_count": 4,
+      "sprite_dimensions": [
+        768,
+        768
+      ],
+      "anchor_count": 13,
+      "anchor_dimensions": [
+        1080,
+        1080
+      ],
+      "historical_hash_matches": 13,
+      "historical_hash_differences": 0,
+      "lock_final_state": "ABSENT",
+      "output_bytes_at_validation": 17273841,
+      "provenance": "Validated reconstruction using current repository producer; matching anchor hashes do not assert original execution provenance.",
+      "receipt_path": "outputs/p02_monopoly_ai/validation/release_recovery_receipt.json",
+      "receipt_sha256": "2cd91f03a30c1c167c4bd770dfabe0c1bcb77c73f98388ce3c1ab5101ac4e65b"
+    },
+    "final_test_counts": {
+      "collected": 1054,
+      "passed": 1054,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "deselected": 0,
+      "xfailed": 0,
+      "xpassed": 0,
+      "warnings": 2,
+      "duration_seconds": 383.05
+    },
+    "project_counts": {
+      "common": {
+        "passed": 56,
+        "failed": 0
+      },
+      "p01_bayesian_dice": {
+        "passed": 173,
+        "failed": 0
+      },
+      "p02_monopoly_ai": {
+        "passed": 237,
+        "failed": 0
+      },
+      "p04_zombie_escape": {
+        "passed": 200,
+        "failed": 0
+      },
+      "p25_quick_commerce_control_tower": {
+        "passed": 365,
+        "failed": 0
+      },
+      "root": {
+        "passed": 23,
+        "failed": 0
+      }
+    },
+    "collection": {
+      "original_tests": 1014,
+      "new_recovery_tests": 40,
+      "total": 1054,
+      "explanation": "Only the approved new test module adds 40 cases; all historical test files unchanged."
+    },
+    "commands": [
+      {
+        "exact_command": "& ./.venv/Scripts/python.exe -B -m pytest tests/projects/p02_monopoly_ai/test_release_recovery.py --tb=short",
+        "result": "40 passed, 1 cache warning",
+        "duration_seconds": 12.42,
+        "exit_code": 0
+      },
+      {
+        "exact_command": "preflight(CANONICAL_ROOT); recovery_lock(CANONICAL_ROOT) acquire/release; shutil.disk_usage(CANONICAL_ROOT)",
+        "interface": "repository .venv Python -B -c",
+        "result": "PASS; Segoe UI Regular/Bold; 162684010496 free bytes; lock released",
+        "exit_code": 0
+      },
+      {
+        "exact_command": "& ./.venv/Scripts/python.exe -B -m linkedin_visual_labs monopoly recover-release",
+        "result": "PASS",
+        "exit_code": 0
+      },
+      {
+        "exact_command": "final_bundle(CANONICAL_ROOT); read_json receipt; compare fingerprint, fonts, artifact hashes and approval comparisons; assert lock absent and exact 4/13 image counts",
+        "interface": "repository .venv Python -B -c",
+        "result": "PASS",
+        "exit_code": 0
+      },
+      {
+        "exact_command": "$nodes = @((Get-Content docs/projects/p05_traffic_operations_early_warning/STATE.json -Raw | ConvertFrom-Json).baseline_verification.failed_nodes); if ($nodes.Count -ne 33) { throw 'Historical node count mismatch' }; & ./.venv/Scripts/python.exe -B -m pytest @nodes --tb=short",
+        "result": "33 passed, 1 cache warning",
+        "duration_seconds": 52.48,
+        "exit_code": 0
+      },
+      {
+        "exact_command": "& ./.venv/Scripts/python.exe -B -m pytest --collect-only -q",
+        "result": "1054 collected: 1014 original plus 40 new",
+        "exit_code": 0
+      },
+      {
+        "exact_command": "& ./.venv/Scripts/python.exe -B -m pytest --tb=short",
+        "result": "1054 passed, 2 warnings",
+        "duration_seconds": 383.05,
+        "exit_code": 0
+      },
+      {
+        "exact_command": "& ./.venv/Scripts/python.exe -B -m ruff format --check .",
+        "result": "227 files already formatted",
+        "exit_code": 0
+      },
+      {
+        "exact_command": "& ./.venv/Scripts/python.exe -B -m ruff check .",
+        "result": "All checks passed",
+        "exit_code": 0
+      },
+      {
+        "exact_command": "& ./.venv/Scripts/python.exe -B -m mypy --strict src tests",
+        "result": "195 source files pass",
+        "exit_code": 0
+      },
+      {
+        "exact_command": "& ./.venv/Scripts/python.exe -B -m pip check",
+        "result": "No broken requirements found",
+        "exit_code": 0
+      },
+      {
+        "exact_command": "& ./.venv/Scripts/python.exe -B -m linkedin_visual_labs version",
+        "result": "0.1.0",
+        "exit_code": 0
+      },
+      {
+        "exact_command": "& ./.venv/Scripts/python.exe -B -m linkedin_visual_labs doctor",
+        "result": "All owner-context checks pass",
+        "exit_code": 0
+      }
+    ],
+    "failed_nodes": [],
+    "warnings": [
+      {
+        "classification": "PRE_EXISTING_WARNING",
+        "cause": "Intentional invalid-calendar test emits pandas date-format inference warning; test passes."
+      },
+      {
+        "classification": "ENVIRONMENT_WARNING",
+        "cause": "Pytest nodeids cache write denied (WinError 5); all tests pass."
+      }
+    ],
+    "coverage": {
+      "reported_total_percent": 67,
+      "statements": 17095,
+      "missed_statements": 4940,
+      "branches": 5232,
+      "partial_branches": 1099,
+      "new_threshold_introduced": false
+    },
+    "dependency_isolation": {
+      "result": "PASS",
+      "installed_metadata_closure_count": 88,
+      "forbidden_dependencies": [],
+      "scope": "Current Windows installed base/dev dependency metadata, not a fresh install or Linux resolution",
+      "torch": "2.14.0+cpu",
+      "cuda": null,
+      "torch_absence_assertion": "Fresh dev-only CI assertion inapplicable to this pre-existing optional-DL environment; unchanged."
+    },
+    "environment": {
+      "python": "3.13.2",
+      "owner_doctor": "PASS",
+      "owner_ffmpeg": "9.0.1",
+      "owner_ffprobe": "9.0.1",
+      "packaged_ffmpeg": "7.1",
+      "fonts": "Segoe UI Regular and Bold; hashes in recovery receipt",
+      "path_modified": false,
+      "packages_installed": false
+    },
+    "failure_analysis": [
+      {
+        "classification": "PRE_EXISTING_BASELINE_FAILURE",
+        "status": "RESOLVED",
+        "resolution": "Deterministic reconstruction of missing historical p02 release-test prerequisites; no Project 6 analytical defect, no historical semantic/test changes."
+      }
+    ],
+    "inspection_and_self_review": {
+      "result": "PASS",
+      "recovery_source_hashes_unchanged": true,
+      "governance_hashes_unchanged": true,
+      "head_unchanged": true,
+      "staged_files": 0,
+      "generated_outputs_ignored": true,
+      "tracked_generated_outputs": 0,
+      "unexpected_changes": [],
+      "only_authored_file_this_task": "docs/projects/p05_traffic_operations_early_warning/STATE.json",
+      "source_dependency_test_ci_contract_changes": false,
+      "prohibited_repository_accessed": false
+    },
+    "artifact_note": "Ignored Monopoly bundle and synthetic pytest/cache/coverage outputs generated. No MP4 encoded by recovery, no packages/fonts/models downloaded, no Project 6 source/inference, no Git staging/commit/push.",
+    "historical_failed_nodes": [
+      "tests/projects/p02_monopoly_ai/test_preview_v5.py::test_v5_runtime_is_real_and_validated",
+      "tests/projects/p02_monopoly_ai/test_preview_v5.py::test_v5_ranking_uses_actual_metrics",
+      "tests/projects/p02_monopoly_ai/test_preview_v5.py::test_v5_replay_asset_mapping_is_purchase_derived_and_unique",
+      "tests/projects/p02_monopoly_ai/test_preview_v5.py::test_v5_selected_action_shots_use_real_semantic_events",
+      "tests/projects/p02_monopoly_ai/test_preview_v5.py::test_v5_build_event_is_house_built_not_build_decision",
+      "tests/projects/p02_monopoly_ai/test_preview_v5.py::test_v5_action_shots_resolve_real_named_properties",
+      "tests/projects/p02_monopoly_ai/test_preview_v5.py::test_v5_frozen_story_sequence_is_strictly_chronological",
+      "tests/projects/p02_monopoly_ai/test_preview_v5.py::test_v5_selected_semantic_contract_matches_representative_game",
+      "tests/projects/p02_monopoly_ai/test_preview_v5.py::test_v5_piece_race_route_projects_inside_frame",
+      "tests/projects/p02_monopoly_ai/test_preview_v5.py::test_v5_house_overlay_property_is_skyline_drive",
+      "tests/projects/p02_monopoly_ai/test_preview_v5.py::test_v5_story_display_details_match_event_specific_truth",
+      "tests/projects/p02_monopoly_ai/test_preview_v5.py::test_v5_story_build_detail_uses_house_asset_not_turn_landing",
+      "tests/projects/p02_monopoly_ai/test_preview_v5.py::test_v5_story_rent_detail_uses_rent_asset_not_generic_turn_label",
+      "tests/projects/p02_monopoly_ai/test_video.py::test_runtime_uses_validated_metrics",
+      "tests/projects/p02_monopoly_ai/test_video.py::test_story_uses_real_turns",
+      "tests/projects/p02_monopoly_ai/test_video.py::test_ranking_matches_actual_maximum",
+      "tests/projects/p02_monopoly_ai/test_video_v5.py::test_v5_rendered_key_frames_are_1080_square[0]",
+      "tests/projects/p02_monopoly_ai/test_video_v5.py::test_v5_rendered_key_frames_are_1080_square[15]",
+      "tests/projects/p02_monopoly_ai/test_video_v5.py::test_v5_rendered_key_frames_are_1080_square[29]",
+      "tests/projects/p02_monopoly_ai/test_video_v5.py::test_v5_rendered_key_frames_are_1080_square[30]",
+      "tests/projects/p02_monopoly_ai/test_video_v5.py::test_v5_rendered_key_frames_are_1080_square[45]",
+      "tests/projects/p02_monopoly_ai/test_video_v5.py::test_v5_rendered_key_frames_are_1080_square[59]",
+      "tests/projects/p02_monopoly_ai/test_video_v5.py::test_v5_rendered_key_frames_are_1080_square[420]",
+      "tests/projects/p02_monopoly_ai/test_video_v5.py::test_v5_rendered_key_frames_are_1080_square[500]",
+      "tests/projects/p02_monopoly_ai/test_video_v5.py::test_v5_rendered_key_frames_are_1080_square[929]",
+      "tests/projects/p02_monopoly_ai/test_video_v5.py::test_v5_rendered_key_frames_are_1080_square[930]",
+      "tests/projects/p02_monopoly_ai/test_video_v5.py::test_v5_rendered_key_frames_are_1080_square[1170]",
+      "tests/projects/p02_monopoly_ai/test_video_v5.py::test_v5_rendered_key_frames_are_1080_square[1499]",
+      "tests/projects/p02_monopoly_ai/test_video_v5.py::test_v5_rendered_key_frames_are_1080_square[1500]",
+      "tests/projects/p02_monopoly_ai/test_video_v5.py::test_v5_rendered_key_frames_are_1080_square[1649]",
+      "tests/projects/p02_monopoly_ai/test_video_v5.py::test_v5_rendered_key_frames_are_1080_square[1650]",
+      "tests/projects/p02_monopoly_ai/test_video_v5.py::test_v5_rendered_key_frames_are_1080_square[1799]",
+      "tests/projects/p02_monopoly_ai/test_video_v5.py::test_v5_frame_render_is_deterministic"
+    ]
+  },
+  "baseline_verification_history": [
+    {
+      "status": "BLOCKED",
+      "scope": "Preparation baseline only; no implementation Step 1 started. Existing tests exercise earlier-project synthetic models/media, not Project 6 or real traffic inference.",
+      "head": "7c253340c3fced632a9fe6797c5f9d00a9a94521",
+      "governance_regression": "NONE_FOUND",
+      "full_repository_baseline_run": true,
+      "implementation_step_started": false,
+      "environment": {
+        "python": "3.13.2",
+        "venv": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv",
+        "package_manager": "existing pip/editable project; no installation or upgrade",
+        "formatter": "Ruff 0.16.6",
+        "ruff": "0.16.6",
+        "mypy": "2.3.1",
+        "pytest": "9.1.1",
+        "pytest_cov": "7.1.0",
+        "coverage": "7.16.0",
+        "pip": "24.3.1",
+        "torch": "2.14.0+cpu",
+        "cuda": null,
+        "imageio_ffmpeg": "0.6.0",
+        "owner_media_output": "interpreter = D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe\r\nffmpeg = C:\\Users\\vegaq\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-9.0.1-full_build\\bin\\ffmpeg.EXE\r\nffmpeg version 9.0.1-full_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers\r\nffprobe = C:\\Users\\vegaq\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-9.0.1-full_build\\bin\\ffprobe.EXE\r\nffprobe version 9.0.1-full_build-www.gyan.dev Copyright (c) 2007-2026 the FFmpeg developers\r\nnode = C:\\Program Files\\nodejs\\node.EXE\r\nv24.19.0\r\npackaged_ffmpeg = D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Lib\\site-packages\\imageio_ffmpeg\\binaries\\ffmpeg-win-x86_64-v7.1.exe\r\nffmpeg version 7.1-essentials_build-www.gyan.dev Copyright (c) 2000-2024 the FFmpeg developers"
+      },
+      "command_timestamp_semantics": "start_requested_at_utc is dispatch time; completion_observed_at_utc is tool-result observation time and can include approval/polling delay. Pytest-reported durations are recorded separately; no invented exact process end time.",
+      "commands": [
+        {
+          "check": "versions",
+          "exact_command": "& ./.venv/Scripts/python.exe -B -c 'import sys, importlib.metadata as m, shutil, json; print(json.dumps({\"python\":sys.version,\"executable\":sys.executable,\"prefix\":sys.prefix,\"versions\":{p:m.version(p) for p in [\"pip\",\"ruff\",\"mypy\",\"pytest\",\"pytest-cov\",\"coverage\",\"torch\",\"imageio-ffmpeg\"]},\"ffmpeg\":shutil.which(\"ffmpeg\"),\"ffprobe\":shutil.which(\"ffprobe\")},indent=2))'",
+          "working_directory": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs",
+          "interpreter": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "execution_context": "sandbox account",
+          "start_requested_at_utc": "2026-09-11T17:34:02.504Z",
+          "completion_observed_at_utc": "2026-09-11T17:34:05.092Z",
+          "exit_code": 0,
+          "completed": true,
+          "result": "PASS",
+          "note": null,
+          "result_summary": "Python 3.13.2; pip 24.3.1; Ruff formatter/linter 0.16.6; mypy 2.3.1; pytest 9.1.1; pytest-cov 7.1.0; coverage 7.16.0; imageio-ffmpeg 0.6.0; Torch 2.14.0+cpu.",
+          "initial_tool_wait_seconds": 0.6803511
+        },
+        {
+          "check": "doctor",
+          "exact_command": "& ./.venv/Scripts/python.exe -B -m linkedin_visual_labs doctor",
+          "working_directory": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs",
+          "interpreter": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "execution_context": "sandbox account",
+          "start_requested_at_utc": "2026-09-11T17:34:02.513Z",
+          "completion_observed_at_utc": "2026-09-11T17:34:38.077Z",
+          "exit_code": 1,
+          "completed": true,
+          "result": "FAIL",
+          "note": null,
+          "result_summary": "Sandbox PATH lacks FFmpeg; owner-context rerun passes without environment modification.",
+          "initial_tool_wait_seconds": 10.0154465
+        },
+        {
+          "check": "format",
+          "exact_command": "& ./.venv/Scripts/python.exe -B -m ruff format --check .",
+          "working_directory": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs",
+          "interpreter": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "execution_context": "sandbox account",
+          "start_requested_at_utc": "2026-09-11T17:34:02.513Z",
+          "completion_observed_at_utc": "2026-09-11T17:34:07.003Z",
+          "exit_code": 0,
+          "completed": true,
+          "result": "PASS",
+          "note": null,
+          "result_summary": "225 files already formatted; zero formatting failures.",
+          "initial_tool_wait_seconds": 2.0115822
+        },
+        {
+          "check": "lint",
+          "exact_command": "& ./.venv/Scripts/python.exe -B -m ruff check .",
+          "working_directory": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs",
+          "interpreter": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "execution_context": "sandbox account",
+          "start_requested_at_utc": "2026-09-11T17:34:02.513Z",
+          "completion_observed_at_utc": "2026-09-11T17:34:05.906Z",
+          "exit_code": 0,
+          "completed": true,
+          "result": "PASS",
+          "note": null,
+          "result_summary": "All checks passed; zero errors; file count not emitted.",
+          "initial_tool_wait_seconds": 1.8782892
+        },
+        {
+          "check": "mypy",
+          "exact_command": "& ./.venv/Scripts/python.exe -B -m mypy --strict src tests",
+          "working_directory": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs",
+          "interpreter": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "execution_context": "sandbox account",
+          "start_requested_at_utc": "2026-09-11T17:34:02.513Z",
+          "completion_observed_at_utc": "2026-09-11T17:34:12.405Z",
+          "exit_code": 0,
+          "completed": true,
+          "result": "PASS",
+          "note": null,
+          "result_summary": "Success: no issues in 193 source files.",
+          "initial_tool_wait_seconds": 6.6142755
+        },
+        {
+          "check": "pip_check",
+          "exact_command": "& ./.venv/Scripts/python.exe -B -m pip check",
+          "working_directory": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs",
+          "interpreter": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "execution_context": "sandbox account",
+          "start_requested_at_utc": "2026-09-11T17:34:02.513Z",
+          "completion_observed_at_utc": "2026-09-11T17:34:10.054Z",
+          "exit_code": 0,
+          "completed": true,
+          "result": "PASS",
+          "note": null,
+          "result_summary": "No broken requirements found.",
+          "initial_tool_wait_seconds": 3.6536567
+        },
+        {
+          "check": "collection",
+          "exact_command": "& ./.venv/Scripts/python.exe -B -m pytest --collect-only -q",
+          "working_directory": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs",
+          "interpreter": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "execution_context": "sandbox account",
+          "start_requested_at_utc": "2026-09-11T17:34:38.078Z",
+          "completion_observed_at_utc": "2026-09-11T17:35:42.794Z",
+          "exit_code": 0,
+          "completed": true,
+          "result": "PASS",
+          "note": null,
+          "result_summary": "1014 collected in 13.97 seconds; no collection errors. Collection-only coverage is not execution coverage.",
+          "initial_tool_wait_seconds": 10.0026208
+        },
+        {
+          "check": "full_pytest",
+          "exact_command": "& ./.venv/Scripts/python.exe -B -m pytest --tb=short --basetemp=.cache/p05_traffic_operations_early_warning/baseline-2026-09-11T17-35-13-524Z",
+          "working_directory": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs",
+          "interpreter": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "execution_context": "sandbox account",
+          "start_requested_at_utc": "2026-09-11T17:35:13.524Z",
+          "completion_observed_at_utc": "2026-09-11T17:35:59.59Z",
+          "exit_code": 1,
+          "completed": true,
+          "result": "INTERRUPTED_INVOCATION_ERROR",
+          "note": "Initial --basetemp nested parent did not exist; stop cascading fixture setup errors and rerun under existing .cache parent.",
+          "result_summary": "1014 collected; interrupted before completion due to missing parent for supplied --basetemp; partial execution counts not available.",
+          "initial_tool_wait_seconds": 10.0001668
+        },
+        {
+          "check": "smoke",
+          "exact_command": "& ./.venv/Scripts/python.exe -B -m linkedin_visual_labs version",
+          "working_directory": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs",
+          "interpreter": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "execution_context": "sandbox account",
+          "start_requested_at_utc": "2026-09-11T17:35:24.63Z",
+          "completion_observed_at_utc": "2026-09-11T17:35:29.998Z",
+          "exit_code": 0,
+          "completed": true,
+          "result": "PASS",
+          "note": null,
+          "result_summary": "Package imports and module CLI version return linkedin-visual-labs 0.1.0.",
+          "initial_tool_wait_seconds": 3.3853807
+        },
+        {
+          "check": "torch_cpu",
+          "exact_command": "& ./.venv/Scripts/python.exe -B -c 'import torch; print(torch.__version__); print(\"cuda =\", torch.version.cuda); assert torch.version.cuda is None'",
+          "working_directory": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs",
+          "interpreter": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "execution_context": "sandbox account",
+          "start_requested_at_utc": "2026-09-11T17:35:24.63Z",
+          "completion_observed_at_utc": "2026-09-11T17:35:28.856Z",
+          "exit_code": 0,
+          "completed": true,
+          "result": "PASS",
+          "note": null,
+          "result_summary": "Torch 2.14.0+cpu; torch.version.cuda is None.",
+          "initial_tool_wait_seconds": 2.2769989
+        },
+        {
+          "check": "lightweight_actual",
+          "exact_command": "& ./.venv/Scripts/python.exe -B -c \"import importlib.util; assert importlib.util.find_spec('torch') is None\"",
+          "working_directory": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs",
+          "interpreter": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "execution_context": "sandbox account",
+          "start_requested_at_utc": "2026-09-11T17:35:24.63Z",
+          "completion_observed_at_utc": "2026-09-11T17:35:26.278Z",
+          "exit_code": 1,
+          "completed": true,
+          "result": "FAIL",
+          "note": null,
+          "result_summary": "Expected CI torch-absent assertion fails in pre-existing optional-DL environment. Not a governance dependency leak.",
+          "initial_tool_wait_seconds": 0.3361032
+        },
+        {
+          "check": "schedule",
+          "exact_command": "& ./.venv/Scripts/python.exe -B -c 'import subprocess,sys,json; from itertools import pairwise; r=subprocess.run([sys.executable,\"-B\",\"-m\",\"linkedin_visual_labs.projects.p01_bayesian_dice.pair_video\",\"schedule\"],capture_output=True,text=True,check=True); assert not r.stderr; p=json.loads(r.stdout); a=p[\"roll_indices\"]; assert p[\"frame_rate\"]==30 and p[\"frame_count\"]==1350 and len(a)==1350 and a[0]==1 and a[-1]==10000 and all(b>=a for a,b in pairwise(a)); print(\"PASS: deterministic pair-video schedule; 1350 frames\")'",
+          "working_directory": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs",
+          "interpreter": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "execution_context": "sandbox account",
+          "start_requested_at_utc": "2026-09-11T17:35:24.63Z",
+          "completion_observed_at_utc": "2026-09-11T17:35:31.238Z",
+          "exit_code": 0,
+          "completed": true,
+          "result": "PASS",
+          "note": null,
+          "result_summary": "Existing Project 1 schedule assertions pass: 1350 frames, 30 fps, monotonic roll indices from 1 to 10000.",
+          "initial_tool_wait_seconds": 4.5824568
+        },
+        {
+          "check": "temp_diagnostic",
+          "exact_command": "& ./.venv/Scripts/python.exe -B -m pytest tests/common/test_config.py::test_load_yaml_config_returns_mapping --tb=short --basetemp=.cache/p05_traffic_operations_early_warning/baseline-2026-09-11T17-35-13-524Z",
+          "working_directory": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs",
+          "interpreter": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "execution_context": "sandbox account",
+          "start_requested_at_utc": "2026-09-11T17:36:17.162Z",
+          "completion_observed_at_utc": "2026-09-11T17:36:23.425Z",
+          "exit_code": 1,
+          "completed": true,
+          "result": "FAIL",
+          "note": null,
+          "result_summary": "1 collected, 1 setup error, 0 passed/failed/skipped/deselected/xfailed/xpassed in 4.37 seconds; confirms missing basetemp parent (WinError 3).",
+          "initial_tool_wait_seconds": 5.0916471
+        },
+        {
+          "check": "full_retry",
+          "exact_command": "& ./.venv/Scripts/python.exe -B -m pytest --tb=short --basetemp=.cache/p06-baseline-2026-09-11T17-36-23-425Z",
+          "working_directory": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs",
+          "interpreter": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "execution_context": "repository owner",
+          "start_requested_at_utc": "2026-09-11T17:36:23.425Z",
+          "completion_observed_at_utc": "2026-09-11T19:15:00.972Z",
+          "exit_code": 1,
+          "completed": true,
+          "result": "FAIL",
+          "note": null,
+          "result_summary": "1014 collected, 980 passed, 34 failed, 3 warnings, 0 skipped/deselected/xfailed/xpassed in 361.30 seconds. One failure introduced by repository-local basetemp; 33 historical release-artifact failures.",
+          "initial_tool_wait_seconds": 10.0020342
+        },
+        {
+          "check": "dependency_closure",
+          "exact_command": "& ./.venv/Scripts/python.exe -B -c 'import json, sys, tomllib, importlib.metadata as md\nfrom pathlib import Path\nfrom packaging.requirements import Requirement\nfrom packaging.utils import canonicalize_name\nfrom packaging.markers import default_environment\np=tomllib.loads(Path(\"pyproject.toml\").read_text())[\"project\"]\ntodo=[(Requirement(x), \"\") for x in p[\"dependencies\"]+p[\"optional-dependencies\"][\"dev\"]]\nseen=set()\nwhile todo:\n    req, parent_extra=todo.pop()\n    env=default_environment(); env[\"extra\"]=parent_extra\n    if req.marker and not req.marker.evaluate(env): continue\n    name=canonicalize_name(req.name)\n    extras=set(req.extras)|{\"\"}\n    for extra in extras:\n        if (name,extra) in seen: continue\n        seen.add((name,extra))\n        for child in md.requires(name) or []: todo.append((Requirement(child),extra))\nnames=sorted({n for n,e in seen})\nbad=[n for n in names if n in {\"torch\",\"triton\",\"ultralytics\",\"onnxruntime\",\"onnxruntime-gpu\",\"opencv-python\",\"opencv-python-headless\"} or n.startswith((\"nvidia-\",\"cuda-\"))]\nprint(json.dumps({\"base_dev_installed_metadata_closure_count\":len(names),\"forbidden_dependencies\":bad,\"extras\":list(p[\"optional-dependencies\"]),\"scope\":\"Windows installed-metadata closure; not a fresh install or hosted Linux resolution\"},indent=2))\nassert not bad\n'",
+          "working_directory": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs",
+          "interpreter": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "execution_context": "sandbox account",
+          "start_requested_at_utc": "2026-09-11T17:38:12.325Z",
+          "completion_observed_at_utc": "2026-09-11T17:38:13.877Z",
+          "exit_code": 0,
+          "completed": true,
+          "result": "PASS",
+          "note": null,
+          "result_summary": "88 packages in installed Windows base/dev dependency metadata closure; no Torch/CUDA/OpenCV/ONNX Runtime/Ultralytics. Not a fresh install or hosted Linux resolution.",
+          "initial_tool_wait_seconds": 0.4512664
+        },
+        {
+          "check": "governance_hashes",
+          "exact_command": "$ErrorActionPreference='Stop'; $s=Get-Content docs/projects/p05_traffic_operations_early_warning/STATE.json -Raw | ConvertFrom-Json; if($s.governance_status -ne 'VERIFIED' -or $s.implementation_status -ne 'NOT_STARTED'){throw 'State mismatch'}; foreach($h in $s.governance_validation.validated_file_sha256){if((Get-FileHash -LiteralPath $h.path -Algorithm SHA256).Hash.ToLowerInvariant() -ne $h.sha256){throw \"Changed governance file: $($h.path)\"}}; Write-Output 'PASS: governance state and all 10 stored file hashes match.'",
+          "working_directory": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs",
+          "interpreter": "PowerShell",
+          "execution_context": "sandbox account",
+          "start_requested_at_utc": "2026-09-11T17:38:13.877Z",
+          "completion_observed_at_utc": "2026-09-11T17:38:15.221Z",
+          "exit_code": 0,
+          "completed": true,
+          "result": "PASS",
+          "note": null,
+          "result_summary": "Governance VERIFIED, implementation NOT_STARTED; all 10 stored non-state governance hashes match.",
+          "initial_tool_wait_seconds": 0.2422259
+        },
+        {
+          "check": "doctor_owner",
+          "exact_command": "& ./.venv/Scripts/python.exe -B -m linkedin_visual_labs doctor",
+          "working_directory": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs",
+          "interpreter": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "execution_context": "repository owner",
+          "start_requested_at_utc": "2026-09-11T17:38:32.568Z",
+          "completion_observed_at_utc": "2026-09-11T19:14:49.491Z",
+          "exit_code": 0,
+          "completed": true,
+          "result": "PASS",
+          "note": null,
+          "result_summary": "All existing doctor checks pass in owner context.",
+          "initial_tool_wait_seconds": 3.3058579
+        },
+        {
+          "check": "full_standard",
+          "exact_command": "& ./.venv/Scripts/python.exe -B -m pytest --tb=short",
+          "working_directory": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs",
+          "interpreter": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "execution_context": "repository owner; standard pytest temporary directories",
+          "start_requested_at_utc": "2026-09-11T19:15:39.273Z",
+          "completion_observed_at_utc": "2026-09-11T19:43:13.219Z",
+          "exit_code": 1,
+          "completed": true,
+          "result": "FAIL",
+          "note": null,
+          "result_summary": "1014 collected, 981 passed, 33 failed, 0 errors/skipped/deselected/xfailed/xpassed, 3 warnings, 352.99 seconds. All failures: missing outputs/p02_monopoly_ai/step8_input_manifest.json.",
+          "initial_tool_wait_seconds": 10.0029488
+        },
+        {
+          "check": "owner_media",
+          "exact_command": "& ./.venv/Scripts/python.exe -B -c 'import json, shutil, subprocess, sys\nfrom linkedin_visual_labs.projects.p25_quick_commerce_control_tower.presentation_media import packaged_ffmpeg\nprint(\"interpreter =\", sys.executable)\nfor name in (\"ffmpeg\",\"ffprobe\",\"node\"):\n    exe=shutil.which(name)\n    print(name, \"=\", exe)\n    if exe:\n        r=subprocess.run([exe, \"-version\" if name!=\"node\" else \"--version\"],capture_output=True,text=True,check=True)\n        print(r.stdout.splitlines()[0])\nexe,version=packaged_ffmpeg()\nprint(\"packaged_ffmpeg =\",str(exe))\nprint(version)\n'",
+          "working_directory": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs",
+          "interpreter": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "execution_context": "repository owner",
+          "start_requested_at_utc": "2026-09-11T19:34:21.15Z",
+          "completion_observed_at_utc": "2026-09-11T19:42:35.68Z",
+          "exit_code": 0,
+          "completed": true,
+          "result": "PASS",
+          "note": null,
+          "result_summary": "Owner PATH FFmpeg/ffprobe 9.0.1; Node v24.19.0; packaged FFmpeg 7.1. No tools installed or PATH changed.",
+          "initial_tool_wait_seconds": 3.6538396
+        }
+      ],
+      "final_test_counts": {
+        "collected": 1014,
+        "passed": 981,
+        "failed": 33,
+        "errors": 0,
+        "skipped": 0,
+        "deselected": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "warnings": 3,
+        "duration_seconds": 352.99
+      },
+      "project_counts": {
+        "common": {
+          "passed": 56,
+          "failed": 0
+        },
+        "p01_bayesian_dice": {
+          "passed": 173,
+          "failed": 0
+        },
+        "p02_monopoly_ai": {
+          "passed": 164,
+          "failed": 33
+        },
+        "p04_zombie_escape": {
+          "passed": 200,
+          "failed": 0
+        },
+        "p25_quick_commerce_control_tower": {
+          "passed": 365,
+          "failed": 0
+        },
+        "root": {
+          "passed": 23,
+          "failed": 0
+        }
+      },
+      "coverage": {
+        "enforced_by_existing_pytest_configuration": true,
+        "reported_total_percent": 62,
+        "statements": 16846,
+        "missed_statements": 5691,
+        "branches": 5178,
+        "partial_branches": 981,
+        "new_threshold_introduced": false,
+        "note": "Execution coverage from final full suite. No new threshold; collection-only and diagnostic coverage are not final baseline coverage."
+      },
+      "failed_nodes": [
+        "tests/projects/p02_monopoly_ai/test_preview_v5.py::test_v5_runtime_is_real_and_validated",
+        "tests/projects/p02_monopoly_ai/test_preview_v5.py::test_v5_ranking_uses_actual_metrics",
+        "tests/projects/p02_monopoly_ai/test_preview_v5.py::test_v5_replay_asset_mapping_is_purchase_derived_and_unique",
+        "tests/projects/p02_monopoly_ai/test_preview_v5.py::test_v5_selected_action_shots_use_real_semantic_events",
+        "tests/projects/p02_monopoly_ai/test_preview_v5.py::test_v5_build_event_is_house_built_not_build_decision",
+        "tests/projects/p02_monopoly_ai/test_preview_v5.py::test_v5_action_shots_resolve_real_named_properties",
+        "tests/projects/p02_monopoly_ai/test_preview_v5.py::test_v5_frozen_story_sequence_is_strictly_chronological",
+        "tests/projects/p02_monopoly_ai/test_preview_v5.py::test_v5_selected_semantic_contract_matches_representative_game",
+        "tests/projects/p02_monopoly_ai/test_preview_v5.py::test_v5_piece_race_route_projects_inside_frame",
+        "tests/projects/p02_monopoly_ai/test_preview_v5.py::test_v5_house_overlay_property_is_skyline_drive",
+        "tests/projects/p02_monopoly_ai/test_preview_v5.py::test_v5_story_display_details_match_event_specific_truth",
+        "tests/projects/p02_monopoly_ai/test_preview_v5.py::test_v5_story_build_detail_uses_house_asset_not_turn_landing",
+        "tests/projects/p02_monopoly_ai/test_preview_v5.py::test_v5_story_rent_detail_uses_rent_asset_not_generic_turn_label",
+        "tests/projects/p02_monopoly_ai/test_video.py::test_runtime_uses_validated_metrics",
+        "tests/projects/p02_monopoly_ai/test_video.py::test_story_uses_real_turns",
+        "tests/projects/p02_monopoly_ai/test_video.py::test_ranking_matches_actual_maximum",
+        "tests/projects/p02_monopoly_ai/test_video_v5.py::test_v5_rendered_key_frames_are_1080_square[0]",
+        "tests/projects/p02_monopoly_ai/test_video_v5.py::test_v5_rendered_key_frames_are_1080_square[15]",
+        "tests/projects/p02_monopoly_ai/test_video_v5.py::test_v5_rendered_key_frames_are_1080_square[29]",
+        "tests/projects/p02_monopoly_ai/test_video_v5.py::test_v5_rendered_key_frames_are_1080_square[30]",
+        "tests/projects/p02_monopoly_ai/test_video_v5.py::test_v5_rendered_key_frames_are_1080_square[45]",
+        "tests/projects/p02_monopoly_ai/test_video_v5.py::test_v5_rendered_key_frames_are_1080_square[59]",
+        "tests/projects/p02_monopoly_ai/test_video_v5.py::test_v5_rendered_key_frames_are_1080_square[420]",
+        "tests/projects/p02_monopoly_ai/test_video_v5.py::test_v5_rendered_key_frames_are_1080_square[500]",
+        "tests/projects/p02_monopoly_ai/test_video_v5.py::test_v5_rendered_key_frames_are_1080_square[929]",
+        "tests/projects/p02_monopoly_ai/test_video_v5.py::test_v5_rendered_key_frames_are_1080_square[930]",
+        "tests/projects/p02_monopoly_ai/test_video_v5.py::test_v5_rendered_key_frames_are_1080_square[1170]",
+        "tests/projects/p02_monopoly_ai/test_video_v5.py::test_v5_rendered_key_frames_are_1080_square[1499]",
+        "tests/projects/p02_monopoly_ai/test_video_v5.py::test_v5_rendered_key_frames_are_1080_square[1500]",
+        "tests/projects/p02_monopoly_ai/test_video_v5.py::test_v5_rendered_key_frames_are_1080_square[1649]",
+        "tests/projects/p02_monopoly_ai/test_video_v5.py::test_v5_rendered_key_frames_are_1080_square[1650]",
+        "tests/projects/p02_monopoly_ai/test_video_v5.py::test_v5_rendered_key_frames_are_1080_square[1799]",
+        "tests/projects/p02_monopoly_ai/test_video_v5.py::test_v5_frame_render_is_deterministic"
+      ],
+      "warnings": [
+        {
+          "classification": "PRE_EXISTING_BASELINE_FAILURE",
+          "severity": "warning only",
+          "cause": "pandas date-format inference warning in intentional test_invalid_calendar[date]; test passes."
+        },
+        {
+          "classification": "ENVIRONMENT_CONFIGURATION_FAILURE",
+          "severity": "warning only",
+          "cause": "Pytest cannot write existing .pytest_cache/v/cache/nodeids: WinError 5 access denied."
+        },
+        {
+          "classification": "ENVIRONMENT_CONFIGURATION_FAILURE",
+          "severity": "warning only",
+          "cause": "Pytest cannot write existing .pytest_cache/v/cache/lastfailed: WinError 5 access denied."
+        }
+      ],
+      "failure_analysis": [
+        {
+          "classification": "PRE_EXISTING_BASELINE_FAILURE",
+          "status": "UNRESOLVED",
+          "root_cause": "Missing historical Monopoly step8_input_manifest.json; all 33 failures share FileNotFoundError before release evidence loads.",
+          "evidence": "docs/clean_runner_ci_repair.md already documents the same 33 release-artifact prerequisites; source/tests/CI remain unchanged.",
+          "repair": "None performed; requires separately authorized restoration/validation of the genuine bundle or explicit baseline-policy review."
+        },
+        {
+          "classification": "ENVIRONMENT_CONFIGURATION_FAILURE",
+          "status": "RESOLVED_BY_CONTEXT_RETRY",
+          "root_cause": "Sandbox PATH lacks FFmpeg; owner context has existing FFmpeg/ffprobe and doctor passes.",
+          "repair": "No installation or PATH modification."
+        },
+        {
+          "classification": "ENVIRONMENT_CONFIGURATION_FAILURE",
+          "status": "RESOLVED_INVOCATION_ERROR",
+          "root_cause": "Agent-supplied nested basetemp parent absent; then repository-local basetemp invalidated a test expecting no repository in its ancestors.",
+          "repair": "No repository repair; reran unchanged full suite with normal pytest temporary directories."
+        },
+        {
+          "classification": "ENVIRONMENT_CONFIGURATION_FAILURE",
+          "status": "EXPECTED_ENVIRONMENT_MISMATCH",
+          "root_cause": "CI torch-absent assertion run in a pre-existing optional-DL venv containing CPU Torch.",
+          "repair": "No uninstall/recreation; pip check and installed base/dev dependency closure pass with no heavy CV/CUDA leakage."
+        }
+      ],
+      "ci_equivalence": {
+        "existing_partition_preserved": true,
+        "all_partition_test_nodes_executed_in_full_suite": true,
+        "generic_subset": {
+          "passed": 781,
+          "failed": 0,
+          "note": "Derived from final full-suite results for the existing CI selection; not a separate job execution."
+        },
+        "zombie_subset": {
+          "passed": 200,
+          "failed": 0
+        },
+        "release_artifact_subset": {
+          "passed": 0,
+          "failed": 33
+        },
+        "fresh_install_performed": false,
+        "hosted_ci_run": false,
+        "linux_resolution_verified": false,
+        "installed_dependency_consistency": "PASS",
+        "windows_base_dev_metadata_closure": "PASS: 88 distributions; no prohibited heavy dependencies",
+        "clean_environment_torch_absence": "Not established by this existing optional-DL environment; raw assertion fails as recorded."
+      },
+      "nonexecuted_checks": [
+        {
+          "command": "python scripts/continuity_gate.py --expected-branch project/p05-traffic-operations-early-warning",
+          "reason": "Performs git fetch; network/Git synchronization mutation not authorized. Existing continuity unit tests pass."
+        },
+        {
+          "command": "pip install -e .[dev]",
+          "reason": "No recreation/install or packaging metadata mutation necessary for existing-environment baseline; used pip check, declared dependency audit and existing optional-dependency tests."
+        }
+      ],
+      "inspection_and_self_review": {
+        "commands": [
+          "Get-Content supplied request, AGENTS.md, pyproject.toml, CI workflows, developer docs, doctor and Project 6 governance documents",
+          "rg targeted test/source safety and artifact prerequisites",
+          "git --no-optional-locks rev-parse --show-toplevel; branch --show-current; status --short --untracked-files=all; rev-parse HEAD",
+          "git --no-optional-locks diff --check; diff --name-only; diff --cached --name-only; ls-files artifact paths; check-ignore preview contract",
+          "Get-FileHash governance files and pyproject.toml; Test-Path Project 6 package"
+        ],
+        "result": "PASS except exploratory listing of absent .cache/p05_traffic_operations_early_warning reported a missing path; this confirmed the temporary-directory invocation error.",
+        "working_tree": "Only pre-existing AGENTS.md/.gitignore edits and nine governance docs; this baseline task edits STATE.json only.",
+        "staged_files": 0,
+        "source_dependency_test_changes": false,
+        "project6_code_created": false,
+        "prohibited_repository_accessed": false
+      },
+      "artifact_note": "Existing tests generated disposable synthetic test media/models and cache/coverage data. No real source footage processed; no detector/model weights downloaded; no Project 6 inference or release artifacts generated. No Git staging/commit/push/PR."
+    }
+  ],
+  "analysis_status": "NOT_STARTED",
+  "step_1_validation": {
+    "status": "PASS",
+    "label": "Project 6 \u2014 Step 1",
+    "recorded_at_utc": "2026-09-11T15:26:44.725874-07:00",
+    "head": "7c253340c3fced632a9fe6797c5f9d00a9a94521",
+    "branch": "project/p05-traffic-operations-early-warning",
+    "scope": "Immutable typed contracts, no-write YAML loader, synthetic tests, approved documentation only",
+    "created_files": [
+      "configs/p05_traffic_operations_early_warning.yaml",
+      "src/linkedin_visual_labs/projects/p05_traffic_operations_early_warning/__init__.py",
+      "src/linkedin_visual_labs/projects/p05_traffic_operations_early_warning/models.py",
+      "src/linkedin_visual_labs/projects/p05_traffic_operations_early_warning/config.py",
+      "tests/projects/p05_traffic_operations_early_warning/test_contract.py",
+      "tests/projects/p05_traffic_operations_early_warning/test_config.py"
+    ],
+    "modified_files": [
+      "docs/projects/p05_traffic_operations_early_warning/PRODUCT_CONTRACT.md",
+      "docs/projects/p05_traffic_operations_early_warning/SOURCE_CONTRACT.md",
+      "docs/projects/p05_traffic_operations_early_warning/METRIC_CONTRACT.md",
+      "docs/projects/p05_traffic_operations_early_warning/OUTPUT_CONTRACT.md",
+      "docs/projects/p05_traffic_operations_early_warning/CLAIM_REGISTER.md",
+      "docs/projects/p05_traffic_operations_early_warning/REQUIREMENT_TRACEABILITY.md",
+      "docs/projects/p05_traffic_operations_early_warning/STATE.json",
+      "docs/projects/p05_traffic_operations_early_warning/CONTINUITY.md",
+      "docs/projects/p05_traffic_operations_early_warning/IMPLEMENTATION_PLAN.md"
+    ],
+    "commands": [
+      {
+        "command": "& ./.venv/Scripts/python.exe -B -m pytest tests/projects/p05_traffic_operations_early_warning --tb=short",
+        "result": "149 passed, 1 existing cache warning",
+        "exit_code": 0,
+        "duration_seconds": 10.36
+      },
+      {
+        "command": "& ./.venv/Scripts/python.exe -B -c 'import runpy; from pathlib import Path; t=runpy.run_path(\"tests/projects/p05_traffic_operations_early_warning/test_config.py\"); t[\"test_import_and_config_without_cv_or_media_runtime\"](Path.cwd()); print(\"CONTRACT_IMPORT_SMOKE_PASS\")'",
+        "result": "CONTRACT_IMPORT_SMOKE_PASS; CV/Torch/FFmpeg imports blocked",
+        "exit_code": 0
+      },
+      {
+        "command": "& ./.venv/Scripts/python.exe -B -m ruff format --check .",
+        "result": "232 files already formatted",
+        "exit_code": 0
+      },
+      {
+        "command": "& ./.venv/Scripts/python.exe -B -m ruff check .",
+        "result": "All checks passed",
+        "exit_code": 0
+      },
+      {
+        "command": "& ./.venv/Scripts/python.exe -B -m mypy --strict src tests",
+        "result": "200 source files; no issues",
+        "exit_code": 0
+      },
+      {
+        "command": "& ./.venv/Scripts/python.exe -B -m pytest --collect-only -q",
+        "result": "1203 tests collected",
+        "exit_code": 0,
+        "duration_seconds": 10.49
+      },
+      {
+        "command": "& ./.venv/Scripts/python.exe -B -m pytest --tb=short",
+        "result": "1203 passed, 2 existing warnings",
+        "exit_code": 0,
+        "duration_seconds": 392.8
+      },
+      {
+        "command": "& ./.venv/Scripts/python.exe -B -m pip check",
+        "result": "No broken requirements found",
+        "exit_code": 0
+      },
+      {
+        "command": "& ./.venv/Scripts/python.exe -B -m linkedin_visual_labs version",
+        "result": "linkedin-visual-labs 0.1.0",
+        "exit_code": 0
+      },
+      {
+        "command": "& ./.venv/Scripts/python.exe -B -m linkedin_visual_labs doctor",
+        "result": "All checks PASS; Python 3.13.2; canonical environment",
+        "exit_code": 0
+      },
+      {
+        "command": "git --no-optional-locks diff --check",
+        "result": "PASS; no whitespace errors",
+        "exit_code": 0
+      }
+    ],
+    "command_capture_note": "Focused/collection console output was also tailed for display; exit status was preserved. Commands listed are the underlying gate invocations. Owner context was used for pytest, Git and doctor without changing Git configuration.",
+    "test_counts": {
+      "previous_retained": 1054,
+      "new_step_1": 149,
+      "collected": 1203,
+      "passed": 1203,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "deselected": 0,
+      "xfailed": 0,
+      "xpassed": 0
+    },
+    "warnings": [
+      "Existing pandas invalid-calendar date-format inference warning; test passes.",
+      "Existing pytest nodeids-cache permission warning; all tests pass."
+    ],
+    "development_iterations": [
+      "Initial targeted mypy found three Literal-default type errors; corrected within the new models file.",
+      "Targeted Ruff formatting/lint identified precedence, nested-if and smoke-string line-length issues; corrected within the new files.",
+      "Initial focused run: 146 passed in 11.55 seconds; initial full collection: 1200. Three output-category rejection tests added; final focused/collection/static gates rerun.",
+      "One documentation patch failed context matching and was reapplied with exact inspected lines.",
+      "Sandbox Git ownership inspection was rejected; owner-context read-only checks succeeded, without safe.directory changes.",
+      "One rg search used an unsupported Windows glob argument; corrected with -g *.md."
+    ],
+    "inspection_and_review": {
+      "result": "PASS",
+      "methods": [
+        "Get-Content approved request, AGENTS, repository contracts/config/package patterns and authored files",
+        "rg scoped file/instruction/symbol/document searches",
+        "read-only Git root/branch/HEAD/status/diff/numstat/staged checks",
+        "Get-FileHash and hashlib preservation checks",
+        "Python JSON/document assertions: 15 numbered steps, 12 unapproved claim rows, exact three-module package",
+        "complete authored source/test/config/doc review"
+      ],
+      "head_unchanged": true,
+      "staged_files": 0,
+      "unexpected_changes": [],
+      "preexisting_dirty_files_preserved": [
+        ".gitignore",
+        "AGENTS.md",
+        "docs/projects/p02_monopoly_ai.md",
+        "src/linkedin_visual_labs/projects/p02_monopoly_ai/cli.py",
+        "src/linkedin_visual_labs/projects/p02_monopoly_ai/release_recovery.py",
+        "tests/projects/p02_monopoly_ai/test_release_recovery.py"
+      ],
+      "monopoly_recovery_source_and_receipt_hashes_unchanged": true,
+      "receipt_sha256": "2cd91f03a30c1c167c4bd770dfabe0c1bcb77c73f98388ce3c1ab5101ac4e65b",
+      "dependency_ci_registration_changes": false,
+      "prohibited_repository_accessed": false
+    },
+    "validated_file_sha256": [
+      {
+        "path": "configs/p05_traffic_operations_early_warning.yaml",
+        "sha256": "d5067e004e30fe20a89156747bb1f037b7284aa593b6e7e2bfed6e8a6aaa13e8"
+      },
+      {
+        "path": "src/linkedin_visual_labs/projects/p05_traffic_operations_early_warning/__init__.py",
+        "sha256": "6c78512c53ec7a060d999cd9084bc6112bf000ad32c807bb7740385aaef9e5b5"
+      },
+      {
+        "path": "src/linkedin_visual_labs/projects/p05_traffic_operations_early_warning/models.py",
+        "sha256": "9a2eca93a0b0dddc8d778786dde0436c8cc5d119e14d11b1b31c811d17abd815"
+      },
+      {
+        "path": "src/linkedin_visual_labs/projects/p05_traffic_operations_early_warning/config.py",
+        "sha256": "e00f195d7075fc64f291c67013b15553e963625603a5020cd3b5ca2f77353eb5"
+      },
+      {
+        "path": "tests/projects/p05_traffic_operations_early_warning/test_contract.py",
+        "sha256": "69e150697d13348d2b54954c9d559bf8b43ee71beaec9bc73b673239b2261400"
+      },
+      {
+        "path": "tests/projects/p05_traffic_operations_early_warning/test_config.py",
+        "sha256": "bbbd7b53b8a6424421a091f05a8ed0bab7753955c979043bb7de2415ad428a47"
+      },
+      {
+        "path": "docs/projects/p05_traffic_operations_early_warning/PRODUCT_CONTRACT.md",
+        "sha256": "d79b12c35b1c34fe24bdd54319ce7956a9a23aa4d83cef1ab1773845045f692c"
+      },
+      {
+        "path": "docs/projects/p05_traffic_operations_early_warning/SOURCE_CONTRACT.md",
+        "sha256": "dd247cb18268ca3bf1f9c7eb8e470855e963ff33c939db7ccb2ae0f535e90610"
+      },
+      {
+        "path": "docs/projects/p05_traffic_operations_early_warning/METRIC_CONTRACT.md",
+        "sha256": "82b5331e2c59bdd5c5ba606aa34b8057917ef140df1ae8683b71d374cae7816f"
+      },
+      {
+        "path": "docs/projects/p05_traffic_operations_early_warning/OUTPUT_CONTRACT.md",
+        "sha256": "7f0b2eebe4937053368ae3bd189b331b01e4e4c2b98b656c15f7e7a6d3f6d4a4"
+      },
+      {
+        "path": "docs/projects/p05_traffic_operations_early_warning/CLAIM_REGISTER.md",
+        "sha256": "19da29c9fda0df5d11fed009261af1e21687ed66769a65df6a0ea0b50d58eaf6"
+      },
+      {
+        "path": "docs/projects/p05_traffic_operations_early_warning/REQUIREMENT_TRACEABILITY.md",
+        "sha256": "4b25799b77348e3b199630fb5a5f8bf688e88f8ef552e249e9c02aa2f81fec43"
+      },
+      {
+        "path": "docs/projects/p05_traffic_operations_early_warning/CONTINUITY.md",
+        "sha256": "7a55b68a878ae17a414c6a0ca9df62b7ab3490ea4ef4cced324faf941709e2f8"
+      },
+      {
+        "path": "docs/projects/p05_traffic_operations_early_warning/IMPLEMENTATION_PLAN.md",
+        "sha256": "c6e60be921cc8de8ff85a90bc39c646797c27c58707a76fe2149bc8ea5da6efb"
+      }
+    ],
+    "hash_note": "STATE.json excluded from its own content hash. Earlier governance_validation and baseline_verification objects are historical evidence, not current hashes for changed Step 1 documents.",
+    "source_approved": false,
+    "runtime_implemented": false,
+    "analysis_started": false,
+    "real_rules_frozen": false,
+    "claims_approved": false,
+    "packages_installed": false,
+    "weights_downloaded": false,
+    "source_acquired_or_processed": false,
+    "project_6_analytical_outputs_generated": false,
+    "artifact_note": "Only ordinary test temporary fixtures, coverage and cache activity; no Project 6 raw/output directory or analytical artifacts created.",
+    "git_staged_committed_pushed": false,
+    "next_action_requires_separate_authorization": true
+  },
+  "step_2_substeps": {
+    "2.A": {
+      "status": "COMPATIBILITY_PASS",
+      "evidence": ".cache/p05_traffic_operations_early_warning/windows-py313/evidence/compatibility-summary.json",
+      "evidence_sha256": "5fdfc8d29bae0a46b0d14a0665bd3f0207d7c4fd4b54ad8c38ebefd4fcb600b4"
+    },
+    "2.B": {
+      "status": "VERIFIED",
+      "validation": "step_2b_validation"
+    },
+    "2.C": {
+      "status": "VERIFIED",
+      "validation": "step_2_validation"
+    },
+    "2.D": {
+      "status": "VERIFIED",
+      "validation": "step_2_validation"
+    },
+    "2.E": {
+      "status": "VERIFIED",
+      "validation": "step_2_validation"
+    }
+  },
+  "step_2b_validation": {
+    "status": "PASS",
+    "label": "Project 6 \u2014 Step 2 \u2014 Sub-step 2.B",
+    "recorded_at_utc": "2026-09-12T03:35:01.808861-07:00",
+    "head": "7c253340c3fced632a9fe6797c5f9d00a9a94521",
+    "branch": "project/p05-traffic-operations-early-warning",
+    "created_files": [
+      "configs/p05_traffic_operations_early_warning/runtime.yaml",
+      "configs/p05_traffic_operations_early_warning/runtime_constraints.txt",
+      "src/linkedin_visual_labs/projects/p05_traffic_operations_early_warning/paths.py",
+      "src/linkedin_visual_labs/projects/p05_traffic_operations_early_warning/runtime.py",
+      "tests/projects/p05_traffic_operations_early_warning/test_paths.py",
+      "tests/projects/p05_traffic_operations_early_warning/test_runtime.py",
+      "tests/projects/p05_traffic_operations_early_warning/test_dependencies.py",
+      "docs/projects/p05_traffic_operations_early_warning/DEPENDENCY_DECISION.md",
+      "docs/projects/p05_traffic_operations_early_warning/THIRD_PARTY_NOTICES.md"
+    ],
+    "modified_files": [
+      "pyproject.toml",
+      "docs/projects/p05_traffic_operations_early_warning/IMPLEMENTATION_PLAN.md",
+      "docs/projects/p05_traffic_operations_early_warning/REQUIREMENT_TRACEABILITY.md",
+      "docs/projects/p05_traffic_operations_early_warning/CONTINUITY.md",
+      "docs/projects/p05_traffic_operations_early_warning/STATE.json"
+    ],
+    "commands": [
+      {
+        "gate": "focused",
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-m",
+          "pytest",
+          "tests/projects/p05_traffic_operations_early_warning/test_paths.py",
+          "tests/projects/p05_traffic_operations_early_warning/test_runtime.py",
+          "tests/projects/p05_traffic_operations_early_warning/test_dependencies.py",
+          "--tb=short",
+          "--basetemp=D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.cache\\p05_traffic_operations_early_warning\\step2b\\focused-tmp"
+        ],
+        "returncode": 0,
+        "seconds": 12.985536098480225,
+        "evidence": ".cache\\p05_traffic_operations_early_warning\\step2b\\evidence\\focused.json",
+        "evidence_sha256": "d41e2de7d607e74d10ac55f875436eb788d4c85eeb4eeaaa9081cd41c6dd0198"
+      },
+      {
+        "gate": "project6",
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-m",
+          "pytest",
+          "tests/projects/p05_traffic_operations_early_warning",
+          "--tb=short",
+          "--basetemp=D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.cache\\p05_traffic_operations_early_warning\\step2b\\project6-tmp"
+        ],
+        "returncode": 0,
+        "seconds": 17.689806938171387,
+        "evidence": ".cache\\p05_traffic_operations_early_warning\\step2b\\evidence\\project6.json",
+        "evidence_sha256": "daf665216311229feec4bae15425cfc4019a77863df5de7006838109d7e60d23"
+      },
+      {
+        "gate": "format",
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-m",
+          "ruff",
+          "format",
+          "--check",
+          "."
+        ],
+        "returncode": 0,
+        "seconds": 0.12847256660461426,
+        "evidence": ".cache\\p05_traffic_operations_early_warning\\step2b\\evidence\\format.json",
+        "evidence_sha256": "65d422ac788ba356d3a595706e28ef5bc5d17cb9f46b99dd5fe7363060ec7a12"
+      },
+      {
+        "gate": "lint",
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-m",
+          "ruff",
+          "check",
+          "."
+        ],
+        "returncode": 0,
+        "seconds": 0.12456941604614258,
+        "evidence": ".cache\\p05_traffic_operations_early_warning\\step2b\\evidence\\lint.json",
+        "evidence_sha256": "90574e9883e42fea026d46475c97e2b21678027b0687e07bd2c33b2289ef3e71"
+      },
+      {
+        "gate": "mypy",
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-m",
+          "mypy",
+          "--strict",
+          "src",
+          "tests"
+        ],
+        "returncode": 0,
+        "seconds": 1.8673195838928223,
+        "evidence": ".cache\\p05_traffic_operations_early_warning\\step2b\\evidence\\mypy.json",
+        "evidence_sha256": "de3e082a1a2afce3af8a63e14d8fba752f91769fce23258831622516f5443769"
+      },
+      {
+        "gate": "collection",
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-m",
+          "pytest",
+          "--collect-only",
+          "-q"
+        ],
+        "returncode": 0,
+        "seconds": 14.632654666900635,
+        "evidence": ".cache\\p05_traffic_operations_early_warning\\step2b\\evidence\\collection.json",
+        "evidence_sha256": "1dd9f93b345fec6bb4facd66092c6ac7f3a49687d46d2c619d501a570757529d"
+      },
+      {
+        "gate": "full",
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-m",
+          "pytest",
+          "--tb=short"
+        ],
+        "returncode": 0,
+        "seconds": 403.14342212677,
+        "evidence": ".cache\\p05_traffic_operations_early_warning\\step2b\\evidence\\full.json",
+        "evidence_sha256": "5f45ccee0f186c90dbb188331159ff011ec81da39fa5250e84ef1c43787c1d41"
+      },
+      {
+        "gate": "pip",
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-m",
+          "pip",
+          "check"
+        ],
+        "returncode": 0,
+        "seconds": 0.7715263366699219,
+        "evidence": ".cache\\p05_traffic_operations_early_warning\\step2b\\evidence\\pip.json",
+        "evidence_sha256": "5592b7c2db31bb82f1a3bbf4b21a84e8ec717ba8cbf6e92bdead5d869f0d7fc9"
+      },
+      {
+        "gate": "version",
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-m",
+          "linkedin_visual_labs",
+          "version"
+        ],
+        "returncode": 0,
+        "seconds": 2.94500994682312,
+        "evidence": ".cache\\p05_traffic_operations_early_warning\\step2b\\evidence\\version.json",
+        "evidence_sha256": "97ca41e610380bb4cef7b215b28fafde6f6a9e3bea7d0e8bf36da4b631d2d6bd"
+      },
+      {
+        "gate": "ffmpeg",
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-c",
+          "from linkedin_visual_labs.projects.p05_traffic_operations_early_warning.runtime import resolve_packaged_ffmpeg,RuntimeStatus; r=resolve_packaged_ffmpeg(); print(r.model_dump_json()); assert r.status==RuntimeStatus.AVAILABLE"
+        ],
+        "returncode": 0,
+        "seconds": 3.0587103366851807,
+        "evidence": ".cache\\p05_traffic_operations_early_warning\\step2b\\evidence\\ffmpeg.json",
+        "evidence_sha256": "00cfa195f2e207adc31021b5df511159d6c4f634840812592268f76f5252c614"
+      }
+    ],
+    "test_counts": {
+      "baseline_retained": 1203,
+      "new_step_2b": 111,
+      "project6": 260,
+      "collected": 1314,
+      "passed": 1314,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "deselected": 0,
+      "xfailed": 0,
+      "xpassed": 0
+    },
+    "warnings": [
+      "Existing pandas invalid-calendar parsing warning.",
+      "Existing pytest nodeids-cache permission warning."
+    ],
+    "preservation": {
+      "primary_venv_metadata_unchanged": true,
+      "step_1_code_config_tests_contracts_unchanged": true,
+      "unrelated_files_unchanged": true,
+      "only_pyproject_extra_added": true,
+      "head_branch_unchanged": true,
+      "staged_files": 0,
+      "git_diff_check": "PASS"
+    },
+    "scope": {
+      "cli_registered": false,
+      "workflows_modified": false,
+      "model_selected_or_downloaded": false,
+      "source_opened": false,
+      "inference_run": false,
+      "tracker_installed": false,
+      "packages_installed": false,
+      "git_staged_committed_pushed": false,
+      "analysis_ready": false
+    },
+    "validation_limits": "Windows repository regression plus retained 2.A Windows/Linux runtime compatibility; no real inference or performance benchmark. Source/model/calibration and ffprobe remain unapproved/unconfigured.",
+    "development_iterations": [
+      "Initial Ruff/type findings corrected only in new files.",
+      "Focused suites progressed from 93 to 102 to 105 cases; malformed root identity regression added.",
+      "Windows trailing-dot/space aliases and UNC/device roots rejected; six regression cases added and all final gates rerun.",
+      "First full run: 1307 passed, one existing root-discovery test failed because the invocation placed basetemp inside the repository. Restored standard pytest temporary handling, without changing the test or production behavior; final suite rerun.",
+      "An apply_patch context mismatch made no changes and was reapplied against inspected lines."
+    ],
+    "hash_note": "Current 2.B hashes supersede historical hashes only for modified documentation. STATE excludes its own hash. Original Step 1 evidence preserved.",
+    "next_permitted_action": "Explicitly authorize Sub-step 2.C; do not begin Step 3 or Git checkpoint.",
+    "validated_file_sha256": [
+      {
+        "path": "configs/p05_traffic_operations_early_warning/runtime.yaml",
+        "sha256": "2edc900686dc3fccbc05f4ed9ae1407316bc7b4798c6c864d5b2cb2775673cc6"
+      },
+      {
+        "path": "configs/p05_traffic_operations_early_warning/runtime_constraints.txt",
+        "sha256": "3ac7fa59d94473fd28ac66c02f2fa98f5caa242633c8b715e7f8e8825737ae3f"
+      },
+      {
+        "path": "src/linkedin_visual_labs/projects/p05_traffic_operations_early_warning/paths.py",
+        "sha256": "2448a1c45787568174395e271e8da9172df6b26aebf5209b5cce33392d0d3168"
+      },
+      {
+        "path": "src/linkedin_visual_labs/projects/p05_traffic_operations_early_warning/runtime.py",
+        "sha256": "37e0821b098b311d41f885e954c4ae7c85145484562a79e9c0cc1984f1b2d4fc"
+      },
+      {
+        "path": "tests/projects/p05_traffic_operations_early_warning/test_paths.py",
+        "sha256": "240228e2af126ec26a4d511f265a556737d36558c88a82614f5b9bba05f0c2cc"
+      },
+      {
+        "path": "tests/projects/p05_traffic_operations_early_warning/test_runtime.py",
+        "sha256": "44bc74ee12251f1a412c17e6446d08bc72689fca3e751e3266bb90902c703bcf"
+      },
+      {
+        "path": "tests/projects/p05_traffic_operations_early_warning/test_dependencies.py",
+        "sha256": "6cfe7796eefb5aeeb05c3522b531f257109a6751369a9cfef0c297f159a5fad8"
+      },
+      {
+        "path": "docs/projects/p05_traffic_operations_early_warning/DEPENDENCY_DECISION.md",
+        "sha256": "e3f0b100e3890bb95e87f05d4c32de339ffc0d5be02c8c473d5dbd2f27ee6a9f"
+      },
+      {
+        "path": "docs/projects/p05_traffic_operations_early_warning/THIRD_PARTY_NOTICES.md",
+        "sha256": "e218e50cd25b604ddd7a4c3fa7c186c8a677d08ba221600835d4b65d0a733545"
+      },
+      {
+        "path": "pyproject.toml",
+        "sha256": "4d81a310923510f8e08cd823dd89d5e732ce6980f061637f20794e021e5517cd"
+      },
+      {
+        "path": "docs/projects/p05_traffic_operations_early_warning/IMPLEMENTATION_PLAN.md",
+        "sha256": "b06f4ff23b3abc8272df18c636573316cd9a6a16971d4930aedf96fb81da75a7"
+      },
+      {
+        "path": "docs/projects/p05_traffic_operations_early_warning/REQUIREMENT_TRACEABILITY.md",
+        "sha256": "093c67a372328a50dce7fadd70d5bbca9b1b0c15e6fad5d14f00ae9110a208a2"
+      },
+      {
+        "path": "docs/projects/p05_traffic_operations_early_warning/CONTINUITY.md",
+        "sha256": "4384345158626a20b6bcfc619ec23346de8a0f4f1004487b6fa44529e4fca560"
+      }
+    ]
+  },
+  "selected_runtime": "OpenCV-headless + CPU ONNX Runtime",
+  "runtime_compatibility_status": "VERIFIED",
+  "model_status": "APPROVED_ONE_ONNX_ACQUIRED_SHA256_VERIFIED",
+  "tracker_status": "NOT_IMPLEMENTED",
+  "tracker_owner": "STEP_6",
+  "step_2_validation": {
+    "status": "PASS",
+    "recorded_at_utc": "2026-09-12T04:16:05.191284-07:00",
+    "head": "7c253340c3fced632a9fe6797c5f9d00a9a94521",
+    "branch": "project/p05-traffic-operations-early-warning",
+    "created_files": [
+      "src/linkedin_visual_labs/projects/p05_traffic_operations_early_warning/cli.py",
+      "tests/projects/p05_traffic_operations_early_warning/test_cli.py",
+      "tests/projects/p05_traffic_operations_early_warning/__init__.py",
+      ".github/workflows/p05-traffic-runtime.yml"
+    ],
+    "modified_files": [
+      "src/linkedin_visual_labs/cli.py",
+      "src/linkedin_visual_labs/projects/__init__.py",
+      "docs/projects/p05_traffic_operations_early_warning/IMPLEMENTATION_PLAN.md",
+      "docs/projects/p05_traffic_operations_early_warning/CONTINUITY.md",
+      "docs/projects/p05_traffic_operations_early_warning/REQUIREMENT_TRACEABILITY.md",
+      "docs/projects/p05_traffic_operations_early_warning/DEPENDENCY_DECISION.md",
+      "docs/projects/p05_traffic_operations_early_warning/STATE.json"
+    ],
+    "commands": [
+      {
+        "gate": "focused",
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-m",
+          "pytest",
+          "tests/projects/p05_traffic_operations_early_warning/test_paths.py",
+          "tests/projects/p05_traffic_operations_early_warning/test_runtime.py",
+          "tests/projects/p05_traffic_operations_early_warning/test_dependencies.py",
+          "tests/projects/p05_traffic_operations_early_warning/test_cli.py",
+          "--tb=short"
+        ],
+        "returncode": 0,
+        "seconds": 16.7077853679657,
+        "evidence": ".cache\\p05_traffic_operations_early_warning\\step2-final\\focused.json",
+        "evidence_sha256": "c247ee940300f220fc9d72d3bb7a92f2a393bd268fb8cdad1fbe811240be4673"
+      },
+      {
+        "gate": "project6",
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-m",
+          "pytest",
+          "tests/projects/p05_traffic_operations_early_warning",
+          "--tb=short"
+        ],
+        "returncode": 0,
+        "seconds": 21.348245859146118,
+        "evidence": ".cache\\p05_traffic_operations_early_warning\\step2-final\\project6.json",
+        "evidence_sha256": "eb70ac8c5c4e2d617a7eef575ec5406671b064ebfe17530d2fc27c1e50b7cf92"
+      },
+      {
+        "gate": "format",
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-m",
+          "ruff",
+          "format",
+          "--check",
+          "."
+        ],
+        "returncode": 0,
+        "seconds": 0.12355852127075195,
+        "evidence": ".cache\\p05_traffic_operations_early_warning\\step2-final\\format.json",
+        "evidence_sha256": "1defae46aea6f622a53edb9f64969e5590f3aa90bca280976c9871d9de093241"
+      },
+      {
+        "gate": "lint",
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-m",
+          "ruff",
+          "check",
+          "."
+        ],
+        "returncode": 0,
+        "seconds": 0.11384868621826172,
+        "evidence": ".cache\\p05_traffic_operations_early_warning\\step2-final\\lint.json",
+        "evidence_sha256": "94aae232b8d3735b8dcca598ab0ff925c25ed86cea0f6b6a9f1d1ea69bde0e6c"
+      },
+      {
+        "gate": "mypy",
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-m",
+          "mypy",
+          "--strict",
+          "src",
+          "tests"
+        ],
+        "returncode": 0,
+        "seconds": 1.096264362335205,
+        "evidence": ".cache\\p05_traffic_operations_early_warning\\step2-final\\mypy.json",
+        "evidence_sha256": "ad83db96f35a40506a990ce205d55ff42ff3f0531e4bdce21e26aed6a7d9289d"
+      },
+      {
+        "gate": "collection",
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-m",
+          "pytest",
+          "--collect-only",
+          "-q"
+        ],
+        "returncode": 0,
+        "seconds": 14.572903394699097,
+        "evidence": ".cache\\p05_traffic_operations_early_warning\\step2-final\\collection.json",
+        "evidence_sha256": "545ee134b2133e6a9f1ef24f0f9c31edccc35374b047ab3421a1a846b2e702c3"
+      },
+      {
+        "gate": "full",
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-m",
+          "pytest",
+          "--tb=short"
+        ],
+        "returncode": 0,
+        "seconds": 417.6838307380676,
+        "evidence": ".cache\\p05_traffic_operations_early_warning\\step2-final\\full.json",
+        "evidence_sha256": "631bb169c7d7354c9cb5f7c80b50c176fd03bf26dbcb7899ae48d9512091086b"
+      },
+      {
+        "gate": "pip",
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-m",
+          "pip",
+          "check"
+        ],
+        "returncode": 0,
+        "seconds": 0.8049042224884033,
+        "evidence": ".cache\\p05_traffic_operations_early_warning\\step2-final\\pip.json",
+        "evidence_sha256": "d59e875b789261a3b680e7320e66b6a4b7ce821e36593990ec5ed076f6b8cebb"
+      },
+      {
+        "gate": "version",
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-m",
+          "linkedin_visual_labs",
+          "version"
+        ],
+        "returncode": 0,
+        "seconds": 3.059386730194092,
+        "evidence": ".cache\\p05_traffic_operations_early_warning\\step2-final\\version.json",
+        "evidence_sha256": "6338398d9a7a4b161d302be8e5260f73ddcce47f11091a869c51bb76354ee084"
+      },
+      {
+        "gate": "help",
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-m",
+          "linkedin_visual_labs",
+          "--help"
+        ],
+        "returncode": 0,
+        "seconds": 3.2622132301330566,
+        "evidence": ".cache\\p05_traffic_operations_early_warning\\step2-final\\help.json",
+        "evidence_sha256": "b3ecabca318c27e39963bbbb94e01fc0564d8ab652406e42dcd7b33bdc48cb84"
+      },
+      {
+        "gate": "traffic-help",
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-m",
+          "linkedin_visual_labs",
+          "traffic",
+          "--help"
+        ],
+        "returncode": 0,
+        "seconds": 3.2468037605285645,
+        "evidence": ".cache\\p05_traffic_operations_early_warning\\step2-final\\traffic-help.json",
+        "evidence_sha256": "8a3dc7acbb4348b88a6b396fb010917ad8ac626dc7dd177a2a6c8b4475412105"
+      },
+      {
+        "gate": "config",
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-m",
+          "linkedin_visual_labs",
+          "traffic",
+          "config-check",
+          "--repository-root",
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs",
+          "--json"
+        ],
+        "returncode": 0,
+        "seconds": 3.3550097942352295,
+        "evidence": ".cache\\p05_traffic_operations_early_warning\\step2-final\\config.json",
+        "evidence_sha256": "2d771f494323b1dd3839b7fb8b3564655c3fbe85c29406201d2a5cf0711728e4"
+      },
+      {
+        "gate": "doctor",
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-m",
+          "linkedin_visual_labs",
+          "traffic",
+          "doctor",
+          "--repository-root",
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs",
+          "--json"
+        ],
+        "returncode": 0,
+        "seconds": 2.6325747966766357,
+        "evidence": ".cache\\p05_traffic_operations_early_warning\\step2-final\\doctor.json",
+        "evidence_sha256": "b8858c9d37f52df4af88c481b28832485ffb9824919ce8bd88f309123d800b3d"
+      },
+      {
+        "gate": "windows",
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.cache\\p05_traffic_operations_early_warning\\windows-py313\\venv\\Scripts\\python.exe",
+          "-B",
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.cache\\p05_traffic_operations_early_warning\\step2-final\\runtime_probe.py",
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs"
+        ],
+        "returncode": 0,
+        "seconds": 5.3919453620910645,
+        "evidence": ".cache\\p05_traffic_operations_early_warning\\step2-final\\windows.json",
+        "evidence_sha256": "22b76cef41ee806391abf098cb69169c4848dd27d00bb3aad0f9ea36a079a907"
+      },
+      {
+        "gate": "linux",
+        "command": [
+          "wsl",
+          "-d",
+          "Ubuntu",
+          "--cd",
+          "/mnt/d/linkedin-visual-labs-git/linkedin-visual-labs",
+          "--exec",
+          "/mnt/d/linkedin-visual-labs-git/linkedin-visual-labs/.cache/p05_traffic_operations_early_warning/linux-py313/venv/bin/python",
+          "-B",
+          "/mnt/d/linkedin-visual-labs-git/linkedin-visual-labs/.cache/p05_traffic_operations_early_warning/step2-final/runtime_probe.py",
+          "/mnt/d/linkedin-visual-labs-git/linkedin-visual-labs"
+        ],
+        "returncode": 0,
+        "seconds": 34.79762029647827,
+        "evidence": ".cache\\p05_traffic_operations_early_warning\\step2-final\\linux.json",
+        "evidence_sha256": "beaaaf2a265a7187f4a72577c38f1d0bb8dd2eb0889ec0c270d91597014bd463"
+      },
+      {
+        "gate": "encoding-regression",
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-m",
+          "pytest",
+          "tests/projects/p04_zombie_escape/test_cli.py",
+          "--tb=short"
+        ],
+        "returncode": 0,
+        "seconds": 21.70701313018799,
+        "evidence": ".cache\\p05_traffic_operations_early_warning\\step2-final\\encoding-regression.json",
+        "evidence_sha256": "52129925801d228de883ab9b8a935050ab6965ada605b8b334faf1c33f3a5298"
+      }
+    ],
+    "local_evidence_helpers_sha256": [
+      {
+        "path": ".cache\\p05_traffic_operations_early_warning\\step2-final\\before.json",
+        "sha256": "84298b02a5fb488edbfd40fad8a83e77d4b92078ffb824ad283990d5652f3dfb"
+      },
+      {
+        "path": ".cache\\p05_traffic_operations_early_warning\\step2-final\\run_gate.py",
+        "sha256": "5b570ec0429c96483dfcaf8e4e84fe35ea199c048264fac54104be2edbb350ea"
+      },
+      {
+        "path": ".cache\\p05_traffic_operations_early_warning\\step2-final\\runtime_gate.py",
+        "sha256": "30d1ab6692c83e25af02c62e0c703bdfd9e2f986250dbb4ebbe13822df116d8a"
+      },
+      {
+        "path": ".cache\\p05_traffic_operations_early_warning\\step2-final\\runtime_probe.py",
+        "sha256": "58de121beb69233ec0b6581fefb6a026ce102f090354b4dc674ec59f4a882715"
+      },
+      {
+        "path": ".cache\\p05_traffic_operations_early_warning\\step2-final\\finalize.py",
+        "sha256": "4ee11a9536717a059d8cea2ba60c8f6e9e9395985200e084f43770f9d8f4c2fa"
+      },
+      {
+        "path": ".cache\\p05_traffic_operations_early_warning\\step2-final\\full-encoding-attempt.json",
+        "sha256": "5ebcc42a6b88cb1290107d66d0e69987e45d4b40d7ad562a8aaa0bbb854e45b7"
+      }
+    ],
+    "test_counts": {
+      "baseline_retained": 1314,
+      "new_step_2c": 27,
+      "focused_step_2": 138,
+      "project6": 287,
+      "collected": 1341,
+      "passed": 1341,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "deselected": 0,
+      "xfailed": 0,
+      "xpassed": 0
+    },
+    "preservation": {
+      "primary_venv_unchanged": true,
+      "step1_and_step2b_code_config_tests_unchanged": true,
+      "unrelated_files_unchanged": true,
+      "ordinary_ci_unchanged": true,
+      "global_continuity_unchanged": true,
+      "git_head_branch_unchanged": true,
+      "staged_files": 0
+    },
+    "runtime": {
+      "windows": "CPython 3.13.2",
+      "linux": "CPython 3.13.15",
+      "opencv_distribution": "5.0.0.93",
+      "opencv_runtime": "5.0.0",
+      "onnxruntime": "1.30.0",
+      "cpu_provider_both": true,
+      "actual_extra_constraints_verified": true,
+      "pip_both": "PASS",
+      "analysis_ready": false
+    },
+    "scope": {
+      "packages_installed": false,
+      "model_selected_or_downloaded": false,
+      "source_opened": false,
+      "inference_run": false,
+      "tracker_implemented": false,
+      "git_staged_committed_pushed": false,
+      "step3_started": false,
+      "manual_workflow_created": true,
+      "remote_workflow_run": false
+    },
+    "development_findings": [
+      "Corrected new test typing/formatting and removed an unavailable Click test import in favor of TyperGroup.",
+      "Preserved Step 1 runtime-import isolation by lazy traffic registration.",
+      "Added scoped test package marker to avoid collision with existing tests/test_cli.py; no prior tests changed.",
+      "Local command logger needed UTF-8 output handling for Typer help; application help itself exited 0.",
+      "An evidence-runner UTF-8 child environment override caused two existing Zombie subprocess decoding failures (1339 passed). Removed the override from test commands, verified the affected tests and reran the entire suite under standard environment semantics; no existing code/tests modified."
+    ],
+    "warnings": [
+      "Existing pandas invalid-calendar parsing warning.",
+      "Existing pytest nodeids-cache permission warning."
+    ],
+    "limits": "No inference/performance/model validation. ffprobe/PTS remain unconfigured. Runtime READY describes optional imports and CPU provider only; analysis remains NOT_STARTED.",
+    "hash_note": "Current acceptance hashes supersede historical hashes for updated documentation only; STATE excludes its own hash.",
+    "validated_file_sha256": [
+      {
+        "path": "src/linkedin_visual_labs/projects/p05_traffic_operations_early_warning/cli.py",
+        "sha256": "c67505012c25bffc28d9f3e078922c4dc99a2a73da6f149a92de3488bc5358d5"
+      },
+      {
+        "path": "tests/projects/p05_traffic_operations_early_warning/test_cli.py",
+        "sha256": "6c683c628cda759ee4bd344c602756f97f6a91d6e8472ceb8eecae00d02c48b1"
+      },
+      {
+        "path": "tests/projects/p05_traffic_operations_early_warning/__init__.py",
+        "sha256": "2b98b7e8570b354de8a511d69b989f3e1a5debfcb7750cdfb54d273dbc8b1fec"
+      },
+      {
+        "path": ".github/workflows/p05-traffic-runtime.yml",
+        "sha256": "c49e9abcd09420f3c7b38fc52b0850581ddfd813b6b4a8d2a793062737621d69"
+      },
+      {
+        "path": "src/linkedin_visual_labs/cli.py",
+        "sha256": "2fd4c21641bfa6316e4c85746811dd787c412054f7d04ebb10acfe890ed655ac"
+      },
+      {
+        "path": "src/linkedin_visual_labs/projects/__init__.py",
+        "sha256": "a7409e873a2d380868d425eb17b0bf782572790807347b1de1963112bcc21ee0"
+      },
+      {
+        "path": "docs/projects/p05_traffic_operations_early_warning/IMPLEMENTATION_PLAN.md",
+        "sha256": "ee0e4458f42f64b203a42f2776fe0bc5134a929c03d60c6ec234221cc4fd30ce"
+      },
+      {
+        "path": "docs/projects/p05_traffic_operations_early_warning/CONTINUITY.md",
+        "sha256": "fa915b4aeb55cb1691253fdd1aa9bcc95460c001e348698fae4fc20e7488fc22"
+      },
+      {
+        "path": "docs/projects/p05_traffic_operations_early_warning/REQUIREMENT_TRACEABILITY.md",
+        "sha256": "644ae7ab44146764a1ca0944dcab886f71b51bdda5ddcdd1e8f14f7cada8b007"
+      },
+      {
+        "path": "docs/projects/p05_traffic_operations_early_warning/DEPENDENCY_DECISION.md",
+        "sha256": "0f5cf73f6867af7ed30de2e7aea2a9ee2925a84856814507817ead8b64f1b35d"
+      }
+    ]
+  },
+  "source_acquisition_attempt": {
+    "source": "AI City Challenge 2021 Track 1 Dataset_A",
+    "source_status": "SOURCE_APPROVED",
+    "local_files_screened": 31,
+    "hard_filter_survivors": 6,
+    "deep_shortlist": [
+      "cam_7.mp4",
+      "cam_3.mp4",
+      "cam_5.mp4"
+    ],
+    "downloads": 0,
+    "primary_analytical_source": "cam_3.mp4",
+    "sha256": "f368eea873bbfd60bd41bfc9cc2cd17b1e6e64967e091142ba0791f0d317990a",
+    "evidence": "outputs/p05_traffic_operations_early_warning/manifests/aicity_source_screening_summary.json",
+    "public_reuse_status": "NOT_APPROVED_ACADEMIC_LICENSE_RESTRICTIONS",
+    "result": "PROJECT6_FAST_TRACK_BLOCK_1_PASS"
+  },
+  "source_acquisition_history": [
+    {
+      "source_suitability": "NOT_RUN_NO_VIDEO",
+      "result": "PROJECT6_FAST_TRACK_BLOCK_1_SOURCE_BLOCKED",
+      "downloaded_candidates": 0,
+      "listed_files": 91,
+      "evidence": "data/raw/p05_traffic_operations_early_warning/figshare_acquisition_20260912/provenance.json",
+      "source_approved": false,
+      "individual_video_candidates": 0,
+      "geometry": "NOT_STARTED_SOURCE_GATE_BLOCKED",
+      "media_integrity": "NOT_RUN_NO_VIDEO",
+      "date": "2026-09-12",
+      "license_metadata": "PASS",
+      "implementation_tests": "NOT_RUN_NO_IMPLEMENTATION_CHANGE"
+    },
+    {
+      "source": "Zenodo 14041920",
+      "record_url": "https://zenodo.org/records/14041920",
+      "doi": "10.5281/zenodo.14041920",
+      "declared_license": "cc-by-4.0",
+      "status": "SOURCE_REJECTED_LICENSE",
+      "result": "PROJECT6_FAST_TRACK_BLOCK_1_SOURCE_LICENSE_BLOCKED",
+      "candidate_files_downloaded": 1,
+      "approved_source": null,
+      "reason": "Visible source overlay identifies SeeJH.com camera content. Zenodo declares CC BY 4.0, but no original-camera rights authorization or sublicensing evidence is present in the record. SeeJH current terms dated 2026-01-17 section 5 prohibit recording, redistribution or commercial use, and section 7 identifies possible third-party webcam ownership. This is unresolved portfolio-use authority, not a finding that the 2024 Zenodo license is legally invalid or retroactively revoked.",
+      "evidence": [
+        {
+          "path": "data\\raw\\p05_traffic_operations_early_warning\\zenodo_14041920_evidence\\record.json",
+          "sha256": "1a190611716850a6b5afcf41abdf956e64cf1d8dea3fd01604eb39dd491b7757"
+        },
+        {
+          "path": "data\\raw\\p05_traffic_operations_early_warning\\zenodo_14041920_evidence\\rights-review.json",
+          "sha256": "19c3c4778608c64d7a8399a1fa8dce586e9f33ca302174aaf037e1106e67bf5b"
+        },
+        {
+          "path": "data\\raw\\p05_traffic_operations_early_warning\\zenodo_14041920_evidence\\rights-conflict-review.json",
+          "sha256": "59f9249bea5e198b8d502e8ef0197fa77f22420f3f0054f89f946a2691d9a77d"
+        },
+        {
+          "path": "data\\raw\\p05_traffic_operations_early_warning\\zenodo_14041920_evidence\\candidate-1-integrity.json",
+          "sha256": "aea86028810f8994dc93a9b86b52b135dac3617b1b0f4d81b5fc79a7f8ecda78"
+        },
+        {
+          "path": "data\\raw\\p05_traffic_operations_early_warning\\zenodo_14041920_evidence\\candidate-1-screen.json",
+          "sha256": "9bbf8363bc5678fb340db3948086fa85404f6172733c3a5ac4e0391c2cfb55d4"
+        },
+        {
+          "path": "data\\raw\\p05_traffic_operations_early_warning\\zenodo_14041920_evidence\\candidate-1-ffmpeg.txt",
+          "sha256": "81e4fd9225a4d1d878f4ec0207e9988e71c327aad4901e51a5e38f9eb9a21d34"
+        },
+        {
+          "path": "data\\raw\\p05_traffic_operations_early_warning\\zenodo_14041920_evidence\\candidate-1-contact-sheet.png",
+          "sha256": "5fdd9a15f5c715bdab1ee3f0f70671af5716a722b495c0c65403c656577df6e2"
+        },
+        {
+          "path": "data\\raw\\p05_traffic_operations_early_warning\\zenodo_14041920_evidence\\candidate-1-review.json",
+          "sha256": "7f32ac55024557eb106f3d3c7bbaa935162a3ee600693b83d94ebb0ee88b2245"
+        },
+        {
+          "path": "data\\raw\\p05_traffic_operations_early_warning\\zenodo_14041920_evidence\\command-review.json",
+          "sha256": "c71f9f9bf6490b1e0673ba90742a64dc623f34a49c0b50c1face8313b0a4365e"
+        }
+      ],
+      "history_note": "Figshare attempt and its evidence retained as historical; Zenodo is the latest attempted source, not an accepted replacement."
+    },
+    {
+      "date": "2026-09-12T12:18:15.326783+00:00",
+      "source": "Pixabay",
+      "status": "SOURCE_REVIEW_REQUIRED",
+      "result": "PROJECT6_FAST_TRACK_BLOCK_1_SOURCE_BLOCKED",
+      "blocker_type": "LOCAL_ACQUISITION_UNRESOLVED",
+      "canonical_page": "https://pixabay.com/videos/paris-traffic-highway-1115/",
+      "creator": "SuperTomBob",
+      "title": "Paris, traffic, highway",
+      "page_id": 1115,
+      "published_date_browser": "2015-10-19",
+      "published_date_web_extract": "2015-10-20",
+      "publication_note": "Observed displays differ by one day; timezone/localization not independently established. Both predate 2019.",
+      "media_type": "MP4",
+      "page_resolution": [
+        1920,
+        1080
+      ],
+      "player_duration_seconds": 190.7,
+      "fps": null,
+      "codec": null,
+      "sha256": null,
+      "file_size": null,
+      "intended_filename": "1115-143052567_large.mp4",
+      "download_url": "https://cdn.pixabay.com/video/2015/10/20/1115-143052567_large.mp4",
+      "download_result": "urllib owner-context HTTP 403; browser Free download and downloadMedia yielded no confirmed repository-local file",
+      "candidate_files_confirmed_in_repository": 0,
+      "download_attempted_candidate_count": 1,
+      "canonical_pages_screened": 3,
+      "three_download_budget_exhausted": false,
+      "license_summary": "https://pixabay.com/service/license-summary/",
+      "terms": "https://pixabay.com/service/terms/",
+      "page_license_label": "Pixabay Content License",
+      "license_review": "Official terms section 4 identifies pre-2019 uploads as CC0; section 5 covers other Content. Record specific basis instead of treating generic page badge as exhaustive. General reuse basis located; footage-specific rights and source approval remain incomplete.",
+      "rights_review": "One player view is not a complete trademark/privacy/rights review. No approval.",
+      "source_mode_requested": "FAST_TRACK_SHORT_HORIZON_SOURCE",
+      "source_mode_approved": null,
+      "baseline_interval": null,
+      "buildup_interval": null,
+      "degraded_interval": null,
+      "static_interval": null,
+      "static_title": null,
+      "calibration": "NOT_STARTED_SOURCE_GATE_BLOCKED",
+      "fallback_screens": [
+        {
+          "page": "https://pixabay.com/videos/car-road-transportation-vehicle-2165/",
+          "creator": "VariousPhotography",
+          "duration_listing": "1:00",
+          "decision": "NOT_ADMITTED_PRELIMINARY_QUALITY_TIMING_CONCERNS",
+          "reason": "Canonical page includes Time Lapse tags; visible player frame has strong selective blur and approaching frontal vehicles. Original motion timing and adequate sustained visibility not established. No download."
+        },
+        {
+          "page": "https://pixabay.com/videos/traffic-speed-cars-highway-road-50749/",
+          "creator": "Matthias_Groeneveld",
+          "published": "2020-09-24",
+          "duration_player_seconds": 60.65,
+          "resolution": [
+            3840,
+            2160
+          ],
+          "decision": "NOT_ADMITTED_PRELIMINARY_SCENE_SUITABILITY",
+          "reason": "Viewed scene dominated by railway and train; road vehicles distant. Required normal/buildup/degraded road-traffic episode not established. No download."
+        }
+      ],
+      "scope": "No detector weights, inference, tracking, metrics, geometry or public artifacts. No historical source reopened."
+    },
+    {
+      "source": "RoundaboutHD",
+      "source_status": "SOURCE_REJECTED_EPISODE",
+      "local_files_screened": 4,
+      "downloads": 0,
+      "primary_analytical_source": null,
+      "best_screened_candidate": "cam02",
+      "result": "PROJECT6_FAST_TRACK_BLOCK_1_SOURCE_BLOCKED_EPISODE",
+      "evidence": "outputs/p05_traffic_operations_early_warning/manifests/source_screening_summary.json",
+      "reason": "Four usable camera files, but bounded annotation and visual screening does not establish sustained normal-to-buildup-to-degraded story. Brief yielding is not promoted to sustained congestion.",
+      "public_reuse_status": "REVIEW_REQUIRED_SEPARATE_FROM_INTERNAL_ANALYTICAL_AUTHORIZATION"
+    }
+  ],
+  "source_mode_requested": "AICITY_DATASET_A_600",
+  "source_contract_amendment_status": "DATASET_A_INTERNAL_ACADEMIC_600_SECOND_MODE_IMPLEMENTED",
+  "pixabay_resume_validation": {
+    "result": "PROJECT6_FAST_TRACK_BLOCK_1_SOURCE_BLOCKED",
+    "project6_tests_passed": 287,
+    "full_repository_tests_passed": 1341,
+    "full_repository_runs": 1,
+    "new_tests": 0,
+    "ruff_format": "PASS",
+    "ruff_lint": "PASS",
+    "strict_mypy": "PASS_208_FILES",
+    "implementation_gate": "BLOCKED_SOURCE",
+    "evidence": {
+      "path": "data/raw/p05_traffic_operations_early_warning/pixabay_evidence/validation.json",
+      "sha256": "8ac53391b1019d5dceb3920bbe8b478116f52ae13910fced0e2d32e98594b8c0"
+    }
+  },
+  "roundabouthd_block1_validation": {
+    "status": "SOFTWARE_GATES_PASS_SOURCE_EPISODE_BLOCKED",
+    "focused_tests": 26,
+    "all_project6_tests": 313,
+    "full_repository_tests": 1367,
+    "full_repository_runs": 1,
+    "ruff": "PASS",
+    "strict_mypy": "PASS_210_FILES",
+    "source_approved": false,
+    "step3": "BLOCKED_SOURCE",
+    "step4": "NOT_STARTED",
+    "evidence": {
+      "path": ".cache/p05_traffic_operations_early_warning/roundabouthd-block1/validation.json",
+      "sha256": "1dcfdaea33dd92e907d8101ef7c1eb46b54c777932f485c371f08d82a612dc3f"
+    }
+  },
+  "calibration_status": "RELATIVE_ONLY",
+  "primary_analytical_source": "cam_3.mp4",
+  "source_manifest_path": "outputs/p05_traffic_operations_early_warning/manifests/source_manifest.json",
+  "aicity_recovery_1d_validation": {
+    "status": "PASS",
+    "focused_tests": 25,
+    "all_project6_tests": 338,
+    "full_repository_tests": 1392,
+    "full_repository_runs": 1,
+    "ruff": "PASS",
+    "strict_mypy": "PASS_213_FILES",
+    "source_approved": true,
+    "step3": "VERIFIED",
+    "step4": "VERIFIED",
+    "publication_approved": false,
+    "evidence": {
+      "path": ".cache/p05_traffic_operations_early_warning/aicity-recovery-1d/validation.json",
+      "sha256": "d98cc4001bf0c050cb07aae977c516795d7f04d1349b5f8ed06eea7441122e67"
+    }
+  },
+  "detection_status": "COMPLETE",
+  "tracking_status": "COMPLETE",
+  "events_status": "COMPLETE",
+  "block_2_validation": {
+    "status": "PASS",
+    "focused_tests": 40,
+    "all_project6_tests": 378,
+    "full_repository_tests": 1432,
+    "full_repository_runs": 1,
+    "ruff": "PASS",
+    "strict_mypy": "PASS_218_FILES",
+    "evidence": {
+      "path": ".cache/p05_traffic_operations_early_warning/block2/validation.json",
+      "sha256": "6dda559e5ca345bbdcdea5ee1e49d78f54f9a707325af56dc7dd2ca32884ecd7"
+    },
+    "model": {
+      "model": "YOLOX-Nano",
+      "version": "0.1.1rc0 official ONNX release",
+      "url": "https://github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yolox_nano.onnx",
+      "model_license": "Apache-2.0 upstream project release; no separate artifact restriction found",
+      "code_license": "Apache-2.0",
+      "input_shape": [
+        1,
+        3,
+        416,
+        416
+      ],
+      "preprocessing": "BGR uint8 resize preserving aspect, top-left padding114, NCHW float32, range0..255; no RGB conversion/mean/std/div255",
+      "output": "[1,3549,85] raw grid-relative xy, log wh, objectness +80 COCO class probabilities; strides8/16/32",
+      "NMS": "required; vehicle-class-agnostic IoU0.45; confidence=objectness*winning class probability",
+      "classes": {
+        "2": "car",
+        "3": "motorcycle",
+        "5": "bus",
+        "7": "truck"
+      },
+      "source_documents": [
+        "LICENSE",
+        "demo/ONNXRuntime/README.md",
+        "demo/ONNXRuntime/onnx_inference.py",
+        "yolox/data/data_augment.py",
+        "yolox/utils/demo_utils.py"
+      ],
+      "status": "DOWNLOADED_ONE_UPSTREAM_ONNX",
+      "sha256": "c789161ed43c8269fcd4e67c67eeeb4e80c622da2eb296a20bc6007bd18a0b7d",
+      "bytes": 3659407,
+      "path": "models/weights/p05_traffic_operations_early_warning/yolox_nano-c789161ed43c8269fcd4e67c67eeeb4e80c622da2eb296a20bc6007bd18a0b7d.onnx"
+    },
+    "publication_approved": false
+  },
+  "release_evidence_status": "VERIFIED",
+  "result_classification": "NO_VISIBLE_QUEUE_EVENT",
+  "warning_timestamp": 1440.0,
+  "visible_queue_timestamp": null,
+  "lead_time_seconds": null,
+  "block_3_validation": {
+    "status": "PASS",
+    "result_classification": "NO_VISIBLE_QUEUE_EVENT",
+    "focused_tests": 46,
+    "all_project6_tests": 424,
+    "full_repository_tests": 1478,
+    "full_repository_runs": 1,
+    "final_code_frozen_before_full_run": true,
+    "ruff": "PASS",
+    "mypy": "PASS_225_FILES",
+    "evidence": {
+      "path": ".cache/p05_traffic_operations_early_warning/block3/validation.json",
+      "sha256": "8e9a526d42ad7e18485cffccbd2025be251887cbc13befdb9b7dd28bfcf3472d",
+      "bytes": 6322
+    },
+    "release_data": {
+      "path": "outputs/p05_traffic_operations_early_warning/data/release_data.json",
+      "sha256": "c80ff9c1da0bbe2c1ca603731635419165a677b1b214635a197c0d68e0947751",
+      "bytes": 12865
+    },
+    "raw_footage_publication_approved": false,
+    "metric_window_exception": "Explicit60sFAST_TRACK; formal300s preserved",
+    "logging_incident_disclosed": true
+  },
+  "static_visual_status": "TECHNICALLY_IMPLEMENTED_REVISED_STORY_REGENERATION_REQUIRED",
+  "linkedin_video_status": "TECHNICALLY_IMPLEMENTED_REVISED_STORY_REGENERATION_REQUIRED",
+  "five_tab_report_status": "TECHNICALLY_IMPLEMENTED_REVISED_STORY_REGENERATION_REQUIRED",
+  "block_4_validation": {
+    "status": "PASS",
+    "focused_tests": 35,
+    "all_project6_tests": 459,
+    "full_repository_tests": 1513,
+    "full_repository_runs": 1,
+    "ruff": "PASS",
+    "mypy": "PASS_230_FILES",
+    "evidence": {
+      "path": ".cache/p05_traffic_operations_early_warning/block4/validation.json",
+      "sha256": "83a49bc97be3f0f59caa7d03b4769b1568cead4a49c3410010937fd472b8ea64",
+      "bytes": 3762
+    },
+    "visual_acceptance": {
+      "path": "outputs/p05_traffic_operations_early_warning/manifests/block4_visual_acceptance.json",
+      "sha256": "44a1a994c705b6c2cc22185f4f826ecf8b6c54c887bb5b12b0b735f22cece2d7",
+      "bytes": 5180
+    },
+    "source_pixels": false,
+    "source_imagery_publication_approved": false,
+    "final_artifact_release_approved": false,
+    "output_manifests": [
+      {
+        "path": "outputs/p05_traffic_operations_early_warning/manifests/trajectory_map_manifest.json",
+        "sha256": "fb8c8bbfb47270e46b53e59c39b2a9285af9835fc2206fad31dc1aa75e00457f",
+        "bytes": 6537
+      },
+      {
+        "path": "outputs/p05_traffic_operations_early_warning/manifests/video_manifest.json",
+        "sha256": "32640e1c0844cd6ce429b139cd202691e1897cf4086607edd97182bf5a850f78",
+        "bytes": 13769
+      },
+      {
+        "path": "outputs/p05_traffic_operations_early_warning/report/report_manifest.json",
+        "sha256": "93f620c53ac9ac725338db4049440d8f46c16b579a7f8e0522d29370c13b3463",
+        "bytes": 8072
+      }
+    ],
+    "visual_acceptance_superseded": true,
+    "superseded_by": "block_4_visual_fidelity_validation"
+  },
+  "block_4_visual_fidelity_validation": {
+    "status": "VERIFIED_VISUAL_FIDELITY",
+    "focused_tests": 45,
+    "all_project6_tests": 469,
+    "full_repository_tests": 1523,
+    "full_repository_runs": 1,
+    "previous_tests_preserved": 1513,
+    "ruff": "PASS",
+    "mypy": "PASS - 234 source files",
+    "visual_acceptance": {
+      "path": "outputs/p05_traffic_operations_early_warning/manifests/block4_visual_acceptance.json",
+      "sha256": "e6a8350aee9f5a967f5372935a950493235eab7b9d38b11afbdfe05919bc4287"
+    },
+    "automated_audit": {
+      "path": ".cache/p05_traffic_operations_early_warning/block4a-p6/automated_visual_fidelity.json",
+      "sha256": "aa8aa8bfd2e453c3a67158d38383ac8938c8c3b09dd745bc18c0be6281a3fdf7"
+    },
+    "source_pixels": false,
+    "final_artifact_release_approved": false,
+    "source_model_analytics_unchanged": true,
+    "code_freeze": {
+      "path": ".cache/p05_traffic_operations_early_warning/block4a-p6/pre_full_code_freeze.json",
+      "sha256": "f54413ea42d76b287f38e70eb22802ef01d830081a665650be525502a4866167"
+    },
+    "command_ledger": {
+      "path": ".cache/p05_traffic_operations_early_warning/block4a-p6/command-ledger.md",
+      "sha256": "14c4805bc13719ca840d06383202de5512fbf28ebbded2f6046fdc334b9f3f84"
+    }
+  },
+  "presentation_scope_revision": {
+    "sub_step": "4.B",
+    "date": "2026-09-13",
+    "status": "PROJECT6_REVISED_SCOPE_PASS",
+    "contract": "docs/projects/p05_traffic_operations_early_warning/REVISED_PRESENTATION_SCOPE.md",
+    "business_question": "Can fixed-camera traffic footage detect sustained deterioration in traffic-flow conditions and distinguish a busy road from a confirmed congestion/queue event?",
+    "primary_message": "Busy traffic \u2260 congestion.",
+    "primary_result": "TRAFFIC DETERIORATION WARNING - Triggered at 24:00",
+    "secondary_validation": "CONFIRMED CONGESTION / QUEUE - Not established",
+    "analytical_steps_1_to_11": "VERIFIED",
+    "steps_12_to_14_technical_status": "VERIFIED_HISTORICAL_GATES_PRESERVED",
+    "steps_12_to_14_revised_story_status": "REGENERATION_REQUIRED",
+    "historical_step_status_note": "implementation_steps and last_verified_implementation_step retain technical verification; they do not certify revised-story visual acceptance.",
+    "PUBLICATION_STATUS": "PENDING_SOURCE_PERMISSION",
+    "internal_source_footage_preview_authorized": true,
+    "final_artifact_release_approved": false,
+    "analytics_source_model_geometry_thresholds_unchanged": true,
+    "media_regenerated": false,
+    "full_repository_tests_rerun": false,
+    "historical_full_repository_tests": 1523,
+    "validation_method": "Bounded JSON/state/claim-selector assertions, indexed evidence SHA-256 verification and scoped file-preservation comparison."
+  },
+  "presentation_metric_audit": {
+    "sub_step": "4.C.A",
+    "audit_document": "docs/projects/p05_traffic_operations_early_warning/PRESENTATION_METRIC_AUDIT.md",
+    "metrics": "outputs/p05_traffic_operations_early_warning/data/presentation_metrics.json",
+    "diagnostics": "reference/project6/revised_previews_v2/diagnostics",
+    "review_status": "REVIEW_REQUIRED",
+    "PUBLICATION_STATUS": "PENDING_SOURCE_PERMISSION",
+    "full_preview_pack_regenerated": false,
+    "upstream_analytics_changed": false,
+    "analytical_audit_status": "PASS",
+    "focused_tests_passed": 10,
+    "validation_manifest": "reference/project6/revised_previews_v2/audit_validation.json"
+  },
+  "presentation_v2": {
+    "build": "PROJECT6_4.C.B",
+    "revised_scope": "VERIFIED",
+    "metric_truth": "VERIFIED",
+    "original_preview_palette": "RECOVERED",
+    "first_15_seconds_story": "VERIFIED",
+    "preview_v2": "VERIFIED",
+    "production_presentation": "CURRENT",
+    "publication": "PENDING_SOURCE_PERMISSION",
+    "acceptance": {
+      "path": "outputs/p05_traffic_operations_early_warning/manifests/block4cb_presentation_acceptance.json",
+      "sha256": "31408b565dd24ca98a0afd0dbba14788d990ca76eea72d5e3d902be9b76af6e0"
+    },
+    "contract": "docs/projects/p05_traffic_operations_early_warning/PRESENTATION_V2_CONTRACT.md",
+    "tests": {
+      "focused": {
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-m",
+          "pytest",
+          "tests/projects/p05_traffic_operations_early_warning/test_presentation_v2.py",
+          "--tb=short"
+        ],
+        "exit_code": 0,
+        "seconds": 9.707834800006822
+      },
+      "project6": {
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-m",
+          "pytest",
+          "tests/projects/p05_traffic_operations_early_warning",
+          "--tb=short"
+        ],
+        "exit_code": 0,
+        "seconds": 33.834109999996144
+      },
+      "format": {
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-m",
+          "ruff",
+          "format",
+          "--check",
+          "."
+        ],
+        "exit_code": 0,
+        "seconds": 0.11048679996747524
+      },
+      "lint": {
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-m",
+          "ruff",
+          "check",
+          "."
+        ],
+        "exit_code": 0,
+        "seconds": 0.1144324999768287
+      },
+      "mypy": {
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-m",
+          "mypy",
+          "--strict",
+          "src",
+          "tests"
+        ],
+        "exit_code": 0,
+        "seconds": 1.451386899978388
+      },
+      "full": {
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-m",
+          "pytest",
+          "--tb=short"
+        ],
+        "exit_code": 0,
+        "seconds": 429.83230690000346
+      }
+    },
+    "agent_visual_review": "PASS",
+    "human_release_approval": false,
+    "analytics_rerun": false,
+    "historical_visual_manifests": "Earlier block4 media hashes are historical after authorized replacements."
+  },
+  "presentation_v3": {
+    "build": "PROJECT6_4.C.C",
+    "metric_truth": "VERIFIED",
+    "story": "VERIFIED",
+    "time_lapse_presentation": "VERIFIED",
+    "dynamic_contours": "VERIFIED",
+    "dynamic_trajectories": "VERIFIED",
+    "visual_palette_v3": "VERIFIED",
+    "production_presentation": "CURRENT",
+    "publication": "PENDING_SOURCE_PERMISSION",
+    "acceptance": {
+      "path": "outputs/p05_traffic_operations_early_warning/manifests/block4cc_presentation_acceptance.json",
+      "sha256": "da34a277921222dbc09ceafe239ff1c1d5277d43c82c4ea5e571e24ef491d986"
+    },
+    "tests": {
+      "focused": {
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-m",
+          "pytest",
+          "tests/projects/p05_traffic_operations_early_warning/test_presentation_v3.py",
+          "--tb=short"
+        ],
+        "exit_code": 0,
+        "seconds": 10.83477319998201
+      },
+      "project6": {
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-m",
+          "pytest",
+          "tests/projects/p05_traffic_operations_early_warning",
+          "--tb=short"
+        ],
+        "exit_code": 0,
+        "seconds": 31.854877800040413
+      },
+      "format": {
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-m",
+          "ruff",
+          "format",
+          "--check",
+          "."
+        ],
+        "exit_code": 0,
+        "seconds": 0.13029220001772046
+      },
+      "lint": {
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-m",
+          "ruff",
+          "check",
+          "."
+        ],
+        "exit_code": 0,
+        "seconds": 0.1309818000299856
+      },
+      "mypy": {
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-m",
+          "mypy",
+          "--strict",
+          "src",
+          "tests"
+        ],
+        "exit_code": 0,
+        "seconds": 1.3913181000389159
+      },
+      "full": {
+        "command": [
+          "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+          "-B",
+          "-m",
+          "pytest",
+          "--tb=short"
+        ],
+        "exit_code": 0,
+        "seconds": 412.83132330002263
+      }
+    },
+    "previous_visual_style": "DEPRECATED_VISUAL_STYLE",
+    "human_public_approval": false,
+    "analytics_rerun": false
+  }
+}

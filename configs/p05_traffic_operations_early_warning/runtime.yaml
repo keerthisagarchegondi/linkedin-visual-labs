@@ -1,0 +1,14 @@
+schema_version: "1.0"
+runtime_family: ONNX_RUNTIME
+opencv_variant: HEADLESS
+execution_provider: CPUExecutionProvider
+gpu_required: false
+intra_op_threads: null
+inter_op_threads: null
+model: null
+tracker_status: NOT_IMPLEMENTED
+tracker_owner: STEP_6
+source_status: REVIEW_REQUIRED
+source_processing_authorized: false
+ffmpeg_policy: PACKAGED_ONLY
+ffprobe_reference: null

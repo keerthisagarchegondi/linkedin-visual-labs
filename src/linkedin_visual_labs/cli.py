@@ -15,6 +15,7 @@ from linkedin_visual_labs.projects import (
     commerce_app,
     dice_app,
     monopoly_app,
+    traffic_app,
     zombie_app,
 )
 
@@ -29,6 +30,7 @@ app = typer.Typer(
 console = Console()
 
 app.add_typer(commerce_app, name="commerce")
+app.add_typer(traffic_app, name="traffic")
 
 app.add_typer(
     dice_app,

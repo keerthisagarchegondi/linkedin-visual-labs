@@ -1,0 +1,43 @@
+# Step 1 contracts only. No source, runtime, thresholds or observed results.
+project:
+  schema_version: "1.0"
+  package: p05_traffic_operations_early_warning
+source:
+  status: SOURCE_REVIEW_REQUIRED
+  candidate: null
+  planning_floor_seconds: 720
+  preferred_seconds: [1800, 2700]
+  duration_policy_classification: CONFIGURED_ASSUMPTION
+analysis:
+  clock: ORIGINAL_SOURCE_TIMESTAMPS
+  calibration:
+    status: RELATIVE_ONLY
+metrics:
+  throughput_window_seconds: 300
+  imbalance_window_seconds: 300
+  review: REVIEW_REQUIRED
+queue_outcome:
+  status: REVIEW_REQUIRED
+  predicates: []
+warning:
+  status: REVIEW_REQUIRED
+  predicates: []
+  depends_on_queue_outcome: false
+recommendations:
+  actions: []
+  no_enabled_action: NO_ACTION_WITH_REASON
+privacy: {}
+outputs:
+  static:
+    width: 1080
+    height: 1350
+    source_interval: null
+  video:
+    width: 1080
+    height: 1350
+    fps: 30
+    duration_seconds: 45.0
+    frame_count: 1350
+    keyframe_seconds: [0, 5, 10, 15, 20, 25, 30, 35, 40]
+    closing_selector: LAST_FRAME
+  report_tabs: [Dashboard, Video, Method, Results, About]

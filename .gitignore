@@ -116,3 +116,14 @@ desktop.ini
 /outputs/
 
 reference/project5/
+
+# Project 6 local references and runtime artifacts; retain existing broad coverage.
+/reference/project6/previews/
+/reference/project6/revised_previews/
+/reference/project6/revised_previews_v2/
+/data/raw/p05_traffic_operations_early_warning/
+/data/processed/p05_traffic_operations_early_warning/
+/outputs/p05_traffic_operations_early_warning/
+/models/weights/p05_traffic_operations_early_warning/
+/models/cache/p05_traffic_operations_early_warning/
+/.cache/p05_traffic_operations_early_warning/

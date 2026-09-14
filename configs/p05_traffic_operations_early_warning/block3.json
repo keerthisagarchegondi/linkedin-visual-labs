@@ -1,0 +1,152 @@
+{
+  "classification": "CONFIGURED_ASSUMPTION",
+  "metric_window_seconds": 60,
+  "formal_window_seconds": 300,
+  "evaluation_start": 1380,
+  "evaluation_end_exclusive": 1800,
+  "baseline": [
+    1260,
+    1380
+  ],
+  "baseline_evaluation": [
+    1320,
+    1380
+  ],
+  "warning": {
+    "density_threshold": 1.7583333333333333,
+    "throughput_ceiling": 1.5,
+    "movement_ceiling": 0.005771631747999172,
+    "imbalance_threshold": 2,
+    "trend_threshold": 0.005,
+    "minimum_drivers": 3,
+    "persistence_seconds": 30,
+    "critical_seconds": 60,
+    "reset_seconds": 15
+  },
+  "queue": {
+    "queue_count": 2,
+    "zone_occupancy": 3,
+    "movement_ceiling": 0.005,
+    "persistence_seconds": 120
+  },
+  "sensitivity": [
+    {
+      "name": "PRIMARY",
+      "warning": {
+        "density_threshold": 1.7583333333333333,
+        "throughput_ceiling": 1.5,
+        "movement_ceiling": 0.005771631747999172,
+        "imbalance_threshold": 2,
+        "trend_threshold": 0.005,
+        "minimum_drivers": 3,
+        "persistence_seconds": 30,
+        "critical_seconds": 60,
+        "reset_seconds": 15
+      },
+      "queue": {
+        "queue_count": 2,
+        "zone_occupancy": 3,
+        "movement_ceiling": 0.005,
+        "persistence_seconds": 120
+      }
+    },
+    {
+      "name": "DENSITY_MINUS_20_PERCENT",
+      "warning": {
+        "density_threshold": 1.4066666666666667,
+        "throughput_ceiling": 1.5,
+        "movement_ceiling": 0.005771631747999172,
+        "imbalance_threshold": 2,
+        "trend_threshold": 0.005,
+        "minimum_drivers": 3,
+        "persistence_seconds": 30,
+        "critical_seconds": 60,
+        "reset_seconds": 15
+      },
+      "queue": {
+        "queue_count": 2,
+        "zone_occupancy": 3,
+        "movement_ceiling": 0.005,
+        "persistence_seconds": 120
+      }
+    },
+    {
+      "name": "DENSITY_PLUS_20_PERCENT",
+      "warning": {
+        "density_threshold": 2.11,
+        "throughput_ceiling": 1.5,
+        "movement_ceiling": 0.005771631747999172,
+        "imbalance_threshold": 2,
+        "trend_threshold": 0.005,
+        "minimum_drivers": 3,
+        "persistence_seconds": 30,
+        "critical_seconds": 60,
+        "reset_seconds": 15
+      },
+      "queue": {
+        "queue_count": 2,
+        "zone_occupancy": 3,
+        "movement_ceiling": 0.005,
+        "persistence_seconds": 120
+      }
+    },
+    {
+      "name": "QUEUE_PERSISTENCE_MINUS_30_SECONDS",
+      "warning": {
+        "density_threshold": 1.7583333333333333,
+        "throughput_ceiling": 1.5,
+        "movement_ceiling": 0.005771631747999172,
+        "imbalance_threshold": 2,
+        "trend_threshold": 0.005,
+        "minimum_drivers": 3,
+        "persistence_seconds": 30,
+        "critical_seconds": 60,
+        "reset_seconds": 15
+      },
+      "queue": {
+        "queue_count": 2,
+        "zone_occupancy": 3,
+        "movement_ceiling": 0.005,
+        "persistence_seconds": 90
+      }
+    },
+    {
+      "name": "QUEUE_PERSISTENCE_PLUS_30_SECONDS",
+      "warning": {
+        "density_threshold": 1.7583333333333333,
+        "throughput_ceiling": 1.5,
+        "movement_ceiling": 0.005771631747999172,
+        "imbalance_threshold": 2,
+        "trend_threshold": 0.005,
+        "minimum_drivers": 3,
+        "persistence_seconds": 30,
+        "critical_seconds": 60,
+        "reset_seconds": 15
+      },
+      "queue": {
+        "queue_count": 2,
+        "zone_occupancy": 3,
+        "movement_ceiling": 0.005,
+        "persistence_seconds": 150
+      }
+    }
+  ],
+  "enabled_actions": [
+    "MONITOR",
+    "ESCALATE_FOR_REVIEW"
+  ],
+  "action_scope": "Prototype analytical monitoring/review only; no facility control lever is established.",
+  "threshold_provenance": {
+    "density": "max(1.5 times baseline, baseline plus one vehicle)",
+    "throughput": "25 percent below baseline median",
+    "movement": "25 percent below baseline median",
+    "imbalance": "two net entries per60s",
+    "trend": "0.005 vehicles/second over30s",
+    "warning": "three of five named drivers,30s; critical four drivers60s; reset <=1driver15s",
+    "queue": "two persistent low-motion tracks, queue occupancy>=3, movement<=0.005 and120s continuous persistence",
+    "queue_limitation": "120s is a conservative configured transient-stop filter; no measured signal-cycle timing exists. It cannot prove all red cycles are shorter.",
+    "dwell": "Unavailable baseline; not included in primary warning.",
+    "causality": "Primary evaluation starts after baseline; baseline false-warning diagnostic is in-sample, not a prospective alarm test."
+  },
+  "frozen_before_warning_or_queue_evaluation": true
+}

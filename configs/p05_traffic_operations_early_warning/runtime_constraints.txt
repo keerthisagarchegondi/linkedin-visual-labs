@@ -1,0 +1,4 @@
+# Validated on Windows and Linux CPython 3.13 in Sub-step 2.A.
+# Narrow optional-runtime constraints, not a repository lock file.
+opencv-python-headless==5.0.0.93
+onnxruntime==1.30.0

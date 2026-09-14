@@ -36,6 +36,7 @@ dependencies = [
 
 [project.optional-dependencies]
 zombie-dl = ["torch>=2.6"]
+traffic-cv = ["opencv-python-headless==5.0.0.93", "onnxruntime==1.30.0"]
 dev = [
   "ipykernel>=6.29",
   "mypy>=1.13",
