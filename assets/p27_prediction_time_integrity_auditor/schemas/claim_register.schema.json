@@ -1,0 +1,119 @@
+{
+  "$id": "claim_register.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "claims": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "approved_for_dashboard": {
+            "type": "boolean"
+          },
+          "approved_for_manuscript": {
+            "type": "boolean"
+          },
+          "approved_for_video": {
+            "type": "boolean"
+          },
+          "calculation": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "caveat": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "claim_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "claim_text": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "classification": {
+            "enum": [
+              "MEASURED",
+              "DERIVED",
+              "CONTROLLED_INJECTION",
+              "PROJECT_DEFINED_METRIC",
+              "INTERPRETATION",
+              "LIMITATION",
+              "FUTURE_WORK",
+              "PREVIEW_ONLY",
+              "UNSUPPORTED"
+            ],
+            "type": "string"
+          },
+          "dataset_scope": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "evidence_path": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "metric_name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "metric_value": {
+            "type": [
+              "number",
+              "string",
+              "null"
+            ]
+          },
+          "review_status": {
+            "enum": [
+              "PENDING",
+              "VALIDATED",
+              "REJECTED"
+            ],
+            "type": "string"
+          },
+          "unit": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "claim_id",
+          "claim_text",
+          "classification",
+          "metric_name",
+          "metric_value",
+          "unit",
+          "evidence_path",
+          "calculation",
+          "dataset_scope",
+          "caveat",
+          "approved_for_dashboard",
+          "approved_for_video",
+          "approved_for_manuscript",
+          "review_status"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "claims"
+  ],
+  "title": "Project 7 Public Claim Register",
+  "type": "object"
+}

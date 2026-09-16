@@ -127,3 +127,11 @@ reference/project5/
 /models/weights/p05_traffic_operations_early_warning/
 /models/cache/p05_traffic_operations_early_warning/
 /.cache/p05_traffic_operations_early_warning/
+
+# PROJECT7_PREDICTION_TIME_INTEGRITY_START
+# Project 7 raw/cache/generated local runtime artifacts.
+data/p27_prediction_time_integrity_auditor/
+.cache/p27_prediction_time_integrity_auditor/
+outputs/p27_prediction_time_integrity_auditor/
+reference/project7/previews/
+# PROJECT7_PREDICTION_TIME_INTEGRITY_END

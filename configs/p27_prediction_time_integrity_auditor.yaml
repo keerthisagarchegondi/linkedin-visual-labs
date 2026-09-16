@@ -1,0 +1,34 @@
+{
+  "auditor": {
+    "contaminated_supervised_transform_policy": "BLOCK",
+    "duplicate_overlap_policy": "BLOCK",
+    "unknown_availability_policy": "BLOCK"
+  },
+  "data": {
+    "dataset_id": 222,
+    "preferred_file": "bank-additional-full.csv",
+    "preserve_source_order": true,
+    "target": "y"
+  },
+  "outputs": {
+    "claim_register": "outputs/p27_prediction_time_integrity_auditor/manifests/claim_register.json",
+    "release_data": "outputs/p27_prediction_time_integrity_auditor/data/release_data.json",
+    "root": "outputs/p27_prediction_time_integrity_auditor"
+  },
+  "project": {
+    "contract_version": "1.0",
+    "id": "p27_prediction_time_integrity_auditor",
+    "seed": 1729
+  },
+  "splits": {
+    "chronological": {
+      "test": 0.15,
+      "train": 0.7,
+      "validation": 0.15
+    },
+    "random_comparison": {
+      "seed": 1729,
+      "stratify": true
+    }
+  }
+}

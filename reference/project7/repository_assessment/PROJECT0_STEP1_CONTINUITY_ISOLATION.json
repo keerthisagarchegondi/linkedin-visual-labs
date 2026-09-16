@@ -1,0 +1,55 @@
+{
+    "schema_version":  "1.0",
+    "project":  "Project 7 — Prediction-Time Integrity Auditor",
+    "phase":  "Project 0",
+    "step":  "Step 1",
+    "substep":  "1.3",
+    "action":  "isolate_preexisting_p02_and_create_project7_branch",
+    "repository":  "D:\\linkedin-visual-labs-git\\linkedin-visual-labs",
+    "source_main":  {
+                        "branch":  "main",
+                        "head":  "95c5dbeb5977d7943be69fc70ac9562d41e5922a"
+                    },
+    "p02_preservation":  {
+                             "stash_ref":  "stash@{0}",
+                             "stash_commit":  "29cb537a97682b65988280f2256a839a41195756",
+                             "stash_subject":  "On main: PRESERVE pre-Project7 p02_monopoly_ai work before project/p27-prediction-time-integrity-auditor",
+                             "path_count":  4,
+                             "paths":  [
+                                           "docs/projects/p02_monopoly_ai.md",
+                                           "src/linkedin_visual_labs/projects/p02_monopoly_ai/cli.py",
+                                           "src/linkedin_visual_labs/projects/p02_monopoly_ai/release_recovery.py",
+                                           "tests/projects/p02_monopoly_ai/test_release_recovery.py"
+                                       ],
+                             "stash_preserved":  true,
+                             "stash_popped":  false,
+                             "stash_dropped":  false
+                         },
+    "project7":  {
+                     "branch":  "project/p27-prediction-time-integrity-auditor",
+                     "head":  "95c5dbeb5977d7943be69fc70ac9562d41e5922a",
+                     "p02_dirty_path_count":  0,
+                     "assessment_evidence_directory":  "reference/project7/repository_assessment"
+                 },
+    "boundary":  {
+                     "dependency_installation":  false,
+                     "commit":  false,
+                     "push":  false,
+                     "fetch":  false,
+                     "pull":  false,
+                     "codex_used":  false,
+                     "p02_source_content_edited":  false
+                 },
+    "evidence_hashes_before_this_receipt":  {
+                                                "PROJECT0_STEP1_REPOSITORY_ASSESSMENT.md":  "85FE2A09BDABC7B869A050A7F976BAA15AFFD8E0AEE0055AA0F450A9CBCCD20D",
+                                                "PROJECT0_STEP1_REPOSITORY_ASSESSMENT.json":  "4254E4FBFAD6AFBA9CC5B2EE53175DDEDEC75009EB052F292AC19BAF332800F4",
+                                                "PROJECT0_STEP1_DIRTY_WORKTREE_CONTINUITY.json":  "6FAE34F5D422B0C8BCB147336FF61603B48E32962C58EC6CC33CF0D4DD75D139",
+                                                "PROJECT0_STEP1_DIRTY_WORKTREE_CONTINUITY.md":  "C47E0BC536BE33D1B6395168EDE01495A0EF5D859F1214004FF94F43B37866BA"
+                                            },
+    "decision":  {
+                     "p02_isolated":  true,
+                     "project7_branch_established":  true,
+                     "ready_to_complete_project0_step1_review":  true,
+                     "auto_advance_to_step2":  false
+                 }
+}

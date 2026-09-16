@@ -1,0 +1,117 @@
+{
+  "branch": "main",
+  "classification_counts": {
+    "TRACKED_MODIFIED": 2,
+    "UNTRACKED": 4
+  },
+  "decision": {
+    "continuity_status": "RECONCILIATION_REQUIRED_PREEXISTING_P02_WORK",
+    "next_action": "Return receipt to ChatGPT. Do not mutate or branch yet.",
+    "p02_changes_must_not_be_absorbed_into_project7": true,
+    "safe_to_create_project7_branch_now": false,
+    "staged_item_count": 0,
+    "unexpected_dirty_path_count": 0
+  },
+  "entries": [
+    {
+      "classification": "TRACKED_MODIFIED",
+      "exists": true,
+      "index_status": " ",
+      "is_file": true,
+      "path": "docs/projects/p02_monopoly_ai.md",
+      "scope": "PREEXISTING_P02_CANDIDATE",
+      "worktree_status": "M",
+      "xy": " M"
+    },
+    {
+      "classification": "TRACKED_MODIFIED",
+      "exists": true,
+      "index_status": " ",
+      "is_file": true,
+      "path": "src/linkedin_visual_labs/projects/p02_monopoly_ai/cli.py",
+      "scope": "PREEXISTING_P02_CANDIDATE",
+      "worktree_status": "M",
+      "xy": " M"
+    },
+    {
+      "bytes": 227744,
+      "classification": "UNTRACKED",
+      "exists": true,
+      "index_status": "?",
+      "is_file": true,
+      "path": "reference/project7/repository_assessment/PROJECT0_STEP1_REPOSITORY_ASSESSMENT.json",
+      "scope": "PROJECT7_STEP1_EVIDENCE",
+      "sha256": "4254e4fbfad6afba9cc5b2ee53175ddedec75009eb052f292ac19baf332800f4",
+      "worktree_status": "?",
+      "xy": "??"
+    },
+    {
+      "bytes": 2591,
+      "classification": "UNTRACKED",
+      "exists": true,
+      "index_status": "?",
+      "is_file": true,
+      "path": "reference/project7/repository_assessment/PROJECT0_STEP1_REPOSITORY_ASSESSMENT.md",
+      "scope": "PROJECT7_STEP1_EVIDENCE",
+      "sha256": "85fe2a09bdabc7b869a050a7f976baa15affd8e0aee0055aa0f450a9cbccd20d",
+      "worktree_status": "?",
+      "xy": "??"
+    },
+    {
+      "bytes": 17839,
+      "classification": "UNTRACKED",
+      "exists": true,
+      "index_status": "?",
+      "is_file": true,
+      "path": "src/linkedin_visual_labs/projects/p02_monopoly_ai/release_recovery.py",
+      "scope": "PREEXISTING_P02_CANDIDATE",
+      "sha256": "5ee41b2c18e4192bcfc5b9f96809c8b6bb60a7f65ae03af39e0c86d2713838f0",
+      "worktree_status": "?",
+      "xy": "??"
+    },
+    {
+      "bytes": 14905,
+      "classification": "UNTRACKED",
+      "exists": true,
+      "index_status": "?",
+      "is_file": true,
+      "path": "tests/projects/p02_monopoly_ai/test_release_recovery.py",
+      "scope": "PREEXISTING_P02_CANDIDATE",
+      "sha256": "2a0bd626adffc8902db8376ca00d2cf8d5e417b1bc6572cb27c6b2c064f86020",
+      "worktree_status": "?",
+      "xy": "??"
+    }
+  ],
+  "generated_at_utc": "2026-09-16T10:32:12.154871+00:00",
+  "head": "95c5dbeb5977d7943be69fc70ac9562d41e5922a",
+  "mutating_git_operations_performed": false,
+  "network_git_operations_performed": false,
+  "p02_dirty_paths_seen": [
+    "docs/projects/p02_monopoly_ai.md",
+    "src/linkedin_visual_labs/projects/p02_monopoly_ai/cli.py",
+    "src/linkedin_visual_labs/projects/p02_monopoly_ai/release_recovery.py",
+    "tests/projects/p02_monopoly_ai/test_release_recovery.py"
+  ],
+  "p02_expected_paths": [
+    "docs/projects/p02_monopoly_ai.md",
+    "src/linkedin_visual_labs/projects/p02_monopoly_ai/cli.py",
+    "src/linkedin_visual_labs/projects/p02_monopoly_ai/release_recovery.py",
+    "tests/projects/p02_monopoly_ai/test_release_recovery.py"
+  ],
+  "phase": "Project 0",
+  "project": "Project 7 — Prediction-Time Integrity Auditor",
+  "project7_step1_evidence_paths": [
+    "reference/project7/repository_assessment/PROJECT0_STEP1_REPOSITORY_ASSESSMENT.json",
+    "reference/project7/repository_assessment/PROJECT0_STEP1_REPOSITORY_ASSESSMENT.md"
+  ],
+  "purpose": "Dirty-worktree continuity audit before Project 7 branch creation.",
+  "repository": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs",
+  "schema_version": "1.0",
+  "staged_items": [],
+  "staged_name_status": "",
+  "step": "Step 1",
+  "substep": "1.2",
+  "tracked_p02_diff": "diff --git a/docs/projects/p02_monopoly_ai.md b/docs/projects/p02_monopoly_ai.md\nindex 7255ce3..5fbd10f 100644\n--- a/docs/projects/p02_monopoly_ai.md\n+++ b/docs/projects/p02_monopoly_ai.md\n@@ -113,8 +113,10 @@ sufficient. Keep the complete evidence bundle and its valid path references.\n These 33 cases validate the frozen tournament/replay story, including the named\n properties and measured results documented above. They are release-artifact\n integration tests, not miniature tournament fixtures. The tracked repository\n-does not provide a generator for the Step 8 input manifest. Do not fabricate it\n-or substitute a smaller tournament: the rules require 10,000 games, validated\n+originally omitted a tracked producer for the Step 8 input manifest. The bounded\n+`monopoly recover-release` command reconstructs its two-field reader contract\n+from tracked evidence. Do not fabricate inputs or substitute a smaller tournament:\n+the rules require 10,000 games, validated\n metrics and real representative-game events (rules sections 1.53, 1.56–1.58).\n \n Ordinary clean-checkout CI runs all other Monopoly tests:\n@@ -136,6 +138,72 @@ configuration; plain `pytest` still includes these tests. No generated outputs\n should be committed. This preserves the release checks while keeping all 164\n ordinary Monopoly tests in clean-checkout CI.\n \n+### Deterministic release-prerequisite recovery\n+\n+Run only when canonical regeneration is explicitly authorized, from\n+`D:\\linkedin-visual-labs-git\\linkedin-visual-labs` using its existing `.venv`:\n+\n+```powershell\n+& ./.venv/Scripts/python.exe -B -m linkedin_visual_labs monopoly recover-release\n+```\n+\n+The recovery command requires branch `project/p05-traffic-operations-early-warning`,\n+the tracked `configs/p02_monopoly_ai.yaml`, 10,000 games and master seed 73031.\n+It always recomputes the tournament and a second complete replay. No force mode,\n+reduced replay, seed override, arbitrary destination, package installation or MP4\n+encoding is provided. Simulation, selection, validation and rendering semantics\n+remain in their existing modules.\n+\n+Preflight checks tracked Fluent artwork/license/notice, guarded destinations and\n+both regular and bold fonts through the unchanged renderer selection order.\n+Missing fonts fail before expensive work; nothing is downloaded. Selected font\n+identities/hashes and runtime versions are recorded because pixel reproduction\n+can differ across environments.\n+\n+Generated files remain under ignored `outputs/p02_monopoly_ai/`:\n+\n+- `data/`: tournament CSV, summary JSON, representative game and events JSON;\n+- `validation/release_recovery_replay/`: four independently replayed data files;\n+- `validation/`: tournament validation, fairness, strategy diagnostics and\n+  `canonical_video_freeze.json`;\n+- `step8_input_manifest.json`: exactly `representative_game` and\n+  `representative_events`, using repository-relative paths;\n+- `visual/v6_3d_piece_assets/`: four silver strategy sprites;\n+- `visual/v5_preview_lab/`: the thirteen named V5 anchor PNGs;\n+- `validation/release_recovery_receipt.json`: new reconstruction provenance and\n+  the final bundle completion marker.\n+\n+The Step 8 manifest is published only after full-replay admission: fresh source\n+hashes, replay bytes, canonical configuration, representative identities and\n+validated evidence must agree. It is needed by preview rendering and is not\n+itself proof of a complete visual bundle. Only successful final validation\n+publishes the separate recovery receipt. Neither JSON contains wall-clock dates.\n+\n+This is a **validated reconstruction**, not the original release execution.\n+The original untracked manifest's extra metadata, if any, was not recovered.\n+The new receipt fingerprints current sources, config, outputs and fonts, and\n+compares regenerated anchors against tracked historical approval hashes. A\n+mismatch remains visible; no approval contract is rewritten and regenerated\n+PNGs are not claimed to be the original approved bytes.\n+\n+An exclusive `.release_recovery.lock` prevents concurrent cooperating runs.\n+An unexplained existing lock requires investigation; it is never automatically\n+broken. Restart recomputes analytical stages and invalidates only the exact old\n+manifest/receipt completion references. Existing file presence is not validation.\n+The producers use per-file writes, not a transaction over the entire bundle.\n+\n+The preview renderer deletes and recreates **only** the exact generated\n+`outputs/p02_monopoly_ai/visual/v5_preview_lab` directory. Recovery rejects\n+redirected paths, arbitrary targets, subdirectories and unexpected contents\n+before invoking that renderer. It never deletes the whole project output tree.\n+\n+Implementation checks use `test_release_recovery.py` synthetic evidence and\n+mocked producers, with no real tournament. After separately authorized recovery,\n+run the unchanged 33 release cases, then the full suite including all new tests,\n+Ruff formatting/lint, strict mypy, dependency checks and Git scope review.\n+Producer unit-test success alone does not restore the repository baseline.\n+Do not stage generated data, preview images, replay copies, locks or receipts.\n+\n At Project 3 Step 8 closeout:\n \n - Ruff lint: PASS\ndiff --git a/src/linkedin_visual_labs/projects/p02_monopoly_ai/cli.py b/src/linkedin_visual_labs/projects/p02_monopoly_ai/cli.py\nindex a74a8f0..387e1b1 100644\n--- a/src/linkedin_visual_labs/projects/p02_monopoly_ai/cli.py\n+++ b/src/linkedin_visual_labs/projects/p02_monopoly_ai/cli.py\n@@ -26,6 +26,15 @@ app = typer.Typer(\n )\n \n \n+@app.command(\"recover-release\")\n+def recover_release_command() -> None:\n+    \"\"\"Reconstruct canonical release prerequisites with mandatory full replay.\"\"\"\n+    from linkedin_visual_labs.projects.p02_monopoly_ai.release_recovery import recover_release\n+\n+    receipt = recover_release()\n+    typer.echo(f\"recovery_receipt={receipt}\")\n+\n+\n @app.callback(\n     invoke_without_command=True,\n )\n",
+  "unexpected_dirty_paths": [],
+  "unstaged_name_status": "M\tdocs/projects/p02_monopoly_ai.md\nM\tsrc/linkedin_visual_labs/projects/p02_monopoly_ai/cli.py\n"
+}

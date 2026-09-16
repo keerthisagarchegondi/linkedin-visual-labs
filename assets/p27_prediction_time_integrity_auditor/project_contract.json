@@ -1,0 +1,653 @@
+{
+  "audit_policy": {
+    "critical_block_conditions": [
+      "during_action_feature_in_pre_call_candidate",
+      "post_outcome_feature",
+      "unknown_feature_without_evidence",
+      "target_or_post_outcome_proxy",
+      "prohibited_train_test_overlap",
+      "global_supervised_transformation_before_split"
+    ],
+    "feature_availability": {
+      "DURING_ACTION": "BLOCK",
+      "KNOWN_AT_DECISION": "ELIGIBLE_IF_OTHER_CHECKS_PASS",
+      "POST_OUTCOME": "BLOCK",
+      "PRE_DECISION": "ELIGIBLE_IF_OTHER_CHECKS_PASS",
+      "UNKNOWN": "BLOCK_UNTIL_DOCUMENTED"
+    },
+    "pass_caveat": "PASS means no material violation was detected within the supported audit scope; it does not prove absence of all leakage.",
+    "random_temporal_mixing": {
+      "comparison_experiment": "WARN",
+      "sole_release_evidence_on_ordered_data": "BLOCK"
+    },
+    "release_decisions": [
+      "PASS",
+      "WARN",
+      "BLOCK"
+    ],
+    "stability_block_thresholds_when_release_claim_depends_on_unstable_evaluation": {
+      "absolute_ece_gap": 0.05,
+      "absolute_pr_auc_gap": 0.07,
+      "absolute_roc_auc_gap": 0.07,
+      "relative_top_decile_yield_gap": 0.3
+    },
+    "stability_warn_thresholds": {
+      "absolute_ece_gap": 0.02,
+      "absolute_pr_auc_gap": 0.03,
+      "absolute_roc_auc_gap": 0.03,
+      "relative_top_decile_yield_gap": 0.15
+    }
+  },
+  "business_decision": {
+    "prediction_moment": "Immediately before the current call begins.",
+    "question": "Which customers should be prioritized for the next outbound call?",
+    "release_question": "Would this model be approved, warned on, or blocked based on reproducible integrity evidence?"
+  },
+  "contract_status": "FROZEN_BEFORE_EXPERIMENT",
+  "dashboard_contract": {
+    "backend_server_required": false,
+    "external_cdn_default": false,
+    "filename": "project7_prediction_time_integrity_dashboard.html",
+    "tab_count": 6,
+    "tabs": [
+      "Executive Decision",
+      "Leakage Cases",
+      "Feature Contract",
+      "Model Results",
+      "Audit Evidence",
+      "Publication"
+    ]
+  },
+  "dataset": {
+    "access_verified_date": "2026-09-16",
+    "adapter_priority": [
+      "official_uci_direct_archive",
+      "official_ucimlrepo_dataset_222",
+      "checksum_verified_cached_official_archive"
+    ],
+    "dataset_id": 222,
+    "dataset_name": "Bank Marketing",
+    "doi": "10.24432/C5K306",
+    "expected_input_count": 20,
+    "expected_ordering": "ordered_by_date",
+    "expected_rows": 41188,
+    "kaggle_authentication_allowed": false,
+    "license": "CC BY 4.0",
+    "official_page": "https://archive.ics.uci.edu/dataset/222/bank+marketing",
+    "preferred_archive": "bank-additional.zip",
+    "preferred_file": "bank-additional-full.csv",
+    "provider": "UCI Machine Learning Repository",
+    "resolved_direct_download_url": null,
+    "resolved_direct_download_url_policy": "Resolve and verify from the current official UCI page in Project 7 Step 1; do not hard-code an unverified historical URL.",
+    "source_period_documented_by_uci": "May 2008 through November 2010",
+    "synthetic_replacement_allowed": false,
+    "target_column": "y",
+    "target_values": [
+      "no",
+      "yes"
+    ]
+  },
+  "experimental_hypotheses": [
+    "H1_POST_ACTION_FEATURE_LEAKAGE",
+    "H2_TEMPORAL_VALIDATION_INSTABILITY",
+    "H3_TRANSFORMATION_CONTAMINATION",
+    "H4_DUPLICATE_CONTAMINATION",
+    "H5_POST_OUTCOME_PROXY",
+    "H6_BUSINESS_DECISION_DISTORTION",
+    "H7_AUTOMATED_DEPLOYMENT_GATE"
+  ],
+  "future_work_excluded_from_v1": [
+    "multiple_external_datasets",
+    "healthcare_data",
+    "credit_risk_deployment",
+    "fraud_deployment",
+    "model_serving_api",
+    "cloud_deployment",
+    "streamlit_hosting",
+    "authentication",
+    "database_server",
+    "feature_store_integration",
+    "mlflow_integration",
+    "great_expectations_integration",
+    "dbt_integration",
+    "cross_domain_leakagebench",
+    "deep_learning",
+    "automl",
+    "bayesian_hyperparameter_tuning",
+    "shap_heavy_analysis",
+    "live_production_monitoring",
+    "automatic_journal_submission",
+    "automatic_zenodo_upload",
+    "automatic_arxiv_upload"
+  ],
+  "leakage_cases": [
+    {
+      "case_id": "LC01_DURATION",
+      "evidence_class": "OBSERVED_DATASET_CONDITION",
+      "expected_audit_result": "BLOCK",
+      "name": "Current-call duration"
+    },
+    {
+      "case_id": "LC02_RANDOM_TEMPORAL_MIXING",
+      "evidence_class": "EVALUATION_DESIGN_EXPERIMENT",
+      "expected_audit_result": "WARN_OR_BLOCK_BY_USAGE",
+      "name": "Random temporal mixing"
+    },
+    {
+      "case_id": "LC03_GLOBAL_SUPERVISED_TRANSFORM",
+      "evidence_class": "CONTROLLED_INJECTION",
+      "expected_audit_result": "BLOCK",
+      "name": "Global supervised transformation"
+    },
+    {
+      "case_id": "LC04_DUPLICATE_OVERLAP",
+      "evidence_class": "CONTROLLED_INJECTION",
+      "expected_audit_result": "BLOCK",
+      "name": "Duplicate overlap"
+    },
+    {
+      "case_id": "LC05_POST_OUTCOME_PROXY",
+      "evidence_class": "CONTROLLED_INJECTION",
+      "expected_audit_result": "BLOCK",
+      "name": "Post-outcome confirmation proxy"
+    }
+  ],
+  "metric_contract": {
+    "campaign_yield_overstatement": {
+      "classification": "PROJECT_DEFINED_METRIC",
+      "formula": "leaked_evaluation_conversions_per_1000 - safe_test_conversions_per_1000",
+      "unit": "conversions_per_1000_calls"
+    },
+    "leakage_inflation_index": {
+      "classification": "PROJECT_DEFINED_METRIC",
+      "higher_is_better_metrics": "leaked_metric - prediction_time_safe_metric",
+      "interpretation": "Positive values mean the leaked evaluation appears better in the metric's favorable direction.",
+      "lower_is_better_metrics": "prediction_time_safe_metric - leaked_metric"
+    },
+    "metrics": {
+      "brier_score": {
+        "direction": "lower_is_better",
+        "formula": "mean((predicted_probability - binary_target)^2)"
+      },
+      "calibration_intercept": {
+        "direction": "ideal_near_0",
+        "formula": "logistic recalibration intercept where estimable"
+      },
+      "calibration_slope": {
+        "direction": "ideal_near_1",
+        "formula": "logistic recalibration slope where estimable"
+      },
+      "conversions_per_1000_ranked_calls": {
+        "direction": "higher_is_better",
+        "formula": "top_decile_response_rate * 1000",
+        "unit": "conversions_per_1000_calls"
+      },
+      "duplicate_overlap_count": {
+        "direction": "zero_required_for_safe_pipeline",
+        "formula": "count of row fingerprints appearing in both train and test"
+      },
+      "expected_calibration_error": {
+        "binning": "equal_width_on_probability_0_to_1",
+        "bins": 10,
+        "direction": "lower_is_better",
+        "formula": "sum_bin(n_bin/n_total * abs(mean_probability_bin - observed_rate_bin))"
+      },
+      "false_positive_contacts": {
+        "denominator": "top_decile_selected_rows",
+        "direction": "lower_is_better",
+        "formula": "number of target=0 rows inside the top-decile selected set"
+      },
+      "feature_removal_gap": {
+        "direction": "diagnostic",
+        "formula": "metric_with_suspect_feature - metric_without_suspect_feature"
+      },
+      "pr_auc": {
+        "direction": "higher_is_better",
+        "formula": "average precision over held-out probabilities"
+      },
+      "random_vs_temporal_gap": {
+        "direction": "diagnostic",
+        "formula": "random_split_metric - chronological_split_metric"
+      },
+      "roc_auc": {
+        "direction": "higher_is_better",
+        "formula": "sklearn ROC AUC over held-out probabilities"
+      },
+      "target_prevalence": {
+        "direction": "descriptive",
+        "formula": "positive_targets / all_rows"
+      },
+      "top_decile_lift": {
+        "direction": "higher_is_better",
+        "formula": "top_decile_response_rate / overall_target_prevalence"
+      },
+      "top_decile_response_rate": {
+        "direction": "higher_is_better",
+        "formula": "positives among top ceil(0.10*n) ranked rows divided by selected rows"
+      }
+    },
+    "primary_headline_metric": "roc_auc"
+  },
+  "model_contract": {
+    "broad_hyperparameter_search": false,
+    "exact_model_family_count": 2,
+    "forbidden_v1_families": [
+      "PyTorch",
+      "TensorFlow",
+      "XGBoost",
+      "LightGBM",
+      "CatBoost",
+      "Transformers",
+      "AutoML"
+    ],
+    "learned_preprocessing_training_only": true,
+    "models": [
+      {
+        "family": "LogisticRegression",
+        "model_id": "logistic_regression",
+        "parameters": {
+          "C": 1.0,
+          "class_weight": null,
+          "max_iter": 2000,
+          "solver": "lbfgs"
+        },
+        "purpose": "transparent baseline"
+      },
+      {
+        "family": "HistGradientBoostingClassifier",
+        "model_id": "hist_gradient_boosting",
+        "parameters": {
+          "early_stopping": false,
+          "l2_regularization": 0.1,
+          "learning_rate": 0.08,
+          "max_iter": 200,
+          "max_leaf_nodes": 31,
+          "random_state": 1729
+        },
+        "purpose": "nonlinear challenger"
+      }
+    ],
+    "pipeline_a": "intentionally leaked/naive comparison",
+    "pipeline_b": "duration removed, random split retained, train-only preprocessing",
+    "pipeline_c": "prediction-time-safe chronological benchmark"
+  },
+  "prediction_time_feature_contract": {
+    "availability_classes": [
+      "PRE_DECISION",
+      "KNOWN_AT_DECISION",
+      "DURING_ACTION",
+      "POST_OUTCOME",
+      "UNKNOWN"
+    ],
+    "controlled_injections": {
+      "post_outcome_confirmation_proxy": {
+        "availability_class": "POST_OUTCOME",
+        "deployment_allowed": false,
+        "evidence_class": "CONTROLLED_INJECTION"
+      }
+    },
+    "features": [
+      {
+        "availability_class": "PRE_DECISION",
+        "available_at_prediction": true,
+        "business_definition": "Customer age.",
+        "deployment_allowed": true,
+        "evidence": "UCI Bank Marketing variable definition.",
+        "feature_name": "age",
+        "owner": "data_product",
+        "reason": "Customer profile information exists before the outbound call.",
+        "source_column": "age",
+        "version": "1.0"
+      },
+      {
+        "availability_class": "PRE_DECISION",
+        "available_at_prediction": true,
+        "business_definition": "Customer occupation category.",
+        "deployment_allowed": true,
+        "evidence": "UCI Bank Marketing variable definition.",
+        "feature_name": "job",
+        "owner": "data_product",
+        "reason": "Customer profile information exists before the outbound call.",
+        "source_column": "job",
+        "version": "1.0"
+      },
+      {
+        "availability_class": "PRE_DECISION",
+        "available_at_prediction": true,
+        "business_definition": "Customer marital-status category.",
+        "deployment_allowed": true,
+        "evidence": "UCI Bank Marketing variable definition.",
+        "feature_name": "marital",
+        "owner": "data_product",
+        "reason": "Customer profile information exists before the outbound call.",
+        "source_column": "marital",
+        "version": "1.0"
+      },
+      {
+        "availability_class": "PRE_DECISION",
+        "available_at_prediction": true,
+        "business_definition": "Customer education category.",
+        "deployment_allowed": true,
+        "evidence": "UCI Bank Marketing variable definition.",
+        "feature_name": "education",
+        "owner": "data_product",
+        "reason": "Customer profile information exists before the outbound call.",
+        "source_column": "education",
+        "version": "1.0"
+      },
+      {
+        "availability_class": "PRE_DECISION",
+        "available_at_prediction": true,
+        "business_definition": "Whether the customer has credit in default.",
+        "deployment_allowed": true,
+        "evidence": "UCI Bank Marketing variable definition.",
+        "feature_name": "default",
+        "owner": "data_product",
+        "reason": "Recorded customer financial attribute predates the current call.",
+        "source_column": "default",
+        "version": "1.0"
+      },
+      {
+        "availability_class": "PRE_DECISION",
+        "available_at_prediction": true,
+        "business_definition": "Whether the customer has a housing loan.",
+        "deployment_allowed": true,
+        "evidence": "UCI Bank Marketing variable definition.",
+        "feature_name": "housing",
+        "owner": "data_product",
+        "reason": "Recorded customer financial attribute predates the current call.",
+        "source_column": "housing",
+        "version": "1.0"
+      },
+      {
+        "availability_class": "PRE_DECISION",
+        "available_at_prediction": true,
+        "business_definition": "Whether the customer has a personal loan.",
+        "deployment_allowed": true,
+        "evidence": "UCI Bank Marketing variable definition.",
+        "feature_name": "loan",
+        "owner": "data_product",
+        "reason": "Recorded customer financial attribute predates the current call.",
+        "source_column": "loan",
+        "version": "1.0"
+      },
+      {
+        "availability_class": "KNOWN_AT_DECISION",
+        "available_at_prediction": true,
+        "business_definition": "Communication channel used for the current campaign contact.",
+        "deployment_allowed": true,
+        "evidence": "Project V1 business-contract assumption; must be documented at deployment.",
+        "feature_name": "contact",
+        "owner": "campaign_operations",
+        "reason": "V1 treats the selected outbound contact channel as known when the call is scheduled.",
+        "source_column": "contact",
+        "version": "1.0"
+      },
+      {
+        "availability_class": "KNOWN_AT_DECISION",
+        "available_at_prediction": true,
+        "business_definition": "Month of the current campaign contact.",
+        "deployment_allowed": true,
+        "evidence": "Prediction moment and calendar context.",
+        "feature_name": "month",
+        "owner": "campaign_operations",
+        "reason": "Calendar month is known immediately before the call.",
+        "source_column": "month",
+        "version": "1.0"
+      },
+      {
+        "availability_class": "KNOWN_AT_DECISION",
+        "available_at_prediction": true,
+        "business_definition": "Day of week of the current campaign contact.",
+        "deployment_allowed": true,
+        "evidence": "Prediction moment and calendar context.",
+        "feature_name": "day_of_week",
+        "owner": "campaign_operations",
+        "reason": "Calendar day-of-week is known immediately before the call.",
+        "source_column": "day_of_week",
+        "version": "1.0"
+      },
+      {
+        "availability_class": "DURING_ACTION",
+        "available_at_prediction": false,
+        "business_definition": "Duration of the current call in seconds.",
+        "deployment_allowed": false,
+        "evidence": "UCI variable definition plus frozen pre-call prediction moment.",
+        "feature_name": "duration",
+        "owner": "campaign_operations",
+        "reason": "The value does not exist immediately before the current call begins.",
+        "source_column": "duration",
+        "version": "1.0"
+      },
+      {
+        "availability_class": "UNKNOWN",
+        "available_at_prediction": false,
+        "business_definition": "Number of contacts performed during this campaign for the customer, including the current/last contact.",
+        "deployment_allowed": false,
+        "evidence": "UCI variable definition; exact production timestamp semantics unresolved.",
+        "feature_name": "campaign",
+        "owner": "campaign_operations",
+        "reason": "The source definition does not prove whether the recorded value is finalized before or after the current contact begins; V1 fails closed.",
+        "source_column": "campaign",
+        "version": "1.0"
+      },
+      {
+        "availability_class": "PRE_DECISION",
+        "available_at_prediction": true,
+        "business_definition": "Days since the customer was last contacted in a previous campaign.",
+        "deployment_allowed": true,
+        "evidence": "UCI Bank Marketing variable definition.",
+        "feature_name": "pdays",
+        "owner": "campaign_history",
+        "reason": "Previous-campaign history predates the current call.",
+        "source_column": "pdays",
+        "version": "1.0"
+      },
+      {
+        "availability_class": "PRE_DECISION",
+        "available_at_prediction": true,
+        "business_definition": "Number of contacts performed before the current campaign.",
+        "deployment_allowed": true,
+        "evidence": "UCI Bank Marketing variable definition.",
+        "feature_name": "previous",
+        "owner": "campaign_history",
+        "reason": "Previous-campaign history predates the current call.",
+        "source_column": "previous",
+        "version": "1.0"
+      },
+      {
+        "availability_class": "PRE_DECISION",
+        "available_at_prediction": true,
+        "business_definition": "Outcome of the previous marketing campaign.",
+        "deployment_allowed": true,
+        "evidence": "UCI Bank Marketing variable definition.",
+        "feature_name": "poutcome",
+        "owner": "campaign_history",
+        "reason": "Previous-campaign outcome predates the current call.",
+        "source_column": "poutcome",
+        "version": "1.0"
+      },
+      {
+        "availability_class": "KNOWN_AT_DECISION",
+        "available_at_prediction": true,
+        "business_definition": "Employment variation rate.",
+        "deployment_allowed": true,
+        "evidence": "UCI Bank Marketing variable definition and V1 prediction-time assumption.",
+        "feature_name": "emp.var.rate",
+        "owner": "economic_data",
+        "reason": "Published macroeconomic context is treated as known at the decision moment.",
+        "source_column": "emp.var.rate",
+        "version": "1.0"
+      },
+      {
+        "availability_class": "KNOWN_AT_DECISION",
+        "available_at_prediction": true,
+        "business_definition": "Consumer price index.",
+        "deployment_allowed": true,
+        "evidence": "UCI Bank Marketing variable definition and V1 prediction-time assumption.",
+        "feature_name": "cons.price.idx",
+        "owner": "economic_data",
+        "reason": "Published macroeconomic context is treated as known at the decision moment.",
+        "source_column": "cons.price.idx",
+        "version": "1.0"
+      },
+      {
+        "availability_class": "KNOWN_AT_DECISION",
+        "available_at_prediction": true,
+        "business_definition": "Consumer confidence index.",
+        "deployment_allowed": true,
+        "evidence": "UCI Bank Marketing variable definition and V1 prediction-time assumption.",
+        "feature_name": "cons.conf.idx",
+        "owner": "economic_data",
+        "reason": "Published macroeconomic context is treated as known at the decision moment.",
+        "source_column": "cons.conf.idx",
+        "version": "1.0"
+      },
+      {
+        "availability_class": "KNOWN_AT_DECISION",
+        "available_at_prediction": true,
+        "business_definition": "Three-month Euribor rate.",
+        "deployment_allowed": true,
+        "evidence": "UCI Bank Marketing variable definition and V1 prediction-time assumption.",
+        "feature_name": "euribor3m",
+        "owner": "economic_data",
+        "reason": "Published macroeconomic context is treated as known at the decision moment.",
+        "source_column": "euribor3m",
+        "version": "1.0"
+      },
+      {
+        "availability_class": "KNOWN_AT_DECISION",
+        "available_at_prediction": true,
+        "business_definition": "Number of employees macroeconomic indicator.",
+        "deployment_allowed": true,
+        "evidence": "UCI Bank Marketing variable definition and V1 prediction-time assumption.",
+        "feature_name": "nr.employed",
+        "owner": "economic_data",
+        "reason": "Published macroeconomic context is treated as known at the decision moment.",
+        "source_column": "nr.employed",
+        "version": "1.0"
+      }
+    ],
+    "target": {
+      "availability_class": "POST_OUTCOME",
+      "deployment_feature_allowed": false,
+      "role": "TARGET",
+      "source_column": "y"
+    },
+    "version": "1.0"
+  },
+  "project_identity": {
+    "base_head": "95c5dbeb5977d7943be69fc70ac9562d41e5922a",
+    "branch": "project/p27-prediction-time-integrity-auditor",
+    "cli_namespace": "prediction-integrity",
+    "conversational_project": "Project 7",
+    "package_id": "p27_prediction_time_integrity_auditor",
+    "repository_root": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs",
+    "research_identity": "LeakageBench",
+    "title": "Prediction-Time Integrity Auditor"
+  },
+  "public_claim_contract": {
+    "classifications": [
+      "MEASURED",
+      "DERIVED",
+      "CONTROLLED_INJECTION",
+      "PROJECT_DEFINED_METRIC",
+      "INTERPRETATION",
+      "LIMITATION",
+      "FUTURE_WORK",
+      "PREVIEW_ONLY",
+      "UNSUPPORTED"
+    ],
+    "controlled_injection_must_be_labeled": true,
+    "preview_values_allowed_in_final_release": false,
+    "unsupported_claims_allowed_for_public_output": false,
+    "validated_release_data_only": true
+  },
+  "publication_contract": {
+    "automatic_publication": false,
+    "fake_doi_allowed": false,
+    "final_result_prose_before_benchmark_pass": false,
+    "formats": [
+      "Prediction_Time_Integrity_Auditor_Manuscript.md",
+      "Prediction_Time_Integrity_Auditor_Manuscript.docx",
+      "Prediction_Time_Integrity_Auditor_Manuscript.pdf"
+    ],
+    "peer_review_claim_without_acceptance": false,
+    "sections": [
+      "Abstract",
+      "Introduction",
+      "Business decision context",
+      "Prediction-time contract",
+      "Dataset and source ordering",
+      "Leakage taxonomy",
+      "Controlled experimental design",
+      "Models and evaluation",
+      "Prediction-Time Integrity Auditor",
+      "Results",
+      "Business-decision distortion",
+      "Discussion",
+      "Limitations",
+      "Reproducibility",
+      "AI-assistance disclosure",
+      "Future LeakageBench roadmap",
+      "Conclusion",
+      "References",
+      "Audit record or appendix"
+    ],
+    "title": "Auditing Prediction-Time Data Leakage in Business Machine Learning: A Reproducible Benchmark and Deployment Gate"
+  },
+  "reproducibility": {
+    "no_result_dependent_contract_changes": true,
+    "seed": 1729,
+    "source_order_index_start": 0,
+    "timezone_policy": "UTC_for_generated_metadata"
+  },
+  "schema_version": "1.0",
+  "split_contract": {
+    "chronological": {
+      "rounding": "train=floor(0.70*n), validation=floor(0.15*n), test=remaining rows",
+      "shuffle_before_split": false,
+      "test_fraction": 0.15,
+      "train_fraction": 0.7,
+      "validation_fraction": 0.15
+    },
+    "random_comparison": {
+      "same_safe_feature_set": true,
+      "seed": 1729,
+      "stratify": true,
+      "test_fraction": 0.15,
+      "train_fraction": 0.7,
+      "validation_fraction": 0.15
+    }
+  },
+  "video_contract": {
+    "accepted_duration_seconds": [
+      44.0,
+      46.5
+    ],
+    "actual_release_metrics_only": true,
+    "aspect_ratio": "4:5",
+    "codec": "H.264",
+    "fps": 30,
+    "height": 1350,
+    "keyframe_seconds": [
+      0,
+      5,
+      10,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      45
+    ],
+    "muted_comprehension_required": true,
+    "pixel_format": "yuv420p",
+    "primary_filename": "project7_prediction_time_integrity.mp4",
+    "static_slide_sequence_allowed": false,
+    "target_duration_seconds": 45.0,
+    "web_filename": "project7_prediction_time_integrity_web.mp4",
+    "width": 1080
+  }
+}

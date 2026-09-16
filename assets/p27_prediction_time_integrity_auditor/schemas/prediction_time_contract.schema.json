@@ -1,0 +1,65 @@
+{
+  "$id": "prediction_time_contract.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "availability_class": {
+      "enum": [
+        "PRE_DECISION",
+        "KNOWN_AT_DECISION",
+        "DURING_ACTION",
+        "POST_OUTCOME",
+        "UNKNOWN"
+      ],
+      "type": "string"
+    },
+    "available_at_prediction": {
+      "type": "boolean"
+    },
+    "business_definition": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "deployment_allowed": {
+      "type": "boolean"
+    },
+    "evidence": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "feature_name": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "owner": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "reason": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "source_column": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "version": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "feature_name",
+    "business_definition",
+    "source_column",
+    "availability_class",
+    "available_at_prediction",
+    "deployment_allowed",
+    "reason",
+    "owner",
+    "evidence",
+    "version"
+  ],
+  "title": "Prediction-Time Feature Contract",
+  "type": "object"
+}
