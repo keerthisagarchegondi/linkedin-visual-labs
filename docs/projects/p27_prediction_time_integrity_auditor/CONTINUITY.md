@@ -129,3 +129,28 @@ Validation:
 - CLI regression: PASS.
 
 Next allowed implementation step: Project 7 ? Step 2.
+
+## Project 7 — Step 2 — Split integrity and safe baseline pipelines
+
+Status: PASS
+
+Scope completed:
+
+- deterministic chronological source-order 70/15/15 split;
+- deterministic stratified-random 70/15/15 comparison split;
+- stable SHA-256 row fingerprints;
+- exact-row overlap validation;
+- Pipeline B with `duration` removed and random split retained;
+- Pipeline C with chronological holdout and prediction-time-safe features;
+- train-only preprocessing;
+- Logistic Regression;
+- Histogram Gradient Boosting;
+- baseline discrimination, calibration and ranking/business metrics;
+- deterministic baseline evidence;
+- Project 7 coverage >= 90%;
+- no leakage injection or Step 3 scenarios.
+
+Pipeline C is the deployability baseline.
+Pipeline B remains partially corrected.
+
+Next allowed implementation step: Project 7 — Step 3.

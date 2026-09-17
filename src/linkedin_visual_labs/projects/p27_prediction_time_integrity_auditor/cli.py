@@ -7,6 +7,7 @@ import json
 import platform
 from collections.abc import Sequence
 from datetime import date
+from pathlib import Path
 
 from .config import (
     default_config_path,
@@ -23,13 +24,12 @@ from .data import (
     source_paths,
     write_step1_evidence,
 )
+from .modeling import run_baselines
 
 CLI_NAMESPACE = "prediction-integrity"
 
 
 def build_parser() -> argparse.ArgumentParser:
-    """Build the Project 7 command parser."""
-
     parser = argparse.ArgumentParser(
         prog=f"python -m linkedin_visual_labs {CLI_NAMESPACE}",
         description="Prediction-Time Integrity Auditor.",
@@ -39,28 +39,23 @@ def build_parser() -> argparse.ArgumentParser:
 
     subparsers.add_parser(
         "audit-environment",
-        help=("Validate the frozen Project 7 scaffold and print a machine-readable receipt."),
     )
 
     subparsers.add_parser(
         "show-config",
-        help="Print the validated frozen Project 7 config.",
     )
 
     subparsers.add_parser(
         "source-profile",
-        help=(
-            "Acquire/load the official UCI preferred source, "
-            "validate it, and print its deterministic profile."
-        ),
     )
 
     subparsers.add_parser(
         "write-step1-evidence",
-        help=(
-            "Acquire the official UCI source and write committed "
-            "Step 1 provenance/profile/feature-contract evidence."
-        ),
+    )
+
+    subparsers.add_parser(
+        "run-step2-baseline",
+        help=("Run deterministic Pipeline B/C baseline evaluation and write Step 2 evidence."),
     )
 
     return parser
@@ -83,7 +78,6 @@ def _environment_receipt() -> dict[str, object]:
         "python_version": platform.python_version(),
         "deployment_feature_count": len(deployment_feature_names()),
         "blocked_features": list(blocked_feature_names()),
-        "implementation_scope": "PROJECT7_STEP1",
     }
 
 
@@ -108,11 +102,57 @@ def _config_payload() -> dict[str, object]:
     }
 
 
+def _write_step2_payload(
+    payload: dict[str, object],
+) -> tuple[Path, Path]:
+    root = repository_root() / "assets" / "p27_prediction_time_integrity_auditor"
+
+    root.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+    results_path = root / "baseline_results.json"
+
+    split_path = root / "split_manifest.json"
+
+    results_path.write_text(
+        json.dumps(
+            payload,
+            indent=2,
+            sort_keys=True,
+            allow_nan=True,
+        )
+        + "\n",
+        encoding="utf-8",
+        newline="\n",
+    )
+
+    split_path.write_text(
+        json.dumps(
+            {
+                "seed": payload["seed"],
+                "splits": payload["splits"],
+                "baseline_fingerprint_sha256": (payload["baseline_fingerprint_sha256"]),
+            },
+            indent=2,
+            sort_keys=True,
+            allow_nan=True,
+        )
+        + "\n",
+        encoding="utf-8",
+        newline="\n",
+    )
+
+    return (
+        results_path,
+        split_path,
+    )
+
+
 def main(
     argv: Sequence[str] | None = None,
 ) -> int:
-    """Run the Project 7 CLI."""
-
     parser = build_parser()
     args = parser.parse_args(argv)
 
@@ -159,6 +199,28 @@ def main(
                     "status": "PASS",
                     "source_csv": str(local.extracted_csv),
                     "evidence": [str(path) for path in paths],
+                },
+                indent=2,
+                sort_keys=True,
+            )
+        )
+        return 0
+
+    if args.command == "run-step2-baseline":
+        dataset = load_official_dataset(acquire=False)
+
+        payload = run_baselines(dataset)
+
+        results_path, split_path = _write_step2_payload(payload)
+
+        print(
+            json.dumps(
+                {
+                    "status": "PASS",
+                    "baseline_fingerprint_sha256": (payload["baseline_fingerprint_sha256"]),
+                    "evaluation_count": len(payload["evaluations"]),
+                    "results_path": str(results_path),
+                    "split_manifest_path": str(split_path),
                 },
                 indent=2,
                 sort_keys=True,
