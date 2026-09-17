@@ -1,0 +1,19 @@
+{
+  "duplicate_injection_fraction": 0.1,
+  "scenario_count": 5,
+  "scenario_ids": [
+    "S1_CURRENT_CALL_DURATION",
+    "S2_RANDOM_TEMPORAL_MIXING",
+    "S3_GLOBAL_SUPERVISED_TRANSFORMATION",
+    "S4_DUPLICATE_OVERLAP",
+    "S5_POST_OUTCOME_CONFIRMATION_PROXY"
+  ],
+  "scope": "PROJECT7_STEP3_FIVE_LEAKAGE_CASES",
+  "seed": 1729,
+  "step3_fingerprint_sha256": "99bfafda40ff9404cddbcc48b454708f2bc9efe3e8742b174471d3a6d6f2da84",
+  "temporal_governance_policy": {
+    "block_if_any_model_pr_auc_gap_gte": 0.02,
+    "block_if_any_model_roc_auc_gap_gte": 0.02,
+    "warn_default": true
+  }
+}

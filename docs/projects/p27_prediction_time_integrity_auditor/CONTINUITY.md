@@ -154,3 +154,25 @@ Pipeline C is the deployability baseline.
 Pipeline B remains partially corrected.
 
 Next allowed implementation step: Project 7 — Step 3.
+
+## Project 7 — Step 3 — Five controlled leakage cases
+
+Status: PASS
+
+Scope completed:
+
+- current-call duration observed condition;
+- random temporal-mixing evaluation experiment;
+- global supervised-transformation controlled injection;
+- deterministic duplicate-overlap controlled injection;
+- post-outcome confirmation-proxy controlled injection;
+- exact evidence-class labeling;
+- per-model leaked-versus-safe metric effects;
+- campaign-yield overstatement;
+- independent row-fingerprint overlap proof;
+- deterministic five-case evidence;
+- safe Step 2 baseline preserved unchanged.
+
+Generalized reusable PASS/WARN/BLOCK auditing remains Step 4 scope.
+
+Next allowed implementation step: Project 7 — Step 4.

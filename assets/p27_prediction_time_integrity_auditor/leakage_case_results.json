@@ -1,0 +1,602 @@
+{
+  "cases": [
+    {
+      "actual_auditor_result": "BLOCK",
+      "business_effect": {
+        "histogram_gradient_boosting": {
+          "campaign_yield_overstatement": 105.17799352750808
+        },
+        "logistic_regression": {
+          "campaign_yield_overstatement": 158.57605177993526
+        }
+      },
+      "case_id": "S1_CURRENT_CALL_DURATION",
+      "caveat": "The numerical inflation is measured rather than predetermined.",
+      "evidence_class": "OBSERVED_DATASET_CONDITION",
+      "expected_auditor_result": "BLOCK",
+      "metric_effect": {
+        "histogram_gradient_boosting": {
+          "brier_score_raw_difference": -0.0031124889390415356,
+          "conversions_per_1000": 105.17799352750808,
+          "expected_calibration_error_raw_difference": 0.02309681908787456,
+          "pr_auc": 0.09497724712906602,
+          "roc_auc": 0.12086611358567712,
+          "top_decile_lift": 0.27352475673673093
+        },
+        "logistic_regression": {
+          "brier_score_raw_difference": 0.015785879785049195,
+          "conversions_per_1000": 158.57605177993526,
+          "expected_calibration_error_raw_difference": 0.056293138615702065,
+          "pr_auc": 0.07485432515940826,
+          "roc_auc": 0.061014596397846566,
+          "top_decile_lift": 0.41239117169537876
+        }
+      },
+      "model_results": [
+        {
+          "campaign_yield_overstatement": 158.57605177993526,
+          "leaked_metrics": {
+            "brier_score": 0.29192251466728225,
+            "calibration_intercept": 0.3559394716470821,
+            "calibration_slope": 0.3176500881029975,
+            "conversions_per_1000": 647.2491909385113,
+            "expected_calibration_error": 0.2633026854224881,
+            "false_positive_contacts": 142,
+            "pr_auc": 0.5360861091738438,
+            "roc_auc": 0.6674379211520942,
+            "target_prevalence": 0.38452824081566594,
+            "top_decile_lift": 1.683229272226036,
+            "top_decile_response_rate": 0.6472491909385113
+          },
+          "metric_effect": {
+            "brier_score_raw_difference": 0.015785879785049195,
+            "conversions_per_1000": 158.57605177993526,
+            "expected_calibration_error_raw_difference": 0.056293138615702065,
+            "pr_auc": 0.07485432515940826,
+            "roc_auc": 0.061014596397846566,
+            "top_decile_lift": 0.41239117169537876
+          },
+          "model_id": "logistic_regression",
+          "safe_metrics": {
+            "brier_score": 0.27613663488223306,
+            "calibration_intercept": 0.10815003962613531,
+            "calibration_slope": 0.3484783974722854,
+            "conversions_per_1000": 488.6731391585761,
+            "expected_calibration_error": 0.20700954680678602,
+            "false_positive_contacts": 149,
+            "pr_auc": 0.46123178401443554,
+            "roc_auc": 0.6064233247542477,
+            "target_prevalence": 0.38452824081566594,
+            "top_decile_lift": 1.2708381005306573,
+            "top_decile_response_rate": 0.4886731391585761
+          }
+        },
+        {
+          "campaign_yield_overstatement": 105.17799352750808,
+          "leaked_metrics": {
+            "brier_score": 0.2790404648496671,
+            "calibration_intercept": 0.6841912571370915,
+            "calibration_slope": 0.5069594366694351,
+            "conversions_per_1000": 598.705501618123,
+            "expected_calibration_error": 0.24295016978300213,
+            "false_positive_contacts": 125,
+            "pr_auc": 0.5371557970628019,
+            "roc_auc": 0.6897851554372721,
+            "target_prevalence": 0.38452824081566594,
+            "top_decile_lift": 1.5569870768090834,
+            "top_decile_response_rate": 0.598705501618123
+          },
+          "metric_effect": {
+            "brier_score_raw_difference": -0.0031124889390415356,
+            "conversions_per_1000": 105.17799352750808,
+            "expected_calibration_error_raw_difference": 0.02309681908787456,
+            "pr_auc": 0.09497724712906602,
+            "roc_auc": 0.12086611358567712,
+            "top_decile_lift": 0.27352475673673093
+          },
+          "model_id": "histogram_gradient_boosting",
+          "safe_metrics": {
+            "brier_score": 0.28215295378870864,
+            "calibration_intercept": 0.27888539035291576,
+            "calibration_slope": 0.438669451315185,
+            "conversions_per_1000": 493.5275080906149,
+            "expected_calibration_error": 0.21985335069512757,
+            "false_positive_contacts": 0,
+            "pr_auc": 0.4421785499337359,
+            "roc_auc": 0.568919041851595,
+            "target_prevalence": 0.38452824081566594,
+            "top_decile_lift": 1.2834623200723525,
+            "top_decile_response_rate": 0.4935275080906149
+          }
+        }
+      ],
+      "name": "Current-call duration",
+      "observed_or_injected": "OBSERVED",
+      "required_correction": "Remove duration from every pre-call ranking model.",
+      "setup": "Include observed UCI duration in a model intended for pre-call ranking.",
+      "violation": "duration is created during the current call and does not exist at the pre-call prediction moment."
+    },
+    {
+      "actual_auditor_result": "BLOCK",
+      "business_effect": {
+        "histogram_gradient_boosting": {
+          "campaign_yield_overstatement": 27.508090614886783
+        },
+        "logistic_regression": {
+          "campaign_yield_overstatement": 11.326860841423922
+        }
+      },
+      "case_id": "S2_RANDOM_TEMPORAL_MIXING",
+      "caveat": "Source-order indices are used; no calendar dates are invented.",
+      "evidence_class": "EVALUATION_DESIGN_EXPERIMENT",
+      "expected_auditor_result": "WARN_OR_BLOCK",
+      "metric_effect": {
+        "histogram_gradient_boosting": {
+          "brier_score_raw_difference": -0.2067898425046497,
+          "conversions_per_1000": 27.508090614886783,
+          "expected_calibration_error_raw_difference": -0.21350317822912923,
+          "pr_auc": 0.042921488063624835,
+          "roc_auc": 0.24119243646906585,
+          "top_decile_lift": 3.3422258471708863
+        },
+        "logistic_regression": {
+          "brier_score_raw_difference": -0.19822267438824792,
+          "conversions_per_1000": 11.326860841423922,
+          "expected_calibration_error_raw_difference": -0.20155851219589965,
+          "pr_auc": -0.005324403803648625,
+          "roc_auc": 0.18879625153275026,
+          "top_decile_lift": 3.168098681078538
+        }
+      },
+      "model_results": [
+        {
+          "campaign_yield_overstatement": 11.326860841423922,
+          "leaked_metrics": {
+            "brier_score": 0.07791396049398512,
+            "calibration_intercept": -0.04681137768124469,
+            "calibration_slope": 0.9862818701685059,
+            "conversions_per_1000": 500.0,
+            "expected_calibration_error": 0.005451034610886352,
+            "false_positive_contacts": 79,
+            "pr_auc": 0.4559073802107869,
+            "roc_auc": 0.7952195762869979,
+            "target_prevalence": 0.11263958569347791,
+            "top_decile_lift": 4.438936781609195,
+            "top_decile_response_rate": 0.5
+          },
+          "metric_effect": {
+            "brier_score_raw_difference": -0.19822267438824792,
+            "conversions_per_1000": 11.326860841423922,
+            "expected_calibration_error_raw_difference": -0.20155851219589965,
+            "pr_auc": -0.005324403803648625,
+            "roc_auc": 0.18879625153275026,
+            "top_decile_lift": 3.168098681078538
+          },
+          "model_id": "logistic_regression",
+          "safe_metrics": {
+            "brier_score": 0.27613663488223306,
+            "calibration_intercept": 0.10815003962613531,
+            "calibration_slope": 0.3484783974722854,
+            "conversions_per_1000": 488.6731391585761,
+            "expected_calibration_error": 0.20700954680678602,
+            "false_positive_contacts": 149,
+            "pr_auc": 0.46123178401443554,
+            "roc_auc": 0.6064233247542477,
+            "target_prevalence": 0.38452824081566594,
+            "top_decile_lift": 1.2708381005306573,
+            "top_decile_response_rate": 0.4886731391585761
+          }
+        },
+        {
+          "campaign_yield_overstatement": 27.508090614886783,
+          "leaked_metrics": {
+            "brier_score": 0.07536311128405891,
+            "calibration_intercept": 0.010581816135974056,
+            "calibration_slope": 1.022747334608013,
+            "conversions_per_1000": 521.0355987055017,
+            "expected_calibration_error": 0.006350172465998352,
+            "false_positive_contacts": 94,
+            "pr_auc": 0.48510003799736073,
+            "roc_auc": 0.8101114783206609,
+            "target_prevalence": 0.11263958569347791,
+            "top_decile_lift": 4.625688167243239,
+            "top_decile_response_rate": 0.5210355987055016
+          },
+          "metric_effect": {
+            "brier_score_raw_difference": -0.2067898425046497,
+            "conversions_per_1000": 27.508090614886783,
+            "expected_calibration_error_raw_difference": -0.21350317822912923,
+            "pr_auc": 0.042921488063624835,
+            "roc_auc": 0.24119243646906585,
+            "top_decile_lift": 3.3422258471708863
+          },
+          "model_id": "histogram_gradient_boosting",
+          "safe_metrics": {
+            "brier_score": 0.28215295378870864,
+            "calibration_intercept": 0.27888539035291576,
+            "calibration_slope": 0.438669451315185,
+            "conversions_per_1000": 493.5275080906149,
+            "expected_calibration_error": 0.21985335069512757,
+            "false_positive_contacts": 0,
+            "pr_auc": 0.4421785499337359,
+            "roc_auc": 0.568919041851595,
+            "target_prevalence": 0.38452824081566594,
+            "top_decile_lift": 1.2834623200723525,
+            "top_decile_response_rate": 0.4935275080906149
+          }
+        }
+      ],
+      "name": "Random temporal mixing",
+      "observed_or_injected": "EVALUATION_DESIGN_EXPERIMENT",
+      "required_correction": "Use chronological source-order holdout for deployability evidence.",
+      "setup": "Compare deterministic stratified random evaluation with chronological source-order evaluation.",
+      "violation": "Random splitting mixes source-order periods and is not fully prospective."
+    },
+    {
+      "actual_auditor_result": "BLOCK",
+      "business_effect": {
+        "histogram_gradient_boosting": {
+          "campaign_yield_overstatement": 0.0
+        },
+        "logistic_regression": {
+          "campaign_yield_overstatement": 0.0
+        }
+      },
+      "case_id": "S3_GLOBAL_SUPERVISED_TRANSFORMATION",
+      "caveat": "Target encoding is a controlled injection and not an observed UCI transformation.",
+      "evidence_class": "CONTROLLED_INJECTION",
+      "expected_auditor_result": "BLOCK",
+      "metric_effect": {
+        "histogram_gradient_boosting": {
+          "brier_score_raw_difference": 0.0,
+          "conversions_per_1000": 0.0,
+          "expected_calibration_error_raw_difference": 0.0,
+          "pr_auc": 0.0,
+          "roc_auc": 0.0,
+          "top_decile_lift": 0.0
+        },
+        "logistic_regression": {
+          "brier_score_raw_difference": -0.00356792323820887,
+          "conversions_per_1000": 0.0,
+          "expected_calibration_error_raw_difference": -0.004688256370675381,
+          "pr_auc": 0.0047015778372481165,
+          "roc_auc": 0.013663787493658597,
+          "top_decile_lift": 0.0
+        }
+      },
+      "model_results": [
+        {
+          "campaign_yield_overstatement": 0.0,
+          "leaked_metrics": {
+            "brier_score": 0.3398731933481743,
+            "calibration_intercept": 1.6033087885551627,
+            "calibration_slope": 0.7596693104082353,
+            "conversions_per_1000": 401.294498381877,
+            "expected_calibration_error": 0.3223864067852924,
+            "false_positive_contacts": 0,
+            "pr_auc": 0.4148706883566071,
+            "roc_auc": 0.5475841551636976,
+            "target_prevalence": 0.38452824081566594,
+            "top_decile_lift": 1.0436021487801423,
+            "top_decile_response_rate": 0.40129449838187703
+          },
+          "metric_effect": {
+            "brier_score_raw_difference": -0.00356792323820887,
+            "conversions_per_1000": 0.0,
+            "expected_calibration_error_raw_difference": -0.004688256370675381,
+            "pr_auc": 0.0047015778372481165,
+            "roc_auc": 0.013663787493658597,
+            "top_decile_lift": 0.0
+          },
+          "model_id": "logistic_regression",
+          "safe_metrics": {
+            "brier_score": 0.34344111658638315,
+            "calibration_intercept": 3.948092981744246,
+            "calibration_slope": 1.5784724632025073,
+            "conversions_per_1000": 401.294498381877,
+            "expected_calibration_error": 0.3270746631559678,
+            "false_positive_contacts": 0,
+            "pr_auc": 0.410169110519359,
+            "roc_auc": 0.533920367670039,
+            "target_prevalence": 0.38452824081566594,
+            "top_decile_lift": 1.0436021487801423,
+            "top_decile_response_rate": 0.40129449838187703
+          }
+        },
+        {
+          "campaign_yield_overstatement": 0.0,
+          "leaked_metrics": {
+            "brier_score": 0.337659935119941,
+            "calibration_intercept": 0.5685067446996763,
+            "calibration_slope": 0.38443101238603444,
+            "conversions_per_1000": 401.294498381877,
+            "expected_calibration_error": 0.3190249193075356,
+            "false_positive_contacts": 0,
+            "pr_auc": 0.41111354776289033,
+            "roc_auc": 0.5375424638177728,
+            "target_prevalence": 0.38452824081566594,
+            "top_decile_lift": 1.0436021487801423,
+            "top_decile_response_rate": 0.40129449838187703
+          },
+          "metric_effect": {
+            "brier_score_raw_difference": 0.0,
+            "conversions_per_1000": 0.0,
+            "expected_calibration_error_raw_difference": 0.0,
+            "pr_auc": 0.0,
+            "roc_auc": 0.0,
+            "top_decile_lift": 0.0
+          },
+          "model_id": "histogram_gradient_boosting",
+          "safe_metrics": {
+            "brier_score": 0.337659935119941,
+            "calibration_intercept": 0.5685067446996763,
+            "calibration_slope": 0.38443101238603444,
+            "conversions_per_1000": 401.294498381877,
+            "expected_calibration_error": 0.3190249193075356,
+            "false_positive_contacts": 0,
+            "pr_auc": 0.41111354776289033,
+            "roc_auc": 0.5375424638177728,
+            "target_prevalence": 0.38452824081566594,
+            "top_decile_lift": 1.0436021487801423,
+            "top_decile_response_rate": 0.40129449838187703
+          }
+        }
+      ],
+      "name": "Global supervised transformation",
+      "observed_or_injected": "CONTROLLED_INJECTION",
+      "required_correction": "Split first and fit supervised transformations using training rows only.",
+      "setup": "Fit deterministic job target-mean encoding on the complete dataset before splitting, then compare with training-only target encoding.",
+      "violation": "The contaminated transformation uses validation/test targets before model evaluation."
+    },
+    {
+      "actual_auditor_result": "BLOCK",
+      "business_effect": {
+        "detected_train_test_overlap": 618,
+        "histogram_gradient_boosting": {
+          "campaign_yield_overstatement": -67.9611650485437
+        },
+        "logistic_regression": {
+          "campaign_yield_overstatement": -24.271844660194233
+        }
+      },
+      "case_id": "S4_DUPLICATE_OVERLAP",
+      "caveat": "Large metric inflation is not required for this integrity violation.",
+      "evidence_class": "CONTROLLED_INJECTION",
+      "expected_auditor_result": "BLOCK",
+      "metric_effect": {
+        "histogram_gradient_boosting": {
+          "brier_score_raw_difference": 0.028653474510571098,
+          "conversions_per_1000": -67.9611650485437,
+          "expected_calibration_error_raw_difference": 0.04520413125454614,
+          "pr_auc": -0.04186027244730045,
+          "roc_auc": -0.060501810107384535,
+          "top_decile_lift": -0.17673907358373375
+        },
+        "logistic_regression": {
+          "brier_score_raw_difference": 0.008435636867875407,
+          "conversions_per_1000": -24.271844660194233,
+          "expected_calibration_error_raw_difference": -0.002632238808285392,
+          "pr_auc": -0.035056366769082525,
+          "roc_auc": -0.06419063985458928,
+          "top_decile_lift": -0.0631210977084764
+        }
+      },
+      "model_results": [
+        {
+          "campaign_yield_overstatement": -24.271844660194233,
+          "leaked_metrics": {
+            "brier_score": 0.28457227175010846,
+            "calibration_intercept": -0.24839187162431126,
+            "calibration_slope": 0.13534068932485208,
+            "conversions_per_1000": 464.40129449838184,
+            "expected_calibration_error": 0.20437730799850062,
+            "false_positive_contacts": 156,
+            "pr_auc": 0.426175417245353,
+            "roc_auc": 0.5422326848996584,
+            "target_prevalence": 0.38452824081566594,
+            "top_decile_lift": 1.2077170028221809,
+            "top_decile_response_rate": 0.46440129449838186
+          },
+          "metric_effect": {
+            "brier_score_raw_difference": 0.008435636867875407,
+            "conversions_per_1000": -24.271844660194233,
+            "expected_calibration_error_raw_difference": -0.002632238808285392,
+            "pr_auc": -0.035056366769082525,
+            "roc_auc": -0.06419063985458928,
+            "top_decile_lift": -0.0631210977084764
+          },
+          "model_id": "logistic_regression",
+          "safe_metrics": {
+            "brier_score": 0.27613663488223306,
+            "calibration_intercept": 0.10815003962613531,
+            "calibration_slope": 0.3484783974722854,
+            "conversions_per_1000": 488.6731391585761,
+            "expected_calibration_error": 0.20700954680678602,
+            "false_positive_contacts": 149,
+            "pr_auc": 0.46123178401443554,
+            "roc_auc": 0.6064233247542477,
+            "target_prevalence": 0.38452824081566594,
+            "top_decile_lift": 1.2708381005306573,
+            "top_decile_response_rate": 0.4886731391585761
+          }
+        },
+        {
+          "campaign_yield_overstatement": -67.9611650485437,
+          "leaked_metrics": {
+            "brier_score": 0.31080642829927974,
+            "calibration_intercept": -0.30211494204968387,
+            "calibration_slope": 0.08024451016015466,
+            "conversions_per_1000": 425.5663430420712,
+            "expected_calibration_error": 0.2650574819496737,
+            "false_positive_contacts": 71,
+            "pr_auc": 0.40031827748643545,
+            "roc_auc": 0.5084172317442105,
+            "target_prevalence": 0.38452824081566594,
+            "top_decile_lift": 1.1067232464886188,
+            "top_decile_response_rate": 0.4255663430420712
+          },
+          "metric_effect": {
+            "brier_score_raw_difference": 0.028653474510571098,
+            "conversions_per_1000": -67.9611650485437,
+            "expected_calibration_error_raw_difference": 0.04520413125454614,
+            "pr_auc": -0.04186027244730045,
+            "roc_auc": -0.060501810107384535,
+            "top_decile_lift": -0.17673907358373375
+          },
+          "model_id": "histogram_gradient_boosting",
+          "safe_metrics": {
+            "brier_score": 0.28215295378870864,
+            "calibration_intercept": 0.27888539035291576,
+            "calibration_slope": 0.438669451315185,
+            "conversions_per_1000": 493.5275080906149,
+            "expected_calibration_error": 0.21985335069512757,
+            "false_positive_contacts": 0,
+            "pr_auc": 0.4421785499337359,
+            "roc_auc": 0.568919041851595,
+            "target_prevalence": 0.38452824081566594,
+            "top_decile_lift": 1.2834623200723525,
+            "top_decile_response_rate": 0.4935275080906149
+          }
+        }
+      ],
+      "name": "Duplicate overlap",
+      "observed_or_injected": "CONTROLLED_INJECTION",
+      "required_correction": "Deduplicate and split before fitting; require zero prohibited train/test overlap.",
+      "setup": "Inject 618 deterministic test rows into training and independently detect exact-row overlap.",
+      "violation": "Detected 618 prohibited train/test row fingerprints."
+    },
+    {
+      "actual_auditor_result": "BLOCK",
+      "business_effect": {
+        "histogram_gradient_boosting": {
+          "campaign_yield_overstatement": 506.4724919093851
+        },
+        "logistic_regression": {
+          "campaign_yield_overstatement": 511.3268608414239
+        }
+      },
+      "case_id": "S5_POST_OUTCOME_CONFIRMATION_PROXY",
+      "caveat": "This proxy is a benchmark-only controlled injection and is not an observed UCI variable.",
+      "evidence_class": "CONTROLLED_INJECTION",
+      "expected_auditor_result": "BLOCK",
+      "metric_effect": {
+        "histogram_gradient_boosting": {
+          "brier_score_raw_difference": -0.2821529495661687,
+          "conversions_per_1000": 506.4724919093851,
+          "expected_calibration_error_raw_difference": -0.21980903169665708,
+          "pr_auc": 0.5578214500662642,
+          "roc_auc": 0.43108095814840497,
+          "top_decile_lift": 1.3171269055168733
+        },
+        "logistic_regression": {
+          "brier_score_raw_difference": -0.2761318111228363,
+          "conversions_per_1000": 511.3268608414239,
+          "expected_calibration_error_raw_difference": -0.2055642781259938,
+          "pr_auc": 0.5387682159855645,
+          "roc_auc": 0.39357667524575235,
+          "top_decile_lift": 1.3297511250585685
+        }
+      },
+      "model_results": [
+        {
+          "campaign_yield_overstatement": 511.3268608414239,
+          "leaked_metrics": {
+            "brier_score": 4.8237593967283196e-06,
+            "calibration_intercept": 0.09259895430529194,
+            "calibration_slope": 1.7586432827502119,
+            "conversions_per_1000": 1000.0,
+            "expected_calibration_error": 0.0014452686807922344,
+            "false_positive_contacts": 0,
+            "pr_auc": 1.0,
+            "roc_auc": 1.0,
+            "target_prevalence": 0.38452824081566594,
+            "top_decile_lift": 2.600589225589226,
+            "top_decile_response_rate": 1.0
+          },
+          "metric_effect": {
+            "brier_score_raw_difference": -0.2761318111228363,
+            "conversions_per_1000": 511.3268608414239,
+            "expected_calibration_error_raw_difference": -0.2055642781259938,
+            "pr_auc": 0.5387682159855645,
+            "roc_auc": 0.39357667524575235,
+            "top_decile_lift": 1.3297511250585685
+          },
+          "model_id": "logistic_regression",
+          "safe_metrics": {
+            "brier_score": 0.27613663488223306,
+            "calibration_intercept": 0.10815003962613531,
+            "calibration_slope": 0.3484783974722854,
+            "conversions_per_1000": 488.6731391585761,
+            "expected_calibration_error": 0.20700954680678602,
+            "false_positive_contacts": 149,
+            "pr_auc": 0.46123178401443554,
+            "roc_auc": 0.6064233247542477,
+            "target_prevalence": 0.38452824081566594,
+            "top_decile_lift": 1.2708381005306573,
+            "top_decile_response_rate": 0.4886731391585761
+          }
+        },
+        {
+          "campaign_yield_overstatement": 506.4724919093851,
+          "leaked_metrics": {
+            "brier_score": 4.222539935994499e-09,
+            "calibration_intercept": -0.0038610495648805617,
+            "calibration_slope": 1.1843601778060104,
+            "conversions_per_1000": 1000.0,
+            "expected_calibration_error": 4.431899847048231e-05,
+            "false_positive_contacts": 0,
+            "pr_auc": 1.0,
+            "roc_auc": 1.0,
+            "target_prevalence": 0.38452824081566594,
+            "top_decile_lift": 2.600589225589226,
+            "top_decile_response_rate": 1.0
+          },
+          "metric_effect": {
+            "brier_score_raw_difference": -0.2821529495661687,
+            "conversions_per_1000": 506.4724919093851,
+            "expected_calibration_error_raw_difference": -0.21980903169665708,
+            "pr_auc": 0.5578214500662642,
+            "roc_auc": 0.43108095814840497,
+            "top_decile_lift": 1.3171269055168733
+          },
+          "model_id": "histogram_gradient_boosting",
+          "safe_metrics": {
+            "brier_score": 0.28215295378870864,
+            "calibration_intercept": 0.27888539035291576,
+            "calibration_slope": 0.438669451315185,
+            "conversions_per_1000": 493.5275080906149,
+            "expected_calibration_error": 0.21985335069512757,
+            "false_positive_contacts": 0,
+            "pr_auc": 0.4421785499337359,
+            "roc_auc": 0.568919041851595,
+            "target_prevalence": 0.38452824081566594,
+            "top_decile_lift": 1.2834623200723525,
+            "top_decile_response_rate": 0.4935275080906149
+          }
+        }
+      ],
+      "name": "Post-outcome confirmation proxy",
+      "observed_or_injected": "CONTROLLED_INJECTION",
+      "required_correction": "Remove all post-outcome proxies from training and scoring inputs.",
+      "setup": "Create an explicitly synthetic confirmation feature derived from the target.",
+      "violation": "The injected field is derived from the outcome and cannot exist at prediction time."
+    }
+  ],
+  "duplicate_injection_fraction": 0.1,
+  "scenario_count": 5,
+  "scenario_ids": [
+    "S1_CURRENT_CALL_DURATION",
+    "S2_RANDOM_TEMPORAL_MIXING",
+    "S3_GLOBAL_SUPERVISED_TRANSFORMATION",
+    "S4_DUPLICATE_OVERLAP",
+    "S5_POST_OUTCOME_CONFIRMATION_PROXY"
+  ],
+  "scope": "PROJECT7_STEP3_FIVE_LEAKAGE_CASES",
+  "seed": 1729,
+  "step3_fingerprint_sha256": "99bfafda40ff9404cddbcc48b454708f2bc9efe3e8742b174471d3a6d6f2da84",
+  "temporal_governance_policy": {
+    "block_if_any_model_pr_auc_gap_gte": 0.02,
+    "block_if_any_model_roc_auc_gap_gte": 0.02,
+    "warn_default": true
+  }
+}
