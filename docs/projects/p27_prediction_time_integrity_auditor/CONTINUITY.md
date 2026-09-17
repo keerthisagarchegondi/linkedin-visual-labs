@@ -176,3 +176,25 @@ Scope completed:
 Generalized reusable PASS/WARN/BLOCK auditing remains Step 4 scope.
 
 Next allowed implementation step: Project 7 — Step 4.
+
+## Project 7 — Step 4 — Auditor and release gate
+
+Status: PASS
+
+Scope completed:
+
+- feature availability audit;
+- split integrity audit;
+- transformation boundary audit;
+- suspicious-feature audit;
+- evaluation-stability audit;
+- deterministic evidence-linked PASS/WARN/BLOCK findings;
+- critical violations cannot receive PASS;
+- unknown availability blocks;
+- safe Pipeline C release gate passes;
+- public claims require evidence;
+- preview-only and unsupported claims are blocked.
+
+Step 5 remains responsible for independent benchmark recomputation and final release-data freezing.
+
+Next allowed implementation step: Project 7 — Step 5.

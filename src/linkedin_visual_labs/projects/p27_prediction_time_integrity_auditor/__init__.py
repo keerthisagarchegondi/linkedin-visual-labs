@@ -1,5 +1,15 @@
 """Prediction-Time Integrity Auditor."""
 
+from .auditor import (
+    AUDIT_ORDER,
+    AuditFinding,
+    EvidenceReference,
+    ReleaseDecision,
+    approve_public_claim,
+    build_step4_audit,
+    release_decision,
+    write_step4_evidence,
+)
 from .config import load_config
 from .contracts import (
     EXPECTED_COLUMNS,
@@ -32,6 +42,7 @@ from .splits import (
 )
 
 __all__ = [
+    "AUDIT_ORDER",
     "DUPLICATE_INJECTION_FRACTION",
     "EXPECTED_COLUMNS",
     "EXPECTED_INPUT_COLUMNS",
@@ -40,15 +51,20 @@ __all__ = [
     "SCENARIO_IDS",
     "TEMPORAL_BLOCK_PR_AUC_GAP",
     "TEMPORAL_BLOCK_ROC_AUC_GAP",
+    "AuditFinding",
     "AvailabilityClass",
+    "EvidenceReference",
     "MetricBundle",
     "ProjectConfig",
+    "ReleaseDecision",
     "SplitConfig",
     "SplitIndices",
     "acquire_official_source",
+    "approve_public_claim",
     "blocked_feature_names",
     "build_feature_contract",
     "build_model_pipeline",
+    "build_step4_audit",
     "chronological_split",
     "deployment_feature_names",
     "duplicate_injection_indices",
@@ -58,11 +74,13 @@ __all__ = [
     "pipeline_b_features",
     "pipeline_c_features",
     "random_comparison_split",
+    "release_decision",
     "run_baselines",
     "run_leakage_cases",
     "scenario_catalog",
     "temporal_audit_result",
     "write_step3_evidence",
+    "write_step4_evidence",
 ]
 
-__version__ = "0.4.0"
+__version__ = "0.5.0"

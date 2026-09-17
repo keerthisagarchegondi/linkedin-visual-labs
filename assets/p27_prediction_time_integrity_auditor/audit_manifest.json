@@ -1,0 +1,16 @@
+{
+  "audit_families": [
+    "FEATURE_AVAILABILITY",
+    "SPLIT_INTEGRITY",
+    "TRANSFORMATION_BOUNDARY",
+    "SUSPICIOUS_FEATURE",
+    "EVALUATION_STABILITY"
+  ],
+  "safe_release_status": "PASS",
+  "scope": "PROJECT7_STEP4_AUDITOR_RELEASE_GATE",
+  "source_fingerprints": {
+    "step2_baseline": "87d57e0824657a5984a867ee3456b5a999e2bbac516f3b772b94a0e47a014abf",
+    "step3_cases": "99bfafda40ff9404cddbcc48b454708f2bc9efe3e8742b174471d3a6d6f2da84"
+  },
+  "step4_fingerprint_sha256": "3c5911590409ef4de9beec2f7a960f951f4510b3ec5383b1381f5fc559044032"
+}

@@ -1,0 +1,203 @@
+{
+  "audit_families": [
+    "FEATURE_AVAILABILITY",
+    "SPLIT_INTEGRITY",
+    "TRANSFORMATION_BOUNDARY",
+    "SUSPICIOUS_FEATURE",
+    "EVALUATION_STABILITY"
+  ],
+  "public_claim_gate": {
+    "evidence_required": true,
+    "preview_only_blocked": true,
+    "unsupported_blocked": true
+  },
+  "safe_pipeline": {
+    "findings": [
+      {
+        "affected_pipeline": "C_PREDICTION_TIME_SAFE",
+        "audit_family": "FEATURE_AVAILABILITY",
+        "audit_id": "A01_FEATURE_AVAILABILITY",
+        "critical_violation": false,
+        "evidence": [
+          {
+            "description": "Frozen feature-availability contract.",
+            "evidence_id": "EV_FEATURE_CONTRACT",
+            "path": "assets/p27_prediction_time_integrity_auditor/feature_availability_contract.json"
+          }
+        ],
+        "required_correction": "None.",
+        "severity": "INFO",
+        "status": "PASS",
+        "summary": "All scoring features have prediction-time-safe availability."
+      },
+      {
+        "affected_pipeline": "C_PREDICTION_TIME_SAFE",
+        "audit_family": "SPLIT_INTEGRITY",
+        "audit_id": "A02_SPLIT_INTEGRITY",
+        "critical_violation": false,
+        "evidence": [
+          {
+            "description": "Step 2 chronological split and overlap evidence.",
+            "evidence_id": "EV_STEP2_SPLITS",
+            "path": "assets/p27_prediction_time_integrity_auditor/split_manifest.json"
+          }
+        ],
+        "required_correction": "None.",
+        "severity": "INFO",
+        "status": "PASS",
+        "summary": "Chronological holdout has zero prohibited row overlap."
+      },
+      {
+        "affected_pipeline": "C_PREDICTION_TIME_SAFE",
+        "audit_family": "TRANSFORMATION_BOUNDARY",
+        "audit_id": "A03_TRANSFORMATION_BOUNDARY",
+        "critical_violation": false,
+        "evidence": [
+          {
+            "description": "Pipeline C train-only preprocessing evidence.",
+            "evidence_id": "EV_STEP2_PIPELINE_C",
+            "path": "assets/p27_prediction_time_integrity_auditor/baseline_results.json"
+          }
+        ],
+        "required_correction": "None.",
+        "severity": "INFO",
+        "status": "PASS",
+        "summary": "Transformations are fitted on training data only."
+      },
+      {
+        "affected_pipeline": "C_PREDICTION_TIME_SAFE",
+        "audit_family": "SUSPICIOUS_FEATURE",
+        "audit_id": "A04_SUSPICIOUS_FEATURE",
+        "critical_violation": false,
+        "evidence": [
+          {
+            "description": "Frozen feature-availability contract.",
+            "evidence_id": "EV_FEATURE_CONTRACT",
+            "path": "assets/p27_prediction_time_integrity_auditor/feature_availability_contract.json"
+          }
+        ],
+        "required_correction": "None.",
+        "severity": "INFO",
+        "status": "PASS",
+        "summary": "No prohibited scoring features detected."
+      },
+      {
+        "affected_pipeline": "C_PREDICTION_TIME_SAFE",
+        "audit_family": "EVALUATION_STABILITY",
+        "audit_id": "A05_EVALUATION_STABILITY",
+        "critical_violation": false,
+        "evidence": [
+          {
+            "description": "Measured five-case leakage experiment evidence.",
+            "evidence_id": "EV_STEP3_CASES",
+            "path": "assets/p27_prediction_time_integrity_auditor/leakage_case_results.json"
+          }
+        ],
+        "required_correction": "None.",
+        "severity": "INFO",
+        "status": "PASS",
+        "summary": "Release evidence uses the chronological reference; measured random-vs-temporal gaps are retained as evidence."
+      }
+    ],
+    "pipeline_id": "C_PREDICTION_TIME_SAFE",
+    "release_decision": {
+      "blocking_finding_ids": [],
+      "recommendation": "Release gate passed for the audited evidence.",
+      "status": "PASS",
+      "warning_finding_ids": []
+    }
+  },
+  "scenario_reconciliation": [
+    {
+      "affected_pipeline": "S1_CURRENT_CALL_DURATION",
+      "audit_family": "SUSPICIOUS_FEATURE",
+      "audit_id": "A04_SUSPICIOUS_FEATURE",
+      "critical_violation": true,
+      "evidence": [
+        {
+          "description": "Measured five-case leakage experiment evidence.",
+          "evidence_id": "EV_STEP3_CASES",
+          "path": "assets/p27_prediction_time_integrity_auditor/leakage_case_results.json"
+        }
+      ],
+      "required_correction": "Remove prohibited and outcome-derived features.",
+      "severity": "CRITICAL",
+      "status": "BLOCK",
+      "summary": "Suspicious or prohibited features detected: duration"
+    },
+    {
+      "affected_pipeline": "S2_RANDOM_TEMPORAL_MIXING",
+      "audit_family": "EVALUATION_STABILITY",
+      "audit_id": "A05_EVALUATION_STABILITY",
+      "critical_violation": true,
+      "evidence": [
+        {
+          "description": "Measured five-case leakage experiment evidence.",
+          "evidence_id": "EV_STEP3_CASES",
+          "path": "assets/p27_prediction_time_integrity_auditor/leakage_case_results.json"
+        }
+      ],
+      "required_correction": "Use chronological evaluation as the release reference.",
+      "severity": "CRITICAL",
+      "status": "BLOCK",
+      "summary": "Release evidence relies on random temporal mixing; ROC-AUC gap=0.241192, PR-AUC gap=0.042921."
+    },
+    {
+      "affected_pipeline": "S3_GLOBAL_SUPERVISED_TRANSFORMATION",
+      "audit_family": "TRANSFORMATION_BOUNDARY",
+      "audit_id": "A03_TRANSFORMATION_BOUNDARY",
+      "critical_violation": true,
+      "evidence": [
+        {
+          "description": "Measured five-case leakage experiment evidence.",
+          "evidence_id": "EV_STEP3_CASES",
+          "path": "assets/p27_prediction_time_integrity_auditor/leakage_case_results.json"
+        }
+      ],
+      "required_correction": "Split first and fit supervised transformations using training data only.",
+      "severity": "CRITICAL",
+      "status": "BLOCK",
+      "summary": "Supervised transformation used non-training targets."
+    },
+    {
+      "affected_pipeline": "S4_DUPLICATE_OVERLAP",
+      "audit_family": "SPLIT_INTEGRITY",
+      "audit_id": "A02_SPLIT_INTEGRITY",
+      "critical_violation": true,
+      "evidence": [
+        {
+          "description": "Measured five-case leakage experiment evidence.",
+          "evidence_id": "EV_STEP3_CASES",
+          "path": "assets/p27_prediction_time_integrity_auditor/leakage_case_results.json"
+        }
+      ],
+      "required_correction": "Rebuild partitions with zero prohibited row overlap.",
+      "severity": "CRITICAL",
+      "status": "BLOCK",
+      "summary": "Prohibited cross-partition overlap detected: 618."
+    },
+    {
+      "affected_pipeline": "S5_POST_OUTCOME_CONFIRMATION_PROXY",
+      "audit_family": "SUSPICIOUS_FEATURE",
+      "audit_id": "A04_SUSPICIOUS_FEATURE",
+      "critical_violation": true,
+      "evidence": [
+        {
+          "description": "Measured five-case leakage experiment evidence.",
+          "evidence_id": "EV_STEP3_CASES",
+          "path": "assets/p27_prediction_time_integrity_auditor/leakage_case_results.json"
+        }
+      ],
+      "required_correction": "Remove prohibited and outcome-derived features.",
+      "severity": "CRITICAL",
+      "status": "BLOCK",
+      "summary": "Suspicious or prohibited features detected: post_outcome_confirmation_proxy"
+    }
+  ],
+  "scope": "PROJECT7_STEP4_AUDITOR_RELEASE_GATE",
+  "source_fingerprints": {
+    "step2_baseline": "87d57e0824657a5984a867ee3456b5a999e2bbac516f3b772b94a0e47a014abf",
+    "step3_cases": "99bfafda40ff9404cddbcc48b454708f2bc9efe3e8742b174471d3a6d6f2da84"
+  },
+  "step4_fingerprint_sha256": "3c5911590409ef4de9beec2f7a960f951f4510b3ec5383b1381f5fc559044032"
+}
