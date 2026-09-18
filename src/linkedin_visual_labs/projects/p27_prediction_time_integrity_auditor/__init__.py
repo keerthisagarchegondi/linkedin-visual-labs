@@ -49,6 +49,8 @@ from .validation import (
     independently_validate,
     independently_validate_frozen_release,
 )
+from .video import VideoContract, load_video_evidence
+from .visualization import render_all_figures
 
 __all__ = [
     "AUDIT_ORDER",
@@ -70,6 +72,7 @@ __all__ = [
     "ReleaseDecision",
     "SplitConfig",
     "SplitIndices",
+    "VideoContract",
     "acquire_official_source",
     "approve_public_claim",
     "blocked_feature_names",
@@ -87,10 +90,12 @@ __all__ = [
     "independently_validate_frozen_release",
     "load_config",
     "load_official_dataset",
+    "load_video_evidence",
     "pipeline_b_features",
     "pipeline_c_features",
     "random_comparison_split",
     "release_decision",
+    "render_all_figures",
     "run_baselines",
     "run_leakage_cases",
     "scenario_catalog",
@@ -99,4 +104,4 @@ __all__ = [
     "write_step4_evidence",
 ]
 
-__version__ = "0.6.0"
+__version__ = "0.7.0"

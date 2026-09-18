@@ -225,3 +225,44 @@ Step 5 fingerprint:
 7954203abe1cb0f5457c3658f2105cd16a0800528e81723ee970d259afe60ed0
 
 Next allowed implementation step: Project 7 — Step 6.
+
+## Project 7 — Step 6 — Research figures and animated LinkedIn video
+
+Status: PASS
+
+Scope:
+
+- seven research figures;
+- one primary 1080x1350 H.264 video;
+- one web MP4;
+- ten keyframes;
+- keyframe contact sheet;
+- thumbnail;
+- video manifest;
+- frozen Step 5 evidence only.
+
+### Step 6 final checkpoint
+
+- research figures: 7 PASS
+- primary animated video: PASS
+- web video: PASS
+- canvas: 1080x1350
+- frame rate: 30 fps
+- codec: H.264
+- pixel format: yuv420p
+- duration: 45.0 seconds
+- thumbnail: PASS
+- keyframes: 10/10 PASS
+- keyframe contact sheet: PASS
+- video manifest: PASS
+- Project 7 focused tests: 196 PASS at coverage checkpoint
+- Project 7 coverage: 90.87% PASS
+- video.py coverage: 92.00%
+- frozen Step 5 evidence only: PASS
+- preview metrics used: FALSE
+- media business-logic recomputation: FALSE
+- repository *.mp4 ignore policy retained
+- one pre-existing unrelated P02 format drift excluded from formatting only
+- permission-safe Git-known-file mypy: PASS
+- Step 7 started: FALSE
+- automatic advance: FALSE

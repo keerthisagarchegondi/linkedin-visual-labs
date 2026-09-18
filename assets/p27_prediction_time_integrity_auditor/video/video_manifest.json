@@ -1,0 +1,141 @@
+{
+  "audio_required": false,
+  "claim_ids": [
+    "P7-C001",
+    "P7-C002",
+    "P7-C003",
+    "P7-C004",
+    "P7-C006",
+    "P7-C008"
+  ],
+  "contract": {
+    "duration_seconds": 45.0,
+    "fps": 30,
+    "frame_count": 1350,
+    "height": 1350,
+    "width": 1080
+  },
+  "evidence_policy": {
+    "business_logic_recomputed": false,
+    "calibration_animation_source": "frozen slope/intercept/ECE values",
+    "fabricated_calibration_bins": false,
+    "fabricated_feature_importance": false,
+    "feature_effect_animation_source": "S1 measured leakage effects",
+    "preview_metrics_used": false
+  },
+  "keyframe_contact_sheet": {
+    "filename": "video_keyframe_contact_sheet.png",
+    "sha256": "3b513f153928420be1fe8cbb4da0d07598eaa4043795dbd1a5f6e5e0e81c06e1",
+    "size_bytes": 281136
+  },
+  "keyframe_count": 10,
+  "keyframes": [
+    {
+      "filename": "01_00s.png",
+      "index": 1,
+      "sha256": "fc75c9e157cbe753cb87195b02a3434080313d53ec24a72eccd7da842c7be554",
+      "size_bytes": 50631,
+      "timestamp_seconds": 0.0
+    },
+    {
+      "filename": "02_05s.png",
+      "index": 2,
+      "sha256": "e9acc7f1b66cbe32433d086a49ac1bbe16f1a683af3f7242251a4de564579c05",
+      "size_bytes": 57056,
+      "timestamp_seconds": 5.0
+    },
+    {
+      "filename": "03_10s.png",
+      "index": 3,
+      "sha256": "68f998426334dc30befb50b27f60e6b2f00bf23e9092ce9c97de0e9dc626d3e9",
+      "size_bytes": 48474,
+      "timestamp_seconds": 10.0
+    },
+    {
+      "filename": "04_15s.png",
+      "index": 4,
+      "sha256": "361815f207eeaabfcb63f5b4ef364a00bd1e3429c38af513c2737453e3f96b5c",
+      "size_bytes": 42830,
+      "timestamp_seconds": 15.0
+    },
+    {
+      "filename": "05_20s.png",
+      "index": 5,
+      "sha256": "f397e9c0321d5d0ceba46171505fd1b313645a4955cfad7d79a3c54ab2b2abd4",
+      "size_bytes": 47427,
+      "timestamp_seconds": 20.0
+    },
+    {
+      "filename": "06_25s.png",
+      "index": 6,
+      "sha256": "e8218677e1e8b707254e48c193ea1d108b1bfdfaa416f9971778ecfcb9cd47a2",
+      "size_bytes": 37553,
+      "timestamp_seconds": 25.0
+    },
+    {
+      "filename": "07_30s.png",
+      "index": 7,
+      "sha256": "8d886c8c22410cacd7385e0eaf3b3b748716ddd08fd76e1a1b153e80a60ec6dd",
+      "size_bytes": 56139,
+      "timestamp_seconds": 30.0
+    },
+    {
+      "filename": "08_35s.png",
+      "index": 8,
+      "sha256": "b2aeb7db1e00610ab4486e5cf568bfa5d0f33ca3ba7737f6f27c7cd1355ee9f8",
+      "size_bytes": 39148,
+      "timestamp_seconds": 35.0
+    },
+    {
+      "filename": "09_40s.png",
+      "index": 9,
+      "sha256": "96cf70fce367cdd7d608dd2fd434ba1181430d8294517198bec39756f3916247",
+      "size_bytes": 59302,
+      "timestamp_seconds": 40.0
+    },
+    {
+      "filename": "10_45s.png",
+      "index": 10,
+      "sha256": "d93bd2b05f68cde4e2d5607b86a0820ececd6b74fc1d4c2240ca6a3fc3a5ff96",
+      "size_bytes": 60461,
+      "timestamp_seconds": 44.8
+    }
+  ],
+  "manifest_sha256": "37ace838be23fd4fb9c76e7c82d219641480e13303ba2a1c2b1c5e04a7ce201c",
+  "muted_comprehension": true,
+  "primary_video": {
+    "codec": "h264",
+    "duration_seconds": 45.0,
+    "frame_rate": 30.0,
+    "height": 1350,
+    "nb_frames": 1350,
+    "path": "project7_prediction_time_integrity.mp4",
+    "pixel_format": "yuv420p",
+    "sha256": "7a0622aff43ed9cb104b1c96310830e0d68e7d403ceb4459ebd4266fc7204de0",
+    "size_bytes": 967909,
+    "width": 1080
+  },
+  "release_data": {
+    "filename": "release_data.json",
+    "sha256": "7d240598a0a3a0d7b73ab7c678b2a5c75661fa4721254f9db5dcd9d0c8c8f870",
+    "step5_fingerprint_sha256": "7954203abe1cb0f5457c3658f2105cd16a0800528e81723ee970d259afe60ed0"
+  },
+  "scope": "PROJECT7_STEP6_VIDEO",
+  "thumbnail": {
+    "filename": "project7_video_thumbnail.png",
+    "sha256": "447909fc40c002161f20a342e1a734d7c4b2e7daa029b18ac753efe3c7bcb530",
+    "size_bytes": 41172
+  },
+  "web_video": {
+    "codec": "h264",
+    "duration_seconds": 45.0,
+    "frame_rate": 30.0,
+    "height": 1350,
+    "nb_frames": 1350,
+    "path": "project7_prediction_time_integrity_web.mp4",
+    "pixel_format": "yuv420p",
+    "sha256": "9e0d07feafcafe9d5cc5e0fd4d03d8b2bd7b0fc17413eb08008a3d160cfda5cf",
+    "size_bytes": 712694,
+    "width": 1080
+  }
+}
