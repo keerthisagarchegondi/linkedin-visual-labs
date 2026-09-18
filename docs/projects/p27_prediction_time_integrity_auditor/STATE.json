@@ -4,8 +4,8 @@
   "branch": "project/p27-prediction-time-integrity-auditor",
   "codex_active": false,
   "execution_environment": "manual_local_powershell",
-  "last_updated_utc": "2026-09-17T13:03:54.459804+00:00",
-  "next_allowed_step": "Project 7 — Step 5",
+  "last_updated_utc": "2026-09-18T11:13:27.968635+00:00",
+  "next_allowed_step": "Project 7 — Step 6",
   "p02_preservation_stash_commit": "29cb537a97682b65988280f2256a839a41195756",
   "package_id": "p27_prediction_time_integrity_auditor",
   "project": "Project 7 — Prediction-Time Integrity Auditor",
@@ -20,11 +20,12 @@
     "step2": "PASS",
     "step3": "PASS",
     "step4": "PASS",
-    "step5": "NOT_STARTED",
+    "step5": "PASS",
     "step6": "NOT_STARTED",
     "step7": "NOT_STARTED",
     "step8": "NOT_STARTED",
     "step9": "NOT_STARTED"
   },
-  "schema_version": "1.0"
+  "schema_version": "1.0",
+  "step5_fingerprint_sha256": "7954203abe1cb0f5457c3658f2105cd16a0800528e81723ee970d259afe60ed0"
 }

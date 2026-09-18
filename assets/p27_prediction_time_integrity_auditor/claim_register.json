@@ -1,0 +1,89 @@
+{
+  "claim_count": 8,
+  "claim_register_fingerprint_sha256": "85527914113a278fb8570bd0e349bc0c832b0ee2688d451aaff4dec3a3faeeaa",
+  "claims": [
+    {
+      "approved_for_public_use": true,
+      "claim": "Prediction-time-safe Pipeline C passed the Step 4 release gate.",
+      "claim_id": "P7-C001",
+      "claim_label": "MEASURED",
+      "evidence": [
+        "audit_findings.json#safe_pipeline.release_decision",
+        "release_data.json#safe_release_decision"
+      ]
+    },
+    {
+      "approved_for_public_use": true,
+      "claim": "The source dataset contains the current-call duration condition evaluated in scenario S1.",
+      "claim_id": "P7-C002",
+      "claim_label": "MEASURED",
+      "evidence": [
+        "leakage_case_results.json#S1_CURRENT_CALL_DURATION"
+      ]
+    },
+    {
+      "approved_for_public_use": true,
+      "claim": "Random-versus-temporal evaluation produces a measurable ROC-AUC gap.",
+      "claim_id": "P7-C003",
+      "claim_label": "DERIVED",
+      "evidence": [
+        "leakage_case_results.json#S2_RANDOM_TEMPORAL_MIXING",
+        "release_data.json#independent_validation.temporal_roc_auc_gap"
+      ],
+      "value": 0.24119243646906585
+    },
+    {
+      "approved_for_public_use": true,
+      "claim": "Random-versus-temporal evaluation produces a measurable PR-AUC gap.",
+      "claim_id": "P7-C004",
+      "claim_label": "DERIVED",
+      "evidence": [
+        "leakage_case_results.json#S2_RANDOM_TEMPORAL_MIXING",
+        "release_data.json#independent_validation.temporal_pr_auc_gap"
+      ],
+      "value": 0.042921488063624835
+    },
+    {
+      "approved_for_public_use": true,
+      "claim": "Scenario S3 is a controlled global supervised transformation integrity violation.",
+      "claim_id": "P7-C005",
+      "claim_label": "CONTROLLED_INJECTION",
+      "evidence": [
+        "leakage_case_results.json#S3_GLOBAL_SUPERVISED_TRANSFORMATION"
+      ]
+    },
+    {
+      "approved_for_public_use": true,
+      "claim": "Scenario S4 is a controlled duplicate-overlap integrity violation.",
+      "claim_id": "P7-C006",
+      "claim_label": "CONTROLLED_INJECTION",
+      "evidence": [
+        "leakage_case_results.json#S4_DUPLICATE_OVERLAP",
+        "release_data.json#independent_validation.duplicate_train_test_overlap"
+      ],
+      "value": 618
+    },
+    {
+      "approved_for_public_use": true,
+      "claim": "Scenario S5 is a controlled post-outcome confirmation-proxy integrity violation.",
+      "claim_id": "P7-C007",
+      "claim_label": "CONTROLLED_INJECTION",
+      "evidence": [
+        "leakage_case_results.json#S5_POST_OUTCOME_CONFIRMATION_PROXY"
+      ]
+    },
+    {
+      "approved_for_public_use": true,
+      "claim": "All reported Step 3 model-level metric effects reconcile independently from safe and leaked metrics.",
+      "claim_id": "P7-C008",
+      "claim_label": "DERIVED",
+      "evidence": [
+        "release_data.json#metric_effect_reconciliation"
+      ],
+      "value": true
+    }
+  ],
+  "preview_claims_approved": false,
+  "scope": "PROJECT7_STEP5_CLAIM_REGISTER",
+  "unsupported_claims_approved": false
+}

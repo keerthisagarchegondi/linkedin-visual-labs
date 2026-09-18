@@ -74,7 +74,7 @@ def test_raw_source_remains_ignored_and_untracked() -> None:
     assert tracked.stdout.strip() == ""
 
 
-def test_step4_module_boundary_is_exact() -> None:
+def test_step5_module_boundary_is_exact() -> None:
     root = repository_root()
 
     package_root = (
@@ -89,6 +89,7 @@ def test_step4_module_boundary_is_exact() -> None:
         "data.py",
         "leakage_cases.py",
         "auditor.py",
+        "validation.py",
         "metrics.py",
         "modeling.py",
         "models.py",
@@ -100,9 +101,8 @@ def test_step4_module_boundary_is_exact() -> None:
 
     assert required <= existing
 
-    forbidden_step5_plus = {
+    forbidden_step6_plus = {
         "business_impact.py",
-        "validation.py",
         "visualization.py",
         "video.py",
         "dashboard.py",
@@ -110,4 +110,4 @@ def test_step4_module_boundary_is_exact() -> None:
         "pipeline.py",
     }
 
-    assert existing.isdisjoint(forbidden_step5_plus)
+    assert existing.isdisjoint(forbidden_step6_plus)

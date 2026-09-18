@@ -40,6 +40,15 @@ from .splits import (
     chronological_split,
     random_comparison_split,
 )
+from .validation import (
+    IndependentValidation,
+    MetricReconciliation,
+    build_claim_register,
+    build_release_data,
+    freeze_step5_release,
+    independently_validate,
+    independently_validate_frozen_release,
+)
 
 __all__ = [
     "AUDIT_ORDER",
@@ -54,7 +63,9 @@ __all__ = [
     "AuditFinding",
     "AvailabilityClass",
     "EvidenceReference",
+    "IndependentValidation",
     "MetricBundle",
+    "MetricReconciliation",
     "ProjectConfig",
     "ReleaseDecision",
     "SplitConfig",
@@ -62,13 +73,18 @@ __all__ = [
     "acquire_official_source",
     "approve_public_claim",
     "blocked_feature_names",
+    "build_claim_register",
     "build_feature_contract",
     "build_model_pipeline",
+    "build_release_data",
     "build_step4_audit",
     "chronological_split",
     "deployment_feature_names",
     "duplicate_injection_indices",
     "evaluate_probabilities",
+    "freeze_step5_release",
+    "independently_validate",
+    "independently_validate_frozen_release",
     "load_config",
     "load_official_dataset",
     "pipeline_b_features",
@@ -83,4 +99,4 @@ __all__ = [
     "write_step4_evidence",
 ]
 
-__version__ = "0.5.0"
+__version__ = "0.6.0"

@@ -198,3 +198,30 @@ Scope completed:
 Step 5 remains responsible for independent benchmark recomputation and final release-data freezing.
 
 Next allowed implementation step: Project 7 — Step 5.
+
+## Project 7 — Step 5 — Final benchmark and independent validation
+
+Status: PASS
+
+Scope completed:
+
+- final official-data benchmark evidence frozen;
+- 8 baseline evaluations retained;
+- 5 integrity scenarios / 10 model-scenario results retained;
+- 60 metric effects independently reconciled;
+- zero metric-effect mismatches;
+- campaign-yield overstatement reconciled;
+- leakage-inflation direction frozen;
+- temporal gaps independently reconciled;
+- duplicate overlap independently reconciled;
+- claim register frozen;
+- run manifest frozen;
+- overall Project 7 coverage gate >=90% passed;
+- deterministic regeneration passed;
+- public artifacts remained blocked.
+
+Step 5 fingerprint:
+
+7954203abe1cb0f5457c3658f2105cd16a0800528e81723ee970d259afe60ed0
+
+Next allowed implementation step: Project 7 — Step 6.
