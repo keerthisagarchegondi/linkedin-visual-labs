@@ -1,0 +1,9 @@
+claim_id,claim,claim_label,metric,value,unit,evidence,calculation,scope,caveat,approved_for_public_use,review_status
+P7-C001,Prediction-time-safe Pipeline C passed the Step 4 release gate.,MEASURED,,,,"[""audit_findings.json#safe_pipeline.release_decision"", ""release_data.json#safe_release_decision""]",,,,True,
+P7-C002,The source dataset contains the current-call duration condition evaluated in scenario S1.,MEASURED,,,,"[""leakage_case_results.json#S1_CURRENT_CALL_DURATION""]",,,,True,
+P7-C003,Random-versus-temporal evaluation produces a measurable ROC-AUC gap.,DERIVED,,0.24119243646906585,,"[""leakage_case_results.json#S2_RANDOM_TEMPORAL_MIXING"", ""release_data.json#independent_validation.temporal_roc_auc_gap""]",,,,True,
+P7-C004,Random-versus-temporal evaluation produces a measurable PR-AUC gap.,DERIVED,,0.042921488063624835,,"[""leakage_case_results.json#S2_RANDOM_TEMPORAL_MIXING"", ""release_data.json#independent_validation.temporal_pr_auc_gap""]",,,,True,
+P7-C005,Scenario S3 is a controlled global supervised transformation integrity violation.,CONTROLLED_INJECTION,,,,"[""leakage_case_results.json#S3_GLOBAL_SUPERVISED_TRANSFORMATION""]",,,,True,
+P7-C006,Scenario S4 is a controlled duplicate-overlap integrity violation.,CONTROLLED_INJECTION,,618,,"[""leakage_case_results.json#S4_DUPLICATE_OVERLAP"", ""release_data.json#independent_validation.duplicate_train_test_overlap""]",,,,True,
+P7-C007,Scenario S5 is a controlled post-outcome confirmation-proxy integrity violation.,CONTROLLED_INJECTION,,,,"[""leakage_case_results.json#S5_POST_OUTCOME_CONFIRMATION_PROXY""]",,,,True,
+P7-C008,All reported Step 3 model-level metric effects reconcile independently from safe and leaked metrics.,DERIVED,,True,,"[""release_data.json#metric_effect_reconciliation""]",,,,True,

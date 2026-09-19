@@ -1,0 +1,111 @@
+{
+  "business_logic_recomputed": false,
+  "contact_sheet": {
+    "columns": 5,
+    "filename": "project7_prediction_time_integrity_contact_sheet.png",
+    "height": 510,
+    "padding": 20,
+    "rows": 2,
+    "sha256": "18ef43f2543646ade2d3766b4b07f714074a1923a53c78b8e752944a3b62e21d",
+    "size_bytes": 83687,
+    "thumb_height": 225,
+    "thumb_width": 180,
+    "width": 1020
+  },
+  "human_visual_review_required": true,
+  "human_visual_review_status": "PENDING",
+  "keyframe_strategy": "scene_midpoint",
+  "keyframes": [
+    {
+      "filename": "scene_01_S1.png",
+      "index": 1,
+      "scene_id": "S1",
+      "sha256": "a2c01454d5c7bf0140f87c5c90d4fbe25308b7fabe2b4ba769f6c624ceaebb5a",
+      "size_bytes": 94834,
+      "timestamp_seconds": 2.25
+    },
+    {
+      "filename": "scene_02_S2.png",
+      "index": 2,
+      "scene_id": "S2",
+      "sha256": "c2d50a20c5972151d32d213174e0142016facc0ee2bd5b1b94dab7911d9ae050",
+      "size_bytes": 109734,
+      "timestamp_seconds": 6.5
+    },
+    {
+      "filename": "scene_03_S3.png",
+      "index": 3,
+      "scene_id": "S3",
+      "sha256": "61c79400b8c005ab8d26f679855d8d5951ac2616a92f232122ca0a8ade4ee7c4",
+      "size_bytes": 89423,
+      "timestamp_seconds": 10.5
+    },
+    {
+      "filename": "scene_04_S4.png",
+      "index": 4,
+      "scene_id": "S4",
+      "sha256": "c86f991df27995c347e74d6f48801536c4336ea0ba4cbea50777090e3ae70e4c",
+      "size_bytes": 132208,
+      "timestamp_seconds": 14.75
+    },
+    {
+      "filename": "scene_05_S5.png",
+      "index": 5,
+      "scene_id": "S5",
+      "sha256": "97664b3d5e2dd225fd70ef3be530fc0490fec9dfb9e841a75841560ed5eebeb9",
+      "size_bytes": 95402,
+      "timestamp_seconds": 19.0
+    },
+    {
+      "filename": "scene_06_S6.png",
+      "index": 6,
+      "scene_id": "S6",
+      "sha256": "3d84303d3f7bf224c7f25465417a18f06b168851c592e8cce2e1d0f6b8ab2989",
+      "size_bytes": 96745,
+      "timestamp_seconds": 23.0
+    },
+    {
+      "filename": "scene_07_S7.png",
+      "index": 7,
+      "scene_id": "S7",
+      "sha256": "be574ce0aa8bfd54bd7c5e089e48b54e6eec18b7b2685992417ecf307c9f7184",
+      "size_bytes": 111711,
+      "timestamp_seconds": 27.25
+    },
+    {
+      "filename": "scene_08_S8.png",
+      "index": 8,
+      "scene_id": "S8",
+      "sha256": "70aaa2b2e70df9e871bfde832c60ccd708f54f32ddc4f1ae892f82dfa6aab3cf",
+      "size_bytes": 85665,
+      "timestamp_seconds": 31.75
+    },
+    {
+      "filename": "scene_09_S9.png",
+      "index": 9,
+      "scene_id": "S9",
+      "sha256": "26e77d9d4c20d26e56317d2d4c78e4e620f3e3f412a2fc883c1e5b36a35e325e",
+      "size_bytes": 63006,
+      "timestamp_seconds": 37.0
+    },
+    {
+      "filename": "scene_10_S10.png",
+      "index": 10,
+      "scene_id": "S10",
+      "sha256": "1474da7cb2a7852feda1e491c7c45cde4b1289a7eb95245aaa60a16533893671",
+      "size_bytes": 84897,
+      "timestamp_seconds": 42.5
+    }
+  ],
+  "preview_metrics_used": false,
+  "production_mp4_rerendered": false,
+  "production_thumbnail_rerendered": false,
+  "production_video_manifest_modified": false,
+  "renderer_commit_base": "5644c73391f901381256901ec9f43b60e9337d6b",
+  "scene_count": 10,
+  "schema_version": 1,
+  "scope": "PROJECT7_STEP6_KEYFRAME_PREVIEW_PARITY",
+  "step5_fingerprint_sha256": "7954203abe1cb0f5457c3658f2105cd16a0800528e81723ee970d259afe60ed0",
+  "visual_contract_sha256": "1458c71f6853afddae5a0da7a73870ba3230eee2144daf5189b6ca207f280469",
+  "visual_contract_version": "1.0"
+}

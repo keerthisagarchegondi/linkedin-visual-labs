@@ -50,29 +50,29 @@ THUMBNAIL_FILENAME: Final = "project7_video_thumbnail.png"
 VIDEO_MANIFEST_FILENAME: Final = "video_manifest.json"
 
 KEYFRAME_TIMES: Final[tuple[float, ...]] = (
-    0.0,
-    5.0,
-    10.0,
-    15.0,
-    20.0,
-    25.0,
-    30.0,
-    35.0,
-    40.0,
-    44.8,
+    2.25,
+    6.5,
+    10.5,
+    14.75,
+    19.0,
+    23.0,
+    27.25,
+    31.75,
+    37.0,
+    42.5,
 )
 
 KEYFRAME_FILENAMES: Final[tuple[str, ...]] = (
-    "01_00s.png",
-    "02_05s.png",
-    "03_10s.png",
-    "04_15s.png",
-    "05_20s.png",
-    "06_25s.png",
-    "07_30s.png",
-    "08_35s.png",
-    "09_40s.png",
-    "10_45s.png",
+    "scene_01_S1.png",
+    "scene_02_S2.png",
+    "scene_03_S3.png",
+    "scene_04_S4.png",
+    "scene_05_S5.png",
+    "scene_06_S6.png",
+    "scene_07_S7.png",
+    "scene_08_S8.png",
+    "scene_09_S9.png",
+    "scene_10_S10.png",
 )
 
 CLAIM_IDS_USED: Final[tuple[str, ...]] = (
@@ -4390,26 +4390,33 @@ def _write_contact_sheet(
     keyframes: tuple[Path, ...],
     output: Path,
 ) -> None:
-    """Create 2x5 keyframe contact sheet."""
+    """Create frozen Visual Contract 5x2 keyframe contact sheet."""
 
     if len(keyframes) != 10:
         raise RuntimeError("Contact sheet requires ten keyframes.")
 
-    thumb_width = 324
-    thumb_height = 405
+    thumb_width = 180
+    thumb_height = 225
+    columns = 5
+    rows = 2
+    padding = 20
+
+    sheet_width = columns * thumb_width + (columns + 1) * padding
+
+    sheet_height = rows * thumb_height + (rows + 1) * padding
 
     sheet = Image.new(
         "RGB",
         (
-            thumb_width * 2,
-            thumb_height * 5,
+            sheet_width,
+            sheet_height,
         ),
-        BACKGROUND,
+        palette_color("bg"),
     )
 
     for index, path in enumerate(keyframes):
         with Image.open(path) as source:
-            thumb = source.resize(
+            thumb = source.convert("RGB").resize(
                 (
                     thumb_width,
                     thumb_height,
@@ -4417,9 +4424,12 @@ def _write_contact_sheet(
                 Image.Resampling.LANCZOS,
             )
 
-        x = (index % 2) * thumb_width
+        column = index % columns
+        row = index // columns
 
-        y = (index // 2) * thumb_height
+        x = padding + column * (thumb_width + padding)
+
+        y = padding + row * (thumb_height + padding)
 
         sheet.paste(
             thumb,
@@ -4475,9 +4485,7 @@ def build_video_outputs(
 
     video_root = assets_root / "video"
 
-    keyframe_root = assets_root / "video_keyframes"
-
-    images_root = assets_root / "images"
+    keyframe_root = video_root / "keyframes"
 
     video_root.mkdir(
         parents=True,
@@ -4485,11 +4493,6 @@ def build_video_outputs(
     )
 
     keyframe_root.mkdir(
-        parents=True,
-        exist_ok=True,
-    )
-
-    images_root.mkdir(
         parents=True,
         exist_ok=True,
     )
@@ -4502,7 +4505,7 @@ def build_video_outputs(
 
     manifest_path = video_root / VIDEO_MANIFEST_FILENAME
 
-    contact_sheet = images_root / "video_keyframe_contact_sheet.png"
+    contact_sheet = video_root / "project7_prediction_time_integrity_contact_sheet.png"
 
     _encode_primary(
         release,

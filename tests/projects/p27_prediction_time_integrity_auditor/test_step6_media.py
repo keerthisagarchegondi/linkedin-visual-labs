@@ -46,16 +46,16 @@ def test_video_contract_is_frozen() -> None:
 
 def test_video_has_exactly_ten_keyframe_checkpoints() -> None:
     assert KEYFRAME_TIMES == (
-        0.0,
-        5.0,
-        10.0,
-        15.0,
-        20.0,
-        25.0,
-        30.0,
-        35.0,
-        40.0,
-        44.8,
+        2.25,
+        6.5,
+        10.5,
+        14.75,
+        19.0,
+        23.0,
+        27.25,
+        31.75,
+        37.0,
+        42.5,
     )
 
 

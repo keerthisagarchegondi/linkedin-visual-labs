@@ -1,0 +1,110 @@
+{
+  "abstract": "Offline evaluation can overstate machine-learning performance when features, transformations, records, or evaluation design expose information that will not exist at the production scoring moment. LeakageBench is an applied benchmark and release-control framework for prediction-time integrity. The study defines a fixed pre-decision scoring boundary, classifies model inputs by their deployment-time availability, compares chronological and random evaluation designs, tests multiple leakage mechanisms, and independently reconciles released metric effects before public claims are approved. The goal is not to introduce a new predictive algorithm; it is to separate model performance from information leakage and to make the evidence behind a pass, warning, or block decision auditable. The resulting case study demonstrates how deployment-valid evaluation, feature contracts, reproducible evidence, and claim governance can be joined into one machine-learning release workflow.",
+  "approved_public_claim_count": 8,
+  "author_metadata_status": "REQUIRED_BEFORE_EXTERNAL_PUBLICATION",
+  "authors": [],
+  "dataset": {
+    "archive_sha256": "e0bf5f5de5b846e2f18e9d90606637267d46dfa260e0f17bb12e605db5efbeb4",
+    "csv_sha256": "74adfc578bf77a7ff4bb1ba4a9f8709d9e3c6907342959c2c8416847e0afb4d8",
+    "dataset_fingerprint": "316aab7ad11871514b8ac4d0981c971b3412b82e4ead5f9e4298b7017e6b9a32",
+    "doi": "10.24432/C5K306",
+    "license": "CC BY 4.0",
+    "name": "UCI Bank Marketing",
+    "uci_id": 222
+  },
+  "doi_status": "NOT_ASSIGNED",
+  "evaluation": {
+    "comparison_split": "random split retained as comparison",
+    "primary_split": "chronological source order 70/15/15"
+  },
+  "external_publication_ready": false,
+  "external_publication_status": "LOCKED",
+  "external_publication_unlock_step": "Project 7 ? Step 10 ? Optional external publication",
+  "figures": [
+    {
+      "caption": "End-to-end integrity workflow connecting prediction-time feature availability, split checks, transformation integrity, duplicate checks, evidence reconciliation, and release decision.",
+      "figure_number": 1,
+      "filename": "audit_pipeline.png",
+      "title": "Prediction-time integrity audit pipeline"
+    },
+    {
+      "caption": "Feature-level availability classification relative to the frozen pre-call prediction moment.",
+      "figure_number": 2,
+      "filename": "feature_availability_contract.png",
+      "title": "Prediction-time feature availability contract"
+    },
+    {
+      "caption": "Comparison of evaluation designs used to test whether temporal mixing changes the benchmark answer.",
+      "figure_number": 3,
+      "filename": "split_integrity_comparison.png",
+      "title": "Random and chronological evaluation comparison"
+    },
+    {
+      "caption": "Model-performance comparison between the prediction-time-safe benchmark and selected integrity-violating conditions.",
+      "figure_number": 4,
+      "filename": "model_performance_comparison.png",
+      "title": "Deployment-valid and leakage-condition performance"
+    },
+    {
+      "caption": "Summary of the benchmark leakage cases and their measured or controlled integrity effects.",
+      "figure_number": 5,
+      "filename": "leakage_inflation_map.png",
+      "title": "Leakage inflation map"
+    },
+    {
+      "caption": "Calibration evidence retained alongside ranking metrics so the release decision is not based on ROC AUC alone.",
+      "figure_number": 6,
+      "filename": "calibration_comparison.png",
+      "title": "Calibration comparison"
+    },
+    {
+      "caption": "Translation of evaluation distortion into downstream targeting and campaign-planning implications.",
+      "figure_number": 7,
+      "filename": "business_targeting_distortion.png",
+      "title": "Business targeting distortion"
+    }
+  ],
+  "keywords": [
+    "prediction-time integrity",
+    "data leakage",
+    "machine-learning evaluation",
+    "temporal validation",
+    "model governance",
+    "deployment validation",
+    "reproducibility",
+    "feature availability"
+  ],
+  "manuscript_doi": null,
+  "manuscript_license": null,
+  "manuscript_license_status": "NOT_SELECTED",
+  "manuscript_status": "INTERNAL_RELEASE_CANDIDATE",
+  "manuscript_version": "1.0.0",
+  "models": [
+    "Logistic Regression",
+    "Histogram Gradient Boosting"
+  ],
+  "package": "p27_prediction_time_integrity_auditor",
+  "peer_review_status": "NOT_PERFORMED",
+  "peer_reviewed": false,
+  "prediction_moment": "Immediately before the current outbound call begins.",
+  "preview_claims_approved": false,
+  "project_identity": "Project 7 ? Prediction-Time Integrity Auditor",
+  "publication_identity": "LeakageBench",
+  "publication_venue": null,
+  "publication_venue_status": "NOT_SELECTED",
+  "release_provenance": {
+    "business_logic_recomputed_for_publication": false,
+    "safe_release_decision": "PASS",
+    "step5_fingerprint_sha256": "7954203abe1cb0f5457c3658f2105cd16a0800528e81723ee970d259afe60ed0"
+  },
+  "schema_version": 1,
+  "short_title": "LeakageBench",
+  "submission_requirements_remaining": [
+    "author metadata",
+    "publication venue selection",
+    "manuscript license selection",
+    "external publication decision"
+  ],
+  "title": "LeakageBench: Prediction-Time Integrity Auditing for Deployment-Valid Machine Learning Evaluation",
+  "unsupported_claims_approved": false
+}

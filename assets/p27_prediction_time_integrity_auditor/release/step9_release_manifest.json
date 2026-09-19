@@ -1,0 +1,15 @@
+{
+  "approved_dashboard_sha256": "33e68fe7e22131865f456a652073fce654fa0716427087506af1dd093cdf8e87",
+  "business_logic_recomputed": false,
+  "checksums_file": "artifact_checksums.sha256",
+  "external_publication_status": "LOCKED",
+  "payload_file_count": 51,
+  "production_video": "assets/p27_prediction_time_integrity_auditor/video/project7_prediction_time_integrity.mp4",
+  "release_identity": "LeakageBench Project 7",
+  "schema_version": 1,
+  "status": "PASS",
+  "step5_fingerprint": "7954203abe1cb0f5457c3658f2105cd16a0800528e81723ee970d259afe60ed0",
+  "zip_filename": "LeakageBench_Project7_release.zip",
+  "zip_sha256": "7f97aedb2d4a1ad2bff24c7c37959dabc773bcbeefaa9a14b38ac7a5582fe549",
+  "zip_size_bytes": 11806730
+}

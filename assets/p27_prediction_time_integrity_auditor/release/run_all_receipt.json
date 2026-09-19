@@ -1,0 +1,154 @@
+{
+  "9.14_checksums": {
+    "path": "assets/p27_prediction_time_integrity_auditor/release/artifact_checksums.sha256",
+    "status": "PASS"
+  },
+  "9.15_release_zip": {
+    "filename": "LeakageBench_Project7_release.zip",
+    "sha256": "7f97aedb2d4a1ad2bff24c7c37959dabc773bcbeefaa9a14b38ac7a5582fe549",
+    "status": "PASS"
+  },
+  "9.16_release_zip_verification": {
+    "status": "PASS",
+    "zip_filename": "LeakageBench_Project7_release.zip",
+    "zip_sha256": "7f97aedb2d4a1ad2bff24c7c37959dabc773bcbeefaa9a14b38ac7a5582fe549",
+    "zip_size_bytes": 11806730
+  },
+  "business_logic_recomputed": false,
+  "external_publication_status": "LOCKED",
+  "gates": {
+    "9.10_video": {
+      "codec": "h264",
+      "content_samples": [
+        {
+          "contrast": 246.0,
+          "stddev": 32.67274391950903,
+          "timestamp": 2.0
+        },
+        {
+          "contrast": 242.0,
+          "stddev": 54.581632659350916,
+          "timestamp": 11.0
+        },
+        {
+          "contrast": 245.0,
+          "stddev": 42.80914741981752,
+          "timestamp": 22.0
+        },
+        {
+          "contrast": 246.0,
+          "stddev": 27.584457577648163,
+          "timestamp": 33.0
+        },
+        {
+          "contrast": 247.0,
+          "stddev": 37.64786850307389,
+          "timestamp": 43.0
+        }
+      ],
+      "duration": 45.0,
+      "fps": 30.0,
+      "frames": 1350,
+      "height": 1350,
+      "path": "assets/p27_prediction_time_integrity_auditor/video/project7_prediction_time_integrity.mp4",
+      "pix_fmt": "yuv420p",
+      "sha256": "7a0622aff43ed9cb104b1c96310830e0d68e7d403ceb4459ebd4266fc7204de0",
+      "size_bytes": 967909,
+      "width": 1080
+    },
+    "9.11_dashboard": {
+      "html_sha256": "33e68fe7e22131865f456a652073fce654fa0716427087506af1dd093cdf8e87",
+      "journal_leads": 6,
+      "tab_count": 6
+    },
+    "9.12_manuscript": {
+      "html_sha256": "4b71c7a4deae161b1aa8065d6de3da1e2906bfc78d5522aedfa0fcddff96fcd6",
+      "markdown_sha256": "dc0f3382fc146eb22d93876ce555a722d073752029a0d2195bae21fa8463e917",
+      "traceability_rows": 8
+    },
+    "9.13_publication_metadata": {
+      "approved_claims": 8,
+      "external_publication": "LOCKED",
+      "peer_reviewed": false
+    },
+    "9.2_source_validation": {
+      "prediction_moment": "Immediately before the current outbound call begins.",
+      "release_status": "PASS",
+      "step5_fingerprint": "7954203abe1cb0f5457c3658f2105cd16a0800528e81723ee970d259afe60ed0"
+    },
+    "9.3_split_validation": {
+      "temporal_pr_auc_gap": 0.042921488063624835,
+      "temporal_roc_auc_gap": 0.24119243646906585
+    },
+    "9.4_leakage_cases": {
+      "model_result_count": 10,
+      "scenario_count": 5
+    },
+    "9.5_models": {
+      "models": [
+        "histogram_gradient_boosting",
+        "logistic_regression"
+      ],
+      "safe_hgb_test_roc_auc": 0.568919041851595,
+      "safe_lr_test_roc_auc": 0.6064233247542477
+    },
+    "9.6_metric_reconciliation": {
+      "duplicate_overlap": 618,
+      "mismatches": 0,
+      "reconciled_effects": 60
+    },
+    "9.7_auditor_release": {
+      "no_false_pass": true,
+      "safe_release": "PASS"
+    },
+    "9.8_claim_register": {
+      "approved_claim_count": 8,
+      "approved_claim_ids": [
+        "P7-C001",
+        "P7-C002",
+        "P7-C003",
+        "P7-C004",
+        "P7-C005",
+        "P7-C006",
+        "P7-C007",
+        "P7-C008"
+      ]
+    },
+    "9.9_research_figures": {
+      "figure_count": 7,
+      "figures": [
+        {
+          "filename": "audit_pipeline.png",
+          "sha256": "6de9d00c51a5807b69d01e9b47b4278403701d9095bffbc4b1fed5f795403530"
+        },
+        {
+          "filename": "feature_availability_contract.png",
+          "sha256": "26a821020d9df2861c1d0d9ab03974d183f93789cb9713ae339f0d7894449460"
+        },
+        {
+          "filename": "split_integrity_comparison.png",
+          "sha256": "9ddd8e10ad3ac73bcc3fbb6d4f664913ed56aaa44cadd98888991b2f8b0b0f3b"
+        },
+        {
+          "filename": "model_performance_comparison.png",
+          "sha256": "52784679940dcb607963eae48f15fa8cd3e0148d9cb2ca82efdf072519e43876"
+        },
+        {
+          "filename": "leakage_inflation_map.png",
+          "sha256": "41fd99199dfab4df44f5f87c04c67b7689e11fc45b96bfe568739deb6600fd37"
+        },
+        {
+          "filename": "calibration_comparison.png",
+          "sha256": "d04af8755b9701bdb9cfee3370c927e0715c894ab55690e0bfc22e6e23140104"
+        },
+        {
+          "filename": "business_targeting_distortion.png",
+          "sha256": "741f77ba8925ed7ac877448c25491b394e661720b0b7d7f4f5a0062cd047e218"
+        }
+      ]
+    }
+  },
+  "run_all": "PASS",
+  "schema_version": 1,
+  "status": "PASS"
+}

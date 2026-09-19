@@ -466,8 +466,8 @@ def test_write_keyframes_contact_sheet_thumbnail(
 
     with Image.open(sheet) as image:
         assert image.size == (
-            648,
-            2025,
+            1020,
+            510,
         )
 
     thumbnail = tmp_path / "thumbnail.png"

@@ -1,0 +1,60 @@
+{
+  "approved_public_claim_count": 8,
+  "artifacts": [
+    {
+      "filename": "leakagebench_manuscript.md",
+      "sha256": "dc0f3382fc146eb22d93876ce555a722d073752029a0d2195bae21fa8463e917",
+      "size_bytes": 17192
+    },
+    {
+      "filename": "leakagebench_manuscript.html",
+      "sha256": "4b71c7a4deae161b1aa8065d6de3da1e2906bfc78d5522aedfa0fcddff96fcd6",
+      "size_bytes": 1488707
+    },
+    {
+      "filename": "leakagebench_publication_metadata.json",
+      "sha256": "69dfbed6d5d3b422362ae2b0d334ea1596395a8c489b90b972039427b785fc8c",
+      "size_bytes": 5370
+    },
+    {
+      "filename": "leakagebench_claim_traceability.csv",
+      "sha256": "5375a30ddd1689bef86f18dd626834694debd50cc6ad91f4997ee24e7f3433a0",
+      "size_bytes": 1799
+    },
+    {
+      "filename": "leakagebench_manuscript_preview.png",
+      "sha256": "7fe369f3c8dc53f5e4ac1a2585b890ffb632d2bbe37786d4532363c4b19ab719",
+      "size_bytes": 978727
+    },
+    {
+      "filename": "README.md",
+      "sha256": "c07f93c4f1c8f3b9480e9b6f04933a98b5f5f4649dbd2effd62a8c35e00fde5f",
+      "size_bytes": 997
+    }
+  ],
+  "author_metadata_assigned": false,
+  "business_logic_recomputed": false,
+  "external_publication_ready": false,
+  "external_publication_status": "LOCKED",
+  "external_publication_unlock_step": "Project 7 ? Step 10 ? Optional external publication",
+  "manuscript_doi_assigned": false,
+  "manuscript_license_assigned": false,
+  "manuscript_status": "INTERNAL_RELEASE_CANDIDATE",
+  "peer_reviewed": false,
+  "preview_claims_approved": false,
+  "preview_geometry": {
+    "height": 6000,
+    "mode": "RGB",
+    "width": 1440
+  },
+  "publication_identity": "LeakageBench",
+  "research_figure_count": 7,
+  "schema_version": 1,
+  "scope": "PROJECT7_STEP8_PUBLICATION_MANUSCRIPT_METADATA",
+  "status": "PASS",
+  "step5_release_fingerprint": "7954203abe1cb0f5457c3658f2105cd16a0800528e81723ee970d259afe60ed0",
+  "step7_approved_dashboard_sha256": "33e68fe7e22131865f456a652073fce654fa0716427087506af1dd093cdf8e87",
+  "title": "LeakageBench: Prediction-Time Integrity Auditing for Deployment-Valid Machine Learning Evaluation",
+  "unsupported_claims_approved": false,
+  "venue_assigned": false
+}

@@ -115,18 +115,29 @@ def test_representative_uplift_frames_are_deterministic() -> None:
         assert image_sha(first) == image_sha(second)
 
 
-def test_historical_keyframe_contract_not_changed_in_f() -> None:
+def test_keyframe_preview_contract_matches_frozen_export() -> None:
     assert video.KEYFRAME_TIMES == (
-        0.0,
-        5.0,
-        10.0,
-        15.0,
-        20.0,
-        25.0,
-        30.0,
-        35.0,
-        40.0,
-        44.8,
+        2.25,
+        6.5,
+        10.5,
+        14.75,
+        19.0,
+        23.0,
+        27.25,
+        31.75,
+        37.0,
+        42.5,
     )
 
-    assert len(video.KEYFRAME_FILENAMES) == 10
+    assert video.KEYFRAME_FILENAMES == (
+        "scene_01_S1.png",
+        "scene_02_S2.png",
+        "scene_03_S3.png",
+        "scene_04_S4.png",
+        "scene_05_S5.png",
+        "scene_06_S6.png",
+        "scene_07_S7.png",
+        "scene_08_S8.png",
+        "scene_09_S9.png",
+        "scene_10_S10.png",
+    )

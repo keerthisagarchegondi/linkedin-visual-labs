@@ -61,13 +61,31 @@ def test_video_contract_exact() -> None:
 
 
 def test_keyframe_contract_exact() -> None:
-    assert len(KEYFRAME_TIMES) == 10
+    assert KEYFRAME_TIMES == (
+        2.25,
+        6.5,
+        10.5,
+        14.75,
+        19.0,
+        23.0,
+        27.25,
+        31.75,
+        37.0,
+        42.5,
+    )
 
-    assert len(KEYFRAME_FILENAMES) == 10
-
-    assert KEYFRAME_TIMES[0] == 0.0
-
-    assert KEYFRAME_TIMES[-1] == 44.8
+    assert KEYFRAME_FILENAMES == (
+        "scene_01_S1.png",
+        "scene_02_S2.png",
+        "scene_03_S3.png",
+        "scene_04_S4.png",
+        "scene_05_S5.png",
+        "scene_06_S6.png",
+        "scene_07_S7.png",
+        "scene_08_S8.png",
+        "scene_09_S9.png",
+        "scene_10_S10.png",
+    )
 
 
 def test_renderer_produces_correct_canvas() -> None:
@@ -152,7 +170,7 @@ def test_video_manifest_and_outputs() -> None:
 def test_ten_keyframes_and_contact_sheet() -> None:
     assets = assets_root()
 
-    keyframes = assets / "video_keyframes"
+    keyframes = assets / "video" / "keyframes"
 
     actual = tuple(path.name for path in sorted(keyframes.glob("*.png")))
 
@@ -167,11 +185,11 @@ def test_ten_keyframes_and_contact_sheet() -> None:
                 1350,
             )
 
-    sheet = assets / "images" / "video_keyframe_contact_sheet.png"
+    sheet = assets / "video" / "project7_prediction_time_integrity_contact_sheet.png"
 
     assert sheet.is_file()
     assert sheet.stat().st_size > 10_000
 
     with Image.open(sheet) as image:
-        assert image.width == 648
-        assert image.height == 2025
+        assert image.width == 1020
+        assert image.height == 510
