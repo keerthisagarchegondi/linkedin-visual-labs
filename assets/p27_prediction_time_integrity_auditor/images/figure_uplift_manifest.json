@@ -1,0 +1,68 @@
+{
+  "business_logic_recomputed": false,
+  "figure_count": 7,
+  "files": {
+    "audit_pipeline.png": {
+      "bytes": 190176,
+      "height": 1350,
+      "mode": "RGB",
+      "previous_sha256": "864b3b8915551828ff75594c97411a98fd9f9838ffd9c7a86cc141a855a23768",
+      "sha256": "6de9d00c51a5807b69d01e9b47b4278403701d9095bffbc4b1fed5f795403530",
+      "width": 1080
+    },
+    "business_targeting_distortion.png": {
+      "bytes": 161206,
+      "height": 1350,
+      "mode": "RGB",
+      "previous_sha256": "31ae14992b7fd96d97c01fc26f861e664ad9fc8e3d065ff34d1183c075b36d73",
+      "sha256": "741f77ba8925ed7ac877448c25491b394e661720b0b7d7f4f5a0062cd047e218",
+      "width": 1080
+    },
+    "calibration_comparison.png": {
+      "bytes": 129105,
+      "height": 1350,
+      "mode": "RGB",
+      "previous_sha256": "5aac3471d293f056bfd698cfcd8350753a8c2a07095aa630b6eeb7a497f8b111",
+      "sha256": "d04af8755b9701bdb9cfee3370c927e0715c894ab55690e0bfc22e6e23140104",
+      "width": 1080
+    },
+    "feature_availability_contract.png": {
+      "bytes": 156952,
+      "height": 1350,
+      "mode": "RGB",
+      "previous_sha256": "b1a80cdb34d031945aee6fafb0ea2e097e8f69a2f124a849920ba23a483d8e28",
+      "sha256": "26a821020d9df2861c1d0d9ab03974d183f93789cb9713ae339f0d7894449460",
+      "width": 1080
+    },
+    "leakage_inflation_map.png": {
+      "bytes": 183308,
+      "height": 1350,
+      "mode": "RGB",
+      "previous_sha256": "de80ba2865cc8c8a56c4a6ef1a5af9e68c84419e664adc97ba97f9b464bb4297",
+      "sha256": "41fd99199dfab4df44f5f87c04c67b7689e11fc45b96bfe568739deb6600fd37",
+      "width": 1080
+    },
+    "model_performance_comparison.png": {
+      "bytes": 150957,
+      "height": 1350,
+      "mode": "RGB",
+      "previous_sha256": "43fde47072d572de0535435982f591b0b8d4392f94ada199159c66a6d2adae28",
+      "sha256": "52784679940dcb607963eae48f15fa8cd3e0148d9cb2ca82efdf072519e43876",
+      "width": 1080
+    },
+    "split_integrity_comparison.png": {
+      "bytes": 127192,
+      "height": 1350,
+      "mode": "RGB",
+      "previous_sha256": "d3085e1001817954a702662e96889272e18ed4bda0e4286cbcc8cfcb53edf9d4",
+      "sha256": "9ddd8e10ad3ac73bcc3fbb6d4f664913ed56aaa44cadd98888991b2f8b0b0f3b",
+      "width": 1080
+    }
+  },
+  "preview_metrics_used": false,
+  "schema_version": 1,
+  "scope": "PROJECT7_STEP6_VISUAL_UPLIFT_6_19_E",
+  "step5_fingerprint_sha256": "7954203abe1cb0f5457c3658f2105cd16a0800528e81723ee970d259afe60ed0",
+  "visual_contract_sha256": "1458c71f6853afddae5a0da7a73870ba3230eee2144daf5189b6ca207f280469",
+  "visual_contract_version": "1.0"
+}

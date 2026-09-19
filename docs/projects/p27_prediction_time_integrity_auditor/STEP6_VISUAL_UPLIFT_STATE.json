@@ -19,16 +19,34 @@
     "supersampling": "2x"
   },
   "historical_step6_release_status": "PASS",
-  "next_allowed_substep": "Project 7 ? Step 6 ? Sub-step 6.19.E",
+  "next_allowed_substep": "Project 7 ? Step 6 ? Sub-step 6.19.F",
   "parent_step": "Step 6",
   "project": "Project 7",
   "replacement_media_status": "NOT_RENDERED",
+  "research_figure_uplift": {
+    "business_logic_recomputed": false,
+    "canvas": [
+      1080,
+      1350
+    ],
+    "deterministic_second_render": true,
+    "downsample": "LANCZOS",
+    "figure_count": 7,
+    "internal_canvas": [
+      2160,
+      2700
+    ],
+    "manifest": "assets/p27_prediction_time_integrity_auditor/images/figure_uplift_manifest.json",
+    "preview_metrics_used": false,
+    "status": "PASS",
+    "supersampling": "2x"
+  },
   "step7_status": "NOT_STARTED",
   "stop_condition": "Do not modify renderer implementation until the visual contract freeze has been committed and verified.",
   "substeps": {
     "6.19.C": "PASS",
     "6.19.D": "PASS",
-    "6.19.E": "NOT_STARTED",
+    "6.19.E": "PASS",
     "6.19.F": "NOT_STARTED",
     "6.19.G": "NOT_STARTED",
     "6.19.H": "NOT_STARTED",
