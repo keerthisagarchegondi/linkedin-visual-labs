@@ -9,8 +9,10 @@
   "next_step": "Project 7 ? Step 10 ? Optional external publication",
   "next_step_locked": true,
   "portfolio": {
+    "compatibility_production_url": "https://my-portfolio-keerthi.vercel.app/projects/p27_prediction_time_integrity_auditor.html",
+    "compatibility_route_verified": true,
     "git_branch": "main",
-    "git_commit": "3e94c24f6677c3d423078f7df7e7cbe36f280433",
+    "git_commit": "7e7b5e24a3cfb2be4e3d70ef06f14e8c5e7e4943",
     "listing_file": "components/Projects.js",
     "preexisting_unrelated_file_hashes": {
       "Codex Image Sep 9, 2026, 04_41_52 AM.png": "30a9f25119ed8555700cfcf33935ba84c82824679159b13400151ae728c9eb8d"
@@ -19,11 +21,13 @@
     "preexisting_unrelated_status_entries": [
       "?? Codex Image Sep 9, 2026, 04_41_52 AM.png"
     ],
-    "production_url": "https://my-portfolio-keerthi.vercel.app/projects/p27_prediction_time_integrity_auditor.html",
+    "preferred_production_url": "https://my-portfolio-keerthi.vercel.app/p27_prediction_time_integrity_auditor/index.html",
+    "preferred_route_verified": true,
+    "production_url": "https://my-portfolio-keerthi.vercel.app/p27_prediction_time_integrity_auditor/index.html",
     "production_verification": "PASS",
     "project7_release_scope_clean": true,
     "project_route": "/projects/p27_prediction_time_integrity_auditor.html",
-    "remote_commit": "3e94c24f6677c3d423078f7df7e7cbe36f280433",
+    "remote_commit": "7e7b5e24a3cfb2be4e3d70ef06f14e8c5e7e4943",
     "repository": "D:\\My-portfolio-Keerthi",
     "repository_fully_clean": false
   },
@@ -36,7 +40,9 @@
     "9.P2.A": "PASS",
     "9.P3": "PASS",
     "9.P3.A": "PASS",
-    "9.P4": "PASS"
+    "9.P4": "PASS",
+    "9.P4.A": "PASS",
+    "9.P4.A.A": "PASS"
   },
   "preview_claims_approved": false,
   "project": "Project 7",
@@ -57,7 +63,9 @@
     "9.P1.A.A": "Python syntax failure before integration.",
     "9.P1.A.A.A": "PASS ? deterministic reference-card cloning.",
     "9.P2.A": "PASS ? Windows npm.cmd resolution.",
-    "9.P3.A": "PASS ? portfolio frozen HTML whitespace exception validated by exact SHA."
+    "9.P3.A": "PASS ? portfolio frozen HTML whitespace exception validated by exact SHA.",
+    "9.P4.A": "Alias artifact creation, lint, build and delta validation passed; initial staging audit incorrectly required an unchanged Projects.js file.",
+    "9.P4.A.A": "PASS ? idempotent staging repair committed only the actual clean-route alias delta, verified preferred and compatibility production routes, and preserved frozen Project 7 artifacts."
   },
   "status": "PASS",
   "step": "Step 9",
