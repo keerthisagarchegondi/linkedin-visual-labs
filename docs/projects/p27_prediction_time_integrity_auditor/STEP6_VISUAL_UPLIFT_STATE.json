@@ -1,7 +1,25 @@
 {
   "automatic_advance_allowed": false,
+  "design_system": {
+    "contract_sha256": "1458c71f6853afddae5a0da7a73870ba3230eee2144daf5189b6ca207f280469",
+    "contract_version": "1.0",
+    "downsample": "LANCZOS",
+    "final_canvas": [
+      1080,
+      1350
+    ],
+    "font_asset_count": 6,
+    "font_fallback_allowed": false,
+    "internal_canvas": [
+      2160,
+      2700
+    ],
+    "python_type_alias_syntax": "PEP695",
+    "status": "PASS",
+    "supersampling": "2x"
+  },
   "historical_step6_release_status": "PASS",
-  "next_allowed_substep": "Project 7 ? Step 6 ? Sub-step 6.19.D",
+  "next_allowed_substep": "Project 7 ? Step 6 ? Sub-step 6.19.E",
   "parent_step": "Step 6",
   "project": "Project 7",
   "replacement_media_status": "NOT_RENDERED",
@@ -9,7 +27,7 @@
   "stop_condition": "Do not modify renderer implementation until the visual contract freeze has been committed and verified.",
   "substeps": {
     "6.19.C": "PASS",
-    "6.19.D": "NOT_STARTED",
+    "6.19.D": "PASS",
     "6.19.E": "NOT_STARTED",
     "6.19.F": "NOT_STARTED",
     "6.19.G": "NOT_STARTED",
