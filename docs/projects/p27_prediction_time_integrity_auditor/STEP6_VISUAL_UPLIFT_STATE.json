@@ -1,0 +1,23 @@
+{
+  "automatic_advance_allowed": false,
+  "historical_step6_release_status": "PASS",
+  "next_allowed_substep": "Project 7 ? Step 6 ? Sub-step 6.19.D",
+  "parent_step": "Step 6",
+  "project": "Project 7",
+  "replacement_media_status": "NOT_RENDERED",
+  "step7_status": "NOT_STARTED",
+  "stop_condition": "Do not modify renderer implementation until the visual contract freeze has been committed and verified.",
+  "substeps": {
+    "6.19.C": "PASS",
+    "6.19.D": "NOT_STARTED",
+    "6.19.E": "NOT_STARTED",
+    "6.19.F": "NOT_STARTED",
+    "6.19.G": "NOT_STARTED",
+    "6.19.H": "NOT_STARTED",
+    "6.19.I": "NOT_STARTED",
+    "6.20": "PASS_HISTORICAL_RELEASE_ONLY"
+  },
+  "track": "visual_uplift",
+  "visual_contract_sha256": "1458c71f6853afddae5a0da7a73870ba3230eee2144daf5189b6ca207f280469",
+  "visual_contract_version": "1.0"
+}

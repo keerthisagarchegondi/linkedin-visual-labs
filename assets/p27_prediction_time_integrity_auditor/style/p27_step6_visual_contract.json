@@ -1,0 +1,716 @@
+{
+  "canvas": {
+    "aspect_ratio": "4:5",
+    "background_color": "#F4F7FB",
+    "baseline_grid_px": 8,
+    "content_height_px": 1260,
+    "content_width_px": 984,
+    "duration_seconds": 45.0,
+    "fps": 30,
+    "height_px": 1350,
+    "module_spacing_scale_px": [
+      4,
+      8,
+      12,
+      16,
+      24,
+      32,
+      40,
+      48,
+      56,
+      64
+    ],
+    "safe_margin_bottom_px": 48,
+    "safe_margin_left_px": 48,
+    "safe_margin_right_px": 48,
+    "safe_margin_top_px": 42,
+    "scene_transition_default_frames": 12,
+    "width_px": 1080
+  },
+  "cards": {
+    "background_color": "#FFFFFF",
+    "border_color": "#DEE6F0",
+    "border_width_px": 1,
+    "padding_x_px": 18,
+    "padding_y_px": 16,
+    "radius_px": 16,
+    "shadow_layers": [
+      {
+        "blur_px": 28,
+        "dx": 0,
+        "dy": 12,
+        "rgba": [
+          14,
+          28,
+          47,
+          20
+        ]
+      },
+      {
+        "blur_px": 10,
+        "dx": 0,
+        "dy": 3,
+        "rgba": [
+          14,
+          28,
+          47,
+          10
+        ]
+      }
+    ],
+    "title_to_value_gap_px": 10,
+    "value_to_note_gap_px": 10
+  },
+  "decorative_details": {
+    "corner_highlight": {
+      "color": "#3C82F6",
+      "enabled": true,
+      "opacity": 0.05,
+      "radius_px": 90
+    },
+    "eyebrow_capsule_enabled": false,
+    "faint_top_rule_under_headline": false,
+    "metric_card_internal_divider": false,
+    "micro_grid_allowed": false,
+    "section_divider_color": "#E6EDF5",
+    "section_divider_width_px": 1
+  },
+  "effects": {
+    "antialiasing": {
+      "final_downsample_filter": "LANCZOS",
+      "internal_height_px": 2700,
+      "internal_width_px": 2160,
+      "render_scale": 2.0,
+      "shape_antialias": true,
+      "stroke_alignment": "center",
+      "text_antialias": true
+    },
+    "blur": {
+      "frosted_blur_used": false,
+      "gaussian_blur_for_glow_px": 14,
+      "gaussian_blur_for_shadow_px": 20
+    },
+    "glow": {
+      "default_color": "#3C82F6",
+      "default_opacity": 0.1,
+      "default_radius_px": 14,
+      "enabled": true,
+      "use_cases": [
+        "headline_accent",
+        "active_node",
+        "active_metric_bar"
+      ]
+    },
+    "gradients": {
+      "connection_line": [
+        "#69A2FF",
+        "#7B6CF6"
+      ],
+      "header_pill": [
+        "#F9D28B",
+        "#F6E2B7"
+      ],
+      "headline_accent_allowed": false,
+      "progress_fill": [
+        "#FFFFFF",
+        "#DDE8F8"
+      ]
+    },
+    "shadows": {
+      "card_shadow_strength": "soft",
+      "headline_shadow": {
+        "enabled": false
+      },
+      "metric_badge_shadow": {
+        "blur_px": 10,
+        "dx": 0,
+        "dy": 4,
+        "enabled": true,
+        "rgba": [
+          14,
+          28,
+          47,
+          18
+        ]
+      }
+    }
+  },
+  "export_contract": {
+    "contact_sheet": {
+      "padding_px": 20,
+      "path": "assets/p27_prediction_time_integrity_auditor/video/project7_prediction_time_integrity_contact_sheet.png",
+      "thumb_columns": 5,
+      "thumb_height_px": 225,
+      "thumb_rows": 2,
+      "thumb_width_px": 180
+    },
+    "keyframes": {
+      "count": 10,
+      "naming_pattern": "scene_{index:02d}_{scene_id}.png",
+      "path_dir": "assets/p27_prediction_time_integrity_auditor/video/keyframes/"
+    },
+    "primary_video": {
+      "codec": "libx264",
+      "duration_range_s": [
+        44.0,
+        46.5
+      ],
+      "fps": 30,
+      "height_px": 1350,
+      "path": "assets/p27_prediction_time_integrity_auditor/video/project7_prediction_time_integrity.mp4",
+      "pixel_format": "yuv420p",
+      "target_duration_s": 45.0,
+      "width_px": 1080
+    },
+    "web_video": {
+      "codec": "libx264",
+      "fps": 30,
+      "height_px": 1350,
+      "path": "assets/p27_prediction_time_integrity_auditor/video/project7_prediction_time_integrity_web.mp4",
+      "pixel_format": "yuv420p",
+      "width_px": 1080
+    }
+  },
+  "footer_progress": {
+    "background_color": "#0F2033",
+    "height_px": 28,
+    "play_icon": {
+      "color": "#FFFFFF",
+      "size_px": 12,
+      "x_px": 18,
+      "y_px": 1312
+    },
+    "progress_track": {
+      "fill_color": "#FFFFFF",
+      "height_px": 2,
+      "knob_radius_px": 4,
+      "track_color": "#5D6A7B",
+      "width_px": 760,
+      "x_px": 48,
+      "y_px": 1318
+    },
+    "timestamp": {
+      "anchor": "right",
+      "color": "#D8E0EA",
+      "font_role": "timestamp",
+      "format": "MM:SS / 00:45",
+      "x_px": 1030,
+      "y_px": 1312
+    },
+    "width_px": 1080,
+    "x_px": 0,
+    "y_px": 1304
+  },
+  "grid": {
+    "card_gap_px": 16,
+    "column_gap_px": 24,
+    "column_width_px": 480,
+    "columns": 2,
+    "content_left_x_px": 48,
+    "content_top_y_px": 116,
+    "section_gap_px": 24
+  },
+  "header": {
+    "background_color": "#0F2033",
+    "bottom_border_color": "#13283F",
+    "bottom_border_width_px": 1,
+    "height_px": 84,
+    "left_project_kicker": {
+      "color": "#B9C6D8",
+      "font_role": "header_kicker",
+      "text": "PROJECT 7",
+      "x_px": 24,
+      "y_px": 18
+    },
+    "left_title": {
+      "color": "#FFFFFF",
+      "font_role": "header_title",
+      "text": "Prediction-Time Integrity Auditor",
+      "x_px": 24,
+      "y_px": 36
+    },
+    "right_pill": {
+      "border_color": "#E8C277",
+      "border_width_px": 1,
+      "fill_gradient": [
+        "#F9D28B",
+        "#F6E2B7"
+      ],
+      "font_role": "header_pill",
+      "height_px": 28,
+      "radius_px": 14,
+      "text": "MULTIMEDIA PREVIEW",
+      "text_color": "#6D4300",
+      "width_px": 222,
+      "x_px": 834,
+      "y_px": 16
+    },
+    "width_px": 1080,
+    "x_px": 0,
+    "y_px": 0
+  },
+  "icons_and_shapes": {
+    "block_icon": {
+      "fill": "#FFECEC",
+      "stroke": "#E45858"
+    },
+    "check_icon": {
+      "fill": "#EAF8F0",
+      "stroke": "#1F9E62"
+    },
+    "connector_width_px": 3,
+    "corner_radius_px": 10,
+    "info_icon": {
+      "fill": "#EAF3FF",
+      "stroke": "#3C82F6"
+    },
+    "node_radius_px": 7,
+    "stroke_color_default": "#3C82F6",
+    "stroke_width_px": 2,
+    "style": "rounded_minimal_outline",
+    "warn_icon": {
+      "fill": "#FFF4E5",
+      "stroke": "#CC7A00"
+    }
+  },
+  "meta": {
+    "authoritative_purpose": "Deterministic design and motion contract for the Step 6 research figures, 45-second video, 10 keyframes, and contact sheet.",
+    "change_policy": "Do not alter typography, spacing, palette, card style, motion, scene composition, or export behavior without explicit approval.",
+    "contract_version": "1.0",
+    "fidelity_goal": "Match the approved preview style as closely as possible using deterministic Python rendering.",
+    "historical_release_policy": "The previously completed Step 6 release remains a historical PASS. This contract governs the replacement visual-uplift render.",
+    "project_id": "p27_prediction_time_integrity_auditor",
+    "step_id": "project7_step6_visual_contract_freeze_v1"
+  },
+  "palette": {
+    "amber_100": "#FFF4E5",
+    "amber_200": "#F8D7A5",
+    "amber_600": "#CC7A00",
+    "bg": "#F4F7FB",
+    "blue_100": "#EAF3FF",
+    "blue_400": "#69A2FF",
+    "blue_500": "#3C82F6",
+    "border_light": "#DEE6F0",
+    "border_mid": "#CBD6E3",
+    "green_100": "#EAF8F0",
+    "green_200": "#CDEFD9",
+    "green_600": "#1F9E62",
+    "navy_700": "#274B70",
+    "navy_800": "#18314B",
+    "navy_900": "#0F2033",
+    "purple_100": "#F0EDFF",
+    "purple_500": "#7B6CF6",
+    "red_100": "#FFECEC",
+    "red_200": "#F7C1C1",
+    "red_600": "#E45858",
+    "shadow": "#0E1C2F",
+    "text_muted": "#78889B",
+    "text_primary": "#102539",
+    "text_secondary": "#4B5F73",
+    "white": "#FFFFFF"
+  },
+  "scene_sequence": [
+    {
+      "accent_color": "#3C82F6",
+      "accent_line_index": 1,
+      "data_slots": [
+        "validation_roc_auc",
+        "validation_pr_auc",
+        "release_gate_recommendation",
+        "production_violation_summary"
+      ],
+      "duration_s": 4.5,
+      "headline": [
+        "The model looked",
+        "production-ready."
+      ],
+      "scene_id": "S1",
+      "template": "hero_metrics"
+    },
+    {
+      "accent_color": "#E45858",
+      "accent_line_index": 1,
+      "data_slots": [
+        "violating_feature_name",
+        "availability_class",
+        "model_outcome_relation",
+        "violation_message"
+      ],
+      "duration_s": 4.0,
+      "headline": [
+        "It had already seen",
+        "the answer."
+      ],
+      "scene_id": "S2",
+      "template": "single_violation_card"
+    },
+    {
+      "accent_color": null,
+      "accent_line_index": null,
+      "data_slots": [
+        "feature_contract_rows",
+        "pass_warn_block_counts"
+      ],
+      "duration_s": 4.0,
+      "headline": [
+        "Step 1: define the prediction moment"
+      ],
+      "scene_id": "S3",
+      "template": "feature_contract_checklist"
+    },
+    {
+      "accent_color": "#E45858",
+      "accent_line_index": 1,
+      "data_slots": [
+        "leakage_case_ids",
+        "leakage_case_gate_statuses"
+      ],
+      "duration_s": 4.5,
+      "headline": [
+        "Five ways a model can",
+        "accidentally see the future"
+      ],
+      "scene_id": "S4",
+      "template": "five_leakage_cases"
+    },
+    {
+      "accent_color": null,
+      "accent_line_index": null,
+      "data_slots": [
+        "random_split_roc_auc",
+        "chronological_holdout_roc_auc",
+        "split_delta"
+      ],
+      "duration_s": 4.0,
+      "headline": [
+        "The split changed the answer."
+      ],
+      "scene_id": "S5",
+      "template": "split_comparison"
+    },
+    {
+      "accent_color": "#3C82F6",
+      "accent_line_index": 1,
+      "data_slots": [
+        "headline_metric_before",
+        "headline_metric_after",
+        "leakage_inflation_index"
+      ],
+      "duration_s": 4.0,
+      "headline": [
+        "Honest evaluation changed",
+        "the headline metric."
+      ],
+      "scene_id": "S6",
+      "template": "headline_metric_rewrite"
+    },
+    {
+      "accent_color": "#E45858",
+      "accent_line_index": 1,
+      "data_slots": [
+        "expected_campaign_lifts_per_1000",
+        "supported_safe_test_lifts_per_1000",
+        "planning_overstatement_delta"
+      ],
+      "duration_s": 4.5,
+      "headline": [
+        "The metric error became",
+        "a campaign-planning error."
+      ],
+      "scene_id": "S7",
+      "template": "business_impact_compare"
+    },
+    {
+      "accent_color": "#E45858",
+      "accent_line_index": 1,
+      "data_slots": [
+        "gate_checks",
+        "machine_readable_decision_summary"
+      ],
+      "duration_s": 4.5,
+      "headline": [
+        "The fix was a release gate,",
+        "not one deleted column."
+      ],
+      "scene_id": "S8",
+      "template": "gate_not_patch"
+    },
+    {
+      "accent_color": null,
+      "accent_line_index": null,
+      "data_slots": [
+        "final_gate_status",
+        "critical_finding",
+        "required_corrective_action"
+      ],
+      "duration_s": 6.0,
+      "headline": [
+        "Automated deployment decision"
+      ],
+      "scene_id": "S9",
+      "template": "deployment_decision_dark_panel"
+    },
+    {
+      "accent_color": "#3C82F6",
+      "accent_line_index": 1,
+      "data_slots": [
+        "release_package_components",
+        "publication_ready_summary"
+      ],
+      "duration_s": 5.0,
+      "headline": [
+        "Accuracy is not evidence",
+        "until evaluation matches deployment."
+      ],
+      "scene_id": "S10",
+      "template": "closing_recap"
+    }
+  ],
+  "scene_style_rules": {
+    "default_card_height_px": 166,
+    "headline_anchor_x_px": 48,
+    "headline_anchor_y_px": 126,
+    "keep_header_and_footer_constant": true,
+    "main_card_band_top_y_px": 318,
+    "single_panel_centering": true,
+    "subhead_anchor_y_offset_px": 86,
+    "support_text_max_width_px": 760,
+    "two_card_compare_gap_px": 20
+  },
+  "status_pills": {
+    "block": {
+      "border": "#F7C1C1",
+      "fill": "#FFECEC",
+      "text": "#E45858"
+    },
+    "border_width_px": 1,
+    "height_px": 24,
+    "info": {
+      "border": "#CFE0FF",
+      "fill": "#EAF3FF",
+      "text": "#3C82F6"
+    },
+    "padding_x_px": 10,
+    "pass": {
+      "border": "#CDEFD9",
+      "fill": "#EAF8F0",
+      "text": "#1F9E62"
+    },
+    "radius_px": 12,
+    "warn": {
+      "border": "#F8D7A5",
+      "fill": "#FFF4E5",
+      "text": "#CC7A00"
+    }
+  },
+  "template_layouts": {
+    "business_impact_compare": {
+      "compare_cards_y_px": 320,
+      "headline_y_px": 126,
+      "impact_banner_y_px": 558
+    },
+    "closing_recap": {
+      "footer_cta_y_px": 792,
+      "headline_y_px": 126,
+      "summary_panel_h_px": 420,
+      "summary_panel_y_px": 322
+    },
+    "deployment_decision_dark_panel": {
+      "decision_panel_bg": "#0F2033",
+      "decision_panel_h_px": 560,
+      "decision_panel_y_px": 284,
+      "headline_y_px": 126
+    },
+    "feature_contract_checklist": {
+      "checklist_y_px": 300,
+      "headline_y_px": 126,
+      "row_gap_px": 12,
+      "row_h_px": 56
+    },
+    "five_leakage_cases": {
+      "headline_y_px": 126,
+      "list_y_px": 300,
+      "row_gap_px": 12,
+      "row_h_px": 58
+    },
+    "gate_not_patch": {
+      "gate_diagram_h_px": 360,
+      "gate_diagram_y_px": 318,
+      "headline_y_px": 126
+    },
+    "headline_metric_rewrite": {
+      "banner_y_px": 560,
+      "compare_cards_y_px": 320,
+      "headline_y_px": 126
+    },
+    "hero_metrics": {
+      "headline_y_px": 126,
+      "hero_card_h_px": 170,
+      "hero_card_y_px": 320,
+      "metric_card_gap_px": 14,
+      "metric_card_width_px": 230,
+      "subhead_y_px": 234
+    },
+    "single_violation_card": {
+      "explanatory_copy_y_px": 560,
+      "headline_y_px": 126,
+      "hero_panel_h_px": 178,
+      "hero_panel_y_px": 322
+    },
+    "split_comparison": {
+      "card_w_px": 228,
+      "compare_cards_y_px": 320,
+      "gap_px": 24,
+      "headline_y_px": 126
+    }
+  },
+  "text_wrapping": {
+    "accent_span_limit_per_headline": 1,
+    "algorithm": "balanced_greedy_word_wrap",
+    "allow_emphasis_span_reflow": true,
+    "avoid_single_word_last_line": true,
+    "ellipsis_allowed": false,
+    "headline_manual_breaks_allowed": true,
+    "hyphenation": false,
+    "min_words_on_last_line": 2
+  },
+  "typography": {
+    "body": {
+      "font_file": "assets/shared/fonts/Inter-Medium.ttf",
+      "line_height_px": 24,
+      "size_px": 16,
+      "tracking_em": -0.005
+    },
+    "body_bold": {
+      "font_file": "assets/shared/fonts/Inter-Bold.ttf",
+      "line_height_px": 24,
+      "size_px": 16,
+      "tracking_em": -0.01
+    },
+    "card_title": {
+      "font_file": "assets/shared/fonts/Inter-Bold.ttf",
+      "line_height_px": 18,
+      "size_px": 14,
+      "tracking_em": -0.01
+    },
+    "card_value": {
+      "font_file": "assets/shared/fonts/InterTight-ExtraBold.ttf",
+      "line_height_px": 36,
+      "size_px": 34,
+      "tracking_em": -0.03
+    },
+    "card_value_small": {
+      "font_file": "assets/shared/fonts/InterTight-Bold.ttf",
+      "line_height_px": 28,
+      "size_px": 24,
+      "tracking_em": -0.02
+    },
+    "font_files": {
+      "body": "assets/shared/fonts/Inter-Medium.ttf",
+      "body_bold": "assets/shared/fonts/Inter-Bold.ttf",
+      "body_semibold": "assets/shared/fonts/Inter-SemiBold.ttf",
+      "headline": "assets/shared/fonts/InterTight-Bold.ttf",
+      "headline_heavy": "assets/shared/fonts/InterTight-ExtraBold.ttf",
+      "mono": "assets/shared/fonts/JetBrainsMono-SemiBold.ttf"
+    },
+    "header_kicker": {
+      "font_file": "assets/shared/fonts/Inter-SemiBold.ttf",
+      "line_height_px": 12,
+      "size_px": 10,
+      "tracking_em": 0.12,
+      "uppercase": true
+    },
+    "header_pill": {
+      "font_file": "assets/shared/fonts/Inter-Bold.ttf",
+      "line_height_px": 12,
+      "size_px": 10,
+      "tracking_em": 0.08,
+      "uppercase": true
+    },
+    "header_title": {
+      "font_file": "assets/shared/fonts/Inter-Bold.ttf",
+      "line_height_px": 22,
+      "size_px": 20,
+      "tracking_em": -0.01
+    },
+    "hero_headline": {
+      "font_file": "assets/shared/fonts/InterTight-Bold.ttf",
+      "line_height_px": 58,
+      "max_lines": 2,
+      "max_width_px": 720,
+      "size_px": 54,
+      "tracking_em": -0.035
+    },
+    "hero_headline_accent": {
+      "font_file": "assets/shared/fonts/InterTight-ExtraBold.ttf",
+      "line_height_px": 58,
+      "size_px": 54,
+      "tracking_em": -0.04
+    },
+    "micro": {
+      "font_file": "assets/shared/fonts/Inter-SemiBold.ttf",
+      "line_height_px": 14,
+      "size_px": 11,
+      "tracking_em": 0.01
+    },
+    "status_label": {
+      "font_file": "assets/shared/fonts/Inter-Bold.ttf",
+      "line_height_px": 12,
+      "size_px": 11,
+      "tracking_em": 0.04,
+      "uppercase": true
+    },
+    "subhead": {
+      "font_file": "assets/shared/fonts/Inter-Medium.ttf",
+      "line_height_px": 26,
+      "max_lines": 4,
+      "max_width_px": 720,
+      "size_px": 18,
+      "tracking_em": -0.005
+    },
+    "timestamp": {
+      "font_file": "assets/shared/fonts/JetBrainsMono-SemiBold.ttf",
+      "line_height_px": 12,
+      "size_px": 10,
+      "tracking_em": 0.02
+    }
+  },
+  "visual_motifs": {
+    "metric_bars": {
+      "bar_background": "#EAF0F6",
+      "bar_fill_leak": "#E45858",
+      "bar_fill_safe": "#3C82F6",
+      "bar_height_px": 18,
+      "corner_radius_px": 8
+    },
+    "neural_network_flow": {
+      "active_node_glow_radius_px": 16,
+      "edge_gradient": [
+        "#69A2FF",
+        "#7B6CF6"
+      ],
+      "edge_width_px": 3,
+      "node_radius_px": 7,
+      "particle_size_px": 5,
+      "particle_speed_px_per_frame": 5,
+      "use_for_scenes": [
+        "S2",
+        "S8"
+      ]
+    },
+    "release_gate_conveyor": {
+      "blocked_color": "#E45858",
+      "connector_width_px": 42,
+      "lane_height_px": 18,
+      "safe_color": "#1F9E62",
+      "station_height_px": 54,
+      "station_width_px": 160,
+      "token_height_px": 16,
+      "token_width_px": 24,
+      "use_for_scenes": [
+        "S8",
+        "S9"
+      ]
+    }
+  }
+}
