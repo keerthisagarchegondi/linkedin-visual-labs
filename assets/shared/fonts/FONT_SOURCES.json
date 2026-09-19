@@ -1,0 +1,153 @@
+{
+  "instances": [
+    {
+      "axes": {
+        "opsz": 14.0,
+        "wght": 500.0
+      },
+      "families": [
+        "Inter"
+      ],
+      "family_key": "inter",
+      "output": "assets/shared/fonts/Inter-Medium.ttf",
+      "postscript_names": [
+        "Inter-Regular"
+      ],
+      "sha256": "7b7c4e2f17e9bf7a26bf53bb76bc313c52d6b78f97a51bb720a39bd506c346f9",
+      "subfamilies": [
+        "Regular"
+      ],
+      "weight_class": 500
+    },
+    {
+      "axes": {
+        "opsz": 14.0,
+        "wght": 600.0
+      },
+      "families": [
+        "Inter"
+      ],
+      "family_key": "inter",
+      "output": "assets/shared/fonts/Inter-SemiBold.ttf",
+      "postscript_names": [
+        "Inter-Regular"
+      ],
+      "sha256": "dad6bf946633a13ba1b76dc380c68c9d75db6c0024537069a70d3defd1ae2d22",
+      "subfamilies": [
+        "Regular"
+      ],
+      "weight_class": 600
+    },
+    {
+      "axes": {
+        "opsz": 14.0,
+        "wght": 700.0
+      },
+      "families": [
+        "Inter"
+      ],
+      "family_key": "inter",
+      "output": "assets/shared/fonts/Inter-Bold.ttf",
+      "postscript_names": [
+        "Inter-Regular"
+      ],
+      "sha256": "5a6de09f060ce8853e62013f056722884340aeb9ab155e22debb79a986739bf5",
+      "subfamilies": [
+        "Regular"
+      ],
+      "weight_class": 700
+    },
+    {
+      "axes": {
+        "wght": 700.0
+      },
+      "families": [
+        "Inter Tight"
+      ],
+      "family_key": "inter_tight",
+      "output": "assets/shared/fonts/InterTight-Bold.ttf",
+      "postscript_names": [
+        "InterTight-Regular"
+      ],
+      "sha256": "92dcde1d1c20ec44f9b4ec44afb9a3f42258cab1b0c2f64f358f662cd1e98183",
+      "subfamilies": [
+        "Regular"
+      ],
+      "weight_class": 700
+    },
+    {
+      "axes": {
+        "wght": 800.0
+      },
+      "families": [
+        "Inter Tight"
+      ],
+      "family_key": "inter_tight",
+      "output": "assets/shared/fonts/InterTight-ExtraBold.ttf",
+      "postscript_names": [
+        "InterTight-Regular"
+      ],
+      "sha256": "70ca4ee62e2e8f427b9960d3d623d7fc5465781158b16b29b8957f71a46e274f",
+      "subfamilies": [
+        "Regular"
+      ],
+      "weight_class": 800
+    },
+    {
+      "axes": {
+        "wght": 600.0
+      },
+      "families": [
+        "JetBrains Mono"
+      ],
+      "family_key": "jetbrains_mono",
+      "output": "assets/shared/fonts/JetBrainsMono-SemiBold.ttf",
+      "postscript_names": [
+        "JetBrainsMono-Regular"
+      ],
+      "sha256": "a3bf30efbac3b9c77f87f93fc5f519e9b491f48335b227dfcad543e6188912cf",
+      "subfamilies": [
+        "Regular"
+      ],
+      "weight_class": 600
+    }
+  ],
+  "inter_optical_size_freeze": 14.0,
+  "licenses": [
+    {
+      "family_key": "inter",
+      "path": "assets/shared/fonts/licenses/Inter-OFL.txt",
+      "sha256": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57"
+    },
+    {
+      "family_key": "inter_tight",
+      "path": "assets/shared/fonts/licenses/InterTight-OFL.txt",
+      "sha256": "50240ab035cf1b6b3307940235481d515c4b6de3ab1fa843dbe59e7892cb9d58"
+    },
+    {
+      "family_key": "jetbrains_mono",
+      "path": "assets/shared/fonts/licenses/JetBrainsMono-OFL.txt",
+      "sha256": "b2fe5e8987594e9ffd1d2ca52a2f5d73eb8335243893c5d6254b5ad69269591d"
+    }
+  ],
+  "purpose": "Exact deterministic font assets for Project 7 Step 6 Visual Contract V1.0.",
+  "schema_version": 1,
+  "source_policy": "Official Google Fonts repository variable fonts instantiated to fixed static axis values using fontTools.",
+  "sources": {
+    "inter": {
+      "font_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/inter/Inter%5Bopsz%2Cwght%5D.ttf",
+      "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/inter/OFL.txt",
+      "variable_filename": "Inter[opsz,wght].ttf"
+    },
+    "inter_tight": {
+      "font_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/intertight/InterTight%5Bwght%5D.ttf",
+      "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/intertight/OFL.txt",
+      "variable_filename": "InterTight[wght].ttf"
+    },
+    "jetbrains_mono": {
+      "font_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/jetbrainsmono/JetBrainsMono%5Bwght%5D.ttf",
+      "license_url": "https://raw.githubusercontent.com/google/fonts/main/ofl/jetbrainsmono/OFL.txt",
+      "variable_filename": "JetBrainsMono[wght].ttf"
+    }
+  }
+}
