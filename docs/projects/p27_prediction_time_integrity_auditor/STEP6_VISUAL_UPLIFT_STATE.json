@@ -19,7 +19,7 @@
     "supersampling": "2x"
   },
   "historical_step6_release_status": "PASS",
-  "next_allowed_substep": "Project 7 ? Step 6 ? Sub-step 6.19.F",
+  "next_allowed_substep": "Project 7 ? Step 6 ? Sub-step 6.19.G",
   "parent_step": "Step 6",
   "project": "Project 7",
   "replacement_media_status": "NOT_RENDERED",
@@ -47,13 +47,89 @@
     "6.19.C": "PASS",
     "6.19.D": "PASS",
     "6.19.E": "PASS",
-    "6.19.F": "NOT_STARTED",
+    "6.19.F": "PASS",
     "6.19.G": "NOT_STARTED",
     "6.19.H": "NOT_STARTED",
     "6.19.I": "NOT_STARTED",
     "6.20": "PASS_HISTORICAL_RELEASE_ONLY"
   },
   "track": "visual_uplift",
+  "video_renderer_uplift": {
+    "business_logic_recomputed": false,
+    "codec": "libx264",
+    "design_system_integrated": true,
+    "duration_seconds": 45.0,
+    "encoder_infrastructure_preserved": true,
+    "final_canvas": [
+      1080,
+      1350
+    ],
+    "fps": 30,
+    "historical_keyframe_contract_preserved_until_6_19_g": true,
+    "internal_canvas": [
+      2160,
+      2700
+    ],
+    "pixel_format": "yuv420p",
+    "preview_metrics_used": false,
+    "primary_crf": 18,
+    "production_media_rerendered": false,
+    "scene_count": 10,
+    "scene_schedule": [
+      [
+        "S1",
+        0.0,
+        4.5
+      ],
+      [
+        "S2",
+        4.5,
+        8.5
+      ],
+      [
+        "S3",
+        8.5,
+        12.5
+      ],
+      [
+        "S4",
+        12.5,
+        17.0
+      ],
+      [
+        "S5",
+        17.0,
+        21.0
+      ],
+      [
+        "S6",
+        21.0,
+        25.0
+      ],
+      [
+        "S7",
+        25.0,
+        29.5
+      ],
+      [
+        "S8",
+        29.5,
+        34.0
+      ],
+      [
+        "S9",
+        34.0,
+        40.0
+      ],
+      [
+        "S10",
+        40.0,
+        45.0
+      ]
+    ],
+    "status": "PASS",
+    "web_crf": 24
+  },
   "visual_contract_sha256": "1458c71f6853afddae5a0da7a73870ba3230eee2144daf5189b6ca207f280469",
   "visual_contract_version": "1.0"
 }

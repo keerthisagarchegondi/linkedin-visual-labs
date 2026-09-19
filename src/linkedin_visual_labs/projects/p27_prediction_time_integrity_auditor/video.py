@@ -11,7 +11,27 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Final
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFilter, ImageFont
+
+from linkedin_visual_labs.projects.p27_prediction_time_integrity_auditor.design_tokens import (
+    canvas_contract,
+    hex_to_rgba,
+    load_visual_contract,
+    palette_color,
+    scale_box,
+    scale_value,
+)
+from linkedin_visual_labs.projects.p27_prediction_time_integrity_auditor.text_layout import (
+    balanced_greedy_wrap,
+    draw_tracked_text,
+)
+from linkedin_visual_labs.projects.p27_prediction_time_integrity_auditor.visual_primitives import (
+    draw_card,
+    draw_neural_edge,
+    draw_neural_node,
+    draw_status_pill,
+    linear_gradient,
+)
 
 VIDEO_WIDTH: Final = 1080
 VIDEO_HEIGHT: Final = 1350
@@ -2019,12 +2039,1852 @@ def _scene_gate(
     )
 
 
+# =====================================================================
+# VISUAL UPLIFT V1.0
+# Frozen ten-scene renderer.
+#
+# Encoder / probe / output machinery below this section is intentionally
+# preserved from the historical Step 6 release.
+# =====================================================================
+
+UPLIFT_SCENE_SCHEDULE: Final[
+    tuple[
+        tuple[
+            str,
+            float,
+            float,
+        ],
+        ...,
+    ]
+] = (
+    ("S1", 0.0, 4.5),
+    ("S2", 4.5, 8.5),
+    ("S3", 8.5, 12.5),
+    ("S4", 12.5, 17.0),
+    ("S5", 17.0, 21.0),
+    ("S6", 21.0, 25.0),
+    ("S7", 25.0, 29.5),
+    ("S8", 29.5, 34.0),
+    ("S9", 34.0, 40.0),
+    ("S10", 40.0, 45.0),
+)
+
+
+_UPLIFT_MODEL_LABELS: Final = {
+    "histogram_gradient_boosting": ("Histogram Gradient Boosting"),
+    "logistic_regression": ("Logistic Regression"),
+}
+
+
+_UPLIFT_CASE_LABELS: Final = {
+    "S1_CURRENT_CALL_DURATION": ("Current-call duration"),
+    "S2_RANDOM_TEMPORAL_MIXING": ("Random temporal mixing"),
+    "S3_GLOBAL_SUPERVISED_TRANSFORMATION": ("Global supervised transform"),
+    "S4_DUPLICATE_OVERLAP": ("Duplicate overlap"),
+    "S5_POST_OUTCOME_CONFIRMATION_PROXY": ("Post-outcome proxy"),
+}
+
+
+def uplift_scene_id_for_time(
+    t: float,
+) -> str:
+    """Return frozen V1.0 scene ID for a video timestamp."""
+
+    clamped = max(
+        0.0,
+        min(
+            VIDEO_DURATION_SECONDS - 1.0 / VIDEO_FPS,
+            t,
+        ),
+    )
+
+    for (
+        scene_id,
+        start,
+        end,
+    ) in UPLIFT_SCENE_SCHEDULE:
+        if start <= clamped < end:
+            return scene_id
+
+    return "S10"
+
+
+def _uplift_scene_window(
+    t: float,
+) -> tuple[
+    str,
+    float,
+    float,
+    float,
+]:
+    """Return scene ID, start, end and local eased progress."""
+
+    scene_id = uplift_scene_id_for_time(t)
+
+    for (
+        candidate,
+        start,
+        end,
+    ) in UPLIFT_SCENE_SCHEDULE:
+        if candidate == scene_id:
+            duration = end - start
+
+            local = max(
+                0.0,
+                min(
+                    1.0,
+                    (t - start) / duration,
+                ),
+            )
+
+            return (
+                scene_id,
+                start,
+                end,
+                _ease(local),
+            )
+
+    raise RuntimeError(f"Unknown uplift scene: {scene_id}")
+
+
+def _uplift_canvas() -> Image.Image:
+    """Return supersampled frozen Visual Contract canvas."""
+
+    contract = canvas_contract()
+
+    return Image.new(
+        "RGBA",
+        (
+            contract.internal_width_px,
+            contract.internal_height_px,
+        ),
+        hex_to_rgba(palette_color("bg")),
+    )
+
+
+def _uplift_rect(
+    image: Image.Image,
+    box: tuple[
+        int | float,
+        int | float,
+        int | float,
+        int | float,
+    ],
+    *,
+    fill: str,
+    radius: int = 0,
+    outline: str | None = None,
+    width: int = 1,
+) -> None:
+    draw = ImageDraw.Draw(
+        image,
+        "RGBA",
+    )
+
+    scaled = scale_box(box)
+
+    if radius > 0:
+        draw.rounded_rectangle(
+            scaled,
+            radius=scale_value(radius),
+            fill=hex_to_rgba(fill),
+            outline=(hex_to_rgba(outline) if outline else None),
+            width=scale_value(width),
+        )
+    else:
+        draw.rectangle(
+            scaled,
+            fill=hex_to_rgba(fill),
+            outline=(hex_to_rgba(outline) if outline else None),
+            width=scale_value(width),
+        )
+
+
+def _uplift_text(
+    image: Image.Image,
+    x: int | float,
+    y: int | float,
+    text: str,
+    *,
+    role: str,
+    color: str,
+    anchor: str = "la",
+) -> None:
+    draw = ImageDraw.Draw(
+        image,
+        "RGBA",
+    )
+
+    draw_tracked_text(
+        draw,
+        (
+            scale_value(x),
+            scale_value(y),
+        ),
+        text,
+        role=role,
+        fill=color,
+        anchor=anchor,
+        supersampled=True,
+    )
+
+
+def _uplift_wrapped(
+    image: Image.Image,
+    x: int,
+    y: int,
+    text: str,
+    *,
+    role: str,
+    color: str,
+    max_width: int,
+    max_lines: int,
+    line_height: int,
+) -> int:
+    lines = balanced_greedy_wrap(
+        text,
+        role=role,
+        max_width_px=max_width,
+        max_lines=max_lines,
+        min_words_on_last_line=2,
+    )
+
+    cursor = y
+
+    for line in lines:
+        _uplift_text(
+            image,
+            x,
+            cursor,
+            line,
+            role=role,
+            color=color,
+        )
+
+        cursor += line_height
+
+    return cursor
+
+
+def _uplift_shadow_card(
+    image: Image.Image,
+    box: tuple[
+        int,
+        int,
+        int,
+        int,
+    ],
+    *,
+    fill: str = "#FFFFFF",
+    border: str = "#DEE6F0",
+) -> None:
+    x1, y1, x2, y2 = scale_box(box)
+
+    shadow = Image.new(
+        "RGBA",
+        image.size,
+        (
+            0,
+            0,
+            0,
+            0,
+        ),
+    )
+
+    draw = ImageDraw.Draw(
+        shadow,
+        "RGBA",
+    )
+
+    draw.rounded_rectangle(
+        (
+            x1,
+            y1 + scale_value(8),
+            x2,
+            y2 + scale_value(8),
+        ),
+        radius=scale_value(16),
+        fill=(
+            14,
+            28,
+            47,
+            20,
+        ),
+    )
+
+    shadow = shadow.filter(ImageFilter.GaussianBlur(scale_value(14)))
+
+    image.alpha_composite(shadow)
+
+    draw_card(
+        image,
+        box,
+        fill=fill,
+        border=border,
+        radius_px=16,
+    )
+
+
+def _uplift_header(
+    image: Image.Image,
+) -> None:
+    contract = load_visual_contract()
+
+    header = contract["header"]
+
+    _uplift_rect(
+        image,
+        (
+            0,
+            0,
+            1080,
+            84,
+        ),
+        fill=str(header["background_color"]),
+    )
+
+    _uplift_text(
+        image,
+        24,
+        18,
+        str(header["left_project_kicker"]["text"]),
+        role="header_kicker",
+        color=str(header["left_project_kicker"]["color"]),
+    )
+
+    _uplift_text(
+        image,
+        24,
+        36,
+        str(header["left_title"]["text"]),
+        role="header_title",
+        color=str(header["left_title"]["color"]),
+    )
+
+    pill = header["right_pill"]
+
+    x = int(pill["x_px"])
+
+    y = int(pill["y_px"])
+
+    width = int(pill["width_px"])
+
+    height = int(pill["height_px"])
+
+    gradient = linear_gradient(
+        (
+            scale_value(width),
+            scale_value(height),
+        ),
+        hex_to_rgba(str(pill["fill_gradient"][0])),
+        hex_to_rgba(str(pill["fill_gradient"][1])),
+    )
+
+    mask = Image.new(
+        "L",
+        gradient.size,
+        0,
+    )
+
+    mask_draw = ImageDraw.Draw(mask)
+
+    mask_draw.rounded_rectangle(
+        (
+            0,
+            0,
+            gradient.size[0] - 1,
+            gradient.size[1] - 1,
+        ),
+        radius=scale_value(14),
+        fill=255,
+    )
+
+    image.paste(
+        gradient,
+        (
+            scale_value(x),
+            scale_value(y),
+        ),
+        mask,
+    )
+
+    _uplift_text(
+        image,
+        x + width / 2,
+        y + 6,
+        str(pill["text"]),
+        role="header_pill",
+        color=str(pill["text_color"]),
+        anchor="ma",
+    )
+
+
+def _uplift_footer(
+    image: Image.Image,
+    t: float,
+) -> None:
+    contract = load_visual_contract()
+
+    footer = contract["footer_progress"]
+
+    _uplift_rect(
+        image,
+        (
+            0,
+            1304,
+            1080,
+            1332,
+        ),
+        fill=str(footer["background_color"]),
+    )
+
+    progress = max(
+        0.0,
+        min(
+            1.0,
+            t / VIDEO_DURATION_SECONDS,
+        ),
+    )
+
+    track = footer["progress_track"]
+
+    x = float(track["x_px"])
+
+    y = float(track["y_px"])
+
+    width = float(track["width_px"])
+
+    height = float(track["height_px"])
+
+    _uplift_rect(
+        image,
+        (
+            x,
+            y,
+            x + width,
+            y + height,
+        ),
+        fill=str(track["track_color"]),
+    )
+
+    _uplift_rect(
+        image,
+        (
+            x,
+            y,
+            x + width * progress,
+            y + height,
+        ),
+        fill=str(track["fill_color"]),
+    )
+
+    knob_x = x + width * progress
+
+    knob_y = y + height / 2
+
+    knob = scale_value(int(track["knob_radius_px"]))
+
+    draw = ImageDraw.Draw(
+        image,
+        "RGBA",
+    )
+
+    draw.ellipse(
+        (
+            scale_value(knob_x) - knob,
+            scale_value(knob_y) - knob,
+            scale_value(knob_x) + knob,
+            scale_value(knob_y) + knob,
+        ),
+        fill=hex_to_rgba(str(track["fill_color"])),
+    )
+
+    seconds = max(
+        0,
+        min(
+            44,
+            int(t),
+        ),
+    )
+
+    timestamp = f"00:{seconds:02d} / 00:45"
+
+    _uplift_text(
+        image,
+        1030,
+        1310,
+        timestamp,
+        role="timestamp",
+        color="#D8E0EA",
+        anchor="ra",
+    )
+
+
+def _uplift_headline(
+    image: Image.Image,
+    scene_id: str,
+) -> int:
+    contract = load_visual_contract()
+
+    scene = next(item for item in contract["scene_sequence"] if item["scene_id"] == scene_id)
+
+    lines = tuple(str(value) for value in scene["headline"])
+
+    accent_index = scene.get("accent_line_index")
+
+    accent = scene.get("accent_color")
+
+    y = 124
+
+    for index, line in enumerate(lines):
+        color = (
+            str(accent)
+            if (accent is not None and accent_index == index)
+            else palette_color("text_primary")
+        )
+
+        role = (
+            "hero_headline_accent"
+            if (accent is not None and accent_index == index)
+            else "hero_headline"
+        )
+
+        _uplift_text(
+            image,
+            48,
+            y,
+            line,
+            role=role,
+            color=color,
+        )
+
+        y += 58
+
+    return y
+
+
+def _uplift_metric(
+    image: Image.Image,
+    *,
+    x: int,
+    y: int,
+    label: str,
+    value: str,
+    tone: str = "info",
+    width: int = 220,
+) -> None:
+    palette = {
+        "info": (
+            "#EAF3FF",
+            "#CFE0FF",
+            "#3C82F6",
+        ),
+        "pass": (
+            "#EAF8F0",
+            "#CDEFD9",
+            "#1F9E62",
+        ),
+        "warn": (
+            "#FFF4E5",
+            "#F8D7A5",
+            "#CC7A00",
+        ),
+        "block": (
+            "#FFECEC",
+            "#F7C1C1",
+            "#E45858",
+        ),
+    }
+
+    fill, border, text_color = palette[tone]
+
+    _uplift_rect(
+        image,
+        (
+            x,
+            y,
+            x + width,
+            y + 86,
+        ),
+        fill=fill,
+        radius=14,
+        outline=border,
+    )
+
+    _uplift_text(
+        image,
+        x + 16,
+        y + 12,
+        label,
+        role="micro",
+        color=palette_color("text_secondary"),
+    )
+
+    _uplift_text(
+        image,
+        x + 16,
+        y + 39,
+        value,
+        role="card_value_small",
+        color=text_color,
+    )
+
+
+def _uplift_bar(
+    image: Image.Image,
+    *,
+    x: int,
+    y: int,
+    width: int,
+    ratio: float,
+    color: str,
+    label: str,
+    value: str,
+) -> None:
+    ratio = max(
+        0.0,
+        min(
+            1.0,
+            ratio,
+        ),
+    )
+
+    _uplift_text(
+        image,
+        x,
+        y,
+        label,
+        role="body",
+        color=palette_color("text_secondary"),
+    )
+
+    _uplift_text(
+        image,
+        x + width,
+        y,
+        value,
+        role="body_bold",
+        color=palette_color("text_primary"),
+        anchor="ra",
+    )
+
+    _uplift_rect(
+        image,
+        (
+            x,
+            y + 32,
+            x + width,
+            y + 50,
+        ),
+        fill="#EAF0F6",
+        radius=8,
+    )
+
+    _uplift_rect(
+        image,
+        (
+            x,
+            y + 32,
+            x
+            + max(
+                4,
+                width * ratio,
+            ),
+            y + 50,
+        ),
+        fill=color,
+        radius=8,
+    )
+
+
+def _uplift_baseline_row(
+    release: dict[str, Any],
+    *,
+    model_id: str,
+    partition: str,
+) -> dict[str, Any]:
+    raw = release.get("baseline_model_results")
+
+    if not isinstance(
+        raw,
+        list,
+    ):
+        raise RuntimeError("baseline_model_results missing.")
+
+    matches = [
+        row
+        for row in raw
+        if (
+            isinstance(
+                row,
+                dict,
+            )
+            and row.get("pipeline_id") == "C_PREDICTION_TIME_SAFE"
+            and row.get("model_id") == model_id
+            and row.get("partition") == partition
+        )
+    ]
+
+    if len(matches) != 1:
+        raise RuntimeError(
+            "Expected exactly one Pipeline C baseline row "
+            f"for {model_id}/{partition}; "
+            f"found {len(matches)}."
+        )
+
+    return matches[0]
+
+
+def _uplift_scene_s1(
+    image: Image.Image,
+    release: dict[str, Any],
+    p: float,
+) -> None:
+    bottom = _uplift_headline(
+        image,
+        "S1",
+    )
+
+    validation = _uplift_baseline_row(
+        release,
+        model_id=("histogram_gradient_boosting"),
+        partition="validation",
+    )
+
+    roc = float(validation["roc_auc"])
+
+    pr = float(validation["pr_auc"])
+
+    s1 = _case_model_row(
+        release,
+        "S1_CURRENT_CALL_DURATION",
+        "histogram_gradient_boosting",
+    )
+
+    _uplift_shadow_card(
+        image,
+        (
+            48,
+            bottom + 36,
+            1032,
+            1058,
+        ),
+    )
+
+    visible_roc = roc * p
+    visible_pr = pr * p
+
+    _uplift_metric(
+        image,
+        x=82,
+        y=bottom + 86,
+        label="VALIDATION ROC AUC",
+        value=f"{visible_roc:.3f}",
+        tone="info",
+        width=270,
+    )
+
+    _uplift_metric(
+        image,
+        x=380,
+        y=bottom + 86,
+        label="VALIDATION PR AUC",
+        value=f"{visible_pr:.3f}",
+        tone="info",
+        width=270,
+    )
+
+    _uplift_metric(
+        image,
+        x=678,
+        y=bottom + 86,
+        label="SAFE RELEASE",
+        value=str(release["safe_release_decision"]),
+        tone="pass",
+        width=270,
+    )
+
+    _uplift_bar(
+        image,
+        x=82,
+        y=bottom + 250,
+        width=866,
+        ratio=visible_roc,
+        color=palette_color("blue_500"),
+        label="Headline validation signal",
+        value=f"{visible_roc:.3f}",
+    )
+
+    _uplift_wrapped(
+        image,
+        82,
+        bottom + 370,
+        (
+            "One production-time violation is enough "
+            "to invalidate an otherwise strong-looking score."
+        ),
+        role="subhead",
+        color=palette_color("text_secondary"),
+        max_width=780,
+        max_lines=3,
+        line_height=26,
+    )
+
+    draw_status_pill(
+        image,
+        xy=(
+            82,
+            bottom + 520,
+        ),
+        text=str(s1["actual_auditor_result"]),
+        status="block",
+    )
+
+
+def _uplift_scene_s2(
+    image: Image.Image,
+    release: dict[str, Any],
+    p: float,
+) -> None:
+    bottom = _uplift_headline(
+        image,
+        "S2",
+    )
+
+    row = _case_model_row(
+        release,
+        "S1_CURRENT_CALL_DURATION",
+        "histogram_gradient_boosting",
+    )
+
+    roc_effect = float(row["reported_effect_roc_auc"])
+
+    _uplift_shadow_card(
+        image,
+        (
+            48,
+            bottom + 34,
+            1032,
+            1080,
+        ),
+        fill="#FFFDFD",
+        border="#F7C1C1",
+    )
+
+    _uplift_metric(
+        image,
+        x=80,
+        y=bottom + 76,
+        label="VIOLATING FEATURE",
+        value="duration",
+        tone="block",
+        width=260,
+    )
+
+    _uplift_metric(
+        image,
+        x=368,
+        y=bottom + 76,
+        label="AVAILABILITY",
+        value="DURING ACTION",
+        tone="warn",
+        width=272,
+    )
+
+    _uplift_metric(
+        image,
+        x=668,
+        y=bottom + 76,
+        label="AUDITOR RESULT",
+        value="BLOCK",
+        tone="block",
+        width=276,
+    )
+
+    start = (
+        196,
+        bottom + 350,
+    )
+
+    middle = (
+        540,
+        bottom + 350,
+    )
+
+    end = (
+        884,
+        bottom + 350,
+    )
+
+    draw_neural_edge(
+        image,
+        start=start,
+        end=middle,
+    )
+
+    draw_neural_edge(
+        image,
+        start=middle,
+        end=end,
+    )
+
+    draw_neural_node(
+        image,
+        center=start,
+        active=False,
+    )
+
+    draw_neural_node(
+        image,
+        center=middle,
+        active=True,
+    )
+
+    draw_neural_node(
+        image,
+        center=end,
+        active=False,
+    )
+
+    particle_x = start[0] + (end[0] - start[0]) * p
+
+    draw = ImageDraw.Draw(
+        image,
+        "RGBA",
+    )
+
+    radius = scale_value(5)
+
+    px = scale_value(particle_x)
+
+    py = scale_value(start[1])
+
+    draw.ellipse(
+        (
+            px - radius,
+            py - radius,
+            px + radius,
+            py + radius,
+        ),
+        fill=hex_to_rgba(palette_color("red_600")),
+    )
+
+    _uplift_text(
+        image,
+        196,
+        bottom + 408,
+        "Prediction",
+        role="micro",
+        color=palette_color("text_secondary"),
+        anchor="ma",
+    )
+
+    _uplift_text(
+        image,
+        540,
+        bottom + 408,
+        "Current call",
+        role="micro",
+        color=palette_color("red_600"),
+        anchor="ma",
+    )
+
+    _uplift_text(
+        image,
+        884,
+        bottom + 408,
+        "Outcome",
+        role="micro",
+        color=palette_color("text_secondary"),
+        anchor="ma",
+    )
+
+    _uplift_metric(
+        image,
+        x=80,
+        y=bottom + 530,
+        label="MEASURED ROC-AUC EFFECT",
+        value=f"+{roc_effect:.3f}",
+        tone="block",
+        width=330,
+    )
+
+    _uplift_wrapped(
+        image,
+        448,
+        bottom + 534,
+        (
+            "The value exists after ranking starts, "
+            "so the model has information unavailable "
+            "at deployment time."
+        ),
+        role="body",
+        color=palette_color("text_secondary"),
+        max_width=470,
+        max_lines=4,
+        line_height=24,
+    )
+
+
+def _uplift_scene_s3(
+    image: Image.Image,
+    p: float,
+) -> None:
+    bottom = _uplift_headline(
+        image,
+        "S3",
+    )
+
+    rows = (
+        (
+            "Age / job / education",
+            "PRE-DECISION",
+            "pass",
+            "ALLOW",
+        ),
+        (
+            "Previous campaign context",
+            "PRE-DECISION",
+            "pass",
+            "ALLOW",
+        ),
+        (
+            "Campaign",
+            "UNKNOWN",
+            "block",
+            "BLOCK",
+        ),
+        (
+            "Duration",
+            "DURING ACTION",
+            "block",
+            "BLOCK",
+        ),
+        (
+            "Outcome proxy",
+            "POST OUTCOME",
+            "block",
+            "BLOCK",
+        ),
+    )
+
+    start_y = bottom + 28
+
+    visible_rows = max(
+        1,
+        min(
+            len(rows),
+            int(p * (len(rows) + 1)),
+        ),
+    )
+
+    for index, (
+        feature,
+        availability,
+        status,
+        result,
+    ) in enumerate(rows):
+        y = start_y + index * 150
+
+        _uplift_shadow_card(
+            image,
+            (
+                48,
+                y,
+                1032,
+                y + 126,
+            ),
+        )
+
+        if index < visible_rows:
+            _uplift_text(
+                image,
+                72,
+                y + 22,
+                feature,
+                role="card_title",
+                color=palette_color("text_primary"),
+            )
+
+            _uplift_text(
+                image,
+                72,
+                y + 60,
+                availability,
+                role="micro",
+                color=palette_color("text_secondary"),
+            )
+
+            draw_status_pill(
+                image,
+                xy=(
+                    860,
+                    y + 48,
+                ),
+                text=result,
+                status=status,
+            )
+
+
+def _uplift_scene_s4(
+    image: Image.Image,
+    release: dict[str, Any],
+    p: float,
+) -> None:
+    bottom = _uplift_headline(
+        image,
+        "S4",
+    )
+
+    raw = release.get("leakage_model_results")
+
+    if not isinstance(
+        raw,
+        list,
+    ):
+        raise RuntimeError("leakage_model_results missing.")
+
+    cases = []
+
+    for case_id in (
+        "S1_CURRENT_CALL_DURATION",
+        "S2_RANDOM_TEMPORAL_MIXING",
+        "S3_GLOBAL_SUPERVISED_TRANSFORMATION",
+        "S4_DUPLICATE_OVERLAP",
+        "S5_POST_OUTCOME_CONFIRMATION_PROXY",
+    ):
+        matches = [
+            row
+            for row in raw
+            if (
+                isinstance(
+                    row,
+                    dict,
+                )
+                and row.get("case_id") == case_id
+            )
+        ]
+
+        if not matches:
+            raise RuntimeError(f"Missing leakage case: {case_id}")
+
+        status = str(matches[0]["actual_auditor_result"])
+
+        cases.append(
+            (
+                case_id,
+                status,
+            )
+        )
+
+    for index, (
+        case_id,
+        status,
+    ) in enumerate(cases):
+        y = bottom + 32 + index * 158
+
+        _uplift_shadow_card(
+            image,
+            (
+                48,
+                y,
+                1032,
+                y + 130,
+            ),
+        )
+
+        _uplift_metric(
+            image,
+            x=72,
+            y=y + 22,
+            label=f"SCENARIO {index + 1}",
+            value=(f"S{index + 1}"),
+            tone="info",
+            width=150,
+        )
+
+        _uplift_wrapped(
+            image,
+            250,
+            y + 30,
+            _UPLIFT_CASE_LABELS[case_id],
+            role="body_bold",
+            color=palette_color("text_primary"),
+            max_width=440,
+            max_lines=2,
+            line_height=24,
+        )
+
+        if p >= (index + 1) / len(cases):
+            draw_status_pill(
+                image,
+                xy=(
+                    864,
+                    y + 50,
+                ),
+                text=status,
+                status=("block" if status == "BLOCK" else "warn"),
+            )
+
+
+def _uplift_scene_s5(
+    image: Image.Image,
+    release: dict[str, Any],
+    p: float,
+) -> None:
+    bottom = _uplift_headline(
+        image,
+        "S5",
+    )
+
+    row = _case_model_row(
+        release,
+        "S2_RANDOM_TEMPORAL_MIXING",
+        "histogram_gradient_boosting",
+    )
+
+    chronological = float(row["safe_roc_auc"])
+
+    random = float(row["leaked_roc_auc"])
+
+    gap = float(release["independent_validation"]["temporal_roc_auc_gap"])
+
+    _uplift_shadow_card(
+        image,
+        (
+            48,
+            bottom + 52,
+            1032,
+            1050,
+        ),
+    )
+
+    _uplift_metric(
+        image,
+        x=80,
+        y=bottom + 98,
+        label="VALIDATED GAP",
+        value=f"+{gap:.3f}",
+        tone="warn",
+        width=250,
+    )
+
+    _uplift_bar(
+        image,
+        x=80,
+        y=bottom + 280,
+        width=870,
+        ratio=(chronological * p),
+        color=palette_color("blue_500"),
+        label="Chronological holdout",
+        value=f"{chronological:.3f}",
+    )
+
+    _uplift_bar(
+        image,
+        x=80,
+        y=bottom + 410,
+        width=870,
+        ratio=(random * p),
+        color=palette_color("amber_600"),
+        label="Random temporal mixing",
+        value=f"{random:.3f}",
+    )
+
+    _uplift_wrapped(
+        image,
+        80,
+        bottom + 590,
+        (
+            "Random mixing lets later-period information "
+            "change the apparent answer. Deployment uses "
+            "chronological evidence."
+        ),
+        role="subhead",
+        color=palette_color("text_secondary"),
+        max_width=830,
+        max_lines=3,
+        line_height=26,
+    )
+
+
+def _uplift_scene_s6(
+    image: Image.Image,
+    release: dict[str, Any],
+    p: float,
+) -> None:
+    bottom = _uplift_headline(
+        image,
+        "S6",
+    )
+
+    row = _case_model_row(
+        release,
+        "S1_CURRENT_CALL_DURATION",
+        "histogram_gradient_boosting",
+    )
+
+    before = float(row["leaked_roc_auc"])
+
+    after = float(row["safe_roc_auc"])
+
+    inflation = float(row["reported_effect_roc_auc"])
+
+    animated = before + (after - before) * p
+
+    _uplift_shadow_card(
+        image,
+        (
+            48,
+            bottom + 42,
+            1032,
+            1050,
+        ),
+    )
+
+    _uplift_text(
+        image,
+        540,
+        bottom + 118,
+        "ROC AUC",
+        role="card_title",
+        color=palette_color("text_secondary"),
+        anchor="ma",
+    )
+
+    _uplift_text(
+        image,
+        540,
+        bottom + 180,
+        f"{animated:.3f}",
+        role="hero_headline_accent",
+        color=palette_color("blue_500"),
+        anchor="ma",
+    )
+
+    _uplift_metric(
+        image,
+        x=160,
+        y=bottom + 340,
+        label="LEAKED",
+        value=f"{before:.3f}",
+        tone="block",
+        width=280,
+    )
+
+    _uplift_metric(
+        image,
+        x=640,
+        y=bottom + 340,
+        label="PREDICTION-SAFE",
+        value=f"{after:.3f}",
+        tone="pass",
+        width=280,
+    )
+
+    _uplift_metric(
+        image,
+        x=400,
+        y=bottom + 500,
+        label="LEAKAGE INFLATION",
+        value=f"+{inflation:.3f}",
+        tone="warn",
+        width=280,
+    )
+
+
+def _uplift_scene_s7(
+    image: Image.Image,
+    release: dict[str, Any],
+    p: float,
+) -> None:
+    bottom = _uplift_headline(
+        image,
+        "S7",
+    )
+
+    row = _case_model_row(
+        release,
+        "S1_CURRENT_CALL_DURATION",
+        "histogram_gradient_boosting",
+    )
+
+    safe = float(row["safe_conversions_per_1000"])
+
+    leaked = float(row["leaked_conversions_per_1000"])
+
+    delta = float(row["campaign_yield_overstatement"])
+
+    maximum = (
+        max(
+            safe,
+            leaked,
+        )
+        * 1.05
+    )
+
+    _uplift_shadow_card(
+        image,
+        (
+            48,
+            bottom + 42,
+            1032,
+            1080,
+        ),
+    )
+
+    _uplift_metric(
+        image,
+        x=80,
+        y=bottom + 86,
+        label="PLANNING OVERSTATEMENT",
+        value=f"+{delta:.1f} / 1K",
+        tone="block",
+        width=320,
+    )
+
+    _uplift_bar(
+        image,
+        x=80,
+        y=bottom + 280,
+        width=870,
+        ratio=(safe / maximum * p),
+        color=palette_color("blue_500"),
+        label="Supported safe test yield",
+        value=f"{safe:.1f} / 1K",
+    )
+
+    _uplift_bar(
+        image,
+        x=80,
+        y=bottom + 420,
+        width=870,
+        ratio=(leaked / maximum * p),
+        color=palette_color("red_600"),
+        label="Leaked planning yield",
+        value=f"{leaked:.1f} / 1K",
+    )
+
+    _uplift_wrapped(
+        image,
+        80,
+        bottom + 608,
+        (
+            "Evaluation error becomes a business-planning error "
+            "when inflated ranking performance is converted into "
+            "campaign expectations."
+        ),
+        role="subhead",
+        color=palette_color("text_secondary"),
+        max_width=830,
+        max_lines=4,
+        line_height=26,
+    )
+
+
+def _uplift_scene_s8(
+    image: Image.Image,
+    release: dict[str, Any],
+    p: float,
+) -> None:
+    bottom = _uplift_headline(
+        image,
+        "S8",
+    )
+
+    checks = (
+        "Feature availability",
+        "Temporal split",
+        "Transform boundary",
+        "Duplicate overlap",
+        "Calibration",
+    )
+
+    _uplift_shadow_card(
+        image,
+        (
+            48,
+            bottom + 30,
+            1032,
+            1084,
+        ),
+    )
+
+    lane_y = bottom + 312
+
+    start_x = 116
+    gap = 186
+
+    draw = ImageDraw.Draw(
+        image,
+        "RGBA",
+    )
+
+    draw.rounded_rectangle(
+        scale_box(
+            (
+                88,
+                lane_y,
+                980,
+                lane_y + 18,
+            )
+        ),
+        radius=scale_value(9),
+        fill=hex_to_rgba("#EAF0F6"),
+    )
+
+    for index, label in enumerate(checks):
+        x = start_x + index * gap
+
+        _uplift_rect(
+            image,
+            (
+                x - 70,
+                lane_y - 80,
+                x + 70,
+                lane_y - 26,
+            ),
+            fill="#FFFFFF",
+            radius=12,
+            outline="#CBD6E3",
+        )
+
+        _uplift_text(
+            image,
+            x,
+            lane_y - 64,
+            str(index + 1),
+            role="card_title",
+            color=palette_color("navy_800"),
+            anchor="ma",
+        )
+
+        _uplift_wrapped(
+            image,
+            x - 70,
+            lane_y + 54,
+            label,
+            role="micro",
+            color=palette_color("text_secondary"),
+            max_width=140,
+            max_lines=2,
+            line_height=14,
+        )
+
+    token_x = 88 + (892 * p)
+
+    _uplift_rect(
+        image,
+        (
+            token_x - 12,
+            lane_y + 1,
+            token_x + 12,
+            lane_y + 17,
+        ),
+        fill=palette_color("red_600"),
+        radius=6,
+    )
+
+    draw_neural_edge(
+        image,
+        start=(
+            180,
+            bottom + 620,
+        ),
+        end=(
+            540,
+            bottom + 620,
+        ),
+    )
+
+    draw_neural_edge(
+        image,
+        start=(
+            540,
+            bottom + 620,
+        ),
+        end=(
+            900,
+            bottom + 620,
+        ),
+    )
+
+    draw_neural_node(
+        image,
+        center=(
+            180,
+            bottom + 620,
+        ),
+    )
+
+    draw_neural_node(
+        image,
+        center=(
+            540,
+            bottom + 620,
+        ),
+        active=True,
+    )
+
+    draw_neural_node(
+        image,
+        center=(
+            900,
+            bottom + 620,
+        ),
+    )
+
+    draw_status_pill(
+        image,
+        xy=(
+            470,
+            bottom + 726,
+        ),
+        text=str(release["safe_release_decision"]),
+        status="pass",
+    )
+
+
+def _uplift_scene_s9(
+    image: Image.Image,
+    release: dict[str, Any],
+    p: float,
+) -> None:
+    _uplift_rect(
+        image,
+        (
+            0,
+            84,
+            1080,
+            1304,
+        ),
+        fill=palette_color("navy_900"),
+    )
+
+    bottom = _uplift_headline(
+        image,
+        "S9",
+    )
+
+    row = _case_model_row(
+        release,
+        "S1_CURRENT_CALL_DURATION",
+        "histogram_gradient_boosting",
+    )
+
+    status = str(row["actual_auditor_result"])
+
+    _uplift_rect(
+        image,
+        (
+            80,
+            bottom + 72,
+            1000,
+            1080,
+        ),
+        fill="#18314B",
+        radius=20,
+        outline="#274B70",
+    )
+
+    _uplift_text(
+        image,
+        540,
+        bottom + 130,
+        "DEPLOYMENT GATE",
+        role="card_title",
+        color="#B9C6D8",
+        anchor="ma",
+    )
+
+    reveal = "BLOCK" if p >= 0.30 else "..."
+
+    _uplift_text(
+        image,
+        540,
+        bottom + 196,
+        reveal,
+        role="hero_headline_accent",
+        color=palette_color("red_600"),
+        anchor="ma",
+    )
+
+    _uplift_metric(
+        image,
+        x=132,
+        y=bottom + 390,
+        label="CRITICAL FINDING",
+        value="duration",
+        tone="block",
+        width=300,
+    )
+
+    _uplift_metric(
+        image,
+        x=648,
+        y=bottom + 390,
+        label="AVAILABILITY",
+        value="DURING ACTION",
+        tone="warn",
+        width=300,
+    )
+
+    if p >= 0.55:
+        _uplift_wrapped(
+            image,
+            132,
+            bottom + 560,
+            (
+                "Required corrective action: remove unavailable "
+                "prediction-time inputs and rerun deployment-aligned "
+                "evaluation before release."
+            ),
+            role="subhead",
+            color="#D8E0EA",
+            max_width=800,
+            max_lines=4,
+            line_height=26,
+        )
+
+    if p >= 0.80:
+        draw_status_pill(
+            image,
+            xy=(
+                486,
+                bottom + 750,
+            ),
+            text=status,
+            status="block",
+        )
+
+
+def _uplift_scene_s10(
+    image: Image.Image,
+    release: dict[str, Any],
+    p: float,
+) -> None:
+    bottom = _uplift_headline(
+        image,
+        "S10",
+    )
+
+    validation = release["independent_validation"]
+
+    _uplift_shadow_card(
+        image,
+        (
+            48,
+            bottom + 40,
+            1032,
+            1072,
+        ),
+    )
+
+    cards = (
+        (
+            "SCENARIOS",
+            str(validation["scenario_count"]),
+            "info",
+        ),
+        (
+            "MODEL RESULTS",
+            str(validation["model_result_count"]),
+            "info",
+        ),
+        (
+            "RECONCILED EFFECTS",
+            str(validation["reconciled_metric_effect_count"]),
+            "pass",
+        ),
+        (
+            "MISMATCHES",
+            str(validation["metric_effect_mismatch_count"]),
+            "pass",
+        ),
+    )
+
+    positions = (
+        (
+            82,
+            bottom + 100,
+        ),
+        (
+            558,
+            bottom + 100,
+        ),
+        (
+            82,
+            bottom + 250,
+        ),
+        (
+            558,
+            bottom + 250,
+        ),
+    )
+
+    visible = max(
+        1,
+        min(
+            4,
+            int(p * 5),
+        ),
+    )
+
+    for index, (
+        label,
+        value,
+        tone,
+    ) in enumerate(cards):
+        if index >= visible:
+            continue
+
+        x, y = positions[index]
+
+        _uplift_metric(
+            image,
+            x=x,
+            y=y,
+            label=label,
+            value=value,
+            tone=tone,
+            width=392,
+        )
+
+    if p >= 0.68:
+        _uplift_wrapped(
+            image,
+            82,
+            bottom + 470,
+            (
+                "Frozen evidence package: benchmark results, leakage "
+                "scenarios, independent reconciliation, claim register, "
+                "research figures, and deterministic media."
+            ),
+            role="subhead",
+            color=palette_color("text_secondary"),
+            max_width=850,
+            max_lines=4,
+            line_height=26,
+        )
+
+    if p >= 0.86:
+        draw_status_pill(
+            image,
+            xy=(
+                482,
+                bottom + 700,
+            ),
+            text=str(release["safe_release_decision"]),
+            status="pass",
+        )
+
+
 def render_frame(
     release: dict[str, Any],
     claims: dict[str, Any],
     t: float,
 ) -> Image.Image:
-    """Render one deterministic video frame."""
+    """Render one frozen Visual Contract V1.0 video frame."""
 
     _approved_claim_ids(claims)
 
@@ -2036,76 +3896,105 @@ def render_frame(
         ),
     )
 
-    image = _canvas()
+    (
+        scene_id,
+        _start,
+        _end,
+        progress,
+    ) = _uplift_scene_window(t)
 
-    if t < 3.0:
-        _scene_apparent_success(
+    image = _uplift_canvas()
+
+    if scene_id == "S1":
+        _uplift_scene_s1(
             image,
             release,
-            t,
+            progress,
         )
 
-    elif t < 7.0:
-        _scene_suspicious_feature(
+    elif scene_id == "S2":
+        _uplift_scene_s2(
             image,
             release,
-            t,
+            progress,
         )
 
-    elif t < 11.0:
-        _scene_timeline(
+    elif scene_id == "S3":
+        _uplift_scene_s3(
             image,
-            t,
+            progress,
         )
 
-    elif t < 15.0:
-        _scene_honest_reveal(
-            image,
-            release,
-            t,
-        )
-
-    elif t < 20.0:
-        _scene_split(
-            image,
-            t,
-        )
-
-    elif t < 25.0:
-        _scene_transformation(
-            image,
-            t,
-        )
-
-    elif t < 30.0:
-        _scene_duplicate(
+    elif scene_id == "S4":
+        _uplift_scene_s4(
             image,
             release,
-            t,
+            progress,
         )
 
-    elif t < 35.0:
-        _scene_metric_correction(
+    elif scene_id == "S5":
+        _uplift_scene_s5(
             image,
             release,
-            t,
+            progress,
         )
 
-    elif t < 40.0:
-        _scene_calibration(
+    elif scene_id == "S6":
+        _uplift_scene_s6(
             image,
             release,
-            t,
+            progress,
+        )
+
+    elif scene_id == "S7":
+        _uplift_scene_s7(
+            image,
+            release,
+            progress,
+        )
+
+    elif scene_id == "S8":
+        _uplift_scene_s8(
+            image,
+            release,
+            progress,
+        )
+
+    elif scene_id == "S9":
+        _uplift_scene_s9(
+            image,
+            release,
+            progress,
+        )
+
+    elif scene_id == "S10":
+        _uplift_scene_s10(
+            image,
+            release,
+            progress,
         )
 
     else:
-        _scene_gate(
-            image,
-            release,
-            t,
-        )
+        raise RuntimeError(f"Unknown uplift scene: {scene_id}")
 
-    return image
+    _uplift_header(image)
+
+    _uplift_footer(
+        image,
+        t,
+    )
+
+    contract = canvas_contract()
+
+    final = image.convert("RGB").resize(
+        (
+            contract.width_px,
+            contract.height_px,
+        ),
+        Image.Resampling.LANCZOS,
+    )
+
+    return final
 
 
 def _ffmpeg_path() -> Path:
