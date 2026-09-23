@@ -1,0 +1,147 @@
+{
+  "dependency_policy": {
+    "do_not_weaken_existing_quality_gates": true,
+    "isolate_optional_dashboard_video_dependencies": true,
+    "keep_generic_dev_lightweight": true,
+    "no_required_cuda": true,
+    "no_required_pytorch": true,
+    "no_required_tensorflow": true,
+    "prefer_repository_compatible_matplotlib": true,
+    "prefer_repository_compatible_numpy": true,
+    "prefer_repository_compatible_scipy": true
+  },
+  "identifiers": {
+    "assets": "assets/p28_sampled_recommendation_metrics/",
+    "branch": "project/p28-sampled-recommendation-metrics",
+    "cli": "sampled-metrics",
+    "config": "configs/p28_sampled_recommendation_metrics.yaml",
+    "docs": "docs/projects/p28_sampled_recommendation_metrics/",
+    "outputs": "outputs/p28_sampled_recommendation_metrics/",
+    "package_id": "p28_sampled_recommendation_metrics",
+    "package_path": "src/linkedin_visual_labs/projects/p28_sampled_recommendation_metrics/",
+    "paper": "paper/p28_sampled_recommendation_metrics/",
+    "reference": "reference/project8/",
+    "tests_path": "tests/projects/p28_sampled_recommendation_metrics/"
+  },
+  "metrics": {
+    "AP": "1/r",
+    "AUC": "(N-r)/(N-1)",
+    "NDCG": "1/log2(r+1)",
+    "Recall@10": "indicator(r<=10)",
+    "sampled_AUC": "1-X/m"
+  },
+  "monte_carlo": {
+    "child_stream_policy": "stable NumPy Generator/SeedSequence derivation; never Python randomized hash()",
+    "root_seed": 20260923,
+    "source_protocol_repetitions": 1000,
+    "validation_repetitions": 10000
+  },
+  "numerical_policy": {
+    "formula_abs_tol": 1e-12,
+    "formula_rel_tol": 1e-12,
+    "monte_carlo_validation": "abs(mc_mean-expectation) <= max(5*mc_standard_error, 1e-3)",
+    "scientific_tie_abs_tol": 1e-12,
+    "source_rounding_separate_from_correctness": true
+  },
+  "project": "Project 8",
+  "publication_screen": {
+    "local_build": "PROCEED",
+    "prior_exact_replication_search": "NO_VERIFIED_MATCH_FOUND_NOT_PROOF_OF_ABSENCE",
+    "rescience_c": "EDITORIAL_SCOPE_CHECK_NEEDED",
+    "tmlr": "FUTURE_EXPANDED_SCOPE_ONLY"
+  },
+  "reference_protocol": {
+    "n_items": 10000,
+    "profiles": {
+      "A": [
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "B": [
+        40,
+        40,
+        8437,
+        9266,
+        4482
+      ],
+      "C": [
+        212,
+        2,
+        743,
+        5342,
+        1548
+      ]
+    },
+    "reference_negative_draws": 99,
+    "sampled_rank_distribution": "1 + Binomial(m, (r-1)/(N-1))",
+    "sampling": "uniform_with_replacement"
+  },
+  "repository_history": {
+    "project7_publication_checkpoint": "41dca35e0395489ccbb9c0b388412429c780713b",
+    "project7_publication_checkpoint_inherited_by_project8": false,
+    "project8_verified_base": "d89ba06bc98f6045d41e8acf4f0e6d6c7fe1d97b"
+  },
+  "roadmap_gates": {
+    "step_0": "CONTRACT_FREEZE",
+    "step_10": "LOCAL_RELEASE_ACCEPTANCE",
+    "step_3": "SCIENTIFIC_ENGINE_VALIDATED",
+    "step_4": "RESULT_AND_CLAIM_FREEZE",
+    "step_5": "OUTPUT_DESIGN_FREEZE"
+  },
+  "schema_version": 1,
+  "scope": {
+    "full_kdd_replication": false,
+    "instances_per_profile": 5,
+    "one_relevant_item_per_instance": true,
+    "real_customer_data": false,
+    "trained_recommenders": false
+  },
+  "sensitivity_grid_negative_draws": [
+    1,
+    2,
+    5,
+    10,
+    20,
+    50,
+    99,
+    200,
+    500,
+    1000,
+    5000,
+    9999
+  ],
+  "status_vocabulary": {
+    "citation": [
+      "NOT_CHECKED",
+      "CHECKED_NO_VERIFIED_MATCH",
+      "VERIFIED_MATCHES"
+    ],
+    "manuscript": [
+      "DRAFT",
+      "READY_FOR_REVIEW",
+      "SUBMITTED",
+      "UNDER_REVIEW",
+      "REVISION_REQUIRED",
+      "ACCEPTED",
+      "PUBLISHED",
+      "REJECTED",
+      "WITHDRAWN"
+    ],
+    "social": [
+      "DRAFT",
+      "APPROVED",
+      "POSTED"
+    ],
+    "software": [
+      "DRAFT",
+      "VALIDATED",
+      "RELEASED",
+      "ARCHIVED"
+    ]
+  },
+  "study_type": "independent selected-result replication",
+  "title": "Can sampled recommendation metrics select the wrong model?"
+}

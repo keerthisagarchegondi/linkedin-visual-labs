@@ -1,0 +1,28 @@
+{
+  "retrieval_date": "2026-09-23",
+  "scope_note": "Published values are comparison evidence only and must not be substituted for Project 8 computations.",
+  "sources": [
+    {
+      "authors": [
+        "Walid Krichene",
+        "Steffen Rendle"
+      ],
+      "doi": "10.1145/3394486.3403226",
+      "id": "S1",
+      "role": "original paper",
+      "title": "On Sampled Metrics for Item Recommendation",
+      "venue": "KDD 2020"
+    },
+    {
+      "authors": [
+        "Walid Krichene",
+        "Steffen Rendle"
+      ],
+      "doi": "10.24963/ijcai.2021/651",
+      "id": "S2",
+      "role": "selected toy example; Tables 1-2; sampling derivation",
+      "title": "On Sampled Metrics for Item Recommendation (Extended Abstract)",
+      "venue": "IJCAI 2021"
+    }
+  ]
+}

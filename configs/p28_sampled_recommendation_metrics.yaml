@@ -1,0 +1,18 @@
+n_items: 10000
+reference_negative_draws: 99
+source_protocol_repetitions: 1000
+validation_repetitions: 10000
+root_seed: 20260923
+sensitivity_grid_negative_draws:
+  - 1
+  - 2
+  - 5
+  - 10
+  - 20
+  - 50
+  - 99
+  - 200
+  - 500
+  - 1000
+  - 5000
+  - 9999

@@ -1,0 +1,15 @@
+{
+  "citation_status": "NOT_CHECKED",
+  "manuscript_status": "DRAFT",
+  "next_allowed_step": "Project 8 \u2014 Step 2 \u2014 Rank metrics and analytical sampling engine",
+  "output_design_frozen": false,
+  "package_id": "p28_sampled_recommendation_metrics",
+  "project": "project8",
+  "results_frozen": false,
+  "schema_version": 1,
+  "social_status": "DRAFT",
+  "software_status": "DRAFT",
+  "step": 1,
+  "step_id": "SCAFFOLD_AND_REPRODUCIBILITY_CONTRACTS",
+  "step_status": "PASS"
+}

@@ -1,0 +1,16 @@
+{
+  "identifier_conflict_check": "PASS",
+  "next_allowed": "Project 8 \u2014 Step 1 \u2014 Minimal scaffold and reproducibility contracts",
+  "project7_publication_checkpoint": "41dca35e0395489ccbb9c0b388412429c780713b",
+  "project7_publication_checkpoint_inherited": false,
+  "project8_branch": "project/p28-sampled-recommendation-metrics",
+  "project8_head": "d89ba06bc98f6045d41e8acf4f0e6d6c7fe1d97b",
+  "project8_verified_base": "d89ba06bc98f6045d41e8acf4f0e6d6c7fe1d97b",
+  "publication_screen": "PASS_WITH_SCOPE_CHECK",
+  "python_executable": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\.venv\\Scripts\\python.exe",
+  "schema_version": 1,
+  "source_verification": "PASS",
+  "status": "PASS",
+  "step": 0,
+  "step0_status": "PASS"
+}
