@@ -1,7 +1,7 @@
 {
   "citation_status": "NOT_CHECKED",
   "manuscript_status": "DRAFT",
-  "next_allowed_step": "Project 8 \u2014 Step 3 \u2014 Monte Carlo engine and independent scientific validation",
+  "next_allowed_step": "Project 8 \u2014 Step 4 \u2014 Final experiments and verified result/claim freeze",
   "output_design_frozen": false,
   "package_id": "p28_sampled_recommendation_metrics",
   "project": "project8",
@@ -9,7 +9,7 @@
   "schema_version": 1,
   "social_status": "DRAFT",
   "software_status": "DRAFT",
-  "step": 2,
-  "step_id": "RANK_METRICS_AND_ANALYTICAL_SAMPLING_ENGINE",
+  "step": 3,
+  "step_id": "MONTE_CARLO_ENGINE_AND_INDEPENDENT_SCIENTIFIC_VALIDATION",
   "step_status": "PASS"
 }

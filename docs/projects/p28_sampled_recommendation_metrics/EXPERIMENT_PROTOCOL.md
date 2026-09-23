@@ -70,3 +70,47 @@ which equals full-catalog AUC:
 
 This identity is an expectation result. It does not assert that every random
 sample preserves a model ordering.
+
+## Step 3 Monte Carlo validation contract
+
+Step 3 introduces an independent stochastic computational path.
+
+The root seed remains the frozen Step-0 value `20260923`.
+
+Random streams are derived deterministically as:
+
+`SHA-256(root_seed + canonical experiment stream key) -> integer seed`
+
+The implementation must not call Python's process-randomized `hash()`.
+
+Each model profile receives a separate deterministic stream. Within a model
+profile, AP, NDCG, Recall@10, and AUC are computed from the same simulated
+sampled ranks in each repetition because they describe the same sampled
+evaluation event.
+
+Separate profile streams mean Step 3 does not estimate cross-model covariance
+and must not describe model-to-model Monte Carlo differences as paired unless a
+later protocol explicitly introduces paired streams.
+
+For every repetition:
+
+1. simulate all five source instances;
+2. compute each metric per instance;
+3. average the five values arithmetically.
+
+Across repetitions, report three distinct quantities:
+
+- Monte Carlo mean;
+- sample standard deviation across repetition-level means;
+- Monte Carlo standard error = standard deviation / sqrt(repetitions).
+
+The source-protocol experiment uses 1,000 repetitions.
+
+The higher-precision validation experiment uses 10,000 repetitions.
+
+A Monte Carlo estimate validates an analytical expectation when:
+
+`abs(mc_mean - analytical_expectation) <= max(5 * MC_SE, 1e-3)`
+
+Seed searching, retrying alternative seeds to obtain agreement, or selecting a
+seed after observing results is prohibited.

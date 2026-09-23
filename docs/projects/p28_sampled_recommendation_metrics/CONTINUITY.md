@@ -40,3 +40,26 @@ Step 2 validates mathematical machinery only.
 ## Next permitted step after Step 2 PASS
 
 Project 8 — Step 3 — Monte Carlo engine and independent scientific validation.
+
+## Step 3 implementation
+
+The repository now contains an independent Monte Carlo path based on explicit
+Bernoulli negative-draw simulation.
+
+Step 3 validates:
+
+- SHA-256-derived deterministic random streams;
+- no use of Python `hash()`;
+- five-instance averaging inside every repetition;
+- distinct Monte Carlo mean, sample standard deviation, and standard error;
+- 1,000-repetition source-protocol validation;
+- 10,000-repetition higher-precision validation;
+- deterministic reruns;
+- analytical-versus-Monte-Carlo agreement under the frozen acceptance rule;
+- independent AP PMF-versus-closed-form reconciliation.
+
+Model profiles use independent streams. Metrics within a model profile share
+the same sampled evaluation events. Step 3 therefore makes no paired
+cross-model uncertainty claim.
+
+No final result or ranking-reversal claim is frozen at Step 3.
