@@ -10,7 +10,7 @@
 | Claim vocabulary | 1 | `schemas.py` |
 | Environment audit CLI | 1 | `cli.py` |
 | Input validation CLI | 1 | `cli.py` |
-| Analytical metrics | 2 | pending |
+| Analytical metrics | 2 | `metrics.py`, `sampling.py`, Step-2 tests |
 | Monte Carlo validation | 3 | pending |
 | Result freeze | 4 | pending |
 | Output design freeze | 5 | pending |
