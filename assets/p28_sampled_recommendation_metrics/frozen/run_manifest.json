@@ -1,0 +1,49 @@
+{
+  "artifact_sha256": {
+    "claim_register.json": "6760b4ea643ef3c248dd3323f58a9d8bd405ed519577be31761ccefc81eabfc5",
+    "full_metrics.csv": "221d02867e7b6527e9e9289902b78d6a4762eb62ad643206de178372ea5973af",
+    "release_data.json": "6691d3f3ccda613f8278961ac3291fa02a007d76babcb577d690405f81b67bc8",
+    "sample_size_sweep.csv": "785a737d1e97aa8d5f950f46402b167e81d4692dea460c99c474cb26a3d03b55",
+    "sampled_metrics.csv": "7fbb2ec9d8f425445e026b6e5e0c52938e3c40d6824b50f75654d7a52bb1ab1b",
+    "validation_results.json": "e20694eea599ad9354df5aa81182c610e6a70bae45c6fc031769a10c999e7ff0"
+  },
+  "definition_changes_performed": false,
+  "exact_crossover_inference_performed": false,
+  "high_precision_repetitions": 10000,
+  "input_head": "91e052e58daf0ac80e3967d3567bbe00f935dfd8",
+  "input_sha256": {
+    "assets/p28_sampled_recommendation_metrics/reference_ranks.json": "0c8677131cbb69e112ad70a26f139b63f4565f084aef52f71f271ad51170aa04",
+    "assets/p28_sampled_recommendation_metrics/source_provenance.json": "1b0492e3e7f462a1ecea54b1f8ab4a3346ef2b67cb2702d285070316bfd729fb",
+    "assets/p28_sampled_recommendation_metrics/source_reference_values.csv": "cbfaded0b9048a80b9715723b49bc19b52b851a1d5cc7dcf33cdda3d9709772a",
+    "configs/p28_sampled_recommendation_metrics.yaml": "5b97141420c9c4152e9278a17d3f71b08f6c4b4780ce997a5ae540757b8327b7",
+    "src/linkedin_visual_labs/projects/p28_sampled_recommendation_metrics/freeze.py": "7caf7cfc4b1fa1a45dee8d1209b399506038e47eac753f4022aa75c199d68a08",
+    "src/linkedin_visual_labs/projects/p28_sampled_recommendation_metrics/metrics.py": "5178acfacef1b911984ce17723512e3cc26620316b6844f59238cd272260385a",
+    "src/linkedin_visual_labs/projects/p28_sampled_recommendation_metrics/sampling.py": "42f2f758f377206630c7cb4a16e6b9fccb6fb7a594bb2cba6b8a39287560ba17",
+    "src/linkedin_visual_labs/projects/p28_sampled_recommendation_metrics/simulation.py": "ba6439530fa723e57177dd932e44bec3aa1d6f8cebee535bd74ad442c57309e9"
+  },
+  "output_design_frozen": false,
+  "project": "p28_sampled_recommendation_metrics",
+  "python_version": "3.13.2",
+  "reference_negative_draws": 99,
+  "results_frozen": true,
+  "root_seed": 20260923,
+  "sample_size_grid": [
+    1,
+    2,
+    5,
+    10,
+    20,
+    50,
+    99,
+    200,
+    500,
+    1000,
+    5000,
+    9999
+  ],
+  "schema_version": 1,
+  "seed_searching_performed": false,
+  "source_repetitions": 1000,
+  "step": 4,
+  "tie_tolerance": 1e-12
+}

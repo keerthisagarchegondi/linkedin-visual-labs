@@ -1,0 +1,103 @@
+{
+  "claims": [
+    {
+      "claim": "The frozen A/B/C rank profiles are the source-reported toy-example inputs.",
+      "claim_id": "P8-C001",
+      "classification": "SOURCE_REPORTED",
+      "evidence": [
+        "reference_ranks.json",
+        "source_provenance.json"
+      ],
+      "public_safe": true,
+      "status": "SUPPORTED"
+    },
+    {
+      "claim": "Full-catalog AP orders the profiles C>B>A.",
+      "claim_id": "P8-C002",
+      "classification": "REPLICATED_COMPUTATION",
+      "evidence": [
+        "full_metrics.csv"
+      ],
+      "public_safe": true,
+      "status": "SUPPORTED"
+    },
+    {
+      "claim": "Expected sampled AP at m=99 orders the profiles A>B>C.",
+      "claim_id": "P8-C003",
+      "classification": "REPLICATED_COMPUTATION",
+      "evidence": [
+        "sampled_metrics.csv"
+      ],
+      "public_safe": true,
+      "status": "SUPPORTED"
+    },
+    {
+      "claim": "The full-catalog and expected sampled AP model orderings differ at m=99.",
+      "claim_id": "P8-C004",
+      "classification": "REPLICATED_COMPUTATION",
+      "evidence": [
+        "full_metrics.csv",
+        "sampled_metrics.csv"
+      ],
+      "public_safe": true,
+      "status": "SUPPORTED"
+    },
+    {
+      "claim": "Expected sampled AUC equals full-catalog AUC under the frozen sampling protocol.",
+      "claim_id": "P8-C005",
+      "classification": "MATHEMATICAL_DERIVATION",
+      "evidence": [
+        "sample_size_sweep.csv",
+        "validation_results.json"
+      ],
+      "public_safe": true,
+      "status": "SUPPORTED"
+    },
+    {
+      "claim": "The predefined sample-size grid contains adjacent intervals where one or more pairwise model relations change.",
+      "claim_id": "P8-C006",
+      "classification": "REPLICATED_COMPUTATION",
+      "evidence": [
+        "sample_size_sweep.csv",
+        "release_data.json"
+      ],
+      "public_safe": true,
+      "status": "SUPPORTED"
+    },
+    {
+      "claim": "An exact crossover sample size can be identified between grid points.",
+      "claim_id": "P8-C007",
+      "classification": "UNSUPPORTED",
+      "public_safe": false,
+      "reason": "Step 4 computes only the preregistered sample-size grid and does not solve for unobserved exact crossover locations.",
+      "status": "REJECTED"
+    },
+    {
+      "claim": "The Monte Carlo cross-model differences are paired estimates.",
+      "claim_id": "P8-C008",
+      "classification": "UNSUPPORTED",
+      "public_safe": false,
+      "reason": "Models use independent deterministic random streams.",
+      "status": "REJECTED"
+    },
+    {
+      "claim": "Every sampled recommendation metric must reverse every model ordering.",
+      "claim_id": "P8-C009",
+      "classification": "UNSUPPORTED",
+      "public_safe": false,
+      "reason": "The frozen evidence is metric-specific; AUC is an explicit negative control.",
+      "status": "REJECTED"
+    },
+    {
+      "claim": "Both preregistered Monte Carlo runs agree with analytical expectations under abs(MC-analytic) <= max(5*SE, 1e-3).",
+      "claim_id": "P8-C010",
+      "classification": "REPLICATED_COMPUTATION",
+      "evidence": [
+        "validation_results.json"
+      ],
+      "public_safe": true,
+      "status": "SUPPORTED"
+    }
+  ],
+  "schema_version": 1
+}

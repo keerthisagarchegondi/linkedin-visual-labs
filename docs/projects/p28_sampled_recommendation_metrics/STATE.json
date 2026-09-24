@@ -1,15 +1,18 @@
 {
   "citation_status": "NOT_CHECKED",
+  "claim_register": "assets/p28_sampled_recommendation_metrics/frozen/claim_register.json",
   "manuscript_status": "DRAFT",
-  "next_allowed_step": "Project 8 \u2014 Step 4 \u2014 Final experiments and verified result/claim freeze",
+  "next_allowed_step": "Project 8 \u2014 Step 5 \u2014 Output Design Freeze",
   "output_design_frozen": false,
   "package_id": "p28_sampled_recommendation_metrics",
   "project": "project8",
-  "results_frozen": false,
+  "results_frozen": true,
+  "run_manifest": "assets/p28_sampled_recommendation_metrics/frozen/run_manifest.json",
   "schema_version": 1,
+  "scientific_source_of_truth": "assets/p28_sampled_recommendation_metrics/frozen/release_data.json",
   "social_status": "DRAFT",
   "software_status": "DRAFT",
-  "step": 3,
-  "step_id": "MONTE_CARLO_ENGINE_AND_INDEPENDENT_SCIENTIFIC_VALIDATION",
+  "step": 4,
+  "step_id": "FINAL_EXPERIMENTS_AND_VERIFIED_RESULT_CLAIM_FREEZE",
   "step_status": "PASS"
 }

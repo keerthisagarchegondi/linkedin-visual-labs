@@ -63,3 +63,29 @@ the same sampled evaluation events. Step 3 therefore makes no paired
 cross-model uncertainty claim.
 
 No final result or ranking-reversal claim is frozen at Step 3.
+
+## Step 4 scientific freeze
+
+Step 4 computes and freezes the complete scientific evidence package.
+
+The frozen artifacts are stored under:
+
+`assets/p28_sampled_recommendation_metrics/frozen/`
+
+They become the sole scientific source of truth for Steps 5–10.
+
+Frozen decisions include:
+
+- full-catalog metrics and tie-preserving model orderings;
+- expected sampled metrics at m=99;
+- the entire preregistered sample-size grid;
+- source-protocol and high-precision Monte Carlo validation;
+- independent critical-number recomputation;
+- AUC as a negative control;
+- source-reference reconciliation without definition changes;
+- crossover intervals only between adjacent computed sample counts;
+- a public-safety claim register.
+
+Exact crossover points between computed grid values are not inferred.
+
+Step 4 freezes scientific results but does not freeze visual/output design.

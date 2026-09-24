@@ -114,3 +114,24 @@ A Monte Carlo estimate validates an analytical expectation when:
 
 Seed searching, retrying alternative seeds to obtain agreement, or selecting a
 seed after observing results is prohibited.
+
+## Step 4 result-freeze policy
+
+The Step-4 evidence package is generated deterministically from the frozen
+source ranks, analytical engine, Monte Carlo engine, root seed, sample-size
+grid, and tie tolerance.
+
+Numerical ordering uses an absolute tie tolerance of `1e-12`.
+
+When two values differ by no more than that tolerance they remain a genuine
+tie in the frozen ordering.
+
+Sensitivity crossover statements are restricted to adjacent preregistered
+sample-count intervals where a pairwise relation changes. No exact crossover
+point is inferred between uncomputed sample counts.
+
+Published rounded reference values are reconciled against calculated values.
+Any mismatch is recorded explicitly without changing metric definitions.
+
+After Step 4 passes, the frozen evidence files become the scientific source of
+truth for every public-facing artifact.
