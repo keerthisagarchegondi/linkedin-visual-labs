@@ -1,0 +1,61 @@
+{
+  "abstract_order": [
+    "Background",
+    "Problem",
+    "Study design",
+    "Central AP result",
+    "Sample-size extension",
+    "AUC negative control",
+    "Validation",
+    "Bounded conclusion"
+  ],
+  "claims_intentionally_excluded": [
+    "universal sampled-metric failure",
+    "universal model-order reversal",
+    "exact crossover points",
+    "production prevalence",
+    "complete-paper reproduction",
+    "unverified novelty",
+    "publication status",
+    "DOI"
+  ],
+  "claims_used": [
+    "full AP ordering C>B>A",
+    "sampled AP ordering at m=99 A>B>C",
+    "AP complete ordering reversal at m=99",
+    "sample-size sensitivity across frozen m grid",
+    "A/B crossover interval 500-1000",
+    "A/C crossover interval 200-500",
+    "B/C crossover intervals 50-99 and 200-500",
+    "AUC ordering A>C>B across tested grid",
+    "Monte Carlo 1000 repetitions",
+    "Monte Carlo 10000 repetitions",
+    "independent critical-number recomputation",
+    "12 rounded source-reported values reconciled"
+  ],
+  "doi_status": "NONE_CLAIMED",
+  "project": 8,
+  "publication_status": "NOT_PUBLISHED",
+  "reference_status": "Primary-source reference verification deferred to Step 9.15.",
+  "repair_history": [
+    {
+      "reason": "Literal prohibited-phrase scanner collided with a negated bounded-conclusion phrase.",
+      "repair": "9.2.A",
+      "scientific_meaning_changed": false
+    },
+    {
+      "abstract_prose_changed": false,
+      "reason": "Literal semantic-marker validation was sensitive to Markdown line wrapping.",
+      "repair": "9.2.A.A",
+      "repair_action": "Normalize whitespace before semantic validation.",
+      "scientific_meaning_changed": false
+    }
+  ],
+  "source_contract": "P28_MANUSCRIPT_CONTRACT_V1",
+  "status": "DRAFT",
+  "step": 9,
+  "substep": "9.2",
+  "validation_mode": "WHITESPACE_NORMALIZED_SEMANTIC_VALIDATION",
+  "version": "P28_ABSTRACT_V1",
+  "word_count": 308
+}

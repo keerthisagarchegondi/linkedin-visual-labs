@@ -280,3 +280,41 @@ Step 8 video status is recorded truthfully as an accepted creative artifact gene
 Next allowed sub-step:
 
 **Project 8 — Step 9 — Sub-step 9.2 — Draft abstract from validated claims**
+
+## Step 9 — Sub-step 9.2 abstract draft
+
+Drafted the Project 8 manuscript abstract as `P28_ABSTRACT_V1` from the frozen validated scientific contract.
+
+The abstract follows the frozen sequence:
+
+1. Background
+2. Problem
+3. Study design
+4. Central AP result
+5. Sample-size extension
+6. AUC negative control
+7. Validation
+8. Bounded conclusion
+
+Central results:
+
+- full AP: `C > B > A`;
+- sampled AP at `m = 99`: `A > B > C`;
+- AUC negative control: `A > C > B`.
+
+Repairs:
+
+- `9.2.A`: replaced a negated phrase that collided with the literal prohibited-claim scanner;
+- `9.2.A.A`: changed semantic validation to normalize Markdown whitespace before matching logical-order, crossover, and bounded-conclusion markers.
+
+The 9.2.A.A repair did not alter the abstract prose or scientific meaning.
+
+The abstract reports only computed-grid crossover intervals and does not claim exact crossover points.
+
+No universal sampled-metric failure, novelty, publication, peer-review, or DOI claim is made.
+
+Primary-source reference verification remains deferred to Step 9.15.
+
+Next allowed sub-step:
+
+**Project 8 — Step 9 — Sub-step 9.3 — Draft original finding/scope section**

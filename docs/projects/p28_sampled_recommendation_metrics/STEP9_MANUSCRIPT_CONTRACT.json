@@ -9,9 +9,15 @@
     "Validation",
     "Bounded conclusion"
   ],
+  "abstract_status": "P28_ABSTRACT_V1_DRAFTED",
+  "abstract_validation": "WHITESPACE_NORMALIZED_SEMANTIC_VALIDATION",
+  "completed_substeps": [
+    "9.1",
+    "9.2"
+  ],
   "contract_version": "P28_MANUSCRIPT_CONTRACT_V1",
   "manuscript_status": "STRUCTURE_FROZEN",
-  "next_substep": "Project 8 \u2014 Step 9 \u2014 Sub-step 9.2 \u2014 Draft abstract from validated claims",
+  "next_substep": "Project 8 \u2014 Step 9 \u2014 Sub-step 9.3 \u2014 Draft original finding/scope section",
   "primary_question": "Can changing only the evaluation candidate set change which fixed recommendation model appears best?",
   "prohibited_claims": [
     "sampled metrics are universally wrong",
