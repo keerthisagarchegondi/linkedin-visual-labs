@@ -1,0 +1,409 @@
+{
+  "acceptance": {
+    "dashboard": [
+      "Single self-contained HTML opens offline.",
+      "Canonical 1440x900 viewport is clean and readable.",
+      "All four tabs/sections are present.",
+      "Only frozen m values are selectable.",
+      "No browser-side scientific recomputation occurs.",
+      "Five required screenshots and contact sheet pass review."
+    ],
+    "figures": [
+      "All 3 required figures exist.",
+      "Every plotted number matches frozen data.",
+      "No figure implies exact uncomputed crossover.",
+      "Tie semantics are visually preserved.",
+      "Attribution and limitation notes are present where required."
+    ],
+    "linkedin": [
+      "Hook is accurate to the frozen evidence.",
+      "AP reversal is the primary story.",
+      "AUC prevents overgeneralization.",
+      "Attribution is explicit.",
+      "Toy-example limitation is explicit.",
+      "No universal or production-prevalence claim is made."
+    ],
+    "manuscript": [
+      "Headline matches frozen scope.",
+      "Result hierarchy follows the output contract.",
+      "Figures appear in frozen order.",
+      "AUC is framed as a negative control.",
+      "Toy-example limitation is explicit.",
+      "No rejected claim enters abstract/conclusion."
+    ],
+    "video": [
+      "Duration remains approximately 45 seconds.",
+      "Six-scene storyboard is preserved.",
+      "1920x1080, 30 fps, 16:9.",
+      "No animated state invents uncomputed evidence.",
+      "Final takeaway and limitation are readable.",
+      "Six required keyframes/contact sheet pass review."
+    ]
+  },
+  "approval": {
+    "approval_basis": "User reviewed the Step-5 preview renderings for the approximately 45-second video, dashboard, and manuscript and stated that the outputs were acceptable.",
+    "approval_step": "5.37",
+    "approved": true,
+    "required": true
+  },
+  "attribution": {
+    "required_language": "This project independently reproduces and extends a toy ranking example attributed to Krichene & Rendle. The A/B/C rank profiles are source-reported inputs; the analytical derivations, Monte Carlo validation, sample-size sweep, visualizations, and communication artifacts are independently implemented here.",
+    "short_figure_note": "Toy-example rank profiles adapted from Krichene & Rendle; calculations reproduced independently."
+  },
+  "cross_consistency": {
+    "rules": [
+      "A/B/C colors are identical across figures, HTML, video, and manuscript.",
+      "Full and sampled orderings come directly from release_data.json.",
+      "All m values come from the frozen sample-size grid.",
+      "Ties always respect the frozen 1e-12 tolerance.",
+      "AUC is consistently labeled as the negative control.",
+      "The toy-example limitation appears in every public artifact.",
+      "Krichene & Rendle attribution is present in every publication-oriented artifact.",
+      "No artifact claims an exact uncomputed crossover.",
+      "No artifact describes independent profile streams as paired.",
+      "Public-facing outputs distinguish analytical expectation from Monte Carlo estimates.",
+      "The same three static figures anchor manuscript, dashboard, and LinkedIn communication."
+    ]
+  },
+  "dashboard": {
+    "allowed_interactivity": [
+      "tab navigation",
+      "metric selector",
+      "selection among frozen m values only",
+      "profile highlight/hover",
+      "tooltip showing frozen values",
+      "show/hide methodological detail"
+    ],
+    "canonical_viewport": {
+      "device_scale_reference": 1,
+      "height_px": 900,
+      "width_px": 1440
+    },
+    "cards": [
+      "AP ordering reversal at m=99",
+      "1,000-run validation passed",
+      "10,000-run validation passed",
+      "AUC negative control passed"
+    ],
+    "delivery": "Single self-contained HTML file with no network dependency.",
+    "design_system": {
+      "background": "#F7F7F5",
+      "font_stack": "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Arial, sans-serif",
+      "grid": "#D1D5DB",
+      "minimum_axis_px": 12,
+      "minimum_body_px": 14,
+      "minimum_contrast": "WCAG-AA-oriented",
+      "mode": "light research/editorial",
+      "negative_control": "#6B7280",
+      "primary_text": "#111827",
+      "profile_A": "#0072B2",
+      "profile_B": "#D55E00",
+      "profile_C": "#009E73",
+      "secondary_text": "#4B5563",
+      "surface": "#FFFFFF"
+    },
+    "information_architecture": [
+      {
+        "content": [
+          "Question and one-sentence limitation",
+          "AP full-vs-m=99 hero comparison",
+          "Frozen AP ordering callout",
+          "Three evidence cards: reversal / validation / scope"
+        ],
+        "tab": "Overview"
+      },
+      {
+        "content": [
+          "Metric selector: AP / NDCG / Recall@10 / AUC",
+          "Frozen m-grid sensitivity chart",
+          "Tie-aware ordering at selected m",
+          "Computed-grid crossover interval table"
+        ],
+        "tab": "Sensitivity"
+      },
+      {
+        "content": [
+          "Analytical versus 1,000-run Monte Carlo",
+          "Analytical versus 10,000-run Monte Carlo",
+          "MC SD and SE distinction",
+          "Independent AP / critical-number reconciliation",
+          "AUC negative-control verification"
+        ],
+        "tab": "Validation"
+      },
+      {
+        "content": [
+          "A/B/C source rank profiles",
+          "Sampling protocol",
+          "Metric definitions",
+          "Source attribution",
+          "Toy-example limitation",
+          "Frozen artifact / claim-register references"
+        ],
+        "tab": "Methods & Evidence"
+      }
+    ],
+    "prohibited_interactivity": [
+      "arbitrary user-entered m",
+      "interpolation between m values",
+      "recomputation in the browser",
+      "changing metric definitions",
+      "sorting that destroys frozen tie semantics",
+      "animations that imply uncomputed intermediate evidence"
+    ],
+    "purpose": "Evidence-first recruiter/research hybrid: understandable in under one minute while retaining enough detail for a technical reviewer to audit the result.",
+    "screenshot_specification": {
+      "canonical_resolution": "1440x900",
+      "contact_sheet": "5 screenshots on one labeled review sheet; all text must be readable at review scale.",
+      "required_screenshots": [
+        "Overview",
+        "Sensitivity — AP at m=99",
+        "Sensitivity — AUC negative control",
+        "Validation",
+        "Methods & Evidence"
+      ]
+    }
+  },
+  "evidence_summary": {
+    "crossover_interval_count": 12,
+    "full_ap_ordering": "C>B>A",
+    "full_auc_ordering": "A>C>B",
+    "full_ndcg_ordering": "C>A>B",
+    "full_recall_at_10_ordering": "C>A=B",
+    "sample_size_grid": [
+      1,
+      2,
+      5,
+      10,
+      20,
+      50,
+      99,
+      200,
+      500,
+      1000,
+      5000,
+      9999
+    ],
+    "sampled_ap_ordering_m99": "A>B>C",
+    "sampled_auc_ordering_m99": "A>C>B",
+    "sampled_ndcg_ordering_m99": "A>C>B",
+    "sampled_recall_at_10_ordering_m99": "A>C>B",
+    "tie_tolerance": 1e-12
+  },
+  "implementation_rules": [
+    "Step-5 preview images are reference-only. Final figures, dashboard, video, manuscript, screenshots, and animations must be programmatically generated from the frozen Step-4 release data and the approved Step-5 design contract. Preview images must not be used as backgrounds, flattened canvases, stock imagery, or composited substitutes for the actual coded artifacts."
+  ],
+  "limitations": {
+    "required_public_language": "The A/B/C profiles form a controlled toy example with five instances per model and one relevant item per instance. The result demonstrates that a ranking reversal can occur under the frozen sampling protocol; it does not estimate how often or how strongly this occurs in production recommender systems.",
+    "required_sensitivity_language": "Sensitivity conclusions are restricted to the predefined sample-size grid. When a relation changes between adjacent computed values, the project reports that interval and does not infer an exact uncomputed crossover."
+  },
+  "linkedin": {
+    "narrative": [
+      "Open with the engineering/evaluation question, not the paper.",
+      "Show the full-catalog AP ordering.",
+      "Show the m=99 sampled AP ordering.",
+      "State that the underlying A/B/C rank profiles did not change.",
+      "Show sample-size sensitivity.",
+      "Use AUC to prevent the claim from becoming 'all sampling is bad'.",
+      "Mention independent analytical + Monte Carlo validation.",
+      "Close with the practical lesson: validate evaluation protocols.",
+      "Include attribution and toy-example limitation."
+    ],
+    "preferred_hook": "I kept the models fixed and changed only the evaluation protocol. The AP model ordering changed.",
+    "prohibited_hook": "Your recommender-system metrics are wrong."
+  },
+  "manuscript": {
+    "figure_order": [
+      "Figure 1 — full versus sampled AP",
+      "Figure 2 — sample-size sensitivity",
+      "Figure 3 — negative control and validation"
+    ],
+    "headline": "When Sampled Recommendation Metrics Change Model Selection: A Reproducible Toy-Example Study",
+    "result_hierarchy": [
+      "Full-catalog evaluation",
+      "Expected sampled evaluation at m=99",
+      "Reproduced AP ranking reversal",
+      "Sample-size sensitivity",
+      "Metric-specific behavior and AUC negative control",
+      "Monte Carlo and independent validation",
+      "Limitations and implications"
+    ],
+    "table_order": [
+      "Table 1 — frozen A/B/C rank profiles and protocol",
+      "Table 2 — full and m=99 metric values/orderings",
+      "Table 3 — validation summary",
+      "Appendix table — complete frozen sample-size sweep"
+    ]
+  },
+  "metric_emphasis": {
+    "appendix_or_evidence_tables": [
+      "raw full-catalog metric values",
+      "raw m=99 expected metric values",
+      "all sample-size sweep rows",
+      "Monte Carlo SD and SE",
+      "source-reference reconciliation details",
+      "independent recomputation differences"
+    ],
+    "hero": [
+      "ap"
+    ],
+    "negative_control_metric": "AUC",
+    "public_supporting": [
+      "ndcg",
+      "recall_at_10",
+      "auc"
+    ]
+  },
+  "output_design_frozen": true,
+  "project": "p28_sampled_recommendation_metrics",
+  "public_story": {
+    "negative_control_metric": "AUC",
+    "primary_headline": "At 99 sampled negatives, expected AP reverses the model ordering in the frozen A/B/C toy example.",
+    "primary_metric": "Average Precision (AP)",
+    "result_hierarchy": [
+      "Full-catalog versus expected sampled AP ordering",
+      "Sensitivity to the number of sampled negatives",
+      "AUC negative-control behavior",
+      "Monte Carlo and independent numerical validation",
+      "Toy-example limitation and scope"
+    ],
+    "secondary_metrics": [
+      "NDCG",
+      "Recall@10"
+    ],
+    "short_hook": "Same underlying rankings. Different evaluation protocol. Different AP model ordering."
+  },
+  "results_frozen": true,
+  "schema_version": 1,
+  "scientific_source_of_truth": "assets/p28_sampled_recommendation_metrics/frozen/release_data.json",
+  "static_figures": {
+    "count": 3,
+    "figure_1": {
+      "layout": "Two-panel ranked-dot comparison. Left panel: full-catalog AP. Right panel: expected sampled AP at m=99. Profiles A/B/C use fixed colors. Each panel prints its tie-aware ordering above the chart. A center annotation states that the underlying rank profiles are unchanged while the evaluation protocol changes.",
+      "purpose": "Show the central replicated result immediately.",
+      "question": "Does the full-catalog AP ordering agree with expected sampled AP at m=99?",
+      "required_callout": "Full AP: C>B>A | Expected sampled AP (m=99): A>B>C",
+      "title": "Sampling can reverse the AP model ordering"
+    },
+    "figure_2": {
+      "forbidden": "No interpolation-based exact crossover marker.",
+      "layout": "Three vertically aligned small multiples for AP, NDCG, and Recall@10. X-axis uses the exact frozen m grid on a log-like categorical/log presentation. Y-axis shows expected metric value. Profiles A/B/C retain fixed colors. Computed-grid crossover intervals may be shaded or annotated only when present in the frozen release data.",
+      "purpose": "Show that the m=99 result is part of a broader sample-size sensitivity pattern without inventing uncomputed thresholds.",
+      "question": "How do expected sampled metrics evolve across the predefined sample-size grid?",
+      "title": "The ordering depends on how many negatives are sampled"
+    },
+    "figure_3": {
+      "layout": "Upper panel: AUC across the frozen m grid, emphasizing its agreement with full-catalog AUC. Lower panel: analytical expectation versus high-precision Monte Carlo means for A/B/C and retained public metrics, with MC SE shown only where visually legible. Supporting validation details remain in the evidence table.",
+      "purpose": "Prevent overgeneralization while showing validation rigor.",
+      "question": "Is the observed behavior metric-specific, and do the independent computational paths agree?",
+      "title": "AUC is the negative control; simulation validates the analytical result"
+    }
+  },
+  "status": "FROZEN",
+  "step": 5,
+  "terminology": {
+    "prohibited_or_avoid": [
+      "exact crossover threshold",
+      "ground-truth best model",
+      "sampling always selects the wrong model",
+      "all sampled metrics are biased in the same way",
+      "paired cross-model Monte Carlo comparison",
+      "production prevalence",
+      "universal recommender-system conclusion"
+    ],
+    "required": {
+      "crossover": "computed-grid crossover interval",
+      "full_catalog": "full-catalog evaluation",
+      "m": "sampled negatives (m)",
+      "mc_se": "Monte Carlo standard error (SE)",
+      "negative_control": "negative control",
+      "profile": "model profile",
+      "reversal": "ranking reversal",
+      "sampled": "sampled evaluation",
+      "sampled_metric": "expected sampled metric"
+    }
+  },
+  "video": {
+    "animation_rules": {
+      "charts": [
+        "animate only between computed/frozen states",
+        "no invented intermediate metric values",
+        "axis scales remain fixed within a scene",
+        "profile colors never change",
+        "ties use equal visual rank"
+      ],
+      "text": [
+        "short fade/slide only",
+        "one primary sentence per scene",
+        "no kinetic-text effects that compete with charts",
+        "limitation footer remains visible in final scene"
+      ]
+    },
+    "aspect_ratio": "16:9",
+    "final_frame": {
+      "footer": "Toy example • five instances/model • one relevant item/instance",
+      "headline": "Evaluation protocol can change model selection.",
+      "subhead": "In this controlled toy example, sampled AP reverses the model ordering; AUC does not."
+    },
+    "frame_rate_fps": 30,
+    "keyframe_specification": {
+      "contact_sheet": "3x2 labeled contact sheet at 16:9 tile ratio.",
+      "keyframe_times_seconds": [
+        3,
+        9,
+        17,
+        27,
+        35,
+        43
+      ],
+      "required_keyframes": 6
+    },
+    "resolution": "1920x1080",
+    "scene_count": 6,
+    "storyboard": [
+      {
+        "purpose": "Hook",
+        "scene": 1,
+        "text": "Can sampling change which model looks best?",
+        "time": "0-5s",
+        "visual": "A/B/C profiles enter as three fixed-color model cards."
+      },
+      {
+        "purpose": "Full-catalog baseline",
+        "scene": 2,
+        "text": "Full-catalog AP: C>B>A",
+        "time": "5-12s",
+        "visual": "Full-catalog AP ranking resolves from frozen values."
+      },
+      {
+        "purpose": "Central reversal",
+        "scene": 3,
+        "text": "Expected sampled AP at m=99: A>B>C",
+        "time": "12-21s",
+        "visual": "Candidate catalog contracts to 99 sampled negatives; the expected AP ordering transitions only after the sampling-protocol label appears."
+      },
+      {
+        "purpose": "Sensitivity",
+        "scene": 4,
+        "text": "The effect depends on the sample size and metric.",
+        "time": "21-31s",
+        "visual": "AP sensitivity lines move through the exact frozen m grid; NDCG and Recall@10 appear as supporting mini-panels."
+      },
+      {
+        "purpose": "Negative control + validation",
+        "scene": 5,
+        "text": "AUC is the negative control. Independent validation agrees.",
+        "time": "31-38s",
+        "visual": "AUC remains aligned with its full-catalog result; analytical and Monte Carlo markers converge."
+      },
+      {
+        "purpose": "Takeaway + limitation",
+        "scene": 6,
+        "text": "Evaluation protocol can change model selection. Validate the metric—not just the model.",
+        "time": "38-45s",
+        "visual": "Return to the full-vs-sampled AP comparison with a compact toy-example limitation footer."
+      }
+    ],
+    "target_duration_seconds": 45
+  }
+}

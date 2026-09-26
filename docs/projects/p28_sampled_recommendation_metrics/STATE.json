@@ -1,9 +1,12 @@
 {
   "citation_status": "NOT_CHECKED",
   "claim_register": "assets/p28_sampled_recommendation_metrics/frozen/claim_register.json",
+  "communication_acceptance_checklist": "docs/projects/p28_sampled_recommendation_metrics/COMMUNICATION_ACCEPTANCE_CHECKLIST.md",
   "manuscript_status": "DRAFT",
-  "next_allowed_step": "Project 8 \u2014 Step 5 \u2014 Output Design Freeze",
-  "output_design_frozen": false,
+  "next_allowed_step": "Project 8 \u2014 Step 6 \u2014 Final static research figures",
+  "output_design_contract": "docs/projects/p28_sampled_recommendation_metrics/OUTPUT_DESIGN_CONTRACT.json",
+  "output_design_frozen": true,
+  "output_specification": "docs/projects/p28_sampled_recommendation_metrics/OUTPUT_SPECIFICATION.md",
   "package_id": "p28_sampled_recommendation_metrics",
   "project": "project8",
   "results_frozen": true,
@@ -12,7 +15,11 @@
   "scientific_source_of_truth": "assets/p28_sampled_recommendation_metrics/frozen/release_data.json",
   "social_status": "DRAFT",
   "software_status": "DRAFT",
-  "step": 4,
-  "step_id": "FINAL_EXPERIMENTS_AND_VERIFIED_RESULT_CLAIM_FREEZE",
-  "step_status": "PASS"
+  "step": 5,
+  "step5_freeze_status": "FROZEN",
+  "step5_preview_policy": "REFERENCE_ONLY_NO_BACKGROUND_OR_FLATTENED_SUBSTITUTE",
+  "step_id": "OUTPUT_DESIGN_FREEZE",
+  "step_status": "PASS",
+  "user_approval_received": true,
+  "user_approval_required": true
 }

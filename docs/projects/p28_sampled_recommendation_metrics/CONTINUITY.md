@@ -89,3 +89,54 @@ Frozen decisions include:
 Exact crossover points between computed grid values are not inferred.
 
 Step 4 freezes scientific results but does not freeze visual/output design.
+
+## Step 5 output design freeze — awaiting user approval
+
+Steps 5.1–5.36 define the evidence-backed communication design for:
+
+- three static research figures;
+- one self-contained HTML dashboard;
+- one approximately 45-second six-scene explainer video;
+- manuscript figure/table hierarchy;
+- LinkedIn communication narrative;
+- cross-artifact terminology, attribution, limitation and visual rules.
+
+The scientific source of truth remains the frozen Step-4 release package.
+
+Step 5.37 requires explicit user review and approval.
+
+Until that approval is received:
+
+- `results_frozen` remains `true`;
+- `output_design_frozen` remains `false`;
+- Step 6 is not allowed;
+- no Step-5 Git checkpoint is committed.
+
+## Step 5 specification freeze
+
+Step 5 is complete.
+
+The user reviewed the preview renderings for:
+
+- the approximately 45-second video;
+- the dashboard;
+- the manuscript.
+
+The previews were accepted as design references.
+
+The output design is now frozen.
+
+Important implementation constraint:
+
+Preview images are reference-only and must not be used as backgrounds,
+flattened canvases, stock imagery, or composited substitutes for the
+actual coded production artifacts.
+
+Steps 6–10 must generate their outputs programmatically from:
+
+1. the frozen Step-4 scientific release data; and
+2. the frozen Step-5 output design contract.
+
+Next allowed step:
+
+`Project 8 — Step 6 — Final static research figures`
