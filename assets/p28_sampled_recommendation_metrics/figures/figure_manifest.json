@@ -1,0 +1,75 @@
+{
+  "design_source": "docs/projects/p28_sampled_recommendation_metrics/OUTPUT_DESIGN_CONTRACT.json",
+  "figure_contract": {
+    "count": 3,
+    "figure_1": {
+      "full_ordering": "C>B>A",
+      "purpose": "Full-catalog vs expected sampled AP reversal",
+      "sampled_ordering_m99": "A>B>C"
+    },
+    "figure_2": {
+      "exact_crossover_inference": false,
+      "purpose": "Sample-size sensitivity for AP, NDCG, Recall@10",
+      "sample_size_grid": [
+        1,
+        2,
+        5,
+        10,
+        20,
+        50,
+        99,
+        200,
+        500,
+        1000,
+        5000,
+        9999
+      ]
+    },
+    "figure_3": {
+      "auc_ordering": "A>C>B",
+      "high_precision_all_accepted": true,
+      "purpose": "AUC negative control and high-precision MC validation",
+      "source_mc_all_accepted": true
+    }
+  },
+  "files": {
+    "figure_1_ap_reversal.png": {
+      "bytes": 129208,
+      "sha256": "dd91a5b4253aaf2f839ae48cf3344683099e5e0e174d19342fe966d65c41eb3c"
+    },
+    "figure_1_ap_reversal.svg": {
+      "bytes": 80744,
+      "sha256": "901783f47621df108699465012554c565ccc7f412102c8a1bd1425a3ee0dc9a8"
+    },
+    "figure_2_sample_size_sensitivity.png": {
+      "bytes": 394253,
+      "sha256": "9eedf412ad2cc3f00b847f7f15cb4cbc52cb34d5fe8c6ced3a06f8b6e9ab31ce"
+    },
+    "figure_2_sample_size_sensitivity.svg": {
+      "bytes": 140060,
+      "sha256": "98e9aeddd4cb8d1cd26488ff97a94de1e00b12a2428f810f3f39b92921b0d516"
+    },
+    "figure_3_negative_control_validation.png": {
+      "bytes": 259318,
+      "sha256": "97dcd1e5a00aabaea91b81cddece5ca47d11d91fa1b8433bfae9ec155338c706"
+    },
+    "figure_3_negative_control_validation.svg": {
+      "bytes": 139248,
+      "sha256": "d4d95cf6b52d7251402f8cbb25ab32bd9317ffe6522507f139aa35924daea595"
+    }
+  },
+  "generation_method": "PROGRAMMATIC_MATPLOTLIB_FROM_FROZEN_DATA",
+  "output_design_frozen": true,
+  "preview_images_used": false,
+  "profile_colors": {
+    "A": "#0072B2",
+    "B": "#D55E00",
+    "C": "#009E73"
+  },
+  "project": "p28_sampled_recommendation_metrics",
+  "results_frozen": true,
+  "schema_version": 1,
+  "scientific_source": "assets/p28_sampled_recommendation_metrics/frozen/release_data.json",
+  "status": "PASS",
+  "step": 6
+}

@@ -140,3 +140,30 @@ Steps 6–10 must generate their outputs programmatically from:
 Next allowed step:
 
 `Project 8 — Step 6 — Final static research figures`
+
+## Step 6 final static research figures
+
+Step 6 is complete.
+
+Three final research figures were generated programmatically from the
+frozen Step-4 scientific release data and frozen Step-5 design contract:
+
+1. `figure_1_ap_reversal`
+   - full-catalog AP versus expected sampled AP at `m=99`
+   - ordering reversal `C>B>A` to `A>B>C`
+
+2. `figure_2_sample_size_sensitivity`
+   - AP, NDCG and Recall@10 on the predefined frozen sample-size grid
+   - no exact uncomputed crossover inference
+
+3. `figure_3_negative_control_validation`
+   - AUC negative control
+   - analytical versus Monte Carlo validation
+
+Each final figure exists as PNG and SVG.
+
+Preview images were not used in production rendering.
+
+Next allowed step:
+
+`Project 8 — Step 7 — Final self-contained HTML dashboard`
