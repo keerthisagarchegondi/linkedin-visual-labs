@@ -1,0 +1,85 @@
+{
+  "browser_renderer": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+  "canonical_viewport": {
+    "height": 900,
+    "width": 1440
+  },
+  "external_script_dependencies": 0,
+  "external_stylesheet_dependencies": 0,
+  "files": {
+    "index.html": {
+      "bytes": 43231,
+      "sha256": "bdf42c06826a4ae5ace1ef2084db2da4a31f5fe47e8233c768c4eee80f745621"
+    }
+  },
+  "generation_method": "SELF_CONTAINED_HTML_CSS_JS_SVG_FROM_FROZEN_DATA",
+  "output_design_frozen": true,
+  "preview_images_used": false,
+  "project": "p28_sampled_recommendation_metrics",
+  "results_frozen": true,
+  "schema_version": 1,
+  "scientific_contract": {
+    "auc_ordering": "A>C>B",
+    "exact_crossover_inference": false,
+    "full_ap_ordering": "C>B>A",
+    "sample_size_grid": [
+      1,
+      2,
+      5,
+      10,
+      20,
+      50,
+      99,
+      200,
+      500,
+      1000,
+      5000,
+      9999
+    ],
+    "sampled_ap_ordering_m99": "A>B>C"
+  },
+  "screenshot_routes": [
+    "overview",
+    "ap-reversal",
+    "sensitivity",
+    "validation",
+    "methods-evidence"
+  ],
+  "screenshots": {
+    "dashboard_ap_reversal.png": {
+      "bytes": 67002,
+      "sha256": "1d3ec9e5fc766566e68041c3b966e92ef7eaf2c6f7a7f1304ee67027f7ff8417"
+    },
+    "dashboard_contact_sheet.png": {
+      "bytes": 316477,
+      "sha256": "3ef6207633d079aa3ad8828e4ca1c451c0f34d30804f60c535bcaae165b66811"
+    },
+    "dashboard_methods_evidence.png": {
+      "bytes": 111519,
+      "sha256": "c2be1c2af5f21b73495b68ff67a31d0e8bf0119c097fec7d0c605773dbf6e0ef"
+    },
+    "dashboard_overview.png": {
+      "bytes": 75779,
+      "sha256": "8383db79bd89e5de68abe6b1675fc26739e13d38b0e267bdf279503d05fac5db"
+    },
+    "dashboard_sensitivity.png": {
+      "bytes": 101345,
+      "sha256": "ad71b9f00a1ea947baffcdfb52de1b6827e774a3df4d91018e378e454e76a408"
+    },
+    "dashboard_validation.png": {
+      "bytes": 84850,
+      "sha256": "74904cc73ed17494046a76bb9ef73ae0cc4abe3866bba4db0075392f75fdee3a"
+    }
+  },
+  "sections": [
+    "Overview",
+    "Sensitivity",
+    "Validation",
+    "Methods & Evidence"
+  ],
+  "static_figures_frozen": true,
+  "status": "PASS",
+  "step": 7,
+  "step6_figures_used_as_backgrounds": false,
+  "stock_images_used": false
+}

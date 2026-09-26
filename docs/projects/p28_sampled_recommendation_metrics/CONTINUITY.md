@@ -167,3 +167,43 @@ Preview images were not used in production rendering.
 Next allowed step:
 
 `Project 8 — Step 7 — Final self-contained HTML dashboard`
+
+## Step 7 final self-contained HTML dashboard
+
+Step 7 is complete.
+
+Final dashboard:
+
+`assets/p28_sampled_recommendation_metrics/dashboard/index.html`
+
+Implementation properties:
+
+- self-contained HTML;
+- inline CSS;
+- inline JavaScript;
+- browser-generated SVG chart primitives;
+- frozen Step-4 scientific evidence;
+- frozen Step-5 visual contract;
+- no preview images;
+- no stock images;
+- no Step-6 figures used as flattened dashboard backgrounds;
+- no external JavaScript;
+- no external stylesheet dependencies.
+
+Frozen dashboard sections:
+
+1. Overview
+2. Sensitivity
+3. Validation
+4. Methods & Evidence
+
+Canonical browser viewport:
+
+`1440x900`
+
+Five actual browser-rendered reference screenshots and one contact
+sheet are hashed into the dashboard manifest.
+
+Next allowed step:
+
+`Project 8 — Step 8 — Final ~45-second animated explainer video`
