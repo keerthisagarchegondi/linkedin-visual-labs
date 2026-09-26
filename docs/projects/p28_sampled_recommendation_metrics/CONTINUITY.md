@@ -224,3 +224,29 @@ The Overview contains four KPI cards, one insight strip, and the AP reversal, sa
 Methods & Evidence remains supporting content inside Validation rather than a top-level tab.
 
 Visual contract: `APPROVED_PREVIEW_V1`.
+
+## Step 7 — Sub-step 7.1.C.1 recruiter-readable dashboard approval and official freeze
+
+The recruiter-readable 7.1.C preview was reviewed and approved.
+
+The official dashboard now leads with a plain-English project explanation before presenting technical evidence.
+
+Audience layers:
+
+- recruiter / hiring-manager explanation;
+- beginner analyst experiment walkthrough;
+- detailed technical metrics and validation.
+
+The Overview story order is:
+
+1. What is this project?
+2. Experiment in three steps
+3. Main finding / why it matters
+4. KPI summary
+5. Technical evidence
+
+Typography was enlarged across KPI labels, panel subtitles, rank-profile text, crossover findings, validation tables, PASS cards, evidence text and footer copy.
+
+Scientific values and frozen inputs were unchanged.
+
+Audience contract: `RECRUITER_BEGINNER_TECHNICAL_V1`.

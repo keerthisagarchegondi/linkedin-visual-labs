@@ -142,3 +142,63 @@ def test_preview_prohibition_provenance() -> None:
     assert provenance["exact_crossover_inference_performed"] is False
 
     assert provenance["seed_searching_performed"] is False
+
+
+def test_recruiter_beginner_story_is_present() -> None:
+    document = _document()
+
+    for marker in (
+        'data-audience="recruiter-beginner"',
+        'data-story-block="what-is-this-project"',
+        'data-story-block="experiment-in-three-steps"',
+        'data-story-block="main-finding"',
+    ):
+        assert marker in document
+
+    assert "Can the way we evaluate recommendation models" in document
+
+    assert "10,000 products" in document
+
+    assert "99 randomly selected alternatives" in document
+
+    assert "The model did not change. Only the way we measured it did." in document
+
+
+def test_recruiter_story_answers_core_questions() -> None:
+    document = _document()
+
+    assert "Keep the models fixed" in document
+
+    assert "Change only the evaluation" in document
+
+    assert "Check whether the winner changes" in document
+
+    assert "Why this matters:" in document
+
+
+def test_plain_english_model_profile_explanation_is_present() -> None:
+    document = _document()
+
+    assert "What are A, B, and C?" in document
+
+    assert "Lower rank is better." in document
+
+    assert "three fixed recommendation-model rank profiles" in document
+
+
+def test_no_essential_dashboard_typography_below_11px() -> None:
+    document = _document()
+
+    prohibited = (
+        "font-size:8px;",
+        "font-size:8.2px;",
+        "font-size:8.8px;",
+        "font-size:9px;",
+        "font-size:9.3px;",
+        "font-size:9.5px;",
+        "font-size:10px;",
+        "font-size:10.5px;",
+    )
+
+    for value in prohibited:
+        assert value not in document

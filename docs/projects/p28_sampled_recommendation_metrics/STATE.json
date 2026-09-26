@@ -2,6 +2,7 @@
   "citation_status": "NOT_CHECKED",
   "claim_register": "assets/p28_sampled_recommendation_metrics/frozen/claim_register.json",
   "communication_acceptance_checklist": "docs/projects/p28_sampled_recommendation_metrics/COMMUNICATION_ACCEPTANCE_CHECKLIST.md",
+  "dashboard_audience_contract": "RECRUITER_BEGINNER_TECHNICAL_V1",
   "dashboard_frozen": true,
   "dashboard_html": "assets/p28_sampled_recommendation_metrics/dashboard/index.html",
   "dashboard_manifest": "assets/p28_sampled_recommendation_metrics/dashboard/dashboard_manifest.json",
@@ -13,6 +14,15 @@
     "Sample-size sweep",
     "Validation"
   ],
+  "dashboard_recruiter_readable_narrative": true,
+  "dashboard_story_order": [
+    "What is this project?",
+    "Experiment in three steps",
+    "Main finding",
+    "KPI summary",
+    "Technical evidence"
+  ],
+  "dashboard_typography_redesign": true,
   "dashboard_visual_contract": "APPROVED_PREVIEW_V1",
   "dashboard_visual_fidelity_reconstruction": true,
   "manuscript_status": "DRAFT",

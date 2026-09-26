@@ -74,7 +74,7 @@ button {
 .header h1 {
   margin:0;
   color:var(--navy);
-  font-size:31px;
+  font-size:36px;
   line-height:1.05;
   letter-spacing:-.027em;
   font-weight:800;
@@ -83,7 +83,7 @@ button {
 .header p {
   margin:7px 0 0;
   color:#506184;
-  font-size:14px;
+  font-size:16px;
 }
 
 .header-badges {
@@ -105,7 +105,7 @@ button {
   border-radius:20px;
   background:#F2F5FA;
   color:#20345B;
-  font-size:11px;
+  font-size:13px;
   font-weight:750;
   white-space:nowrap;
 }
@@ -160,7 +160,7 @@ button {
   align-items:center;
   justify-content:center;
   gap:13px;
-  font-size:13px;
+  font-size:15px;
   font-weight:760;
 }
 
@@ -185,12 +185,179 @@ button {
 
 .page {
   display:none;
-  padding:10px 24px 18px;
+  padding:22px 28px 34px;
 }
 
 .page.active {
   display:block;
 }
+
+.project-intro {
+  max-width:1390px;
+  margin:0 auto 22px auto;
+  border:1px solid #CFE0F5;
+  border-radius:14px;
+  background:
+    linear-gradient(
+      135deg,
+      #FFFFFF 0%,
+      #F3F8FF 100%
+    );
+  padding:26px 30px;
+  box-shadow:0 8px 28px rgba(31,71,126,.07);
+}
+
+.project-intro-grid {
+  display:grid;
+  grid-template-columns:minmax(0,1.45fr) minmax(360px,.8fr);
+  gap:28px;
+  align-items:start;
+}
+
+.project-intro-eyebrow {
+  color:#0B6ED7;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+}
+
+.project-intro h2 {
+  margin:7px 0 10px 0;
+  color:#0F2147;
+  font-size:28px;
+  line-height:1.15;
+  letter-spacing:-.02em;
+}
+
+.project-intro p {
+  margin:0;
+  max-width:880px;
+  color:#3D5073;
+  font-size:16px;
+  line-height:1.65;
+}
+
+.project-question {
+  margin-top:16px;
+  border-left:4px solid #1978E8;
+  background:#EAF4FF;
+  border-radius:8px;
+  padding:14px 17px;
+  color:#153764;
+  font-size:17px;
+  line-height:1.5;
+  font-weight:750;
+}
+
+.plain-example {
+  border:1px solid #D7E4F3;
+  border-radius:11px;
+  background:#FFFFFF;
+  padding:17px 18px;
+}
+
+.plain-example-title {
+  color:#0F2147;
+  font-size:15px;
+  font-weight:800;
+  margin-bottom:8px;
+}
+
+.plain-example p {
+  margin:0 0 10px 0;
+  color:#465978;
+  font-size:14px;
+  line-height:1.55;
+}
+
+.plain-example p:last-child {
+  margin-bottom:0;
+}
+
+.experiment-flow {
+  max-width:1390px;
+  margin:0 auto 22px auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+
+.flow-step {
+  border:1px solid #D8E5F4;
+  border-radius:12px;
+  background:#FFFFFF;
+  padding:18px;
+  min-height:132px;
+}
+
+.flow-number {
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#1978E8;
+  color:#FFFFFF;
+  font-size:15px;
+  font-weight:850;
+  margin-bottom:10px;
+}
+
+.flow-step h3 {
+  margin:0 0 6px 0;
+  color:#172B52;
+  font-size:17px;
+}
+
+.flow-step p {
+  margin:0;
+  color:#536583;
+  font-size:14px;
+  line-height:1.55;
+}
+
+.main-finding {
+  max-width:1390px;
+  margin:0 auto 24px auto;
+  border:1px solid #F2C7C7;
+  border-radius:12px;
+  background:
+    linear-gradient(
+      90deg,
+      #FFF3F3,
+      #F3F8FF
+    );
+  padding:18px 22px;
+}
+
+.main-finding-title {
+  color:#A52C36;
+  font-size:13px;
+  font-weight:850;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+}
+
+.main-finding-copy {
+  margin-top:6px;
+  color:#24395F;
+  font-size:16px;
+  line-height:1.55;
+}
+
+.main-finding-copy strong {
+  color:#102A56;
+}
+
+.audience-note {
+  margin-top:10px;
+  color:#536583;
+  font-size:13px;
+  line-height:1.5;
+}
+
 
 .overview-shell {
   border:1px solid #D9E4F2;
@@ -202,7 +369,7 @@ button {
 .overview-shell h2 {
   margin:0 0 12px;
   color:var(--navy);
-  font-size:18px;
+  font-size:24px;
 }
 
 .kpi-grid {
@@ -274,15 +441,15 @@ button {
 }
 
 .kpi-label {
-  font-size:11px;
-  line-height:1.35;
+  font-size:14px;
+  line-height:1.4;
   color:#24375C;
   font-weight:720;
 }
 
 .kpi-value {
   margin-top:4px;
-  font-size:22px;
+  font-size:27px;
   font-weight:820;
 }
 
@@ -309,7 +476,8 @@ button {
   padding:9px 16px;
   gap:14px;
   color:#1D3157;
-  font-size:12px;
+  font-size:15px;
+  line-height:1.5;
   font-weight:620;
 }
 
@@ -324,8 +492,8 @@ button {
     minmax(0,1.08fr)
     minmax(0,.90fr)
     minmax(0,1.03fr);
-  gap:11px;
-  margin-top:10px;
+  gap:18px;
+  margin-top:22px;
 }
 
 .panel,
@@ -334,20 +502,20 @@ button {
   border:1px solid #D8E3F0;
   border-radius:7px;
   background:#FFF;
-  padding:12px 13px;
+  padding:18px 18px;
   box-shadow:var(--shadow);
 }
 
 .panel-title {
   margin:0 0 10px;
   color:var(--navy);
-  font-size:18px;
+  font-size:21px;
   font-weight:800;
 }
 
 .panel-subtitle {
   color:#415476;
-  font-size:10px;
+  font-size:13px;
   font-weight:720;
   margin-bottom:5px;
 }
@@ -406,7 +574,7 @@ button {
   background:#F8FBFF;
   border-radius:7px;
   padding:8px 10px;
-  font-size:9.5px;
+  font-size:12.5px;
   color:#405271;
   line-height:1.45;
 }
@@ -428,7 +596,7 @@ button {
 
 .crossover-head {
   color:#5A4111;
-  font-size:10.5px;
+  font-size:13px;
   font-weight:800;
 }
 
@@ -436,14 +604,14 @@ button {
   margin:7px 0 0 17px;
   padding:0;
   color:#394B69;
-  font-size:9.5px;
-  line-height:1.55;
+  font-size:12px;
+  line-height:1.6;
 }
 
 .crossover-foot {
   margin-top:5px;
   color:#6B7280;
-  font-size:8.8px;
+  font-size:11.5px;
 }
 
 .validation-table-wrap {
@@ -456,7 +624,8 @@ button {
   width:100%;
   border-collapse:collapse;
   table-layout:fixed;
-  font-size:8.2px;
+  font-size:14px;
+  line-height:1.5;
 }
 
 .validation-table th,
@@ -526,8 +695,8 @@ button {
 
 .pass-copy {
   color:#273A60;
-  font-size:9px;
-  line-height:1.35;
+  font-size:12px;
+  line-height:1.45;
 }
 
 .pass-copy strong {
@@ -541,7 +710,7 @@ button {
 .detail-heading {
   margin:0;
   color:var(--navy);
-  font-size:22px;
+  font-size:26px;
 }
 
 .detail-note {
@@ -574,8 +743,8 @@ button {
   border-radius:7px;
   background:#F8FBFF;
   padding:11px 12px;
-  font-size:10px;
-  line-height:1.5;
+  font-size:13px;
+  line-height:1.6;
 }
 
 .claim-row {
@@ -602,7 +771,7 @@ button {
   align-items:center;
   gap:16px;
   color:#63718D;
-  font-size:9.3px;
+  font-size:11.5px;
 }
 
 .footer-left {
@@ -624,8 +793,8 @@ button {
   <div>
     <h1>Project 8 — Sampled Recommendation Metrics</h1>
     <p>
-      Reproduction-and-extension study of a source-reported toy example
-      attributed to Krichene &amp; Rendle
+      A reproducible evaluation study showing how the same recommendation
+      rankings can produce a different model-selection decision
     </p>
   </div>
 
@@ -669,6 +838,135 @@ button {
   data-page="overview"
   data-preview-contract="approved-overview-three-panel-v1"
 >
+
+  <section
+    class="project-intro"
+    data-audience="recruiter-beginner"
+    data-story-block="what-is-this-project"
+  >
+    <div class="project-intro-grid">
+
+      <div>
+        <div class="project-intro-eyebrow">
+          What is this project?
+        </div>
+
+        <h2>
+          Can the way we evaluate recommendation models
+          change which model appears best?
+        </h2>
+
+        <p>
+          Recommendation systems rank things such as products,
+          movies, jobs, or articles for each user. Teams then use
+          evaluation metrics to decide which recommendation model
+          should be deployed.
+        </p>
+
+        <p style="margin-top:12px">
+          Testing every possible item can be expensive, so a common
+          shortcut is to evaluate the model against a much smaller
+          sampled set of alternatives instead of the entire catalog.
+        </p>
+
+        <div class="project-question">
+          This project asks whether changing only that evaluation
+          sample can change the model we would choose — even though
+          the models and their recommendation rankings stay exactly
+          the same.
+        </div>
+      </div>
+
+      <aside class="plain-example">
+        <div class="plain-example-title">
+          A simple way to picture it
+        </div>
+
+        <p>
+          Imagine an online store with
+          <strong>10,000 products</strong>
+          and one product we know a user actually wanted.
+        </p>
+
+        <p>
+          <strong>Full-catalog evaluation:</strong>
+          ask where that product ranked among all 10,000 products.
+        </p>
+
+        <p>
+          <strong>Sampled evaluation:</strong>
+          keep the wanted product but compare it with only
+          <strong>99 randomly selected alternatives</strong>.
+        </p>
+
+        <p>
+          The model did not change. Only the way we measured it did.
+        </p>
+      </aside>
+
+    </div>
+  </section>
+
+  <section
+    class="experiment-flow"
+    data-story-block="experiment-in-three-steps"
+  >
+
+    <article class="flow-step">
+      <div class="flow-number">1</div>
+      <h3>Keep the models fixed</h3>
+      <p>
+        Models A, B, and C have already produced their recommendation
+        rankings. Project 8 does not retrain them.
+      </p>
+    </article>
+
+    <article class="flow-step">
+      <div class="flow-number">2</div>
+      <h3>Change only the evaluation</h3>
+      <p>
+        Score the same rankings using the full 10,000-item catalog
+        and then using 99 sampled negative items.
+      </p>
+    </article>
+
+    <article class="flow-step">
+      <div class="flow-number">3</div>
+      <h3>Check whether the winner changes</h3>
+      <p>
+        Compare which model looks best under AP, NDCG, Recall@10,
+        and the AUC negative control.
+      </p>
+    </article>
+
+  </section>
+
+  <section
+    class="main-finding"
+    data-story-block="main-finding"
+  >
+    <div class="main-finding-title">
+      Main finding
+    </div>
+
+    <div class="main-finding-copy">
+      The recommendation outputs stayed fixed, but
+      <strong>Average Precision completely reversed the model ordering</strong>:
+      full-catalog AP selected
+      <strong>C &gt; B &gt; A</strong>,
+      while expected sampled AP at m=99 selected
+      <strong>A &gt; B &gt; C</strong>.
+      AUC retained
+      <strong>A &gt; C &gt; B</strong>,
+      giving the study a useful negative control.
+    </div>
+
+    <div class="audience-note">
+      Why this matters: a team can potentially make a different
+      model-selection decision because of the evaluation protocol,
+      not because the underlying recommendation models changed.
+    </div>
+  </section>
   <div class="overview-shell">
 
     <h2>Overview</h2>
@@ -750,9 +1048,17 @@ button {
       </div>
 
       <div class="rank-box">
-        <strong>
-          Fixed source-reported rank profiles (per user, 5 users):
-        </strong>
+        <strong>What are A, B, and C?</strong>
+        They are three fixed recommendation-model rank profiles from
+        the source toy example. Each number is the position where the
+        one relevant item appeared for one test case.
+        <strong>Lower rank is better.</strong>
+
+        <div style="margin-top:7px">
+          <strong>
+            Fixed source-reported rank profiles (5 cases per profile):
+          </strong>
+        </div>
 
         <div class="rank-line">
           <span><strong>A =</strong> <span id="overview-profile-a"></span></span>

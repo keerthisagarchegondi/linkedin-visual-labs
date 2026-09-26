@@ -1,4 +1,5 @@
 {
+  "audience_contract": "RECRUITER_BEGINNER_TECHNICAL_V1",
   "browser_renderer": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
   "canonical_viewport": {
     "height": 900,
@@ -8,14 +9,15 @@
   "external_stylesheet_dependencies": 0,
   "files": {
     "index.html": {
-      "bytes": 43842,
-      "sha256": "0b6e81a128b969d59fed6344199be18ddee1239fe842f7528d1e29df875806af"
+      "bytes": 50551,
+      "sha256": "ef1c77cc256b0c940f7e370cad520eade9626a36f62ab4555ba6f0a2cde72d86"
     }
   },
   "generation_method": "SELF_CONTAINED_HTML_CSS_JS_SVG_FROM_FROZEN_DATA",
   "output_design_frozen": true,
   "preview_images_used": false,
   "project": "p28_sampled_recommendation_metrics",
+  "recruiter_readable_narrative": true,
   "results_frozen": true,
   "schema_version": 1,
   "scientific_contract": {
@@ -46,24 +48,24 @@
   ],
   "screenshots": {
     "dashboard_ap_reversal.png": {
-      "bytes": 70483,
-      "sha256": "bc28db5ccc6c4087f0d24a6bdc1da2143b3f7c20ab4545b455dba8a3f63ba474"
+      "bytes": 78891,
+      "sha256": "ac95b628f0c0aaaed67cd070cb28a0758a4046df2e8022d1c7394c48f52e81ee"
     },
     "dashboard_contact_sheet.png": {
-      "bytes": 258733,
-      "sha256": "03a3885167b92d264b4697c49c1218b3658d46d88b6e44c96317c678d31c675e"
+      "bytes": 365399,
+      "sha256": "43e8b84c9eea3752868dde40bffd8d8abb1b3424f823dce1a4c5c5ca48142852"
     },
     "dashboard_overview.png": {
-      "bytes": 141692,
-      "sha256": "83ad76f3331aedfd41e7401caa51866f4ccb2a0ad6a3d40df0436be890885aef"
+      "bytes": 273409,
+      "sha256": "c0a2f4b6fb5a01a7dd54dc7ae0268a041c4b96bd7f64a5d7e28080e8f5b7a78a"
     },
     "dashboard_sample_size_sweep.png": {
-      "bytes": 111342,
-      "sha256": "ca21acee72f73162c37d2ac7c5c8469f4a39cb09796d3b14d1019d7ee0121caa"
+      "bytes": 120494,
+      "sha256": "ca1e6c7b06ec9fb0acbc8a7f590345869244ff8f0a71824b9f7b44ca4d5d2782"
     },
     "dashboard_validation.png": {
-      "bytes": 107713,
-      "sha256": "63e9556475c73765ac2d8f5eab714131a979109b58d53fd21c2152064ecf2aac"
+      "bytes": 119258,
+      "sha256": "10d79ebe22aa5deeb925a21151114ceb9ad8a7d52a6b0f5987ce6bc01203246d"
     }
   },
   "sections": [
@@ -77,6 +79,6 @@
   "step": 7,
   "step6_figures_used_as_backgrounds": false,
   "stock_images_used": false,
-  "visual_contract": "APPROVED_PREVIEW_V1",
-  "visual_fidelity_reconstruction": true
+  "typography_redesign": true,
+  "visual_contract": "APPROVED_PREVIEW_V1"
 }
