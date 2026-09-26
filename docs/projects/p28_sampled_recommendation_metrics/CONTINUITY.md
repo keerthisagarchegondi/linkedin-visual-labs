@@ -355,3 +355,23 @@ Primary-source verification remains pending Step 9.15.
 Next allowed sub-step:
 
 **Project 8 — Step 9 — Sub-step 9.4 — Draft mathematical methods section**
+
+## Step 9 — Sub-step 9.4 mathematical methods draft
+
+Drafted `P28_MATHEMATICAL_METHODS_V1` from the frozen Project 8 scientific contract.
+
+The section defines the sampled-rank distribution, AP, NDCG, Recall@10, AUC, five-case aggregation, the frozen sample-size grid, tolerance rules, Monte Carlo validation, and independent numerical verification.
+
+Repairs:
+
+- `9.4.A`: markup-aware semantic validation;
+- `9.4.A.A`: LaTeX numeric-format normalization;
+- `9.4.A.A+1`: Monte Carlo bounded-wording semantic marker aligned to the actual manuscript phrase `rather than as an inferential hypothesis test`.
+
+No repair changed manuscript prose or scientific meaning. Strict raw-LaTeX formula validation remains active.
+
+No new mathematical assumptions or exact crossover interpolation were introduced.
+
+Next allowed sub-step:
+
+**Project 8 — Step 9 — Sub-step 9.5 — Draft independent implementation section**

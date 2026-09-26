@@ -1,0 +1,78 @@
+{
+  "exact_crossover_interpolation": false,
+  "metrics": {
+    "AP_full": "1/r",
+    "AP_sampled": "1/R",
+    "AUC_full": "(N-r)/(N-1)",
+    "AUC_sampled": "1-X/m",
+    "NDCG_full": "1/log2(r+1)",
+    "NDCG_sampled": "1/log2(R+1)",
+    "Recall10_full": "I(r<=10)",
+    "Recall10_sampled": "I(R<=10)"
+  },
+  "new_assumptions_introduced": false,
+  "notation": {
+    "N": 10000,
+    "R": "1+X",
+    "X": "Binomial(m,p)",
+    "m": "number of sampled negatives",
+    "p": "(r-1)/(N-1)",
+    "r": "full-catalog relevant-item rank"
+  },
+  "project": 8,
+  "reference_status": "Literature attribution pending Step 9.15.",
+  "repair_history": [
+    {
+      "draft_prose_changed": false,
+      "reason": "Inline LaTeX math and Markdown code markup were treated as different semantic content.",
+      "repair": "9.4.A",
+      "scientific_meaning_changed": false
+    },
+    {
+      "draft_prose_changed": false,
+      "reason": "LaTeX thousands separator {,} was not canonicalized for prose-semantic validation.",
+      "repair": "9.4.A.A",
+      "scientific_meaning_changed": false
+    },
+    {
+      "draft_prose_changed": false,
+      "reason": "Validator searched for 'not as an inferential hypothesis test' while manuscript wording was 'rather than as an inferential hypothesis test'.",
+      "repair": "9.4.A.A+1",
+      "repair_action": "Validate the actual bounded methods wording.",
+      "scientific_meaning_changed": false
+    }
+  ],
+  "sample_size_grid": [
+    1,
+    2,
+    5,
+    10,
+    20,
+    50,
+    99,
+    200,
+    500,
+    1000,
+    5000,
+    9999
+  ],
+  "simulation": {
+    "acceptance": "abs(mc_mean-expectation) <= max(5*MC_SE, 1e-3)",
+    "repetitions": [
+      1000,
+      10000
+    ],
+    "seed": 20260923
+  },
+  "source_contract": "P28_MANUSCRIPT_CONTRACT_V1",
+  "status": "DRAFT",
+  "step": 9,
+  "substep": "9.4",
+  "tolerances": {
+    "formula": 1e-12,
+    "tie": 1e-12
+  },
+  "validation_mode": "MATH_MARKUP_LATEX_NUMERIC_AND_SEMANTIC_PHRASE_VALIDATION",
+  "version": "P28_MATHEMATICAL_METHODS_V1",
+  "word_count": 1230
+}
