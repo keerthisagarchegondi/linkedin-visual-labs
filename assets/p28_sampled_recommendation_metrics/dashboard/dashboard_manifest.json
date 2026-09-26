@@ -8,8 +8,8 @@
   "external_stylesheet_dependencies": 0,
   "files": {
     "index.html": {
-      "bytes": 43231,
-      "sha256": "bdf42c06826a4ae5ace1ef2084db2da4a31f5fe47e8233c768c4eee80f745621"
+      "bytes": 43842,
+      "sha256": "0b6e81a128b969d59fed6344199be18ddee1239fe842f7528d1e29df875806af"
     }
   },
   "generation_method": "SELF_CONTAINED_HTML_CSS_JS_SVG_FROM_FROZEN_DATA",
@@ -41,45 +41,42 @@
   "screenshot_routes": [
     "overview",
     "ap-reversal",
-    "sensitivity",
-    "validation",
-    "methods-evidence"
+    "sample-size-sweep",
+    "validation"
   ],
   "screenshots": {
     "dashboard_ap_reversal.png": {
-      "bytes": 67002,
-      "sha256": "1d3ec9e5fc766566e68041c3b966e92ef7eaf2c6f7a7f1304ee67027f7ff8417"
+      "bytes": 70483,
+      "sha256": "bc28db5ccc6c4087f0d24a6bdc1da2143b3f7c20ab4545b455dba8a3f63ba474"
     },
     "dashboard_contact_sheet.png": {
-      "bytes": 316477,
-      "sha256": "3ef6207633d079aa3ad8828e4ca1c451c0f34d30804f60c535bcaae165b66811"
-    },
-    "dashboard_methods_evidence.png": {
-      "bytes": 111519,
-      "sha256": "c2be1c2af5f21b73495b68ff67a31d0e8bf0119c097fec7d0c605773dbf6e0ef"
+      "bytes": 258733,
+      "sha256": "03a3885167b92d264b4697c49c1218b3658d46d88b6e44c96317c678d31c675e"
     },
     "dashboard_overview.png": {
-      "bytes": 75779,
-      "sha256": "8383db79bd89e5de68abe6b1675fc26739e13d38b0e267bdf279503d05fac5db"
+      "bytes": 141692,
+      "sha256": "83ad76f3331aedfd41e7401caa51866f4ccb2a0ad6a3d40df0436be890885aef"
     },
-    "dashboard_sensitivity.png": {
-      "bytes": 101345,
-      "sha256": "ad71b9f00a1ea947baffcdfb52de1b6827e774a3df4d91018e378e454e76a408"
+    "dashboard_sample_size_sweep.png": {
+      "bytes": 111342,
+      "sha256": "ca21acee72f73162c37d2ac7c5c8469f4a39cb09796d3b14d1019d7ee0121caa"
     },
     "dashboard_validation.png": {
-      "bytes": 84850,
-      "sha256": "74904cc73ed17494046a76bb9ef73ae0cc4abe3866bba4db0075392f75fdee3a"
+      "bytes": 107713,
+      "sha256": "63e9556475c73765ac2d8f5eab714131a979109b58d53fd21c2152064ecf2aac"
     }
   },
   "sections": [
     "Overview",
-    "Sensitivity",
-    "Validation",
-    "Methods & Evidence"
+    "AP reversal",
+    "Sample-size sweep",
+    "Validation"
   ],
   "static_figures_frozen": true,
   "status": "PASS",
   "step": 7,
   "step6_figures_used_as_backgrounds": false,
-  "stock_images_used": false
+  "stock_images_used": false,
+  "visual_contract": "APPROVED_PREVIEW_V1",
+  "visual_fidelity_reconstruction": true
 }

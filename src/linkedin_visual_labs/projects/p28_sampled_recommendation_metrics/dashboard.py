@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import hashlib
-import html
 import json
 from pathlib import Path
 from typing import Any
@@ -25,9 +24,8 @@ NEGATIVE_CONTROL_COLOR = "#6B7280"
 SCREENSHOT_ROUTES = (
     "overview",
     "ap-reversal",
-    "sensitivity",
+    "sample-size-sweep",
     "validation",
-    "methods-evidence",
 )
 
 
@@ -292,9 +290,7 @@ def build_html(
 
     frozen_json = _json_for_script(payload)
 
-    question = html.escape(str(payload["meta"]["scientific_question"]))
-
-    document = f"""<!doctype html>
+    template = r"""<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -302,1313 +298,1655 @@ def build_html(
 <meta name="color-scheme" content="light">
 <title>Project 8 — Sampled Recommendation Metrics</title>
 <style>
-:root {{
-  --bg: #F7F7F5;
-  --surface: #FFFFFF;
-  --surface-soft: #F3F4F6;
-  --text: #111827;
-  --muted: #6B7280;
-  --line: #E5E7EB;
-  --line-strong: #D1D5DB;
-  --a: #0072B2;
-  --b: #D55E00;
-  --c: #009E73;
-  --negative: #6B7280;
-  --blue-soft: #EAF4FB;
-  --green-soft: #EAF7F2;
-  --orange-soft: #FFF2EA;
-  --purple-soft: #F2EEFF;
-  --red-soft: #FFF0F0;
-  --yellow-soft: #FFF8DD;
-  --shadow: 0 8px 24px rgba(17,24,39,.055);
-  --radius: 18px;
-}}
-* {{
-  box-sizing: border-box;
-}}
-html {{
-  background: var(--bg);
-  scroll-behavior: smooth;
-}}
-body {{
-  margin: 0;
-  min-width: 1180px;
+:root {
+  --page:#F5F9FF;
+  --surface:#FFFFFF;
+  --border:#D8E3F2;
+  --navy:#0F2147;
+  --text:#17284D;
+  --muted:#5F6F8F;
+  --a:#0072B2;
+  --b:#D55E00;
+  --c:#009E73;
+  --blue-soft:#EBF5FF;
+  --blue-border:#C8E2FC;
+  --green-soft:#ECFAF4;
+  --green-border:#C9EBDD;
+  --purple-soft:#F4EFFF;
+  --purple-border:#DED0FB;
+  --red-soft:#FFF0F1;
+  --red-border:#FFBFC5;
+  --yellow-soft:#FFF7DD;
+  --yellow-border:#F2D895;
+  --shadow:0 7px 22px rgba(27,61,111,.055);
+}
+
+* {
+  box-sizing:border-box;
+}
+
+html,
+body {
+  margin:0;
+  width:100%;
+  min-width:1180px;
+  min-height:100%;
+  background:
+    linear-gradient(
+      180deg,
+      #FFFFFF 0,
+      #F7FAFF 155px,
+      var(--page) 100%
+    );
+  color:var(--text);
   font-family:
     Inter,
-    ui-sans-serif,
-    -apple-system,
-    BlinkMacSystemFont,
     "Segoe UI",
     Arial,
     sans-serif;
-  background: var(--bg);
-  color: var(--text);
-}}
-button {{
-  font: inherit;
-}}
-.shell {{
-  width: 100%;
-  min-height: 100vh;
-}}
-.topbar {{
-  height: 86px;
-  padding: 18px 34px 14px 34px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--line);
-  background: rgba(247,247,245,.98);
-}}
-.brand {{
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}}
-.eyebrow {{
-  font-size: 11px;
-  font-weight: 750;
-  letter-spacing: .105em;
-  text-transform: uppercase;
-  color: var(--a);
-}}
-.brand h1 {{
-  margin: 0;
-  font-size: 23px;
-  line-height: 1.18;
-  letter-spacing: -.02em;
-}}
-.brand p {{
-  margin: 0;
-  color: var(--muted);
-  font-size: 11.5px;
-}}
-.badges {{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-  max-width: 510px;
-  justify-content: flex-end;
-}}
-.badge {{
-  padding: 7px 10px;
-  border-radius: 999px;
-  font-size: 10.5px;
-  font-weight: 700;
-  border: 1px solid var(--line);
-  background: var(--surface);
-  white-space: nowrap;
-}}
-.badge.good {{
-  background: var(--green-soft);
-  border-color: #BDE5D5;
-  color: #06684D;
-}}
-.badge.ap {{
-  background: var(--blue-soft);
-  border-color: #C7E1F2;
-  color: #075E90;
-}}
-.badge.auc {{
-  background: var(--purple-soft);
-  border-color: #DDD3FF;
-  color: #5942A6;
-}}
-.tabs {{
-  height: 52px;
-  padding: 0 34px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--surface);
-  border-bottom: 1px solid var(--line);
-}}
-.tab {{
-  border: 0;
-  background: transparent;
-  padding: 9px 14px;
-  border-radius: 10px;
-  color: var(--muted);
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-}}
-.tab:hover {{
-  background: var(--surface-soft);
-}}
-.tab.active {{
-  color: #075E90;
-  background: var(--blue-soft);
-}}
-.page {{
-  display: none;
-  padding: 22px 34px 28px 34px;
-}}
-.page.active {{
-  display: block;
-}}
-.grid {{
-  display: grid;
-  gap: 14px;
-}}
-.grid.four {{
-  grid-template-columns: repeat(4, minmax(0,1fr));
-}}
-.grid.two {{
-  grid-template-columns: repeat(2, minmax(0,1fr));
-}}
-.grid.three {{
-  grid-template-columns: repeat(3, minmax(0,1fr));
-}}
-.card {{
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 16px;
-}}
-.card.flat {{
-  box-shadow: none;
-}}
-.metric-card {{
-  min-height: 104px;
-}}
-.card-label {{
-  color: var(--muted);
-  font-size: 10.5px;
-  font-weight: 750;
-  letter-spacing: .035em;
-  text-transform: uppercase;
-}}
-.big-order {{
-  margin-top: 8px;
-  font-size: 25px;
-  line-height: 1;
-  font-weight: 800;
-  letter-spacing: -.035em;
-}}
-.small-note {{
-  color: var(--muted);
-  font-size: 10.5px;
-  line-height: 1.45;
-}}
-.insight {{
-  margin-top: 14px;
-  padding: 13px 16px;
-  border: 1px solid #CDE3F1;
-  background: var(--blue-soft);
-  border-radius: 14px;
-  font-size: 12px;
-  font-weight: 700;
-}}
-.section-title {{
-  display: flex;
-  justify-content: space-between;
-  gap: 18px;
-  align-items: flex-start;
-  margin-bottom: 12px;
-}}
-.section-title h2 {{
-  margin: 0;
-  font-size: 18px;
-  letter-spacing: -.02em;
-}}
-.section-title p {{
-  margin: 3px 0 0 0;
-  color: var(--muted);
-  font-size: 11px;
-}}
-.chart-card {{
-  min-height: 386px;
-}}
-.chart {{
-  width: 100%;
-  height: 280px;
-}}
-.chart.tall {{
-  height: 330px;
-}}
-.chart svg {{
-  display: block;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-}}
-.reversal-banner {{
-  margin-top: 12px;
-  display: grid;
-  grid-template-columns: 1fr 70px 1fr;
-  align-items: center;
-  text-align: center;
-  background: var(--red-soft);
-  border: 1px solid #F2CECE;
-  border-radius: 14px;
-  padding: 12px 14px;
-}}
-.reversal-banner .order {{
-  font-size: 21px;
-  font-weight: 800;
-}}
-.reversal-banner .arrow {{
-  color: #A14545;
-  font-size: 24px;
-  font-weight: 800;
-}}
-.profile-strip {{
-  margin-top: 12px;
-  display: grid;
-  grid-template-columns: repeat(3,minmax(0,1fr));
-  gap: 8px;
-}}
-.profile {{
-  background: var(--surface-soft);
-  border-radius: 11px;
-  padding: 9px 10px;
-  font-size: 10px;
-  overflow-wrap: anywhere;
-}}
-.profile strong {{
-  display: inline-block;
-  margin-right: 5px;
-}}
-.pill {{
-  display: inline-flex;
-  align-items: center;
-  border-radius: 999px;
-  padding: 4px 8px;
-  font-size: 9.5px;
-  font-weight: 750;
-  border: 1px solid var(--line);
-  background: var(--surface);
-}}
-.pill.good {{
-  color: #05684B;
-  background: var(--green-soft);
-  border-color: #BEE3D5;
-}}
-.pill.warn {{
-  color: #8A5B00;
-  background: var(--yellow-soft);
-  border-color: #EAD797;
-}}
-.legend {{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  font-size: 9.5px;
-  color: var(--muted);
-}}
-.legend-item {{
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-}}
-.legend-dot {{
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-}}
-.table-wrap {{
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 13px;
-}}
-table {{
-  width: 100%;
-  border-collapse: collapse;
-  background: var(--surface);
-  font-size: 10px;
-}}
-th {{
-  padding: 9px 8px;
-  text-align: left;
-  background: var(--surface-soft);
-  border-bottom: 1px solid var(--line);
-  color: #374151;
-  font-weight: 800;
-}}
-td {{
-  padding: 9px 8px;
-  border-bottom: 1px solid var(--line);
-  vertical-align: top;
-}}
-tr:last-child td {{
-  border-bottom: 0;
-}}
-.validation-grid {{
-  display: grid;
-  grid-template-columns: repeat(2,minmax(0,1fr));
-  gap: 10px;
-}}
-.validation-item {{
-  border: 1px solid #CBE6D9;
-  background: var(--green-soft);
-  border-radius: 13px;
-  padding: 12px;
-}}
-.validation-item strong {{
-  display: block;
-  font-size: 11px;
-  color: #075F49;
-}}
-.validation-item span {{
-  display: block;
-  margin-top: 3px;
-  color: var(--muted);
-  font-size: 9.5px;
-}}
-.callout {{
-  border-radius: 13px;
-  padding: 12px 14px;
-  font-size: 10px;
-  line-height: 1.45;
-}}
-.callout.yellow {{
-  background: var(--yellow-soft);
-  border: 1px solid #EAD797;
-}}
-.callout.green {{
-  background: var(--green-soft);
-  border: 1px solid #C2E3D6;
-}}
-.callout.gray {{
-  background: var(--surface-soft);
-  border: 1px solid var(--line);
-}}
-.claim-list {{
-  display: grid;
-  gap: 8px;
-}}
-.claim {{
-  border: 1px solid var(--line);
-  background: var(--surface);
-  border-radius: 11px;
-  padding: 10px 11px;
-  font-size: 10px;
-  line-height: 1.4;
-}}
-.claim-id {{
-  display: inline-block;
-  margin-right: 7px;
-  color: var(--a);
-  font-weight: 800;
-}}
-.methods-grid {{
-  display: grid;
-  grid-template-columns: 1.18fr .82fr;
-  gap: 14px;
-}}
-.kv {{
-  display: grid;
-  grid-template-columns: 180px 1fr;
-  gap: 8px 14px;
-  font-size: 10.5px;
-}}
-.kv dt {{
-  color: var(--muted);
-  font-weight: 700;
-}}
-.kv dd {{
-  margin: 0;
-  overflow-wrap: anywhere;
-}}
-.formula {{
-  display: block;
-  padding: 9px 11px;
-  margin-top: 8px;
-  border-radius: 10px;
-  background: #FAFAFA;
-  border: 1px solid var(--line);
-  font-family: "Cascadia Code", Consolas, monospace;
-  font-size: 10px;
-}}
-.footer {{
-  padding: 11px 34px 18px 34px;
-  color: var(--muted);
-  font-size: 9.5px;
-}}
-.footer strong {{
-  color: #374151;
-}}
-.focus-ap .overview-summary {{
-  display: none;
-}}
-.focus-ap #ap-reversal-card {{
-  outline: 3px solid rgba(0,114,178,.17);
-  box-shadow: 0 14px 38px rgba(0,114,178,.10);
-}}
-.focus-ap #ap-reversal-card .chart {{
-  height: 330px;
-}}
+}
+
+body {
+  overflow-x:auto;
+}
+
+button {
+  font:inherit;
+}
+
+.header {
+  min-height:95px;
+  padding:17px 24px 12px;
+  display:flex;
+  justify-content:space-between;
+  gap:24px;
+  align-items:flex-start;
+}
+
+.header h1 {
+  margin:0;
+  color:var(--navy);
+  font-size:31px;
+  line-height:1.05;
+  letter-spacing:-.027em;
+  font-weight:800;
+}
+
+.header p {
+  margin:7px 0 0;
+  color:#506184;
+  font-size:14px;
+}
+
+.header-badges {
+  display:flex;
+  gap:7px;
+  justify-content:flex-end;
+  flex-wrap:wrap;
+  padding-top:9px;
+}
+
+.badge {
+  min-height:38px;
+  padding:0 15px;
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+  justify-content:center;
+  border:1px solid var(--border);
+  border-radius:20px;
+  background:#F2F5FA;
+  color:#20345B;
+  font-size:11px;
+  font-weight:750;
+  white-space:nowrap;
+}
+
+.badge.green {
+  background:#DDF6E9;
+  border-color:#C4EAD6;
+  color:#087153;
+}
+
+.badge.blue {
+  background:#E8F1FF;
+  border-color:#BFD8FF;
+  color:#0A5ED1;
+}
+
+.badge.purple {
+  background:#F0E7FF;
+  border-color:#D8C2FF;
+  color:#5C20C2;
+}
+
+.badge-dot {
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:#0C8E68;
+  color:#FFF;
+}
+
+.nav {
+  margin:0 24px;
+  height:57px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border:1px solid #D6E1F0;
+  border-radius:7px;
+  overflow:hidden;
+  background:#FFF;
+}
+
+.nav-button {
+  border:0;
+  border-right:1px solid #DDE5F0;
+  background:transparent;
+  color:#27385C;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:13px;
+  font-size:13px;
+  font-weight:760;
+}
+
+.nav-button:last-child {
+  border-right:0;
+}
+
+.nav-button.active {
+  background:
+    linear-gradient(
+      180deg,
+      #258AF5,
+      #1478E9
+    );
+  color:#FFF;
+}
+
+.nav-icon {
+  font-size:17px;
+  font-weight:900;
+}
+
+.page {
+  display:none;
+  padding:10px 24px 18px;
+}
+
+.page.active {
+  display:block;
+}
+
+.overview-shell {
+  border:1px solid #D9E4F2;
+  border-radius:7px;
+  background:#FFF;
+  padding:14px 15px 13px;
+}
+
+.overview-shell h2 {
+  margin:0 0 12px;
+  color:var(--navy);
+  font-size:18px;
+}
+
+.kpi-grid {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+
+.kpi {
+  min-height:92px;
+  border-radius:7px;
+  padding:15px 16px;
+  display:grid;
+  grid-template-columns:45px 1fr;
+  gap:13px;
+  align-items:center;
+  border:1px solid var(--border);
+}
+
+.kpi.blue {
+  background:var(--blue-soft);
+  border-color:var(--blue-border);
+}
+
+.kpi.green {
+  background:var(--green-soft);
+  border-color:var(--green-border);
+}
+
+.kpi.purple {
+  background:var(--purple-soft);
+  border-color:var(--purple-border);
+}
+
+.kpi.mint {
+  background:#EBFAF4;
+  border-color:#C8EBDE;
+}
+
+.kpi-icon {
+  width:42px;
+  height:42px;
+  border-radius:7px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:21px;
+  font-weight:900;
+}
+
+.kpi.blue .kpi-icon {
+  background:#D6EAFF;
+  color:#1478E9;
+}
+
+.kpi.green .kpi-icon {
+  background:#D7F3E6;
+  color:#087C5A;
+}
+
+.kpi.purple .kpi-icon {
+  background:#E6DAFF;
+  color:#6024C7;
+}
+
+.kpi.mint .kpi-icon {
+  background:#D9F4E8;
+  color:#078563;
+}
+
+.kpi-label {
+  font-size:11px;
+  line-height:1.35;
+  color:#24375C;
+  font-weight:720;
+}
+
+.kpi-value {
+  margin-top:4px;
+  font-size:22px;
+  font-weight:820;
+}
+
+.kpi.blue .kpi-value {
+  color:#176DDB;
+}
+
+.kpi.green .kpi-value {
+  color:#07815D;
+}
+
+.kpi.purple .kpi-value {
+  color:#5D20C8;
+}
+
+.insight-strip {
+  margin-top:12px;
+  min-height:49px;
+  border:1px solid #D8E7F8;
+  border-radius:7px;
+  background:#F3F8FE;
+  display:flex;
+  align-items:center;
+  padding:9px 16px;
+  gap:14px;
+  color:#1D3157;
+  font-size:12px;
+  font-weight:620;
+}
+
+.insight-icon {
+  color:#D79800;
+  font-size:20px;
+}
+
+.overview-panels {
+  display:grid;
+  grid-template-columns:
+    minmax(0,1.08fr)
+    minmax(0,.90fr)
+    minmax(0,1.03fr);
+  gap:11px;
+  margin-top:10px;
+}
+
+.panel,
+.detail-card {
+  min-width:0;
+  border:1px solid #D8E3F0;
+  border-radius:7px;
+  background:#FFF;
+  padding:12px 13px;
+  box-shadow:var(--shadow);
+}
+
+.panel-title {
+  margin:0 0 10px;
+  color:var(--navy);
+  font-size:18px;
+  font-weight:800;
+}
+
+.panel-subtitle {
+  color:#415476;
+  font-size:10px;
+  font-weight:720;
+  margin-bottom:5px;
+}
+
+.ap-two {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:13px;
+}
+
+.chart {
+  width:100%;
+  height:205px;
+}
+
+.chart.sweep {
+  height:248px;
+}
+
+.chart.detail {
+  height:330px;
+}
+
+.chart svg {
+  display:block;
+  width:100%;
+  height:100%;
+  overflow:visible;
+}
+
+.reversal-box {
+  margin-top:7px;
+  height:48px;
+  border:1px solid var(--red-border);
+  background:var(--red-soft);
+  border-radius:7px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  font-size:20px;
+  font-weight:830;
+}
+
+.reversal-full {
+  color:#D51D2A;
+}
+
+.reversal-sampled {
+  color:#0868D2;
+}
+
+.rank-box {
+  margin-top:9px;
+  border:1px solid #DDE7F2;
+  background:#F8FBFF;
+  border-radius:7px;
+  padding:8px 10px;
+  font-size:9.5px;
+  color:#405271;
+  line-height:1.45;
+}
+
+.rank-line {
+  margin-top:3px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+}
+
+.crossover-box {
+  margin-top:10px;
+  border:1px solid var(--yellow-border);
+  background:var(--yellow-soft);
+  border-radius:7px;
+  padding:9px 11px;
+}
+
+.crossover-head {
+  color:#5A4111;
+  font-size:10.5px;
+  font-weight:800;
+}
+
+.crossover-list {
+  margin:7px 0 0 17px;
+  padding:0;
+  color:#394B69;
+  font-size:9.5px;
+  line-height:1.55;
+}
+
+.crossover-foot {
+  margin-top:5px;
+  color:#6B7280;
+  font-size:8.8px;
+}
+
+.validation-table-wrap {
+  border:1px solid #D5DFEC;
+  border-radius:6px;
+  overflow:hidden;
+}
+
+.validation-table {
+  width:100%;
+  border-collapse:collapse;
+  table-layout:fixed;
+  font-size:8.2px;
+}
+
+.validation-table th,
+.validation-table td {
+  border-right:1px solid #DCE5F0;
+  border-bottom:1px solid #DCE5F0;
+  padding:6px 4px;
+  text-align:center;
+  white-space:nowrap;
+}
+
+.validation-table th:last-child,
+.validation-table td:last-child {
+  border-right:0;
+}
+
+.validation-table thead th {
+  background:#F2F6FB;
+  color:#273C62;
+  font-weight:800;
+}
+
+.validation-table .group {
+  background:#EEF4FB;
+}
+
+.validation-table .metric {
+  text-align:left;
+  font-weight:800;
+}
+
+.order-blue {
+  color:#0B6CD8;
+  font-weight:800;
+}
+
+.pass-grid {
+  margin-top:10px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:7px;
+}
+
+.pass-card {
+  min-height:64px;
+  border:1px solid #D9E5F1;
+  border-radius:6px;
+  background:#F8FBFF;
+  display:grid;
+  grid-template-columns:37px 1fr;
+  gap:8px;
+  align-items:center;
+  padding:8px;
+}
+
+.pass-check {
+  width:31px;
+  height:31px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#0A936D;
+  color:#FFF;
+  font-size:18px;
+}
+
+.pass-copy {
+  color:#273A60;
+  font-size:9px;
+  line-height:1.35;
+}
+
+.pass-copy strong {
+  color:#07825F;
+}
+
+.detail-card {
+  padding:17px;
+}
+
+.detail-heading {
+  margin:0;
+  color:var(--navy);
+  font-size:22px;
+}
+
+.detail-note {
+  margin:5px 0 14px;
+  color:var(--muted);
+  font-size:11px;
+}
+
+.detail-grid-two {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+
+.detail-grid-three {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:13px;
+}
+
+.evidence-grid {
+  margin-top:14px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.evidence-card {
+  border:1px solid #DEE7F2;
+  border-radius:7px;
+  background:#F8FBFF;
+  padding:11px 12px;
+  font-size:10px;
+  line-height:1.5;
+}
+
+.claim-row {
+  margin-top:7px;
+  padding:7px 8px;
+  border:1px solid #E1E8F1;
+  border-radius:5px;
+  background:#FFF;
+}
+
+.claim-id {
+  color:#0A6ED8;
+  font-weight:800;
+  margin-right:6px;
+}
+
+.footer {
+  min-height:57px;
+  padding:12px 25px 14px;
+  border-top:1px solid #DDE6F1;
+  background:#FFF;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  color:#63718D;
+  font-size:9.3px;
+}
+
+.footer-left {
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.footer-right {
+  white-space:nowrap;
+}
 </style>
 </head>
-<body>
-<div class="shell" id="app-shell">
 
-<header class="topbar">
-  <div class="brand">
-    <div class="eyebrow">Reproduction + extension · frozen evidence</div>
+<body>
+<div id="app">
+
+<header class="header">
+  <div>
     <h1>Project 8 — Sampled Recommendation Metrics</h1>
-    <p>{question}</p>
+    <p>
+      Reproduction-and-extension study of a source-reported toy example
+      attributed to Krichene &amp; Rendle
+    </p>
   </div>
-  <div class="badges">
-    <span class="badge good">Results frozen</span>
-    <span class="badge good">Design frozen</span>
-    <span class="badge ap">Hero metric · AP</span>
-    <span class="badge auc">Negative control · AUC</span>
-    <span class="badge">Toy example · 5 test cases/profile</span>
+
+  <div class="header-badges">
+    <span class="badge green">
+      <span class="badge-dot">&#10003;</span>
+      Results frozen
+    </span>
+    <span class="badge blue">Hero metric: AP</span>
+    <span class="badge purple">Negative control: AUC</span>
+    <span class="badge">Toy example</span>
   </div>
 </header>
 
-<nav class="tabs" aria-label="Dashboard sections">
-  <button class="tab" data-route="overview">Overview</button>
-  <button class="tab" data-route="sensitivity">Sensitivity</button>
-  <button class="tab" data-route="validation">Validation</button>
-  <button class="tab" data-route="methods-evidence">Methods &amp; Evidence</button>
+<nav class="nav" aria-label="Primary dashboard navigation">
+  <button class="nav-button" data-route="overview" data-contract-tab="Overview">
+    <span class="nav-icon">&#9636;</span>
+    Overview
+  </button>
+
+  <button class="nav-button" data-route="ap-reversal" data-contract-tab="AP reversal">
+    <span class="nav-icon">&#9637;</span>
+    AP reversal
+  </button>
+
+  <button class="nav-button" data-route="sample-size-sweep" data-contract-tab="Sample-size sweep">
+    <span class="nav-icon">&#8767;</span>
+    Sample-size sweep
+  </button>
+
+  <button class="nav-button" data-route="validation" data-contract-tab="Validation">
+    <span class="nav-icon">&#9679;</span>
+    Validation
+  </button>
 </nav>
 
 <main>
 
-<section class="page" data-page="overview">
+<section
+  class="page"
+  data-page="overview"
+  data-preview-contract="approved-overview-three-panel-v1"
+>
+  <div class="overview-shell">
 
-  <div class="overview-summary">
-    <div class="grid four">
+    <h2>Overview</h2>
 
-      <article class="card metric-card">
-        <div class="card-label">Full-catalog AP ordering</div>
-        <div class="big-order" style="color:#009E73">C &gt; B &gt; A</div>
-        <p class="small-note">
-          Catalog evaluation uses all 10,000 candidate items.
-        </p>
+    <div class="kpi-grid">
+
+      <article class="kpi blue">
+        <div class="kpi-icon">&#9819;</div>
+        <div>
+          <div class="kpi-label">Full-catalog AP ordering:</div>
+          <div class="kpi-value">C &gt; B &gt; A</div>
+        </div>
       </article>
 
-      <article class="card metric-card">
-        <div class="card-label">Expected sampled AP · m=99</div>
-        <div class="big-order" style="color:#0072B2">A &gt; B &gt; C</div>
-        <p class="small-note">
-          Same rank profiles; evaluation set is reduced to 100 candidates.
-        </p>
+      <article class="kpi green">
+        <div class="kpi-icon">&#9637;</div>
+        <div>
+          <div class="kpi-label">Sampled AP ordering at m=99:</div>
+          <div class="kpi-value">A &gt; B &gt; C</div>
+        </div>
       </article>
 
-      <article class="card metric-card">
-        <div class="card-label">AUC negative control</div>
-        <div class="big-order" style="color:#6B7280">A &gt; C &gt; B</div>
-        <p class="small-note">
-          Ordering is invariant in expectation across the frozen m grid.
-        </p>
+      <article class="kpi purple">
+        <div class="kpi-icon">&#8767;</div>
+        <div>
+          <div class="kpi-label">AUC ordering (full and sampled):</div>
+          <div class="kpi-value">A &gt; C &gt; B</div>
+        </div>
       </article>
 
-      <article class="card metric-card">
-        <div class="card-label">Validation</div>
-        <div class="big-order" style="font-size:20px;color:#05684B">PASS</div>
-        <p class="small-note">
-          1,000-run + 10,000-run Monte Carlo protocols passed.
-        </p>
+      <article class="kpi mint">
+        <div class="kpi-icon">&#10003;</div>
+        <div class="kpi-label">
+          Monte Carlo validation passed —
+          1,000 and 10,000 repetitions.
+        </div>
       </article>
 
     </div>
 
-    <div class="insight">
-      Same frozen rankings + a different evaluation candidate set
-      → different metric values → potentially different model selection.
+    <div class="insight-strip">
+      <span class="insight-icon">&#9733;</span>
+      <span>
+        Same rank profiles, different evaluation candidate set,
+        different model winner.
+      </span>
     </div>
+
   </div>
 
-  <article class="card chart-card" id="ap-reversal-card" style="margin-top:14px">
+  <div
+    class="overview-panels"
+    data-preview-contract="overview-main-three-column"
+  >
 
-    <div class="section-title">
-      <div>
-        <h2>AP model selection reverses at m=99</h2>
-        <p>
-          The recommendation profiles are fixed. Only the evaluation protocol changes.
-        </p>
-      </div>
-      <span class="pill good">Replicated computation</span>
-    </div>
+    <article
+      class="panel"
+      id="overview-ap-panel"
+      data-overview-panel="ap-reversal"
+    >
+      <h2 class="panel-title">AP reversal</h2>
 
-    <div class="grid two">
-      <div>
-        <div class="card-label">Full-catalog AP</div>
-        <div class="chart" id="chart-full-ap"></div>
-      </div>
-      <div>
-        <div class="card-label">Expected sampled AP · m=99</div>
-        <div class="chart" id="chart-sampled-ap"></div>
-      </div>
-    </div>
+      <div class="ap-two">
+        <div>
+          <div class="panel-subtitle">Full catalog AP</div>
+          <div class="chart" id="overview-full-ap"></div>
+        </div>
 
-    <div class="reversal-banner">
-      <div>
-        <div class="small-note">Full catalog</div>
-        <div class="order">C &gt; B &gt; A</div>
+        <div>
+          <div class="panel-subtitle">Expected sampled AP (m = 99)</div>
+          <div class="chart" id="overview-sampled-ap"></div>
+        </div>
       </div>
-      <div class="arrow">→</div>
-      <div>
-        <div class="small-note">Expected sampled · m=99</div>
-        <div class="order">A &gt; B &gt; C</div>
-      </div>
-    </div>
 
-    <div class="profile-strip">
-      <div class="profile">
-        <strong style="color:#0072B2">A</strong>
-        <span id="profile-a"></span>
+      <div class="reversal-box">
+        <span class="reversal-full">C &gt; B &gt; A</span>
+        <span>&#8594;</span>
+        <span class="reversal-sampled">A &gt; B &gt; C</span>
       </div>
-      <div class="profile">
-        <strong style="color:#D55E00">B</strong>
-        <span id="profile-b"></span>
-      </div>
-      <div class="profile">
-        <strong style="color:#009E73">C</strong>
-        <span id="profile-c"></span>
-      </div>
-    </div>
 
-  </article>
+      <div class="rank-box">
+        <strong>
+          Fixed source-reported rank profiles (per user, 5 users):
+        </strong>
 
+        <div class="rank-line">
+          <span><strong>A =</strong> <span id="overview-profile-a"></span></span>
+          <span><strong>B =</strong> <span id="overview-profile-b"></span></span>
+          <span><strong>C =</strong> <span id="overview-profile-c"></span></span>
+        </div>
+      </div>
+    </article>
+
+    <article
+      class="panel"
+      id="overview-sweep-panel"
+      data-overview-panel="sample-size-sweep"
+    >
+      <h2 class="panel-title">Sample-size sweep</h2>
+
+      <div class="panel-subtitle">
+        AP vs. number of sampled negatives (m)
+      </div>
+
+      <div class="chart sweep" id="overview-ap-sweep"></div>
+
+      <div class="crossover-box">
+        <div class="crossover-head">
+          Crossover findings (intervals from computed grid values):
+        </div>
+
+        <ul class="crossover-list" id="overview-crossovers"></ul>
+
+        <div class="crossover-foot">
+          Exact crossover points are not inferred beyond computed grid values.
+        </div>
+      </div>
+    </article>
+
+    <article
+      class="panel"
+      id="overview-validation-panel"
+      data-overview-panel="validation"
+    >
+      <h2 class="panel-title">Validation</h2>
+
+      <div class="validation-table-wrap">
+        <table class="validation-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th class="group" colspan="4">Full catalog metrics</th>
+              <th class="group" colspan="4">Sampled m = 99 metrics</th>
+            </tr>
+            <tr>
+              <th>Metric</th>
+              <th>A</th>
+              <th>B</th>
+              <th>C</th>
+              <th>Ordering</th>
+              <th>A</th>
+              <th>B</th>
+              <th>C</th>
+              <th>Ordering</th>
+            </tr>
+          </thead>
+          <tbody id="overview-validation-body"></tbody>
+        </table>
+      </div>
+
+      <div class="pass-grid">
+        <div class="pass-card">
+          <div class="pass-check">&#10003;</div>
+          <div class="pass-copy">
+            Source rounding reconciliation:
+            <strong>PASS</strong>
+          </div>
+        </div>
+
+        <div class="pass-card">
+          <div class="pass-check">&#10003;</div>
+          <div class="pass-copy">
+            Independent recomputation:
+            <strong>PASS</strong>
+          </div>
+        </div>
+
+        <div class="pass-card">
+          <div class="pass-check">&#10003;</div>
+          <div class="pass-copy">
+            AUC negative control invariant across tested m:
+            <strong>PASS</strong>
+          </div>
+        </div>
+
+        <div class="pass-card">
+          <div class="pass-check">&#10003;</div>
+          <div class="pass-copy">
+            No seed searching, no definition changes:
+            <strong>PASS</strong>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
 </section>
 
-<section class="page" data-page="sensitivity">
+<section class="page" data-page="ap-reversal">
+  <article class="detail-card">
+    <h2 class="detail-heading">AP reversal</h2>
+    <p class="detail-note">
+      The A/B/C rank profiles are fixed. Only the evaluation candidate set changes.
+    </p>
 
-  <div class="section-title">
-    <div>
-      <h2>Sample-size sensitivity</h2>
-      <p>
-        Expected sampled metrics across the predefined frozen negative-sample grid.
-      </p>
+    <div class="detail-grid-two">
+      <div>
+        <div class="panel-subtitle">Full-catalog AP</div>
+        <div class="chart detail" id="detail-full-ap"></div>
+      </div>
+
+      <div>
+        <div class="panel-subtitle">Expected sampled AP at m=99</div>
+        <div class="chart detail" id="detail-sampled-ap"></div>
+      </div>
     </div>
-    <span class="pill warn">No interpolation · no exact crossover inference</span>
-  </div>
 
-  <div class="grid three">
+    <div class="reversal-box">
+      <span class="reversal-full">C &gt; B &gt; A</span>
+      <span>&#8594;</span>
+      <span class="reversal-sampled">A &gt; B &gt; C</span>
+    </div>
 
-    <article class="card chart-card">
-      <div class="card-label">Average Precision</div>
-      <div class="chart tall" id="chart-sweep-ap"></div>
-    </article>
-
-    <article class="card chart-card">
-      <div class="card-label">NDCG</div>
-      <div class="chart tall" id="chart-sweep-ndcg"></div>
-    </article>
-
-    <article class="card chart-card">
-      <div class="card-label">Recall@10</div>
-      <div class="chart tall" id="chart-sweep-recall"></div>
-    </article>
-
-  </div>
-
-  <div class="grid two" style="margin-top:14px">
-
-    <article class="card">
-      <div class="card-label">Frozen AP crossover intervals</div>
-      <div id="crossover-list" style="margin-top:10px"></div>
-    </article>
-
-    <article class="card">
-      <div class="card-label">Interpretation boundary</div>
-      <div class="callout yellow" style="margin-top:10px">
-        Adjacent computed-grid intervals may be reported when a pairwise
-        relation changes. The dashboard does not infer an exact crossover
-        between grid points.
+    <div class="rank-box">
+      <strong>Frozen rank profiles:</strong>
+      <div class="rank-line">
+        <span><strong>A =</strong> <span id="detail-profile-a"></span></span>
+        <span><strong>B =</strong> <span id="detail-profile-b"></span></span>
+        <span><strong>C =</strong> <span id="detail-profile-c"></span></span>
       </div>
-      <div class="small-note" style="margin-top:10px">
-        Frozen grid:
-        1, 2, 5, 10, 20, 50, 99, 200, 500, 1000, 5000, 9999.
+    </div>
+  </article>
+</section>
+
+<section class="page" data-page="sample-size-sweep">
+  <article class="detail-card">
+    <h2 class="detail-heading">Sample-size sweep</h2>
+
+    <p class="detail-note">
+      Expected sampled metrics across the predefined frozen negative-sample grid.
+    </p>
+
+    <div class="detail-grid-three">
+      <div>
+        <div class="panel-subtitle">Average Precision</div>
+        <div class="chart detail" id="detail-ap-sweep"></div>
       </div>
-    </article>
 
-  </div>
+      <div>
+        <div class="panel-subtitle">NDCG</div>
+        <div class="chart detail" id="detail-ndcg-sweep"></div>
+      </div>
 
+      <div>
+        <div class="panel-subtitle">Recall@10</div>
+        <div class="chart detail" id="detail-recall-sweep"></div>
+      </div>
+    </div>
+
+    <div class="crossover-box">
+      <div class="crossover-head">Frozen AP crossover intervals</div>
+      <ul class="crossover-list" id="detail-crossovers"></ul>
+      <div class="crossover-foot">
+        Only adjacent computed-grid intervals are reported.
+        Exact crossover locations are not inferred.
+      </div>
+    </div>
+  </article>
 </section>
 
 <section class="page" data-page="validation">
+  <article class="detail-card">
+    <h2 class="detail-heading">Validation</h2>
 
-  <div class="section-title">
-    <div>
-      <h2>Validation and negative control</h2>
-      <p>
-        AUC behaves differently from AP/NDCG/Recall@10 under the frozen sampling protocol.
-      </p>
-    </div>
-    <span class="pill good">Frozen validation evidence</span>
-  </div>
+    <p class="detail-note">
+      Frozen metric comparison, AUC negative control,
+      Monte Carlo checks and evidence boundaries.
+    </p>
 
-  <div class="grid two">
-
-    <article class="card chart-card">
-      <div class="card-label">AUC negative control across m</div>
-      <div class="chart tall" id="chart-auc-control"></div>
-      <p class="small-note">
-        Expected sampled AUC equals full-catalog AUC across every tested m.
-      </p>
-    </article>
-
-    <article class="card">
-      <div class="card-label">Validation gates</div>
-
-      <div class="validation-grid" style="margin-top:11px">
-        <div class="validation-item">
-          <strong>Source-protocol Monte Carlo · PASS</strong>
-          <span>1,000 repetitions.</span>
-        </div>
-        <div class="validation-item">
-          <strong>High-precision Monte Carlo · PASS</strong>
-          <span>10,000 repetitions.</span>
-        </div>
-        <div class="validation-item">
-          <strong>Independent recomputation · PASS</strong>
-          <span>Critical values reproduced independently.</span>
-        </div>
-        <div class="validation-item">
-          <strong>Published-value reconciliation · PASS</strong>
-          <span>12 rounded reference rows reconciled.</span>
-        </div>
-      </div>
-
-      <div class="callout gray" style="margin-top:12px">
-        No seed searching. No metric-definition changes.
-        No exact crossover inference beyond the frozen grid.
-      </div>
-
-    </article>
-
-  </div>
-
-  <article class="card" style="margin-top:14px">
-
-    <div class="section-title">
+    <div class="detail-grid-two">
       <div>
-        <h2>Metric ordering comparison</h2>
-        <p>
-          Same three profiles, evaluated under full catalog and expected sampling at m=99.
-        </p>
+        <div class="validation-table-wrap">
+          <table class="validation-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th class="group" colspan="4">Full catalog</th>
+                <th class="group" colspan="4">Sampled m = 99</th>
+              </tr>
+              <tr>
+                <th>Metric</th>
+                <th>A</th>
+                <th>B</th>
+                <th>C</th>
+                <th>Ordering</th>
+                <th>A</th>
+                <th>B</th>
+                <th>C</th>
+                <th>Ordering</th>
+              </tr>
+            </thead>
+            <tbody id="detail-validation-body"></tbody>
+          </table>
+        </div>
+
+        <div class="pass-grid">
+          <div class="pass-card">
+            <div class="pass-check">&#10003;</div>
+            <div class="pass-copy">
+              Source-protocol Monte Carlo:
+              <strong>PASS</strong>
+            </div>
+          </div>
+
+          <div class="pass-card">
+            <div class="pass-check">&#10003;</div>
+            <div class="pass-copy">
+              High-precision Monte Carlo:
+              <strong>PASS</strong>
+            </div>
+          </div>
+
+          <div class="pass-card">
+            <div class="pass-check">&#10003;</div>
+            <div class="pass-copy">
+              Independent recomputation:
+              <strong>PASS</strong>
+            </div>
+          </div>
+
+          <div class="pass-card">
+            <div class="pass-check">&#10003;</div>
+            <div class="pass-copy">
+              12 reference values reconciled:
+              <strong>PASS</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="panel-subtitle">
+          AUC negative control across sampled m
+        </div>
+        <div class="chart detail" id="detail-auc"></div>
       </div>
     </div>
 
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Metric</th>
-            <th>Full A</th>
-            <th>Full B</th>
-            <th>Full C</th>
-            <th>Full ordering</th>
-            <th>m=99 A</th>
-            <th>m=99 B</th>
-            <th>m=99 C</th>
-            <th>m=99 ordering</th>
-          </tr>
-        </thead>
-        <tbody id="metric-table-body"></tbody>
-      </table>
-    </div>
+    <div class="evidence-grid">
+      <div class="evidence-card">
+        <strong>Methods &amp; Evidence</strong>
+        <div>Catalog size: 10,000 items.</div>
+        <div>One relevant item per case.</div>
+        <div>Five cases per A/B/C profile.</div>
+        <div>Uniform negative sampling with replacement.</div>
+        <div>Reference sampled negatives: m = 99.</div>
+        <div>Root seed: 20260923.</div>
+      </div>
 
+      <div class="evidence-card">
+        <strong>Evidence boundaries</strong>
+        <div id="supported-claims"></div>
+        <div id="rejected-claims"></div>
+      </div>
+    </div>
   </article>
-
-</section>
-
-<section class="page" data-page="methods-evidence">
-
-  <div class="section-title">
-    <div>
-      <h2>Methods &amp; evidence</h2>
-      <p>
-        What the study starts from, what is computed, and what may safely be claimed.
-      </p>
-    </div>
-    <span class="pill">Evidence-first view</span>
-  </div>
-
-  <div class="methods-grid">
-
-    <div class="grid">
-
-      <article class="card">
-        <div class="card-label">Evaluation protocol</div>
-
-        <dl class="kv" style="margin-top:12px">
-          <dt>Input</dt>
-          <dd>
-            Fixed source-reported A/B/C relevant-item rank profiles.
-          </dd>
-
-          <dt>Catalog size</dt>
-          <dd>10,000 candidate items.</dd>
-
-          <dt>Cases/profile</dt>
-          <dd>5 held-out test cases.</dd>
-
-          <dt>Reference sampling</dt>
-          <dd>
-            Keep the relevant item + sample 99 negatives.
-          </dd>
-
-          <dt>Sampling rule</dt>
-          <dd>
-            Uniform negative sampling with replacement.
-          </dd>
-
-          <dt>Sampled rank</dt>
-          <dd>
-            R = 1 + X, where X ~ Binomial(m,p),
-            p=(r&minus;1)/(N&minus;1).
-          </dd>
-
-          <dt>AP</dt>
-          <dd>1 / rank for one relevant item.</dd>
-
-          <dt>NDCG</dt>
-          <dd>1 / log2(rank + 1), untruncated.</dd>
-
-          <dt>Recall@10</dt>
-          <dd>Indicator(rank ≤ 10).</dd>
-
-          <dt>AUC</dt>
-          <dd>(N &minus; rank)/(N &minus; 1); negative control.</dd>
-        </dl>
-
-        <span class="formula">
-          Project 8 starts after model scoring/ranking.
-          Raw customer features and model training are outside this study.
-        </span>
-
-      </article>
-
-      <article class="card">
-        <div class="card-label">Study limitation</div>
-        <div class="callout yellow" style="margin-top:10px">
-          This is a controlled toy example with five cases per profile and one
-          relevant item per case. It demonstrates that a model-selection reversal
-          can occur; it does not estimate how frequently or how strongly the effect
-          occurs in production recommender systems.
-        </div>
-      </article>
-
-    </div>
-
-    <div class="grid">
-
-      <article class="card">
-        <div class="card-label">Supported public claims</div>
-        <div class="claim-list" id="supported-claims" style="margin-top:10px"></div>
-      </article>
-
-      <article class="card">
-        <div class="card-label">Claims deliberately rejected / bounded</div>
-        <div class="claim-list" id="rejected-claims" style="margin-top:10px"></div>
-      </article>
-
-    </div>
-
-  </div>
-
-  <article class="card" style="margin-top:14px">
-
-    <div class="card-label">Provenance</div>
-
-    <dl class="kv" id="provenance-list" style="margin-top:12px"></dl>
-
-  </article>
-
 </section>
 
 </main>
 
 <footer class="footer">
-  <strong>Attribution:</strong>
-  independently reproduces and extends a toy ranking example attributed
-  to Krichene &amp; Rendle. A/B/C rank profiles are source-reported;
-  analytical derivations, sample-size sweep, Monte Carlo validation,
-  independent recomputation, figures and dashboard are independently implemented.
+  <div class="footer-left">
+    <span>
+      This dashboard summarizes a reproduction-and-extension study on fixed
+      toy-example rank profiles; it does not retrain recommendation models
+      or use raw customer-level features.
+    </span>
+  </div>
+
+  <div class="footer-right">
+    Project 8 — Sampled Recommendation Metrics | Results frozen
+  </div>
 </footer>
 
 </div>
 
-<script id="frozen-data" type="application/json">{frozen_json}</script>
+<script id="frozen-data" type="application/json">__FROZEN_JSON__</script>
 
 <script>
 "use strict";
 
-const DATA = JSON.parse(
-  document.getElementById("frozen-data").textContent
-);
-
-const ROUTES = new Set([
-  "overview",
-  "ap-reversal",
-  "sensitivity",
-  "validation",
-  "methods-evidence"
-]);
-
-function svgElement(name, attrs = {{}}) {{
-  const node = document.createElementNS(
-    "http://www.w3.org/2000/svg",
-    name
+const DATA =
+  JSON.parse(
+    document.getElementById(
+      "frozen-data"
+    ).textContent
   );
 
-  for (const [key, value] of Object.entries(attrs)) {{
-    node.setAttribute(key, String(value));
-  }}
+const ROUTES =
+  new Set([
+    "overview",
+    "ap-reversal",
+    "sample-size-sweep",
+    "validation"
+  ]);
+
+function svgElement(
+  name,
+  attrs = {}
+) {
+  const node =
+    document.createElementNS(
+      "http://www.w3.org/2000/svg",
+      name
+    );
+
+  for (
+    const [key, value]
+    of Object.entries(
+      attrs
+    )
+  ) {
+    node.setAttribute(
+      key,
+      String(value)
+    );
+  }
 
   return node;
-}}
+}
 
-function clear(node) {{
-  while (node.firstChild) {{
-    node.removeChild(node.firstChild);
-  }}
-}}
+function clearNode(
+  node
+) {
+  while (
+    node.firstChild
+  ) {
+    node.removeChild(
+      node.firstChild
+    );
+  }
+}
 
-function makeSvg(container, viewWidth = 620, viewHeight = 280) {{
-  clear(container);
+function makeSvg(
+  container,
+  width,
+  height
+) {
+  clearNode(
+    container
+  );
 
-  const svg = svgElement("svg", {{
-    viewBox: `0 0 ${{viewWidth}} ${{viewHeight}}`,
-    role: "img",
-    "aria-hidden": "true"
-  }});
+  const svg =
+    svgElement(
+      "svg",
+      {
+        viewBox:
+          `0 0 ${width} ${height}`
+      }
+    );
 
-  container.appendChild(svg);
+  container.appendChild(
+    svg
+  );
 
   return svg;
-}}
+}
 
-function addText(svg, x, y, text, options = {{}}) {{
-  const node = svgElement("text", {{
-    x,
-    y,
-    fill: options.fill || "#374151",
-    "font-size": options.size || 11,
-    "font-weight": options.weight || 500,
-    "text-anchor": options.anchor || "start"
-  }});
-
-  node.textContent = text;
-
-  svg.appendChild(node);
-
-  return node;
-}}
-
-function drawHorizontalBars(container, values) {{
-  const width = 620;
-  const height = 270;
-
-  const margin = {{
-    left: 46,
-    right: 92,
-    top: 18,
-    bottom: 34
-  }};
-
-  const innerWidth =
-    width - margin.left - margin.right;
-
-  const innerHeight =
-    height - margin.top - margin.bottom;
-
-  const svg =
-    makeSvg(
-      container,
-      width,
-      height
+function addText(
+  svg,
+  x,
+  y,
+  text,
+  options = {}
+) {
+  const node =
+    svgElement(
+      "text",
+      {
+        x,
+        y,
+        fill:
+          options.fill
+          || "#465675",
+        "font-size":
+          options.size
+          || 10,
+        "font-weight":
+          options.weight
+          || 500,
+        "text-anchor":
+          options.anchor
+          || "start"
+      }
     );
 
-  const entries =
-    ["A", "B", "C"]
-      .map(profile => [
-        profile,
-        Number(values[profile])
-      ])
-      .sort((left, right) => right[1] - left[1]);
+  node.textContent =
+    text;
 
-  const maxValue =
-    Math.max(
-      ...entries.map(item => item[1]),
-      0.001
-    );
-
-  const rowHeight =
-    innerHeight / entries.length;
-
-  for (let i = 0; i <= 4; i += 1) {{
-    const x =
-      margin.left
-      + (innerWidth * i / 4);
-
-    svg.appendChild(
-      svgElement("line", {{
-        x1: x,
-        x2: x,
-        y1: margin.top,
-        y2: margin.top + innerHeight,
-        stroke: "#E5E7EB",
-        "stroke-width": 1
-      }})
-    );
-
-    addText(
-      svg,
-      x,
-      height - 9,
-      (maxValue * i / 4).toFixed(
-        maxValue < 0.15 ? 3 : 2
-      ),
-      {{
-        size: 9,
-        fill: "#6B7280",
-        anchor: "middle"
-      }}
-    );
-  }}
-
-  entries.forEach((entry, index) => {{
-    const profile = entry[0];
-    const value = entry[1];
-
-    const y =
-      margin.top
-      + rowHeight * index
-      + rowHeight / 2;
-
-    const x2 =
-      margin.left
-      + innerWidth * value / maxValue;
-
-    svg.appendChild(
-      svgElement("line", {{
-        x1: margin.left,
-        x2,
-        y1: y,
-        y2: y,
-        stroke: DATA.colors[profile],
-        "stroke-width": 8,
-        "stroke-linecap": "round",
-        opacity: .28
-      }})
-    );
-
-    svg.appendChild(
-      svgElement("circle", {{
-        cx: x2,
-        cy: y,
-        r: 8,
-        fill: DATA.colors[profile],
-        stroke: "#FFFFFF",
-        "stroke-width": 2
-      }})
-    );
-
-    addText(
-      svg,
-      margin.left - 15,
-      y + 4,
-      profile,
-      {{
-        size: 12,
-        weight: 800,
-        anchor: "end",
-        fill: DATA.colors[profile]
-      }}
-    );
-
-    addText(
-      svg,
-      Math.min(
-        x2 + 13,
-        width - margin.right + 6
-      ),
-      y + 4,
-      value.toFixed(5),
-      {{
-        size: 10,
-        weight: 750
-      }}
-    );
-  }});
-}}
-
-function logPosition(value, minimum, maximum) {{
-  const minLog = Math.log10(minimum);
-  const maxLog = Math.log10(maximum);
-
-  return (
-    Math.log10(value) - minLog
-  ) / (
-    maxLog - minLog
+  svg.appendChild(
+    node
   );
-}}
+}
 
-function drawLineChart(
-  container,
-  series,
-  options = {{}}
-) {{
-  const width = 620;
-  const height = 320;
-
-  const margin = {{
-    left: 48,
-    right: 20,
-    top: 22,
-    bottom: 52
-  }};
-
-  const innerWidth =
-    width - margin.left - margin.right;
-
-  const innerHeight =
-    height - margin.top - margin.bottom;
-
-  const svg =
-    makeSvg(
-      container,
-      width,
-      height
-    );
-
-  const xValues =
-    DATA.meta.grid;
-
-  let allY = [];
-
-  for (const profile of ["A", "B", "C"]) {{
-    allY = allY.concat(
-      series[profile]
-    );
-  }}
-
-  const yMin =
-    options.yMin !== undefined
-      ? Number(options.yMin)
-      : 0;
-
-  let yMax =
-    options.yMax !== undefined
-      ? Number(options.yMax)
-      : Math.max(...allY);
-
-  if (yMax <= yMin) {{
-    yMax = yMin + 1;
-  }}
-
-  const xMin =
-    Math.min(...xValues);
-
-  const xMax =
-    Math.max(...xValues);
-
-  for (let i = 0; i <= 4; i += 1) {{
-    const y =
-      margin.top
-      + innerHeight * i / 4;
-
-    svg.appendChild(
-      svgElement("line", {{
-        x1: margin.left,
-        x2: margin.left + innerWidth,
-        y1: y,
-        y2: y,
-        stroke: "#E5E7EB",
-        "stroke-width": 1
-      }})
-    );
-
-    const value =
-      yMax - (
-        yMax - yMin
-      ) * i / 4;
-
-    addText(
-      svg,
-      margin.left - 8,
-      y + 3,
-      value.toFixed(2),
-      {{
-        size: 9,
-        fill: "#6B7280",
-        anchor: "end"
-      }}
-    );
-  }}
-
-  const tickValues = [
-    1,
-    10,
-    99,
-    1000,
-    9999
-  ];
-
-  for (const tick of tickValues) {{
-    const fraction =
-      logPosition(
-        tick,
-        xMin,
-        xMax
-      );
-
-    const x =
-      margin.left
-      + fraction * innerWidth;
-
-    svg.appendChild(
-      svgElement("line", {{
-        x1: x,
-        x2: x,
-        y1: margin.top,
-        y2: margin.top + innerHeight,
-        stroke: "#F0F1F2",
-        "stroke-width": 1
-      }})
-    );
-
-    addText(
-      svg,
-      x,
-      height - 25,
-      String(tick),
-      {{
-        size: 9,
-        fill: "#6B7280",
-        anchor: "middle"
-      }}
-    );
-  }}
-
-  for (const profile of ["A", "B", "C"]) {{
-
-    const points =
-      xValues.map((m, index) => {{
-
-        const xFraction =
-          logPosition(
-            m,
-            xMin,
-            xMax
-          );
-
-        const yValue =
-          Number(
-            series[profile][index]
-          );
-
-        const yFraction =
-          (
-            yValue - yMin
-          ) / (
-            yMax - yMin
-          );
-
-        return {{
-          x:
-            margin.left
-            + xFraction * innerWidth,
-          y:
-            margin.top
-            + innerHeight
-            - yFraction * innerHeight,
-          value: yValue,
-          m
-        }};
-      }});
-
-    const polyline =
-      svgElement(
-        "polyline",
-        {{
-          points:
-            points
-              .map(
-                point =>
-                  `${{point.x}},${{point.y}}`
-              )
-              .join(" "),
-          fill: "none",
-          stroke: DATA.colors[profile],
-          "stroke-width": 2.4,
-          "stroke-linejoin": "round",
-          "stroke-linecap": "round"
-        }}
-      );
-
-    svg.appendChild(
-      polyline
-    );
-
-    for (const point of points) {{
-      svg.appendChild(
-        svgElement("circle", {{
-          cx: point.x,
-          cy: point.y,
-          r: 3.3,
-          fill: DATA.colors[profile],
-          stroke: "#FFFFFF",
-          "stroke-width": 1
-        }})
-      );
-    }}
-
-    const finalPoint =
-      points[
-        points.length - 1
-      ];
-
-    addText(
-      svg,
-      finalPoint.x - 2,
-      finalPoint.y - 8,
-      profile,
-      {{
-        size: 10,
-        weight: 800,
-        fill: DATA.colors[profile],
-        anchor: "end"
-      }}
-    );
-  }}
-
-  addText(
-    svg,
-    margin.left + innerWidth / 2,
-    height - 5,
-    "Number of sampled negatives (m, log scale)",
-    {{
-      size: 9,
-      fill: "#6B7280",
-      anchor: "middle"
-    }}
-  );
-}}
-
-function metricLabel(metric) {{
-  const labels = {{
+function metricLabel(
+  metric
+) {
+  return {
     ap: "AP",
     ndcg: "NDCG",
     recall_at_10: "Recall@10",
     auc: "AUC"
-  }};
+  }[
+    metric
+  ];
+}
 
-  return labels[metric];
-}}
+function metricValue(
+  metric,
+  value
+) {
+  const number =
+    Number(
+      value
+    );
 
-function fmt(metric, value) {{
-  if (metric === "recall_at_10") {{
-    return Number(value).toFixed(4);
-  }}
+  return number.toFixed(
+    metric === "recall_at_10"
+      ? 4
+      : 5
+  );
+}
 
-  return Number(value).toFixed(5);
-}}
+function drawVerticalBars(
+  id,
+  values,
+  maximum
+) {
+  const container =
+    document.getElementById(
+      id
+    );
 
-function renderMetricTable() {{
+  if (!container) {
+    return;
+  }
+
+  const width = 260;
+  const height = 215;
+
+  const margin = {
+    left: 37,
+    right: 10,
+    top: 10,
+    bottom: 31
+  };
+
+  const innerWidth =
+    width
+    - margin.left
+    - margin.right;
+
+  const innerHeight =
+    height
+    - margin.top
+    - margin.bottom;
+
+  const svg =
+    makeSvg(
+      container,
+      width,
+      height
+    );
+
+  for (
+    let tick = 0;
+    tick <= 4;
+    tick += 1
+  ) {
+    const fraction =
+      tick / 4;
+
+    const y =
+      margin.top
+      + innerHeight
+      - fraction
+      * innerHeight;
+
+    svg.appendChild(
+      svgElement(
+        "line",
+        {
+          x1: margin.left,
+          x2:
+            margin.left
+            + innerWidth,
+          y1: y,
+          y2: y,
+          stroke: "#E4EAF2"
+        }
+      )
+    );
+
+    addText(
+      svg,
+      margin.left - 7,
+      y + 3,
+      (
+        maximum
+        * fraction
+      ).toFixed(
+        maximum <= .15
+          ? 2
+          : 1
+      ),
+      {
+        size: 8,
+        anchor: "end"
+      }
+    );
+  }
+
+  const profiles =
+    ["A", "B", "C"];
+
+  const gap = 17;
+
+  const barWidth =
+    (
+      innerWidth
+      - gap * 4
+    ) / 3;
+
+  profiles.forEach(
+    (
+      profile,
+      index
+    ) => {
+
+      const value =
+        Number(
+          values[
+            profile
+          ]
+        );
+
+      const x =
+        margin.left
+        + gap
+        + index
+        * (
+          barWidth
+          + gap
+        );
+
+      const barHeight =
+        innerHeight
+        * value
+        / maximum;
+
+      const y =
+        margin.top
+        + innerHeight
+        - barHeight;
+
+      svg.appendChild(
+        svgElement(
+          "rect",
+          {
+            x,
+            y,
+            width:
+              barWidth,
+            height:
+              Math.max(
+                barHeight,
+                1
+              ),
+            fill:
+              DATA.colors[
+                profile
+              ]
+          }
+        )
+      );
+
+      addText(
+        svg,
+        x
+        + barWidth / 2,
+        Math.max(
+          9,
+          y - 5
+        ),
+        value.toFixed(
+          5
+        ),
+        {
+          size: 8,
+          weight: 750,
+          anchor: "middle"
+        }
+      );
+
+      addText(
+        svg,
+        x
+        + barWidth / 2,
+        height - 9,
+        profile,
+        {
+          size: 9,
+          weight: 750,
+          anchor: "middle"
+        }
+      );
+    }
+  );
+}
+
+function logPosition(
+  value
+) {
+  return (
+    Math.log10(
+      value
+    )
+  ) / (
+    Math.log10(
+      9999
+    )
+  );
+}
+
+function drawLineChart(
+  id,
+  series,
+  options = {}
+) {
+  const container =
+    document.getElementById(
+      id
+    );
+
+  if (!container) {
+    return;
+  }
+
+  const width = 480;
+  const height = 275;
+
+  const margin = {
+    left: 42,
+    right: 17,
+    top: 17,
+    bottom: 45
+  };
+
+  const innerWidth =
+    width
+    - margin.left
+    - margin.right;
+
+  const innerHeight =
+    height
+    - margin.top
+    - margin.bottom;
+
+  const svg =
+    makeSvg(
+      container,
+      width,
+      height
+    );
+
+  const yMinimum =
+    options.yMin
+    ?? 0;
+
+  const yMaximum =
+    options.yMax
+    ?? 1;
+
+  for (
+    let tick = 0;
+    tick <= 4;
+    tick += 1
+  ) {
+    const y =
+      margin.top
+      + innerHeight
+      * tick / 4;
+
+    svg.appendChild(
+      svgElement(
+        "line",
+        {
+          x1:
+            margin.left,
+          x2:
+            margin.left
+            + innerWidth,
+          y1: y,
+          y2: y,
+          stroke:
+            "#E3E9F1"
+        }
+      )
+    );
+
+    const value =
+      yMaximum
+      - (
+        yMaximum
+        - yMinimum
+      )
+      * tick / 4;
+
+    addText(
+      svg,
+      margin.left - 6,
+      y + 3,
+      value.toFixed(
+        2
+      ),
+      {
+        size: 8,
+        anchor: "end"
+      }
+    );
+  }
+
+  for (
+    const tick
+    of DATA.meta.grid
+  ) {
+    const x =
+      margin.left
+      + logPosition(
+          tick
+        )
+        * innerWidth;
+
+    addText(
+      svg,
+      x,
+      height - 24,
+      String(
+        tick
+      ),
+      {
+        size: 7,
+        anchor: "middle"
+      }
+    );
+  }
+
+  for (
+    const profile
+    of ["A", "B", "C"]
+  ) {
+    const points =
+      DATA.meta.grid.map(
+        (
+          m,
+          index
+        ) => {
+
+          const value =
+            Number(
+              series[
+                profile
+              ][
+                index
+              ]
+            );
+
+          const x =
+            margin.left
+            + logPosition(
+                m
+              )
+              * innerWidth;
+
+          const y =
+            margin.top
+            + innerHeight
+            - (
+                value
+                - yMinimum
+              )
+              / (
+                yMaximum
+                - yMinimum
+              )
+              * innerHeight;
+
+          return {
+            x,
+            y
+          };
+        }
+      );
+
+    svg.appendChild(
+      svgElement(
+        "polyline",
+        {
+          points:
+            points
+              .map(
+                point =>
+                  `${point.x},${point.y}`
+              )
+              .join(
+                " "
+              ),
+          fill:
+            "none",
+          stroke:
+            DATA.colors[
+              profile
+            ],
+          "stroke-width":
+            2
+        }
+      )
+    );
+
+    for (
+      const point
+      of points
+    ) {
+      svg.appendChild(
+        svgElement(
+          "circle",
+          {
+            cx:
+              point.x,
+            cy:
+              point.y,
+            r:
+              3,
+            fill:
+              DATA.colors[
+                profile
+              ]
+          }
+        )
+      );
+    }
+  }
+}
+
+function renderProfiles() {
+
+  for (
+    const profile
+    of ["A", "B", "C"]
+  ) {
+    const value =
+      `[${DATA.profiles[
+        profile
+      ].join(", ")}]`;
+
+    for (
+      const prefix
+      of [
+        "overview",
+        "detail"
+      ]
+    ) {
+      const node =
+        document.getElementById(
+          `${prefix}-profile-${profile.toLowerCase()}`
+        );
+
+      if (node) {
+        node.textContent =
+          value;
+      }
+    }
+  }
+}
+
+function renderValidation(
+  bodyId
+) {
   const body =
     document.getElementById(
-      "metric-table-body"
+      bodyId
     );
+
+  if (!body) {
+    return;
+  }
 
   body.innerHTML = "";
 
@@ -1620,107 +1958,136 @@ function renderMetricTable() {{
       "recall_at_10",
       "auc"
     ]
-  ) {{
-
+  ) {
     const row =
       document.createElement(
         "tr"
       );
 
     const cells = [
-      metricLabel(metric),
-      fmt(metric, DATA.full.metrics.A[metric]),
-      fmt(metric, DATA.full.metrics.B[metric]),
-      fmt(metric, DATA.full.metrics.C[metric]),
-      DATA.full.orderings[metric],
-      fmt(metric, DATA.sampled_m99.metrics.A[metric]),
-      fmt(metric, DATA.sampled_m99.metrics.B[metric]),
-      fmt(metric, DATA.sampled_m99.metrics.C[metric]),
-      DATA.sampled_m99.orderings[metric]
+      metricLabel(
+        metric
+      ),
+      metricValue(
+        metric,
+        DATA.full.metrics.A[
+          metric
+        ]
+      ),
+      metricValue(
+        metric,
+        DATA.full.metrics.B[
+          metric
+        ]
+      ),
+      metricValue(
+        metric,
+        DATA.full.metrics.C[
+          metric
+        ]
+      ),
+      DATA.full.orderings[
+        metric
+      ],
+      metricValue(
+        metric,
+        DATA.sampled_m99.metrics.A[
+          metric
+        ]
+      ),
+      metricValue(
+        metric,
+        DATA.sampled_m99.metrics.B[
+          metric
+        ]
+      ),
+      metricValue(
+        metric,
+        DATA.sampled_m99.metrics.C[
+          metric
+        ]
+      ),
+      DATA.sampled_m99.orderings[
+        metric
+      ]
     ];
 
-    for (const cellText of cells) {{
-      const cell =
-        document.createElement(
-          "td"
+    cells.forEach(
+      (
+        text,
+        index
+      ) => {
+        const cell =
+          document.createElement(
+            "td"
+          );
+
+        cell.textContent =
+          text;
+
+        if (index === 0) {
+          cell.className =
+            "metric";
+        }
+
+        if (
+          index === 4
+          || index === 8
+        ) {
+          cell.classList.add(
+            "order-blue"
+          );
+        }
+
+        row.appendChild(
+          cell
         );
-
-      cell.textContent =
-        cellText;
-
-      row.appendChild(
-        cell
-      );
-    }}
+      }
+    );
 
     body.appendChild(
       row
     );
-  }}
-}}
+  }
+}
 
-function renderProfiles() {{
-  for (const profile of ["A", "B", "C"]) {{
-
+function renderCrossovers(
+  id
+) {
+  const node =
     document.getElementById(
-      `profile-${{profile.toLowerCase()}}`
-    ).textContent =
-      `[${{
-        DATA.profiles[profile].join(", ")
-      }}]`;
-  }}
-}}
-
-function relationText(interval) {{
-  const pair =
-    interval.profiles.join("/");
-
-  return (
-    `${{pair}}: `
-    + `${{interval.lower_computed_m}}\\u2013${{interval.upper_computed_m}}`
-  );
-}}
-
-function renderCrossovers() {{
-  const container =
-    document.getElementById(
-      "crossover-list"
+      id
     );
 
-  container.innerHTML = "";
+  if (!node) {
+    return;
+  }
 
-  const apIntervals =
-    DATA.crossover_intervals.filter(
-      interval =>
-        interval.metric === "ap"
-    );
+  node.innerHTML = "";
 
-  for (const interval of apIntervals) {{
-
-    const item =
+  for (
+    const interval
+    of DATA.crossover_intervals.filter(
+      item =>
+        item.metric === "ap"
+    )
+  ) {
+    const li =
       document.createElement(
-        "div"
+        "li"
       );
 
-    item.className =
-      "callout gray";
+    li.textContent =
+      `AP ${interval.profiles.join("/")} crossover interval: `
+      + `${interval.lower_computed_m}\u2013${interval.upper_computed_m}`;
 
-    item.style.marginBottom =
-      "7px";
-
-    item.textContent =
-      relationText(
-        interval
-      );
-
-    container.appendChild(
-      item
+    node.appendChild(
+      li
     );
-  }}
-}}
+  }
+}
 
-function renderClaims() {{
-
+function renderClaims() {
   const supported =
     document.getElementById(
       "supported-claims"
@@ -1731,300 +2098,233 @@ function renderClaims() {{
       "rejected-claims"
     );
 
-  supported.innerHTML = "";
-  rejected.innerHTML = "";
+  if (
+    !supported
+    || !rejected
+  ) {
+    return;
+  }
 
   for (
-    const item
+    const claim
     of DATA.claims.supported
-  ) {{
-
-    const node =
+  ) {
+    const item =
       document.createElement(
         "div"
       );
 
-    node.className =
-      "claim";
+    item.className =
+      "claim-row";
 
-    const id =
-      document.createElement(
-        "span"
-      );
-
-    id.className =
-      "claim-id";
-
-    id.textContent =
-      item.id;
-
-    node.appendChild(
-      id
-    );
-
-    node.appendChild(
-      document.createTextNode(
-        item.claim
-      )
-    );
+    item.textContent =
+      `${claim.id} ${claim.claim}`;
 
     supported.appendChild(
-      node
+      item
     );
-  }}
+  }
 
   for (
-    const item
+    const claim
     of DATA.claims.rejected
-  ) {{
-
-    const node =
+  ) {
+    const item =
       document.createElement(
         "div"
       );
 
-    node.className =
-      "claim";
+    item.className =
+      "claim-row";
 
-    const id =
-      document.createElement(
-        "span"
-      );
-
-    id.className =
-      "claim-id";
-
-    id.style.color =
-      "#A14545";
-
-    id.textContent =
-      item.id;
-
-    node.appendChild(
-      id
-    );
-
-    node.appendChild(
-      document.createTextNode(
-        item.claim
-      )
-    );
+    item.textContent =
+      `${claim.id} ${claim.claim}`;
 
     rejected.appendChild(
-      node
+      item
     );
-  }}
-}}
+  }
+}
 
-function renderProvenance() {{
+function renderCharts() {
 
-  const list =
-    document.getElementById(
-      "provenance-list"
-    );
+  const fullAp = {
+    A:
+      DATA.full.metrics.A.ap,
+    B:
+      DATA.full.metrics.B.ap,
+    C:
+      DATA.full.metrics.C.ap
+  };
 
-  list.innerHTML = "";
+  const sampledAp = {
+    A:
+      DATA.sampled_m99.metrics.A.ap,
+    B:
+      DATA.sampled_m99.metrics.B.ap,
+    C:
+      DATA.sampled_m99.metrics.C.ap
+  };
 
-  const entries = [
-    ["Scientific source", DATA.provenance.scientific_source],
-    ["Validation source", DATA.provenance.validation_source],
-    ["Claim source", DATA.provenance.claim_source],
-    ["Design source", DATA.provenance.design_source],
-    ["Step-6 source", DATA.provenance.step6_source],
-    ["Input scientific HEAD", DATA.provenance.input_head],
-    ["Definition changes", String(DATA.provenance.definition_changes_performed)],
-    ["Exact crossover inference", String(DATA.provenance.exact_crossover_inference_performed)],
-    ["Seed searching", String(DATA.provenance.seed_searching_performed)],
-    ["Preview images used", String(DATA.provenance.preview_images_used)]
-  ];
-
-  for (const [key, value] of entries) {{
-
-    const term =
-      document.createElement(
-        "dt"
-      );
-
-    term.textContent =
-      key;
-
-    const description =
-      document.createElement(
-        "dd"
-      );
-
-    description.textContent =
-      value;
-
-    list.appendChild(
-      term
-    );
-
-    list.appendChild(
-      description
-    );
-  }}
-}}
-
-function renderCharts() {{
-
-  drawHorizontalBars(
-    document.getElementById(
-      "chart-full-ap"
-    ),
-    {{
-      A: DATA.full.metrics.A.ap,
-      B: DATA.full.metrics.B.ap,
-      C: DATA.full.metrics.C.ap
-    }}
+  drawVerticalBars(
+    "overview-full-ap",
+    fullAp,
+    .12
   );
 
-  drawHorizontalBars(
-    document.getElementById(
-      "chart-sampled-ap"
-    ),
-    {{
-      A: DATA.sampled_m99.metrics.A.ap,
-      B: DATA.sampled_m99.metrics.B.ap,
-      C: DATA.sampled_m99.metrics.C.ap
-    }}
+  drawVerticalBars(
+    "overview-sampled-ap",
+    sampledAp,
+    .8
+  );
+
+  drawVerticalBars(
+    "detail-full-ap",
+    fullAp,
+    .12
+  );
+
+  drawVerticalBars(
+    "detail-sampled-ap",
+    sampledAp,
+    .8
   );
 
   drawLineChart(
-    document.getElementById(
-      "chart-sweep-ap"
-    ),
+    "overview-ap-sweep",
     DATA.sensitivity.ap,
-    {{
-      yMin: 0,
-      yMax: 1
-    }}
+    {
+      yMin:0,
+      yMax:1
+    }
   );
 
   drawLineChart(
-    document.getElementById(
-      "chart-sweep-ndcg"
-    ),
+    "detail-ap-sweep",
+    DATA.sensitivity.ap,
+    {
+      yMin:0,
+      yMax:1
+    }
+  );
+
+  drawLineChart(
+    "detail-ndcg-sweep",
     DATA.sensitivity.ndcg,
-    {{
-      yMin: 0,
-      yMax: 1
-    }}
+    {
+      yMin:0,
+      yMax:1
+    }
   );
 
   drawLineChart(
-    document.getElementById(
-      "chart-sweep-recall"
-    ),
+    "detail-recall-sweep",
     DATA.sensitivity.recall_at_10,
-    {{
-      yMin: 0,
-      yMax: 1
-    }}
+    {
+      yMin:0,
+      yMax:1
+    }
   );
 
   drawLineChart(
-    document.getElementById(
-      "chart-auc-control"
-    ),
+    "detail-auc",
     DATA.sensitivity.auc,
-    {{
-      yMin: 0.5,
-      yMax: 1
-    }}
+    {
+      yMin:.5,
+      yMax:1
+    }
   );
-}}
+}
 
-function routeFromLocation() {{
-  const raw =
+function routeFromLocation() {
+  const route =
     window.location.hash
-      .replace(/^#/, "")
+      .replace(
+        /^#/,
+        ""
+      )
       .trim();
 
-  if (!raw) {{
+  if (
+    !route
+    || !ROUTES.has(
+      route
+    )
+  ) {
     return "overview";
-  }}
+  }
 
-  if (!ROUTES.has(raw)) {{
-    return "overview";
-  }}
+  return route;
+}
 
-  return raw;
-}}
-
-function activateRoute(route) {{
-
-  const shell =
-    document.getElementById(
-      "app-shell"
-    );
-
-  shell.classList.remove(
-    "focus-ap"
-  );
-
-  const pageRoute =
-    route === "ap-reversal"
-      ? "overview"
-      : route;
+function activateRoute(
+  route
+) {
 
   for (
     const page
     of document.querySelectorAll(
       ".page"
     )
-  ) {{
+  ) {
     page.classList.toggle(
       "active",
-      page.dataset.page === pageRoute
+      page.dataset.page
+      === route
     );
-  }}
+  }
 
   for (
-    const tab
+    const button
     of document.querySelectorAll(
-      ".tab"
+      ".nav-button"
     )
-  ) {{
-    tab.classList.toggle(
+  ) {
+    button.classList.toggle(
       "active",
-      tab.dataset.route === pageRoute
+      button.dataset.route
+      === route
     );
-  }}
+  }
+}
 
-  if (route === "ap-reversal") {{
-    shell.classList.add(
-      "focus-ap"
-    );
-  }}
-
-  document.body.dataset.route =
-    route;
-}}
-
-function boot() {{
-
+function boot() {
   renderProfiles();
-  renderMetricTable();
-  renderCrossovers();
+
+  renderValidation(
+    "overview-validation-body"
+  );
+
+  renderValidation(
+    "detail-validation-body"
+  );
+
+  renderCrossovers(
+    "overview-crossovers"
+  );
+
+  renderCrossovers(
+    "detail-crossovers"
+  );
+
   renderClaims();
-  renderProvenance();
+
   renderCharts();
 
   for (
-    const tab
+    const button
     of document.querySelectorAll(
-      ".tab"
+      ".nav-button"
     )
-  ) {{
-    tab.addEventListener(
+  ) {
+    button.addEventListener(
       "click",
-      () => {{
+      () => {
         window.location.hash =
-          tab.dataset.route;
-      }}
+          button.dataset.route;
+      }
     );
-  }}
+  }
 
   activateRoute(
     routeFromLocation()
@@ -2032,15 +2332,18 @@ function boot() {{
 
   window.addEventListener(
     "hashchange",
-    () => {{
+    () => {
       activateRoute(
         routeFromLocation()
       );
-    }}
+    }
   );
 
   window.__P28_DASHBOARD_READY__ = true;
-}}
+
+  window.__P28_VISUAL_CONTRACT__ =
+    "APPROVED_PREVIEW_V1";
+}
 
 boot();
 </script>
@@ -2049,7 +2352,10 @@ boot();
 </html>
 """
 
-    return document
+    return template.replace(
+        "__FROZEN_JSON__",
+        frozen_json,
+    )
 
 
 def write_dashboard(
@@ -2111,9 +2417,9 @@ def write_dashboard(
         },
         "sections": [
             "Overview",
-            "Sensitivity",
+            "AP reversal",
+            "Sample-size sweep",
             "Validation",
-            "Methods & Evidence",
         ],
         "screenshot_routes": list(SCREENSHOT_ROUTES),
         "scientific_contract": {

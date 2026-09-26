@@ -5,7 +5,16 @@
   "dashboard_frozen": true,
   "dashboard_html": "assets/p28_sampled_recommendation_metrics/dashboard/index.html",
   "dashboard_manifest": "assets/p28_sampled_recommendation_metrics/dashboard/dashboard_manifest.json",
+  "dashboard_overview_layout": "FOUR_KPI_STRIP_PLUS_INSIGHT_PLUS_THREE_MAIN_PANELS",
   "dashboard_preview_policy": "CODED_HTML_CSS_JS_SVG_ONLY_NO_FLATTENED_PREVIEW",
+  "dashboard_primary_navigation": [
+    "Overview",
+    "AP reversal",
+    "Sample-size sweep",
+    "Validation"
+  ],
+  "dashboard_visual_contract": "APPROVED_PREVIEW_V1",
+  "dashboard_visual_fidelity_reconstruction": true,
   "manuscript_status": "DRAFT",
   "next_allowed_step": "Project 8 \u2014 Step 8 \u2014 Final ~45-second animated explainer video",
   "output_design_contract": "docs/projects/p28_sampled_recommendation_metrics/OUTPUT_DESIGN_CONTRACT.json",

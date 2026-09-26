@@ -207,3 +207,20 @@ sheet are hashed into the dashboard manifest.
 Next allowed step:
 
 `Project 8 — Step 8 — Final ~45-second animated explainer video`
+
+## Step 7 — Sub-step 7.1.B approved-preview visual-fidelity reconstruction
+
+The Step-7 presentation layer was reconstructed to follow the approved visual preview while preserving all frozen scientific values.
+
+Primary navigation:
+
+1. Overview
+2. AP reversal
+3. Sample-size sweep
+4. Validation
+
+The Overview contains four KPI cards, one insight strip, and the AP reversal, sample-size sweep and validation panels simultaneously.
+
+Methods & Evidence remains supporting content inside Validation rather than a top-level tab.
+
+Visual contract: `APPROVED_PREVIEW_V1`.
