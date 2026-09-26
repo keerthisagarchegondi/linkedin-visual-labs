@@ -1,0 +1,58 @@
+{
+  "central_finding": {
+    "evaluation_candidate_set_changed": true,
+    "full_ap": "C>B>A",
+    "rank_profiles_changed": false,
+    "sampled_ap_m99": "A>B>C"
+  },
+  "framing": {
+    "extension": [
+      "sample-size grid",
+      "computed-grid crossover intervals",
+      "AUC negative control"
+    ],
+    "independent_verification": [
+      "metric formulas",
+      "analytical expectations",
+      "Monte Carlo 1000",
+      "Monte Carlo 10000",
+      "critical-number recomputation",
+      "12 rounded source values reconciled"
+    ],
+    "reproduction": "selected source-reported toy AP reversal"
+  },
+  "negative_control": {
+    "metric": "AUC",
+    "ordering": "A>C>B",
+    "scope": "tested sample-size grid only"
+  },
+  "prohibited_interpretations": [
+    "universal sampled-evaluation failure",
+    "universal metric reversal",
+    "production prevalence",
+    "exact crossover interpolation",
+    "complete source-paper reproduction",
+    "first-ever discovery",
+    "unverified novelty",
+    "unverified publication status",
+    "unverified DOI"
+  ],
+  "project": 8,
+  "reference_status": "Primary-source verification pending Step 9.15.",
+  "repair_history": [
+    {
+      "draft_prose_changed": false,
+      "reason": "Semantic validation preserved Markdown blockquote markers, causing a false central-finding miss.",
+      "repair": "9.3.A",
+      "repair_action": "Strip blockquote prefixes before whitespace-normalized semantic matching.",
+      "scientific_meaning_changed": false
+    }
+  ],
+  "source_contract": "P28_MANUSCRIPT_CONTRACT_V1",
+  "status": "DRAFT",
+  "step": 9,
+  "substep": "9.3",
+  "validation_mode": "MARKDOWN_AWARE_WHITESPACE_NORMALIZED_SEMANTIC_VALIDATION",
+  "version": "P28_FINDING_SCOPE_V1",
+  "word_count": 775
+}

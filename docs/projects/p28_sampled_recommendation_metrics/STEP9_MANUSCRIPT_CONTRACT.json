@@ -13,11 +13,14 @@
   "abstract_validation": "WHITESPACE_NORMALIZED_SEMANTIC_VALIDATION",
   "completed_substeps": [
     "9.1",
-    "9.2"
+    "9.2",
+    "9.3"
   ],
   "contract_version": "P28_MANUSCRIPT_CONTRACT_V1",
+  "finding_scope_status": "P28_FINDING_SCOPE_V1_DRAFTED",
+  "finding_scope_validation": "MARKDOWN_AWARE_WHITESPACE_NORMALIZED_SEMANTIC_VALIDATION",
   "manuscript_status": "STRUCTURE_FROZEN",
-  "next_substep": "Project 8 \u2014 Step 9 \u2014 Sub-step 9.3 \u2014 Draft original finding/scope section",
+  "next_substep": "Project 8 \u2014 Step 9 \u2014 Sub-step 9.4 \u2014 Draft mathematical methods section",
   "primary_question": "Can changing only the evaluation candidate set change which fixed recommendation model appears best?",
   "prohibited_claims": [
     "sampled metrics are universally wrong",

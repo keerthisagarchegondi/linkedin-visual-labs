@@ -318,3 +318,40 @@ Primary-source reference verification remains deferred to Step 9.15.
 Next allowed sub-step:
 
 **Project 8 — Step 9 — Sub-step 9.3 — Draft original finding/scope section**
+
+## Step 9 — Sub-step 9.3 finding and scope draft
+
+Drafted `P28_FINDING_SCOPE_V1`.
+
+The section explicitly separates:
+
+- source-reported toy-example inputs;
+- reproduced AP model-selection reversal;
+- independent numerical verification;
+- Project 8 extensions;
+- central finding;
+- claims outside study scope.
+
+Central result remains:
+
+- full AP: `C > B > A`;
+- sampled AP at `m = 99`: `A > B > C`;
+- rank profiles unchanged.
+
+Project 8 extensions remain limited to:
+
+- predefined sample-size sweep;
+- computed-grid AP crossover intervals;
+- explicit AUC negative-control analysis.
+
+AUC ordering remains `A > C > B` over the tested grid.
+
+Repair `9.3.A` changed semantic validation to remove Markdown blockquote prefixes before normalized matching. The finding/scope prose and scientific meaning were not changed.
+
+The draft explicitly rejects universal sampled-evaluation failure, exact crossover interpolation, production prevalence, complete-paper reproduction, first-ever discovery, publication, and DOI claims.
+
+Primary-source verification remains pending Step 9.15.
+
+Next allowed sub-step:
+
+**Project 8 — Step 9 — Sub-step 9.4 — Draft mathematical methods section**
