@@ -375,3 +375,31 @@ No new mathematical assumptions or exact crossover interpolation were introduced
 Next allowed sub-step:
 
 **Project 8 — Step 9 — Sub-step 9.5 — Draft independent implementation section**
+
+## Step 9 — Sub-step 9.5 independent implementation draft
+
+Drafted `P28_INDEPENDENT_IMPLEMENTATION_V1` after inspecting the actual Project 8 implementation package.
+
+Implementation layers documented:
+
+- deterministic configuration;
+- fixed A/B/C rank profiles;
+- analytical metrics and sampled expectations;
+- Monte Carlo simulation;
+- validation and independent recomputation;
+- source-value reconciliation;
+- frozen research artifacts;
+- automated reproducibility controls.
+
+Repository inventory recorded:
+
+- implementation modules: 9;
+- Project 8 test files: 16.
+
+The manuscript explicitly states that source-reported rounded values are reconciliation evidence rather than inputs to the analytical Project 8 results.
+
+The section also records that no model training is performed and that 'independent implementation' does not claim legal clean-room status, first discovery, complete source-paper reproduction, or production generality.
+
+Next allowed sub-step:
+
+**Project 8 — Step 9 — Sub-step 9.6 — Draft full-catalog result section**

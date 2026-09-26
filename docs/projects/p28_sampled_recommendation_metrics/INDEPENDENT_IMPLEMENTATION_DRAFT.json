@@ -1,0 +1,301 @@
+{
+  "evidence_separation": {
+    "analytical_results": "computed independently from fixed profiles and frozen formulas",
+    "monte_carlo": "validation check; not analytical-result source",
+    "source_reported_values": "reconciliation only; not analytical-result inputs"
+  },
+  "first_discovery_claim": false,
+  "frozen_artifact_inventory": {
+    "claim_register.json": {
+      "path": "assets/p28_sampled_recommendation_metrics/frozen/claim_register.json",
+      "sha256": "6760b4ea643ef3c248dd3323f58a9d8bd405ed519577be31761ccefc81eabfc5"
+    },
+    "release_data.json": {
+      "path": "assets/p28_sampled_recommendation_metrics/frozen/release_data.json",
+      "sha256": "6691d3f3ccda613f8278961ac3291fa02a007d76babcb577d690405f81b67bc8"
+    },
+    "run_manifest.json": {
+      "path": "assets/p28_sampled_recommendation_metrics/frozen/run_manifest.json",
+      "sha256": "e51d508f703ca4e84a46162f49676019cd6cdd2a885d08da1d0be515326d5d3c"
+    },
+    "validation_results.json": {
+      "path": "assets/p28_sampled_recommendation_metrics/frozen/validation_results.json",
+      "sha256": "e20694eea599ad9354df5aa81182c610e6a70bae45c6fc031769a10c999e7ff0"
+    }
+  },
+  "implementation_layers": [
+    "configuration",
+    "metric definitions",
+    "sampling / analytical expectations",
+    "Monte Carlo simulation",
+    "validation",
+    "source reconciliation",
+    "freezing / release data"
+  ],
+  "implementation_package": "src/linkedin_visual_labs/projects/p28_sampled_recommendation_metrics",
+  "legal_clean_room_claim": false,
+  "model_training_performed": false,
+  "module_inventory": {
+    "config.py": {
+      "line_count": 141,
+      "path": "src/linkedin_visual_labs/projects/p28_sampled_recommendation_metrics/config.py",
+      "public_classes": [
+        "Project8Config"
+      ],
+      "public_constants": [],
+      "public_functions": [
+        "default_config_path",
+        "load_config",
+        "load_default_config"
+      ],
+      "sha256": "63b83b2df8c334a658bf134bd141184d50d775babb312c7d9552c66efc4ef193"
+    },
+    "freeze.py": {
+      "line_count": 1423,
+      "path": "src/linkedin_visual_labs/projects/p28_sampled_recommendation_metrics/freeze.py",
+      "public_classes": [
+        "OrderingPayload"
+      ],
+      "public_constants": [
+        "HIGH_PRECISION_REPETITIONS",
+        "METRICS",
+        "REFERENCE_NEGATIVE_DRAWS",
+        "ROOT_SEED",
+        "SAMPLE_SIZE_GRID",
+        "SOURCE_REPETITIONS",
+        "TIE_TOLERANCE"
+      ],
+      "public_functions": [
+        "build_release_payloads",
+        "crossover_intervals",
+        "independent_expected_value",
+        "independent_profile_expected_metrics",
+        "ordering_groups",
+        "ordering_text",
+        "pairwise_relation",
+        "profile_expected_metrics",
+        "profile_full_metrics",
+        "reconcile_source_reference_values",
+        "sensitivity_results",
+        "sha256_file",
+        "write_release_package"
+      ],
+      "sha256": "7caf7cfc4b1fa1a45dee8d1209b399506038e47eac753f4022aa75c199d68a08"
+    },
+    "identifiers.py": {
+      "line_count": 62,
+      "path": "src/linkedin_visual_labs/projects/p28_sampled_recommendation_metrics/identifiers.py",
+      "public_classes": [],
+      "public_constants": [],
+      "public_functions": [
+        "canonical_json",
+        "evidence_id",
+        "experiment_id",
+        "stable_fingerprint"
+      ],
+      "sha256": "90c9e147becaf3eff0fc534197e2189a41777276a6e822a51f41f96a8f89d428"
+    },
+    "metrics.py": {
+      "line_count": 141,
+      "path": "src/linkedin_visual_labs/projects/p28_sampled_recommendation_metrics/metrics.py",
+      "public_classes": [],
+      "public_constants": [],
+      "public_functions": [
+        "auc_at_rank",
+        "average_precision_at_rank",
+        "average_rank_metric",
+        "average_values",
+        "ndcg_at_rank",
+        "recall_at_k",
+        "validate_n_items",
+        "validate_rank"
+      ],
+      "sha256": "5178acfacef1b911984ce17723512e3cc26620316b6844f59238cd272260385a"
+    },
+    "reference.py": {
+      "line_count": 121,
+      "path": "src/linkedin_visual_labs/projects/p28_sampled_recommendation_metrics/reference.py",
+      "public_classes": [
+        "ReferenceProtocol"
+      ],
+      "public_constants": [],
+      "public_functions": [
+        "load_reference_protocol",
+        "reference_ranks_path"
+      ],
+      "sha256": "0d443c69e147cd3dec28a13b6e92e7075cc39ccc0c251de321474779c985267a"
+    },
+    "sampling.py": {
+      "line_count": 394,
+      "path": "src/linkedin_visual_labs/projects/p28_sampled_recommendation_metrics/sampling.py",
+      "public_classes": [],
+      "public_constants": [],
+      "public_functions": [
+        "binomial_pmf",
+        "expected_sampled_ap_closed_form",
+        "expected_sampled_ap_pmf",
+        "expected_sampled_auc_identity",
+        "expected_sampled_auc_pmf",
+        "expected_sampled_ndcg",
+        "expected_sampled_rank_metric",
+        "expected_sampled_recall_at_k",
+        "full_auc_identity_value",
+        "irrelevant_outrank_probability",
+        "probability_mass_sum",
+        "sampled_auc_from_outranking_count",
+        "sampled_rank_distribution",
+        "validate_negative_draws",
+        "validate_probability_mass"
+      ],
+      "sha256": "42f2f758f377206630c7cb4a16e6b9fccb6fb7a594bb2cba6b8a39287560ba17"
+    },
+    "schemas.py": {
+      "line_count": 47,
+      "path": "src/linkedin_visual_labs/projects/p28_sampled_recommendation_metrics/schemas.py",
+      "public_classes": [],
+      "public_constants": [
+        "CITATION_STATES",
+        "CLAIM_CLASSES",
+        "MANUSCRIPT_STATES",
+        "SOCIAL_STATES",
+        "SOFTWARE_STATES"
+      ],
+      "public_functions": [],
+      "sha256": "8df07f927b8d8fb7f18f7b27bd5e11bd8a302eb7fc8b5518420d6ac5aa15822d"
+    },
+    "simulation.py": {
+      "line_count": 527,
+      "path": "src/linkedin_visual_labs/projects/p28_sampled_recommendation_metrics/simulation.py",
+      "public_classes": [
+        "MonteCarloProfileResult",
+        "MonteCarloSummary"
+      ],
+      "public_constants": [
+        "METRIC_NAMES"
+      ],
+      "public_functions": [
+        "analytical_profile_ap_closed_form",
+        "analytical_profile_expectations",
+        "build_profile_stream_key",
+        "construct_rng",
+        "derive_stream_seed",
+        "monte_carlo_acceptance_threshold",
+        "monte_carlo_agrees",
+        "run_monte_carlo_protocol",
+        "sample_outranking_count",
+        "sampled_rank_from_count",
+        "simulate_profile",
+        "simulate_profile_repetitions",
+        "summarize_repetitions",
+        "validate_repetitions"
+      ],
+      "sha256": "ba6439530fa723e57177dd932e44bec3aa1d6f8cebee535bd74ad442c57309e9"
+    },
+    "validation.py": {
+      "line_count": 84,
+      "path": "src/linkedin_visual_labs/projects/p28_sampled_recommendation_metrics/validation.py",
+      "public_classes": [],
+      "public_constants": [
+        "EXPECTED_PROFILES"
+      ],
+      "public_functions": [
+        "repository_root",
+        "validate_config",
+        "validate_inputs",
+        "validate_reference"
+      ],
+      "sha256": "efccfbecdecc8473cd6ad8bab610e9c5a3a2252ff76b3b57a8e6e65ed0e27a30"
+    }
+  },
+  "project": 8,
+  "reference_status": "Literature attribution pending Step 9.15.",
+  "source_contract": "P28_MANUSCRIPT_CONTRACT_V1",
+  "status": "DRAFT",
+  "step": 9,
+  "substep": "9.5",
+  "test_inventory": [
+    {
+      "line_count": 17,
+      "path": "tests/projects/p28_sampled_recommendation_metrics/test_cli.py",
+      "sha256": "5ba18d15906cf6faf6ac9a643c79141065c3ba518a5f36c61fbd32caf4216138"
+    },
+    {
+      "line_count": 62,
+      "path": "tests/projects/p28_sampled_recommendation_metrics/test_config.py",
+      "sha256": "adf36d0bae41cbdcd25e8fe494e7aead0b2d94763279ad5b8be7e90541165bc5"
+    },
+    {
+      "line_count": 260,
+      "path": "tests/projects/p28_sampled_recommendation_metrics/test_contract_boundaries.py",
+      "sha256": "a755d0281a792026abf6727be1ed330a3c1d19c2b04ec17150c7ae40aac0c7fa"
+    },
+    {
+      "line_count": 204,
+      "path": "tests/projects/p28_sampled_recommendation_metrics/test_dashboard.py",
+      "sha256": "a6752592f422947e87b1c8eba6ab43876466e508a111c9e380b01749c3fb5998"
+    },
+    {
+      "line_count": 115,
+      "path": "tests/projects/p28_sampled_recommendation_metrics/test_exact_enumeration.py",
+      "sha256": "9ef1e85c6779453703d23b7624e6471bafe25e2c343964a1573a317e15a3056b"
+    },
+    {
+      "line_count": 112,
+      "path": "tests/projects/p28_sampled_recommendation_metrics/test_figures.py",
+      "sha256": "c3a855a9c7e31bc6299e60931eeebb7b606ebc7395b7c2369ec8bc607d2e1a4d"
+    },
+    {
+      "line_count": 286,
+      "path": "tests/projects/p28_sampled_recommendation_metrics/test_freeze.py",
+      "sha256": "149a1674a6b42193de95616e12748907199f8cea0be0195d8241ea13bcbee6ac"
+    },
+    {
+      "line_count": 34,
+      "path": "tests/projects/p28_sampled_recommendation_metrics/test_identifiers.py",
+      "sha256": "b01647e10bab95c55c87225fdb14c22c64cd0094f80d3bf8e88f472c2aa1d583"
+    },
+    {
+      "line_count": 160,
+      "path": "tests/projects/p28_sampled_recommendation_metrics/test_metrics.py",
+      "sha256": "967dc05a8e70f74ba4cdc21f20021e97f2b7fbb0a5f6f23a8a1f0607ad7c89d9"
+    },
+    {
+      "line_count": 220,
+      "path": "tests/projects/p28_sampled_recommendation_metrics/test_output_design_contract.py",
+      "sha256": "381d250e9a715e89d9a5930d8e64daf2fc936206c10389373a8e1c8fcf1febed"
+    },
+    {
+      "line_count": 44,
+      "path": "tests/projects/p28_sampled_recommendation_metrics/test_reference.py",
+      "sha256": "d452a35c6839b2e377c94f989e5e42994dede223ab6813f0156ec9b041898210"
+    },
+    {
+      "line_count": 381,
+      "path": "tests/projects/p28_sampled_recommendation_metrics/test_sampling.py",
+      "sha256": "79aa498e73d8b8738f01188dd415e95290a061e3f9c2b18243fd244c6974f423"
+    },
+    {
+      "line_count": 36,
+      "path": "tests/projects/p28_sampled_recommendation_metrics/test_schemas.py",
+      "sha256": "638bda27386bad5fe34e00ec755df337002a91174996abdf31d7c104b30fd109"
+    },
+    {
+      "line_count": 457,
+      "path": "tests/projects/p28_sampled_recommendation_metrics/test_simulation.py",
+      "sha256": "45e1ff3db15a08a564f5a773add84a00917f988b741170a5e29d423781ae0b1f"
+    },
+    {
+      "line_count": 83,
+      "path": "tests/projects/p28_sampled_recommendation_metrics/test_step3_invariants.py",
+      "sha256": "6db513892590a1eb87c3ddc2ea874b3ede62a67a1434417729f5f7937bf83560"
+    },
+    {
+      "line_count": 12,
+      "path": "tests/projects/p28_sampled_recommendation_metrics/test_validation.py",
+      "sha256": "f08605d155824e3a7012c41754d2ba44e55cccf0f363737441d0745626f3c022"
+    }
+  ],
+  "version": "P28_INDEPENDENT_IMPLEMENTATION_V1",
+  "whole_paper_reproduction_claim": false,
+  "word_count": 966
+}

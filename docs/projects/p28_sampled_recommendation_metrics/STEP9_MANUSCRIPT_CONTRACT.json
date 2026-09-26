@@ -15,15 +15,21 @@
     "9.1",
     "9.2",
     "9.3",
-    "9.4"
+    "9.4",
+    "9.5"
   ],
   "contract_version": "P28_MANUSCRIPT_CONTRACT_V1",
   "finding_scope_status": "P28_FINDING_SCOPE_V1_DRAFTED",
   "finding_scope_validation": "MARKDOWN_AWARE_WHITESPACE_NORMALIZED_SEMANTIC_VALIDATION",
+  "independent_implementation_inventory": {
+    "module_count": 9,
+    "test_file_count": 16
+  },
+  "independent_implementation_status": "P28_INDEPENDENT_IMPLEMENTATION_V1_DRAFTED",
   "manuscript_status": "STRUCTURE_FROZEN",
   "mathematical_methods_status": "P28_MATHEMATICAL_METHODS_V1_DRAFTED",
   "mathematical_methods_validation": "MATH_MARKUP_LATEX_NUMERIC_AND_SEMANTIC_PHRASE_VALIDATION",
-  "next_substep": "Project 8 \u2014 Step 9 \u2014 Sub-step 9.5 \u2014 Draft independent implementation section",
+  "next_substep": "Project 8 \u2014 Step 9 \u2014 Sub-step 9.6 \u2014 Draft full-catalog result section",
   "primary_question": "Can changing only the evaluation candidate set change which fixed recommendation model appears best?",
   "prohibited_claims": [
     "sampled metrics are universally wrong",
