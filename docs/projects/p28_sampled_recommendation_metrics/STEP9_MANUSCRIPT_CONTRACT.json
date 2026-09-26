@@ -1,0 +1,126 @@
+{
+  "abstract_order": [
+    "Background",
+    "Problem",
+    "Study design",
+    "Central AP result",
+    "Sample-size extension",
+    "AUC negative control",
+    "Validation",
+    "Bounded conclusion"
+  ],
+  "contract_version": "P28_MANUSCRIPT_CONTRACT_V1",
+  "manuscript_status": "STRUCTURE_FROZEN",
+  "next_substep": "Project 8 \u2014 Step 9 \u2014 Sub-step 9.2 \u2014 Draft abstract from validated claims",
+  "primary_question": "Can changing only the evaluation candidate set change which fixed recommendation model appears best?",
+  "prohibited_claims": [
+    "sampled metrics are universally wrong",
+    "every sampled metric reverses rankings",
+    "the complete source paper was reproduced",
+    "production prevalence was estimated",
+    "exact crossover values between uncomputed grid points",
+    "unverified novelty claims",
+    "unverified publication claims",
+    "unverified DOI claims"
+  ],
+  "project": 8,
+  "scientific_contract": {
+    "ap_crossover_intervals": {
+      "A/B": "500-1000",
+      "A/C": "200-500",
+      "B/C": [
+        "50-99",
+        "200-500"
+      ]
+    },
+    "auc_ordering": "A>C>B",
+    "cases_per_model": 5,
+    "catalog_size": 10000,
+    "formula_tolerance": 1e-12,
+    "full_ap_ordering": "C>B>A",
+    "monte_carlo_acceptance": "abs(mc_mean-expectation) <= max(5*MC_SE, 1e-3)",
+    "monte_carlo_repetitions": [
+      1000,
+      10000
+    ],
+    "reference_sampled_negatives": 99,
+    "relevant_items_per_case": 1,
+    "sample_size_grid": [
+      1,
+      2,
+      5,
+      10,
+      20,
+      50,
+      99,
+      200,
+      500,
+      1000,
+      5000,
+      9999
+    ],
+    "sampled_ap_ordering_m99": "A>B>C",
+    "sampling": "uniform_with_replacement",
+    "seed": 20260923,
+    "tie_tolerance": 1e-12
+  },
+  "sections": [
+    "Abstract",
+    "1. Introduction",
+    "2. Source example and study scope",
+    "3. Mathematical methods",
+    "4. Independent implementation",
+    "5. Results",
+    "6. Sample-size sensitivity analysis",
+    "7. Monte Carlo validation",
+    "8. Source reconciliation and discrepancy analysis",
+    "9. Discussion",
+    "10. Limitations",
+    "11. Reproducibility",
+    "12. Contribution statement",
+    "13. AI-assistance disclosure",
+    "14. Data and code availability",
+    "15. Conflict-of-interest statement",
+    "16. Funding statement",
+    "17. References",
+    "Appendix A \u2014 Complete source-reported rank profiles",
+    "Appendix B \u2014 Metric definitions and derivations",
+    "Appendix C \u2014 Full analytical result tables",
+    "Appendix D \u2014 Sample-size sweep",
+    "Appendix E \u2014 Monte Carlo validation tables",
+    "Appendix F \u2014 Source reconciliation",
+    "Appendix G \u2014 Reproducibility receipt",
+    "Appendix H \u2014 Claim/evidence linkage",
+    "Appendix I \u2014 AI assistance log"
+  ],
+  "step": 9,
+  "step8_video_record": {
+    "accepted_variant": "Project8_Sampled_Recommendation_Metrics_45s_cinematic_v6_native30.mp4",
+    "creative_status": "ACCEPTED_BY_USER",
+    "duration_seconds": 45,
+    "format": "MP4",
+    "native_fps": 30,
+    "repository_file_frozen": false,
+    "repository_hash_recorded": false,
+    "resolution": "1080x1350",
+    "truthfulness_note": "The accepted Step 8 video was generated outside the Windows repository workflow in ChatGPT. Step 9.1 records its accepted creative status only and does not invent a repository path, hash, DOI, publication status, or archive identifier."
+  },
+  "study_type": "independent reproduction-and-extension of a source-reported toy example",
+  "substep": "9.1",
+  "supported_framing": {
+    "extension": [
+      "sample-size sensitivity grid",
+      "computed-grid crossover intervals",
+      "explicit AUC negative control"
+    ],
+    "independent_verification": [
+      "independent mathematical implementation",
+      "analytical expectations",
+      "Monte Carlo validation",
+      "source-value reconciliation",
+      "independent critical-number recomputation"
+    ],
+    "reproduction": "selected source-reported toy example"
+  },
+  "title": "When Sampled Recommendation Metrics Change Model Selection: A Reproducible Toy-Example Study"
+}

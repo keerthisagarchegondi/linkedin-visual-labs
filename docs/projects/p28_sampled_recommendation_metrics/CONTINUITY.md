@@ -250,3 +250,33 @@ Typography was enlarged across KPI labels, panel subtitles, rank-profile text, c
 Scientific values and frozen inputs were unchanged.
 
 Audience contract: `RECRUITER_BEGINNER_TECHNICAL_V1`.
+
+## Step 9 — Sub-step 9.1 final manuscript-structure freeze and Step-9 entry gate
+
+Project 8 entered Step 9 with the manuscript architecture frozen under `P28_MANUSCRIPT_CONTRACT_V1`.
+
+Frozen manuscript title:
+
+**When Sampled Recommendation Metrics Change Model Selection: A Reproducible Toy-Example Study**
+
+The manuscript is structured to distinguish:
+
+- reproduction of the selected source-reported toy example;
+- independent verification;
+- extension through sample-size sensitivity, computed-grid crossover intervals, and the AUC negative control.
+
+Central scientific contract remains:
+
+- full AP: `C > B > A`;
+- sampled AP at `m = 99`: `A > B > C`;
+- AUC: `A > C > B`.
+
+No exact crossover values may be inferred between computed grid points.
+
+No universal sampled-metric reversal claim is permitted.
+
+Step 8 video status is recorded truthfully as an accepted creative artifact generated outside the Windows repository workflow. No repository file path, repository hash, DOI, archive identifier, or publication status is invented for that artifact.
+
+Next allowed sub-step:
+
+**Project 8 — Step 9 — Sub-step 9.2 — Draft abstract from validated claims**
