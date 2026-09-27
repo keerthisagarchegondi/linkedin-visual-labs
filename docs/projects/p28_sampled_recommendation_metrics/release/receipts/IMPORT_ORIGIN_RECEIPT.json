@@ -1,0 +1,13 @@
+{
+  "developer_clone_resolution_detected": false,
+  "developer_repo": "D:\\linkedin-visual-labs-git\\linkedin-visual-labs",
+  "export_root": "C:\\Users\\vegaq\\AppData\\Local\\Temp\\p28_standalone_export_10_18_A_9g0piujp\\Project8_Final_Local_Release",
+  "matplotlib_required_for_check": false,
+  "parent_package_initializers_executed": false,
+  "resolved": {
+    "linkedin_visual_labs": "C:\\Users\\vegaq\\AppData\\Local\\Temp\\p28_standalone_export_10_18_A_9g0piujp\\Project8_Final_Local_Release\\src\\linkedin_visual_labs",
+    "p28_sampled_recommendation_metrics": "C:\\Users\\vegaq\\AppData\\Local\\Temp\\p28_standalone_export_10_18_A_9g0piujp\\Project8_Final_Local_Release\\src\\linkedin_visual_labs\\projects\\p28_sampled_recommendation_metrics",
+    "projects": "C:\\Users\\vegaq\\AppData\\Local\\Temp\\p28_standalone_export_10_18_A_9g0piujp\\Project8_Final_Local_Release\\src\\linkedin_visual_labs\\projects"
+  },
+  "validation_mode": "NON_EXECUTING_PATHFINDER_SPEC_RESOLUTION"
+}

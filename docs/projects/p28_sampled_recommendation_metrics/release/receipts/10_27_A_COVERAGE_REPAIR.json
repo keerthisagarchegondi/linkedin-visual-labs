@@ -1,0 +1,11 @@
+{
+  "cause": "pytest-cov activation triggered a repeated NumPy extension import during test collection on this Windows environment.",
+  "coverage_data_file": "C:\\Users\\vegaq\\AppData\\Local\\Temp\\p28_step10_coverage_direct_oowcv0dw\\.coverage",
+  "coverage_json": "C:\\Users\\vegaq\\AppData\\Local\\Temp\\p28_step10_coverage_direct_oowcv0dw\\coverage.json",
+  "coverage_percent": 0.0,
+  "repair": "10.27.A",
+  "repair_action": "Run pytest under coverage.py directly without pytest-cov.",
+  "scientific_code_changed": false,
+  "test_selection_changed": false,
+  "tests_changed": false
+}

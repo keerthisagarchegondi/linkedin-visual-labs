@@ -1,0 +1,39 @@
+{
+  "project": 8,
+  "step": "9.18",
+  "artifact": "Project8_AI_Assistance_Log",
+  "status": "GENERATED",
+  "ai_system": {
+    "provider": "OpenAI",
+    "product": "ChatGPT",
+    "scientific_authority": false,
+    "authorship_claim": false
+  },
+  "assistance_categories": [
+    "project_planning",
+    "coding_orchestration_guidance",
+    "debugging_and_validator_repair",
+    "manuscript_drafting",
+    "formatting_and_artifact_generation",
+    "reference_support"
+  ],
+  "scientific_result_provenance": {
+    "full_ap_ordering": "C>B>A",
+    "sampled_ap_ordering_m99": "A>B>C",
+    "auc_ordering_tested_grid": "A>C>B",
+    "rank_profiles_changed_between_evaluations": false,
+    "display_precision_decimal_places": 4,
+    "ordering_uses_unrounded_values": true
+  },
+  "validated_test_status_recorded": "169 passed",
+  "boundaries": {
+    "exact_crossover_interpolation": false,
+    "universal_sampled_metric_claim": false,
+    "whole_paper_reproduction_claim": false,
+    "publication_claim": false,
+    "project_doi_claim": false
+  },
+  "human_responsibility_retained": true,
+  "scientific_values_changed_by_step_9_18": false,
+  "claims_expanded_by_step_9_18": false
+}

@@ -1,0 +1,29 @@
+{
+  "manuscript_modified": false,
+  "negated_exemptions": [
+    {
+      "file": "docs/projects/p28_sampled_recommendation_metrics/release/manuscript/Project8_Final_Manuscript_Release_Candidate.md",
+      "label": "universal_unreliability",
+      "match": "sampled evaluation is universally unreliable",
+      "reason": "DIRECT_NEGATION_WITH_OPTIONAL_THAT"
+    },
+    {
+      "file": "docs/projects/p28_sampled_recommendation_metrics/release/manuscript/Project8_Final_Manuscript_Release_Candidate.md",
+      "label": "whole_paper",
+      "match": "complete source paper has been reproduced",
+      "reason": "NEGATED_MARKDOWN_LIST_SCOPE"
+    },
+    {
+      "file": "docs/projects/p28_sampled_recommendation_metrics/release/publication/Project8_LinkedIn_Post.md",
+      "label": "universal_unreliability",
+      "match": "sampled metrics are universally unreliable",
+      "reason": "DIRECT_NEGATION_WITH_OPTIONAL_THAT"
+    }
+  ],
+  "repair": "10.31.A.A+2",
+  "scientific_text_modified": false,
+  "status": "PASS",
+  "step": "10.31",
+  "unsupported_hits": [],
+  "validation_mode": "DIRECT_OPTIONAL_THAT_AND_MARKDOWN_LIST_NEGATION_SCOPE"
+}

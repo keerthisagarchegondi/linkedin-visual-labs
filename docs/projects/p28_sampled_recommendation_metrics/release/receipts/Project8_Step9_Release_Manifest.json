@@ -1,0 +1,117 @@
+{
+  "project": 8,
+  "step": 9,
+  "status": "COMPLETE",
+  "final_gate": "9.35 PASS",
+  "generated": "2026-09-27",
+  "author": "Keerthi Sagar Chegondi",
+  "affiliation": "Independent Researcher, Phoenix, Arizona, United States",
+  "public_release_performed": false,
+  "files": [
+    {
+      "file": "Project8_Final_Manuscript_Release_Candidate.md",
+      "sha256": "e4fa012e152d82c97f89ae71c83d7d80c957ee8b4ee500a57e2c631088bf1b5f",
+      "bytes": 32911
+    },
+    {
+      "file": "Project8_Final_Manuscript_Release_Candidate.docx",
+      "sha256": "702e38dedcc5f90eba28f8966e9fc62a88c9448e9270a326a6a4099111507f2a",
+      "bytes": 26395
+    },
+    {
+      "file": "Project8_Final_Manuscript_Release_Candidate.pdf",
+      "sha256": "c958acf8ae0c683697b40e16485e2543cbf0d1ca23c4aa95ff72fa2fcf98a5c4",
+      "bytes": 299416
+    },
+    {
+      "file": "Project8_references.bib",
+      "sha256": "a4333cca46b6cee295f024491ff81863b38e660aa9154a04ba52f3e35fd50b6c",
+      "bytes": 694
+    },
+    {
+      "file": "Project8_Reproducibility_Appendix.md",
+      "sha256": "16b396039e6a94d0f367ec5ff7377f8e48304dd22a07ce1a78a853d941547fa5",
+      "bytes": 9174
+    },
+    {
+      "file": "Project8_Reproducibility_Appendix.docx",
+      "sha256": "be02281d7d0f90d6348997eec0f2c01e079ce54eaf48ae13291e4d99dfeacb89",
+      "bytes": 41408
+    },
+    {
+      "file": "Project8_AI_Assistance_Log.md",
+      "sha256": "18ff8a43a71fa045ad843f00fc74c769bc466023790a9cb3091c816abcb1a956",
+      "bytes": 7773
+    },
+    {
+      "file": "Project8_AI_Assistance_Log.docx",
+      "sha256": "020de11386edc2097645aee4004e0c5ee56ee8b8bbffe691b66de9008576be5a",
+      "bytes": 40660
+    },
+    {
+      "file": "Project8_AI_Assistance_Log.json",
+      "sha256": "59846e204b7645d0802ebcc10ba18324cb197446166e32db07663dc05f279944",
+      "bytes": 1170
+    },
+    {
+      "file": "project8_release_prep/CITATION.cff",
+      "sha256": "4ceeac0344d857a52750ba973ac9ba32698c37e0e9c896f5ef79493532cc83a9",
+      "bytes": 1285
+    },
+    {
+      "file": "project8_release_prep/Project8_Zenodo_Metadata_Draft.json",
+      "sha256": "4900bd19c7eeaa94802d600e4a860327d40b9ec738260911ac14ac2ccab8185a",
+      "bytes": 1505
+    },
+    {
+      "file": "project8_release_prep/Project8_Publication_Status.json",
+      "sha256": "f187d56bbbc9a64dcc882b90185bbce82f2b32c8d07c450af2c71f36f57d411e",
+      "bytes": 1013
+    },
+    {
+      "file": "project8_release_prep/Project8_Publication_Plan.md",
+      "sha256": "c03d87f4622b3da2ea75732b831ea2c2f361b1a59e6a9335b15c7952b92e62c5",
+      "bytes": 1980
+    },
+    {
+      "file": "project8_release_prep/Project8_Evidence_Claim_Linkage.md",
+      "sha256": "ab5a7962b80d2074570e3db1e2f9e97495cc731949cdd8f10141b419af6a94dd",
+      "bytes": 3260
+    },
+    {
+      "file": "project8_release_prep/Project8_Evidence_Claim_Linkage.json",
+      "sha256": "1732ce7351b14fa2f370dee2643e5357170ac3a90d0507c54481f4666e533232",
+      "bytes": 4019
+    },
+    {
+      "file": "project8_release_prep/Project8_Alt_Text.md",
+      "sha256": "37bbcf7e26e54d56c9d66cd38115a427bcd0a32674b2db9b8852d212e3f6ade4",
+      "bytes": 2304
+    },
+    {
+      "file": "project8_release_prep/Project8_Release_Visual_Manifest.json",
+      "sha256": "25a45df5294d6aa272a14227224f95c91245f60fe1dcc382717a5187c2e327b7",
+      "bytes": 1272
+    },
+    {
+      "file": "project8_release_prep/Project8_Final_QA_Report.md",
+      "sha256": "fc13cfccc69ce7da6f1920e0494a804df343ef8693071c6b0f10e4c5c815d9fa",
+      "bytes": 3073
+    },
+    {
+      "file": "project8_release_prep/Project8_Final_QA_Report.json",
+      "sha256": "77c5d233c4b22b5ac19dceca9980ad2224c2287c21b210065b7a90ffa4d4fbc8",
+      "bytes": 1317
+    },
+    {
+      "file": "project8_release_prep/Project8_Step9_State.json",
+      "sha256": "303ec47896df907a9b96744eb728fc2ce19ebb90eaf644c5091efaee8f7c196c",
+      "bytes": 416
+    },
+    {
+      "file": "project8_release_prep/Project8_Step9_Continuity.md",
+      "sha256": "88cb0c5a629566f2eb2d851c3926211f678bd567e3c8e5794d2575f965bba5d6",
+      "bytes": 1243
+    }
+  ]
+}

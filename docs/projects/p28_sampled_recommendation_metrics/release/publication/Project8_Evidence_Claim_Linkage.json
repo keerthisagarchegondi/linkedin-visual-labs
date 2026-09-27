@@ -1,0 +1,143 @@
+[
+  {
+    "claim_id": "P8-C001",
+    "status": "SUPPORTED",
+    "classification": "SOURCE_REPORTED",
+    "claim": "The frozen A/B/C rank profiles are the source-reported toy-example inputs.",
+    "evidence": [
+      "reference_ranks.json",
+      "source_provenance.json"
+    ],
+    "manuscript_locations": [
+      "2.1 Source-reported toy rank profiles",
+      "Appendix G"
+    ],
+    "public_safe": true,
+    "reason": null
+  },
+  {
+    "claim_id": "P8-C002",
+    "status": "SUPPORTED",
+    "classification": "REPLICATED_COMPUTATION",
+    "claim": "Full-catalog AP orders the profiles C>B>A.",
+    "evidence": [
+      "full_metrics.csv"
+    ],
+    "manuscript_locations": [
+      "5.1 Full-catalog metrics",
+      "Appendix B"
+    ],
+    "public_safe": true,
+    "reason": null
+  },
+  {
+    "claim_id": "P8-C003",
+    "status": "SUPPORTED",
+    "classification": "REPLICATED_COMPUTATION",
+    "claim": "Expected sampled AP at m=99 orders the profiles A>B>C.",
+    "evidence": [
+      "sampled_metrics.csv"
+    ],
+    "manuscript_locations": [
+      "5.2 Expected sampled metrics at m = 99",
+      "Appendix C"
+    ],
+    "public_safe": true,
+    "reason": null
+  },
+  {
+    "claim_id": "P8-C004",
+    "status": "SUPPORTED",
+    "classification": "REPLICATED_COMPUTATION",
+    "claim": "The full-catalog and expected sampled AP model orderings differ at m=99.",
+    "evidence": [
+      "full_metrics.csv",
+      "sampled_metrics.csv"
+    ],
+    "manuscript_locations": [
+      "5.3 AP model-selection reversal",
+      "Abstract"
+    ],
+    "public_safe": true,
+    "reason": null
+  },
+  {
+    "claim_id": "P8-C005",
+    "status": "SUPPORTED",
+    "classification": "MATHEMATICAL_DERIVATION",
+    "claim": "Expected sampled AUC equals full-catalog AUC under the frozen sampling protocol.",
+    "evidence": [
+      "sample_size_sweep.csv",
+      "validation_results.json"
+    ],
+    "manuscript_locations": [
+      "3.6 AUC",
+      "5.5 AUC negative control",
+      "Appendix G"
+    ],
+    "public_safe": true,
+    "reason": null
+  },
+  {
+    "claim_id": "P8-C006",
+    "status": "SUPPORTED",
+    "classification": "REPLICATED_COMPUTATION",
+    "claim": "The predefined sample-size grid contains adjacent intervals where one or more pairwise model relations change.",
+    "evidence": [
+      "sample_size_sweep.csv",
+      "release_data.json"
+    ],
+    "manuscript_locations": [
+      "6. Sample-size sensitivity",
+      "Appendix D"
+    ],
+    "public_safe": true,
+    "reason": null
+  },
+  {
+    "claim_id": "P8-C007",
+    "status": "REJECTED",
+    "classification": "UNSUPPORTED",
+    "claim": "An exact crossover sample size can be identified between grid points.",
+    "evidence": [],
+    "manuscript_locations": [],
+    "public_safe": false,
+    "reason": "Step 4 computes only the preregistered sample-size grid and does not solve for unobserved exact crossover locations."
+  },
+  {
+    "claim_id": "P8-C008",
+    "status": "REJECTED",
+    "classification": "UNSUPPORTED",
+    "claim": "The Monte Carlo cross-model differences are paired estimates.",
+    "evidence": [],
+    "manuscript_locations": [],
+    "public_safe": false,
+    "reason": "Models use independent deterministic random streams."
+  },
+  {
+    "claim_id": "P8-C009",
+    "status": "REJECTED",
+    "classification": "UNSUPPORTED",
+    "claim": "Every sampled recommendation metric must reverse every model ordering.",
+    "evidence": [],
+    "manuscript_locations": [],
+    "public_safe": false,
+    "reason": "The frozen evidence is metric-specific; AUC is an explicit negative control."
+  },
+  {
+    "claim_id": "P8-C010",
+    "status": "SUPPORTED",
+    "classification": "REPLICATED_COMPUTATION",
+    "claim": "Both preregistered Monte Carlo runs agree with analytical expectations under abs(MC-analytic) <= max(5*SE, 1e-3).",
+    "evidence": [
+      "validation_results.json"
+    ],
+    "manuscript_locations": [
+      "7. Monte Carlo validation",
+      "Appendix E",
+      "Appendix G"
+    ],
+    "public_safe": true,
+    "reason": null
+  }
+]

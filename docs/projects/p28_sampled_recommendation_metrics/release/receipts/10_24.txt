@@ -1,0 +1,11 @@
+$ D:\linkedin-visual-labs-git\linkedin-visual-labs\.venv\Scripts\python.exe -m ruff check src\linkedin_visual_labs\projects\p28_sampled_recommendation_metrics tests\projects\p28_sampled_recommendation_metrics
+
+STDOUT:
+All checks passed!
+
+
+STDERR:
+
+
+RETURN CODE: 0
+ELAPSED SECONDS: 1.21

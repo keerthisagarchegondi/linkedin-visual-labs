@@ -403,3 +403,29 @@ The section also records that no model training is performed and that 'independe
 Next allowed sub-step:
 
 **Project 8 — Step 9 — Sub-step 9.6 — Draft full-catalog result section**
+
+## Step 10 — End-to-end release acceptance
+
+**Status: COMPLETE — LOCAL ACCEPTANCE PASS**
+
+Completed Step 10.1 through Step 10.36.
+
+Final repair sequence:
+
+- `10.16.A` — standalone export visual-directory ordering;
+- `10.18.A` — non-executing import-origin validation;
+- `10.27.C` — authoritative Project 8 coverage;
+- `10.29.B` — streamed full-repository regression;
+- `10.31.A.A+2` — direct and Markdown-list negation-aware unsupported-claim validation.
+
+Project 8 line coverage: 70.79%.
+
+Project 8 branch coverage: 65.81%.
+
+Full repository regression: 1921 tests passed.
+
+No public push, Zenodo deposition, DOI assignment, submission, peer review, or publication action occurred.
+
+Next phase requires explicit user approval:
+
+**Project 8 — Publication / Release Execution**

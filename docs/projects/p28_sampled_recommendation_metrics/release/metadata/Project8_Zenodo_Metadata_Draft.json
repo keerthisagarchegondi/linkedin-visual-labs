@@ -1,0 +1,33 @@
+{
+  "metadata_status": "READY_FOR_AUTHOR_REVIEW_BEFORE_DEPOSITION",
+  "title": "When Sampled Recommendation Metrics Change Model Selection: A Reproducible Toy-Example Study",
+  "upload_type": "software",
+  "publication_date": "2026-09-27",
+  "description": "Reproducible reconstruction and extension of a source-reported toy recommendation-evaluation example. The study evaluates fixed rank profiles under full-catalog and sampled candidate-set protocols, derives analytical metric expectations, performs a sample-size sensitivity sweep, uses AUC as a negative control, and validates analytical results with Monte Carlo checks.",
+  "creators": [
+    {
+      "name": "Keerthi Sagar Chegondi",
+      "affiliation": "Independent Researcher, Phoenix, Arizona, United States"
+    }
+  ],
+  "keywords": [
+    "recommender systems",
+    "offline evaluation",
+    "negative sampling",
+    "average precision",
+    "NDCG",
+    "AUC",
+    "reproducibility"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "10.1145/3394486.3403226",
+      "relation": "isSupplementTo",
+      "resource_type": "publication-article"
+    }
+  ],
+  "access_right": "open",
+  "license_decision": "PENDING_AUTHOR_SELECTION_AT_DEPOSITION",
+  "repository_url_status": "NOT_YET_PUBLICLY_RELEASED",
+  "notes": "Metadata draft is complete for Step 9.27. No Zenodo deposition has been performed and no Project 8 DOI has been assigned. A release license and public repository/archive URL must be selected at the actual deposition step."
+}

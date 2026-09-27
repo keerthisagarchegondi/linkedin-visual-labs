@@ -1,0 +1,138 @@
+{
+  "branch_percent": 65.81395348837209,
+  "branches": 430,
+  "covered_branches": 283,
+  "covered_lines": 824,
+  "files": [
+    {
+      "branches": 0,
+      "covered_branches": 0,
+      "covered_lines": 5,
+      "file": "src/linkedin_visual_labs/projects/p28_sampled_recommendation_metrics/__init__.py",
+      "line_percent": 100.0,
+      "missing_lines": 0,
+      "statements": 5
+    },
+    {
+      "branches": 4,
+      "covered_branches": 3,
+      "covered_lines": 33,
+      "file": "src/linkedin_visual_labs/projects/p28_sampled_recommendation_metrics/cli.py",
+      "line_percent": 97.05882352941177,
+      "missing_lines": 1,
+      "statements": 34
+    },
+    {
+      "branches": 20,
+      "covered_branches": 20,
+      "covered_lines": 57,
+      "file": "src/linkedin_visual_labs/projects/p28_sampled_recommendation_metrics/config.py",
+      "line_percent": 100.0,
+      "missing_lines": 0,
+      "statements": 57
+    },
+    {
+      "branches": 34,
+      "covered_branches": 13,
+      "covered_lines": 62,
+      "file": "src/linkedin_visual_labs/projects/p28_sampled_recommendation_metrics/dashboard.py",
+      "line_percent": 64.58333333333333,
+      "missing_lines": 34,
+      "statements": 96
+    },
+    {
+      "branches": 56,
+      "covered_branches": 19,
+      "covered_lines": 69,
+      "file": "src/linkedin_visual_labs/projects/p28_sampled_recommendation_metrics/figures.py",
+      "line_percent": 32.54716981132076,
+      "missing_lines": 143,
+      "statements": 212
+    },
+    {
+      "branches": 150,
+      "covered_branches": 77,
+      "covered_lines": 189,
+      "file": "src/linkedin_visual_labs/projects/p28_sampled_recommendation_metrics/freeze.py",
+      "line_percent": 56.25,
+      "missing_lines": 147,
+      "statements": 336
+    },
+    {
+      "branches": 4,
+      "covered_branches": 4,
+      "covered_lines": 20,
+      "file": "src/linkedin_visual_labs/projects/p28_sampled_recommendation_metrics/identifiers.py",
+      "line_percent": 100.0,
+      "missing_lines": 0,
+      "statements": 20
+    },
+    {
+      "branches": 20,
+      "covered_branches": 20,
+      "covered_lines": 47,
+      "file": "src/linkedin_visual_labs/projects/p28_sampled_recommendation_metrics/metrics.py",
+      "line_percent": 100.0,
+      "missing_lines": 0,
+      "statements": 47
+    },
+    {
+      "branches": 38,
+      "covered_branches": 25,
+      "covered_lines": 49,
+      "file": "src/linkedin_visual_labs/projects/p28_sampled_recommendation_metrics/reference.py",
+      "line_percent": 79.03225806451613,
+      "missing_lines": 13,
+      "statements": 62
+    },
+    {
+      "branches": 48,
+      "covered_branches": 46,
+      "covered_lines": 115,
+      "file": "src/linkedin_visual_labs/projects/p28_sampled_recommendation_metrics/sampling.py",
+      "line_percent": 98.2905982905983,
+      "missing_lines": 2,
+      "statements": 117
+    },
+    {
+      "branches": 0,
+      "covered_branches": 0,
+      "covered_lines": 7,
+      "file": "src/linkedin_visual_labs/projects/p28_sampled_recommendation_metrics/schemas.py",
+      "line_percent": 100.0,
+      "missing_lines": 0,
+      "statements": 7
+    },
+    {
+      "branches": 46,
+      "covered_branches": 46,
+      "covered_lines": 140,
+      "file": "src/linkedin_visual_labs/projects/p28_sampled_recommendation_metrics/simulation.py",
+      "line_percent": 100.0,
+      "missing_lines": 0,
+      "statements": 140
+    },
+    {
+      "branches": 10,
+      "covered_branches": 10,
+      "covered_lines": 31,
+      "file": "src/linkedin_visual_labs/projects/p28_sampled_recommendation_metrics/validation.py",
+      "line_percent": 100.0,
+      "missing_lines": 0,
+      "statements": 31
+    }
+  ],
+  "line_percent": 70.79037800687286,
+  "missing_lines": 340,
+  "mode": "coverage.py direct wrapper with pytest-cov explicitly disabled and pytest addopts cleared",
+  "p28_files_measured": 13,
+  "pytest_cov_active": false,
+  "repair": "10.27.C",
+  "repository_fail_under": null,
+  "scientific_code_changed": false,
+  "statements": 1164,
+  "status": "PASS",
+  "step": "10.27",
+  "test_selection_changed": false,
+  "tests_changed": false
+}

@@ -1,0 +1,6 @@
+{
+  "note": "If the frozen run manifest does not store the exact release_data SHA256 as a scalar string, numerical reconciliation against the independent clean replay remains the authoritative Step 10 check.",
+  "numerical_reconciliation": "PASS",
+  "release_data_sha256": "6691d3f3ccda613f8278961ac3291fa02a007d76babcb577d690405f81b67bc8",
+  "run_manifest_contains_exact_release_data_sha256": true
+}

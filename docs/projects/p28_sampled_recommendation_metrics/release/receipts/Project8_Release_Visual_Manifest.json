@@ -1,0 +1,31 @@
+{
+  "project": "Project 8 \u2014 Sampled Recommendation Metrics",
+  "status": "FINAL_STEP9_RELEASE_VISUAL_SCOPE",
+  "included": [
+    {
+      "artifact": "index.html",
+      "role": "interactive dashboard",
+      "status": "INCLUDED",
+      "validation": "Embedded frozen data matches release_data.json for key full-catalog AUC values."
+    },
+    {
+      "artifact": "project8_step8_cinematic_v6/Project8_Sampled_Recommendation_Metrics_45s_cinematic_v6_native30.mp4",
+      "role": "accepted explainer video",
+      "status": "INCLUDED",
+      "validation": "Accepted by user; key ordering/claim narrative previously reviewed against the contact sheet."
+    }
+  ],
+  "excluded_retired": [
+    {
+      "artifact": "sampled_recommendation_metrics_dashboard.png",
+      "status": "RETIRED_STALE_EXPORT",
+      "reason": "Visible metric values are inconsistent with the frozen Project 8 result set. Not part of the official release package."
+    },
+    {
+      "artifact": "sampled_recommendation_metrics_six_scene_explaine.png",
+      "status": "RETIRED_STALE_EXPORT",
+      "reason": "Visible AUC numeric labels are stale. Not part of the official release package."
+    }
+  ],
+  "rule": "Only INCLUDED artifacts are considered by the final Step 9 cross-consistency gate."
+}

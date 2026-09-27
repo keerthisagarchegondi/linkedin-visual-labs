@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "If you use this Project 8 study, please cite it using this metadata."
+title: "When Sampled Recommendation Metrics Change Model Selection: A Reproducible Toy-Example Study"
+type: software
+authors:
+  - family-names: "Chegondi"
+    given-names: "Keerthi Sagar"
+    affiliation: "Independent Researcher, Phoenix, Arizona, United States"
+    email: "keerthisagarchegondi@gmail.com"
+version: "1.0.0"
+date-released: "2026-09-27"
+abstract: >-
+  Reproducible reconstruction and extension of a source-reported toy
+  recommendation-evaluation example showing that, for fixed rank profiles,
+  changing only the evaluation candidate set can change model ordering under
+  Average Precision. The study includes analytical expectations, a sample-size
+  sensitivity sweep, an AUC negative control, Monte Carlo checks, and
+  source-value reconciliation.
+keywords:
+  - recommender systems
+  - offline evaluation
+  - negative sampling
+  - average precision
+  - NDCG
+  - AUC
+  - reproducibility
+references:
+  - type: conference-paper
+    authors:
+      - family-names: "Krichene"
+        given-names: "Walid"
+      - family-names: "Rendle"
+        given-names: "Steffen"
+    title: "On Sampled Metrics for Item Recommendation"
+    year: 2020
+    doi: "10.1145/3394486.3403226"

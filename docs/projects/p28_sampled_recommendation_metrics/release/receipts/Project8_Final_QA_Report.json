@@ -1,0 +1,44 @@
+{
+  "project": "Project 8 \u2014 Sampled Recommendation Metrics",
+  "step": 9,
+  "status": "PASS",
+  "completed_substeps": "9.1\u20139.35",
+  "author_metadata": {
+    "author": "Keerthi Sagar Chegondi",
+    "affiliation": "Independent Researcher, Phoenix, Arizona, United States",
+    "correspondence_email": "keerthisagarchegondi@gmail.com"
+  },
+  "9.25_alt_text": "PASS",
+  "9.26_citation_cff": "PASS",
+  "9.27_zenodo_metadata_draft": "PASS",
+  "9.28_publication_status_record": "PASS",
+  "9.29_publication_plan": "PASS",
+  "9.30_evidence_claim_linkage": "PASS",
+  "9.31_placeholder_scan": {
+    "status": "PASS",
+    "hits": {}
+  },
+  "9.32_publication_truthfulness_scan": {
+    "status": "PASS",
+    "hits": []
+  },
+  "9.33_doi_citation_truthfulness_scan": {
+    "status": "PASS",
+    "source_dois_found": [
+      "10.1145/3394486.3403226",
+      "10.1145/3535335"
+    ],
+    "project_doi_claim_detected": false
+  },
+  "9.34_cross_consistency": {
+    "status": "PASS",
+    "dashboard_html_frozen_data_check": true,
+    "accepted_video_exists": true,
+    "stale_png_exports": "RETIRED_AND_EXCLUDED_FROM_RELEASE_PACKAGE"
+  },
+  "9.35_quality_gate": "PASS",
+  "public_release_performed": false,
+  "zenodo_deposition_performed": false,
+  "project_doi_assigned": false,
+  "peer_review_or_submission_performed": false
+}

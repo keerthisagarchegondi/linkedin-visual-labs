@@ -1,0 +1,186 @@
+$ D:\linkedin-visual-labs-git\linkedin-visual-labs\.venv\Scripts\python.exe -m pytest -q -p no:cacheprovider tests\projects\p28_sampled_recommendation_metrics
+
+STDOUT:
+........................................................................ [ 42%]
+........................................................................ [ 85%]
+.........................                                                [100%]
+=============================== tests coverage ================================
+_______________ coverage: platform win32, python 3.13.2-final-0 _______________
+
+Name                                                                                            Stmts   Miss Branch BrPart  Cover   Missing
+-------------------------------------------------------------------------------------------------------------------------------------------
+src\linkedin_visual_labs\__init__.py                                                                1      0      0      0   100%
+src\linkedin_visual_labs\__main__.py                                                               11     11      6      0     0%   4-29
+src\linkedin_visual_labs\cli.py                                                                    60     60     12      0     0%   3-165
+src\linkedin_visual_labs\common\__init__.py                                                         9      0      0      0   100%
+src\linkedin_visual_labs\common\animation.py                                                       32     11      6      2    61%   46, 49, 65-95
+src\linkedin_visual_labs\common\config.py                                                          28     19      4      0    28%   26, 35-64
+src\linkedin_visual_labs\common\logging.py                                                         25     16      6      0    29%   43-60, 74-86
+src\linkedin_visual_labs\common\media.py                                                          154    119     42      0    18%   65-84, 95-133, 146-168, 173-190, 197-262, 285-333, 340-360, 379-417, 425-447
+src\linkedin_visual_labs\common\paths.py                                                           81     57     26      0    22%   43-54, 60-69, 73, 77-86, 96-110, 122-148, 156-166, 182-207
+src\linkedin_visual_labs\common\plotting.py                                                       152     57     20      6    59%   67, 70, 73, 76, 79, 82, 87, 95, 100, 105, 110, 193-221, 231, 247-281, 292-320, 333-364, 382-423, 437-475
+src\linkedin_visual_labs\common\random_state.py                                                    35     18      6      0    41%   28, 33-38, 43, 51-70, 78, 92-97
+src\linkedin_visual_labs\common\validation.py                                                      56     35     24      3    30%   19-27, 36-44, 54-58, 67-75, 85, 88, 105, 116-127, 136-141
+src\linkedin_visual_labs\projects\__init__.py                                                      11      4      2      0    54%   32-36
+src\linkedin_visual_labs\projects\p01_bayesian_dice\__init__.py                                     8      0      0      0   100%
+src\linkedin_visual_labs\projects\p01_bayesian_dice\cli.py                                         10      3      2      0    58%   24-25, 30
+src\linkedin_visual_labs\projects\p01_bayesian_dice\config.py                                     150    125     24      0    14%   51-57, 65-77, 85-94, 102-114, 122-128, 136-145, 153-170, 184-230, 239-291, 297-340, 356-372, 395-513, 601-723, 808-852, 858-899, 912-1117
+src\linkedin_visual_labs\projects\p01_bayesian_dice\inference.py                                  155    155     66      0     0%   3-471
+src\linkedin_visual_labs\projects\p01_bayesian_dice\metrics.py                                    197    197     48      0     0%   3-693
+src\linkedin_visual_labs\projects\p01_bayesian_dice\models.py                                     429    225    188      0    33%   56-70, 80-91, 95, 99, 117-127, 140-151, 166-179, 189-205, 210, 215, 229-242, 249-258, 275, 296-300, 305, 310, 322-336, 369-439, 468-522, 527, 534-539, 546-551, 571-578, 590-600, 611-615, 622-631, 645-661, 676, 697-710, 739-769, 778-783, 790, 797
+src\linkedin_visual_labs\projects\p01_bayesian_dice\pair_inference.py                             242    183    116      0    16%   73-88, 95-98, 117-175, 182-187, 194-199, 205-246, 268-309, 322-323, 330, 337-342, 352-376, 386-409, 416-424, 432-482, 490-497, 504-517, 525-601, 620-628
+src\linkedin_visual_labs\projects\p01_bayesian_dice\pair_metrics.py                               170    109     54      0    27%   55-93, 97, 126-130, 134, 156-177, 182, 186, 202, 210-213, 239, 254-259, 277-286, 292-302, 308, 337-468, 483-513, 521-542, 552, 567
+src\linkedin_visual_labs\projects\p01_bayesian_dice\pair_video.py                                 348    348     82      0     0%   3-1130
+src\linkedin_visual_labs\projects\p01_bayesian_dice\pair_visualization.py                         279    183     58      0    28%   72-84, 89, 94, 137, 169-174, 181, 198, 211-219, 234-237, 253-263, 270-284, 290-296, 308-320, 329-348, 362, 388-741, 754-772, 791-830, 853-946, 957-959, 970-972, 986, 1000, 1027-1051, 1058-1147, 1161-1190
+src\linkedin_visual_labs\projects\p01_bayesian_dice\pipeline.py                                    31     16      4      0    43%   33, 68-75, 117-131, 138-148
+src\linkedin_visual_labs\projects\p01_bayesian_dice\simulation.py                                 340    237    136      0    22%   75-90, 102-118, 140-193, 197, 233-254, 259, 266-271, 277, 290-299, 306-321, 328-336, 346-366, 376-392, 406-432, 458-477, 498-508, 519, 535-556, 563-593, 629-639, 643, 669-693, 697, 701, 718-727, 734-749, 756-764, 774-804, 813-815, 829-846, 860-880, 888-900, 916-929, 948-969, 977-1005, 1012-1020, 1027, 1043-1046
+src\linkedin_visual_labs\projects\p02_monopoly_ai\__init__.py                                       6      0      0      0   100%
+src\linkedin_visual_labs\projects\p02_monopoly_ai\board.py                                         68     58     38      0     9%   26-32, 40-49, 57-146, 155-209
+src\linkedin_visual_labs\projects\p02_monopoly_ai\cinematic_storyboard.py                          30     30      2      0     0%   3-178
+src\linkedin_visual_labs\projects\p02_monopoly_ai\cinematic_v3_renderer.py                        610    610    180      0     0%   1-798
+src\linkedin_visual_labs\projects\p02_monopoly_ai\cli.py                                           32     18      2      0    41%   37-38, 53-59, 112-139
+src\linkedin_visual_labs\projects\p02_monopoly_ai\config.py                                       145     74     38      0    39%   97-103, 111-117, 125-134, 142-148, 156-471, 479-509
+src\linkedin_visual_labs\projects\p02_monopoly_ai\constants.py                                     48      0      0      0   100%
+src\linkedin_visual_labs\projects\p02_monopoly_ai\engine.py                                       474    379    186      0    14%   108-112, 123-126, 178-184, 192-204, 212-221, 229-235, 255-324, 332-346, 354-424, 443-463, 469, 493, 531, 537-548, 557-576, 585-600, 606-612, 624-625, 632-634, 642-740, 750-788, 801-842, 849-870, 884-935, 951-957, 971-985, 994-1077, 1086-1183, 1194-1222, 1231-1281, 1290-1302, 1308, 1321, 1326-1328, 1346-1348, 1367-1390, 1404-1449, 1456-1492, 1515-1525
+src\linkedin_visual_labs\projects\p02_monopoly_ai\models.py                                       209     53     48      0    61%   37-51, 66-76, 87-104, 108, 119, 131-135, 156-163, 181-191, 203-210, 222-229
+src\linkedin_visual_labs\projects\p02_monopoly_ai\piece_assets_3d.py                              128    128     26      0     0%   13-529
+src\linkedin_visual_labs\projects\p02_monopoly_ai\pipeline.py                                      17      4      0      0    76%   35-41
+src\linkedin_visual_labs\projects\p02_monopoly_ai\preview_v5.py                                  1114   1114    310      0     0%   7-5500
+src\linkedin_visual_labs\projects\p02_monopoly_ai\progress.py                                      72     53     12      0    23%   25-42, 69-73, 80-120, 140-221, 232-234, 244-273
+src\linkedin_visual_labs\projects\p02_monopoly_ai\randomness.py                                    44     22      6      0    44%   18-22, 37-42, 46, 50, 60, 68, 87-103, 115-119, 132-139
+src\linkedin_visual_labs\projects\p02_monopoly_ai\serialization.py                                 68     54     36      0    13%   29-38, 48-54, 64-70, 78-127, 135, 151-298, 339-347
+src\linkedin_visual_labs\projects\p02_monopoly_ai\strategies.py                                   232    162     64      0    24%   77-83, 91-97, 105-121, 144-165, 177, 181, 185, 189, 199, 209-212, 218, 227, 238-245, 266-365, 383-397, 408, 436-445, 454, 463, 473-495, 504-543, 554-556, 574-609, 620, 638-663, 674, 692-699, 708-711, 720-722, 734-736, 746-753, 766-776, 787-852
+src\linkedin_visual_labs\projects\p02_monopoly_ai\tournament.py                                   396    332    164      0    11%   59-73, 150-157, 194-197, 207-208, 227-280, 292-307, 319, 328-348, 364-439, 455-616, 625-635, 642, 656-667, 679-699, 716-751, 760-832, 841-917, 923-929, 943-1022, 1047-1058, 1065-1078, 1090, 1112-1144, 1157-1180, 1190-1506
+src\linkedin_visual_labs\projects\p02_monopoly_ai\validation.py                                   548    548    214      0     0%   12-2117
+src\linkedin_visual_labs\projects\p02_monopoly_ai\video.py                                        252    252     66      0     0%   3-1153
+src\linkedin_visual_labs\projects\p02_monopoly_ai\video_board.py                                  306    306     56      0     0%   3-1460
+src\linkedin_visual_labs\projects\p02_monopoly_ai\video_motion.py                                  72     72      8      0     0%   3-310
+src\linkedin_visual_labs\projects\p02_monopoly_ai\video_replay.py                                 266    266    128      0     0%   3-844
+src\linkedin_visual_labs\projects\p02_monopoly_ai\video_story.py                                   77     77     22      0     0%   3-234
+src\linkedin_visual_labs\projects\p02_monopoly_ai\video_timeline.py                                97     97     40      0     0%   3-245
+src\linkedin_visual_labs\projects\p02_monopoly_ai\video_v5.py                                     180    180     38      0     0%   3-832
+src\linkedin_visual_labs\projects\p02_monopoly_ai\visual_system.py                                648    648    204      0     0%   13-4194
+src\linkedin_visual_labs\projects\p02_monopoly_ai\visual_v5.py                                    299    299     84      0     0%   8-1736
+src\linkedin_visual_labs\projects\p04_zombie_escape\__init__.py                                    29     11      4      0    55%   368-381
+src\linkedin_visual_labs\projects\p04_zombie_escape\city_generator.py                             275    219    116      0    14%   45-49, 61-65, 80-104, 109, 116-126, 133, 140, 153, 162, 171-192, 199, 207-209, 216-224, 231-248, 256-283, 290-381, 396-500, 515-624, 639, 655-676, 690-735, 751-775, 786-857, 870-930, 937-947, 954-964, 974-982, 988-994
+src\linkedin_visual_labs\projects\p04_zombie_escape\cli.py                                        115     72     20      1    33%   54-55, 60-64, 88, 100-107, 113-115, 133-139, 156-162, 169, 177-187, 193-203, 209-230, 236, 242, 247-267, 274-333, 337
+src\linkedin_visual_labs\projects\p04_zombie_escape\config.py                                      17     10      4      0    33%   22-38
+src\linkedin_visual_labs\projects\p04_zombie_escape\dl_model.py                                   136    136     26      0     0%   3-495
+src\linkedin_visual_labs\projects\p04_zombie_escape\dl_pipeline.py                                 95     95     24      0     0%   3-412
+src\linkedin_visual_labs\projects\p04_zombie_escape\dl_tensors.py                                  89     89     32      0     0%   3-313
+src\linkedin_visual_labs\projects\p04_zombie_escape\evaluation.py                                 195    121     50      0    30%   97-107, 116-129, 142-329, 342-377, 388-398, 409, 420-461, 483, 517-526, 551, 575-605, 656-687, 694-723, 731-737, 748-754, 765-771, 779-795, 803-815, 822-823
+src\linkedin_visual_labs\projects\p04_zombie_escape\evaluation_enrichment.py                      222    222     88      0     0%   17-955
+src\linkedin_visual_labs\projects\p04_zombie_escape\grid.py                                        15     10      6      0    24%   21-22, 39-74, 82
+src\linkedin_visual_labs\projects\p04_zombie_escape\mission_visualization.py                      529    402    176      0    18%   45, 49, 53, 122-124, 150-167, 173, 197, 211, 436-454, 458, 477-479, 498-528, 537-594, 600-641, 647-651, 664, 682-686, 697-711, 723, 738-740, 752-763, 778-781, 808-1001, 1014-1031, 1044-1062, 1080-1129, 1141-1159, 1176-1204, 1216-1244, 1255-1297, 1312-1375, 1389-1435, 1449-1458, 1469-1512, 1534-1542, 1557-1575, 1593-1644, 1675-1742, 1762-1778, 1800-1886, 1909-2062, 2084-2238, 2258-2492, 2508-2555, 2566-2583, 2595, 2651-2666
+src\linkedin_visual_labs\projects\p04_zombie_escape\ml_data.py                                    131    115     48      0     9%   42-277, 284-319, 327-332, 346-376, 386-418, 430-443
+src\linkedin_visual_labs\projects\p04_zombie_escape\ml_features.py                                 61     48     14      0    17%   52-149, 178-216, 226-241, 249-261
+src\linkedin_visual_labs\projects\p04_zombie_escape\ml_model.py                                    56     25      4      0    52%   58-105, 122-146, 157-208, 218
+src\linkedin_visual_labs\projects\p04_zombie_escape\ml_pipeline.py                                 67     44      6      0    32%   60-108, 131-158, 171-193, 220-297, 324-334
+src\linkedin_visual_labs\projects\p04_zombie_escape\models.py                                     663    288    182      0    44%   85-89, 102-106, 110, 114, 128-135, 142, 156-173, 184-185, 197-204, 232-239, 254-255, 281-293, 309-316, 328-339, 351-355, 370-371, 385-394, 410-414, 452, 469-470, 524-542, 608-619, 634-647, 663-670, 701-705, 724-751, 754-773, 776-842, 845-868, 876-882, 888-894, 902-904, 925, 928-933, 961-1008, 1080-1150, 1153-1195, 1198-1203, 1233-1253, 1303-1318, 1350-1375, 1503-1538, 1618-1653, 1660-1680, 1687-1696, 1703-1709, 1716-1725, 1732-1749, 1757-1767, 1774-1786, 1793-1798, 1811-1816, 1830-1835, 1851-1856, 1879-1908, 1956-1973, 2033-2038, 2049-2056
+src\linkedin_visual_labs\projects\p04_zombie_escape\pipeline.py                                    25     11      0      0    56%   30, 37-44, 53-63
+src\linkedin_visual_labs\projects\p04_zombie_escape\routing.py                                    213    150     74      0    22%   59-72, 96-107, 115-123, 153-170, 180, 193, 205-215, 224-229, 244-249, 268-272, 280-285, 293-298, 309-317, 329-335, 355-361, 378, 391, 406-434, 446-476, 496-506, 539-546, 570-696, 709, 721-735, 747-767, 777-782, 794-796
+src\linkedin_visual_labs\projects\p04_zombie_escape\search_trace.py                               516    516    276      0     0%   10-1758
+src\linkedin_visual_labs\projects\p04_zombie_escape\serialization.py                               26     11      0      0    58%   27, 38, 55-67, 73, 109, 118, 128, 138
+src\linkedin_visual_labs\projects\p04_zombie_escape\showcase_divergence.py                        145    145     26      0     0%   3-700
+src\linkedin_visual_labs\projects\p04_zombie_escape\showcase_search.py                            138    138     42      0     0%   3-511
+src\linkedin_visual_labs\projects\p04_zombie_escape\video.py                                      651    651    216      0     0%   15-3156
+src\linkedin_visual_labs\projects\p04_zombie_escape\visualization.py                              341    263    116      0    17%   113-135, 147-156, 162-171, 178-206, 213-228, 235-250, 256-275, 284-308, 314-338, 344-364, 370-384, 390-398, 407-425, 431-450, 457-509, 517-538, 549-592, 612-649, 660-788, 803-911, 923-1151, 1161-1169, 1187-1211, 1218-1279, 1292-1335, 1346-1365
+src\linkedin_visual_labs\projects\p05_traffic_operations_early_warning\__init__.py                  0      0      0      0   100%
+src\linkedin_visual_labs\projects\p05_traffic_operations_early_warning\aicity_source.py           108    108     34      0     0%   3-178
+src\linkedin_visual_labs\projects\p05_traffic_operations_early_warning\block2.py                  107    107     16      0     0%   3-270
+src\linkedin_visual_labs\projects\p05_traffic_operations_early_warning\calibration.py              94     94     40      0     0%   3-154
+src\linkedin_visual_labs\projects\p05_traffic_operations_early_warning\cli.py                     112    112     24      0     0%   3-284
+src\linkedin_visual_labs\projects\p05_traffic_operations_early_warning\config.py                   50     50     28      0     0%   3-92
+src\linkedin_visual_labs\projects\p05_traffic_operations_early_warning\design_system.py            30     30      0      0     0%   3-66
+src\linkedin_visual_labs\projects\p05_traffic_operations_early_warning\detection.py               181    181     50      0     0%   7-289
+src\linkedin_visual_labs\projects\p05_traffic_operations_early_warning\events.py                   87     87     36      0     0%   3-238
+src\linkedin_visual_labs\projects\p05_traffic_operations_early_warning\evidence.py                 89     89     12      0     0%   3-265
+src\linkedin_visual_labs\projects\p05_traffic_operations_early_warning\metrics.py                 134    134     46      0     0%   3-333
+src\linkedin_visual_labs\projects\p05_traffic_operations_early_warning\models.py                  537    537    116      0     0%   3-853
+src\linkedin_visual_labs\projects\p05_traffic_operations_early_warning\paths.py                    57     57     12      0     0%   3-120
+src\linkedin_visual_labs\projects\p05_traffic_operations_early_warning\presentation.py            127    127     38      0     0%   3-199
+src\linkedin_visual_labs\projects\p05_traffic_operations_early_warning\presentation_v2.py          51     51     18      0     0%   7-251
+src\linkedin_visual_labs\projects\p05_traffic_operations_early_warning\presentation_v3.py          37     37     10      0     0%   3-118
+src\linkedin_visual_labs\projects\p05_traffic_operations_early_warning\queue_outcome.py            35     35     12      0     0%   3-66
+src\linkedin_visual_labs\projects\p05_traffic_operations_early_warning\recommendations.py          14     14      2      0     0%   3-22
+src\linkedin_visual_labs\projects\p05_traffic_operations_early_warning\render_v2.py               385    385    112      0     0%   3-761
+src\linkedin_visual_labs\projects\p05_traffic_operations_early_warning\render_v3.py               274    274     78      0     0%   3-595
+src\linkedin_visual_labs\projects\p05_traffic_operations_early_warning\report_design.py            75     75     18      0     0%   3-602
+src\linkedin_visual_labs\projects\p05_traffic_operations_early_warning\report_v2.py                47     47      6      0     0%   3-247
+src\linkedin_visual_labs\projects\p05_traffic_operations_early_warning\reporting.py                85     85     14      0     0%   3-313
+src\linkedin_visual_labs\projects\p05_traffic_operations_early_warning\runtime.py                 187    187     40      0     0%   3-305
+src\linkedin_visual_labs\projects\p05_traffic_operations_early_warning\source.py                  210    210     60      0     0%   3-324
+src\linkedin_visual_labs\projects\p05_traffic_operations_early_warning\tracking.py                129    129     44      0     0%   7-198
+src\linkedin_visual_labs\projects\p05_traffic_operations_early_warning\validation.py              168    168     76      0     0%   3-344
+src\linkedin_visual_labs\projects\p05_traffic_operations_early_warning\video.py                    89     89     22      0     0%   3-248
+src\linkedin_visual_labs\projects\p05_traffic_operations_early_warning\visual_fidelity.py          27     27      0      0     0%   3-58
+src\linkedin_visual_labs\projects\p05_traffic_operations_early_warning\visualization.py           270    270     86      0     0%   3-477
+src\linkedin_visual_labs\projects\p05_traffic_operations_early_warning\warning.py                 101    101     42      0     0%   3-233
+src\linkedin_visual_labs\projects\p25_quick_commerce_control_tower\__init__.py                      4      0      0      0   100%
+src\linkedin_visual_labs\projects\p25_quick_commerce_control_tower\cli.py                          93     63      4      0    31%   38-45, 53-62, 68-69, 79-84, 93-99, 110-115, 126-135, 146-155, 163-172, 180-189
+src\linkedin_visual_labs\projects\p25_quick_commerce_control_tower\config.py                       15      7      0      0    53%   22-30
+src\linkedin_visual_labs\projects\p25_quick_commerce_control_tower\data.py                        241    186     88      0    17%   84-88, 93-102, 107-136, 140-149, 161-206, 211-237, 242-281, 286-297, 310-370, 375-434
+src\linkedin_visual_labs\projects\p25_quick_commerce_control_tower\diagnostics.py                  50     50      4      0     0%   3-165
+src\linkedin_visual_labs\projects\p25_quick_commerce_control_tower\evaluation.py                  232    232     58      0     0%   3-556
+src\linkedin_visual_labs\projects\p25_quick_commerce_control_tower\features.py                     56     56     16      0     0%   3-97
+src\linkedin_visual_labs\projects\p25_quick_commerce_control_tower\forecasting.py                 240    240     32      0     0%   3-512
+src\linkedin_visual_labs\projects\p25_quick_commerce_control_tower\inventory.py                    35     35     16      0     0%   3-87
+src\linkedin_visual_labs\projects\p25_quick_commerce_control_tower\models.py                      187     46     34      0    64%   44-50, 65-67, 146-152, 168-172, 185-193, 205-207, 241-252, 276, 280-291
+src\linkedin_visual_labs\projects\p25_quick_commerce_control_tower\operations.py                  201    201     66      0     0%   3-503
+src\linkedin_visual_labs\projects\p25_quick_commerce_control_tower\optimization.py                 91     91     30      0     0%   3-180
+src\linkedin_visual_labs\projects\p25_quick_commerce_control_tower\pipeline.py                     29     14      6      0    43%   37-43, 47, 56-63
+src\linkedin_visual_labs\projects\p25_quick_commerce_control_tower\presentation_canvas.py         101    101     36      0     0%   3-196
+src\linkedin_visual_labs\projects\p25_quick_commerce_control_tower\presentation_charts.py          71     71     18      0     0%   3-534
+src\linkedin_visual_labs\projects\p25_quick_commerce_control_tower\presentation_decisions.py      100    100     30      0     0%   3-376
+src\linkedin_visual_labs\projects\p25_quick_commerce_control_tower\presentation_evidence.py       111    111     40      0     0%   3-229
+src\linkedin_visual_labs\projects\p25_quick_commerce_control_tower\presentation_html.py           176    176     60      0     0%   3-880
+src\linkedin_visual_labs\projects\p25_quick_commerce_control_tower\presentation_media.py           77     77     18      0     0%   3-232
+src\linkedin_visual_labs\projects\p25_quick_commerce_control_tower\presentation_modeling.py        20     20      2      0     0%   3-132
+src\linkedin_visual_labs\projects\p25_quick_commerce_control_tower\presentation_navigation.py       4      4      0      0     0%   3-95
+src\linkedin_visual_labs\projects\p25_quick_commerce_control_tower\presentation_overview.py        26     26      0      0     0%   3-301
+src\linkedin_visual_labs\projects\p25_quick_commerce_control_tower\presentation_story.py           40     40      0      0     0%   3-368
+src\linkedin_visual_labs\projects\p25_quick_commerce_control_tower\presentation_world.py          249    249    106      0     0%   3-486
+src\linkedin_visual_labs\projects\p25_quick_commerce_control_tower\release.py                      90     90     18      0     0%   3-167
+src\linkedin_visual_labs\projects\p25_quick_commerce_control_tower\rendering.py                   120    120     48      0     0%   3-276
+src\linkedin_visual_labs\projects\p27_prediction_time_integrity_auditor\__init__.py                15     15      0      0     0%   3-107
+src\linkedin_visual_labs\projects\p27_prediction_time_integrity_auditor\auditor.py                146    146     44      0     0%   3-697
+src\linkedin_visual_labs\projects\p27_prediction_time_integrity_auditor\cli.py                     63     63     12      0     0%   3-236
+src\linkedin_visual_labs\projects\p27_prediction_time_integrity_auditor\config.py                  64     64     24      0     0%   3-211
+src\linkedin_visual_labs\projects\p27_prediction_time_integrity_auditor\contracts.py               66     66     20      0     0%   3-355
+src\linkedin_visual_labs\projects\p27_prediction_time_integrity_auditor\data.py                   158    158     46      0     0%   3-495
+src\linkedin_visual_labs\projects\p27_prediction_time_integrity_auditor\design_tokens.py          122    122     30      0     0%   3-246
+src\linkedin_visual_labs\projects\p27_prediction_time_integrity_auditor\leakage_cases.py          163    163     14      0     0%   3-830
+src\linkedin_visual_labs\projects\p27_prediction_time_integrity_auditor\metrics.py                 83     83     20      0     0%   3-230
+src\linkedin_visual_labs\projects\p27_prediction_time_integrity_auditor\modeling.py                78     78     16      0     0%   3-361
+src\linkedin_visual_labs\projects\p27_prediction_time_integrity_auditor\models.py                  32     32      4      0     0%   3-56
+src\linkedin_visual_labs\projects\p27_prediction_time_integrity_auditor\preprocessing.py           31     31      4      0     0%   3-156
+src\linkedin_visual_labs\projects\p27_prediction_time_integrity_auditor\release_acceptance.py     540    540    278      0     0%   1-1582
+src\linkedin_visual_labs\projects\p27_prediction_time_integrity_auditor\splits.py                  69     69     22      0     0%   3-205
+src\linkedin_visual_labs\projects\p27_prediction_time_integrity_auditor\text_layout.py             82     82     28      0     0%   3-246
+src\linkedin_visual_labs\projects\p27_prediction_time_integrity_auditor\validation.py             379    379    152      0     0%   3-1441
+src\linkedin_visual_labs\projects\p27_prediction_time_integrity_auditor\video.py                  815    815    174      0     0%   3-4632
+src\linkedin_visual_labs\projects\p27_prediction_time_integrity_auditor\visual_primitives.py       56     56      6      0     0%   3-247
+src\linkedin_visual_labs\projects\p27_prediction_time_integrity_auditor\visualization.py          283    283     54      0     0%   8-1791
+src\linkedin_visual_labs\projects\p28_sampled_recommendation_metrics\__init__.py                    5      0      0      0   100%
+src\linkedin_visual_labs\projects\p28_sampled_recommendation_metrics\cli.py                        34      1      4      1    95%   91
+src\linkedin_visual_labs\projects\p28_sampled_recommendation_metrics\config.py                     57      0     20      0   100%
+src\linkedin_visual_labs\projects\p28_sampled_recommendation_metrics\dashboard.py                  96     34     34      9    58%   42, 51-60, 86, 89, 92, 95, 98, 101, 104, 107, 2672-2759
+src\linkedin_visual_labs\projects\p28_sampled_recommendation_metrics\figures.py                   212    143     56     13    33%   38, 43-50, 59, 64, 67, 70, 73, 77, 80, 84, 87, 90, 93, 96, 248-257, 264-296, 304-425, 436-544, 555-796, 806-912
+src\linkedin_visual_labs\projects\p28_sampled_recommendation_metrics\freeze.py                    336    147    150     21    55%   71-80, 114, 153, 166, 197, 282, 360, 363, 409, 451, 454, 457, 465, 474->471, 481, 490, 493, 530, 552-560, 589->600, 600->603, 612-620, 664, 688, 708-724, 737-750, 756, 775-848, 862-1394, 1404-1423
+src\linkedin_visual_labs\projects\p28_sampled_recommendation_metrics\identifiers.py                20      0      4      0   100%
+src\linkedin_visual_labs\projects\p28_sampled_recommendation_metrics\metrics.py                    47      0     20      0   100%
+src\linkedin_visual_labs\projects\p28_sampled_recommendation_metrics\reference.py                  62     13     38     13    74%   35, 38, 41, 44, 48, 76, 88, 91, 96, 102, 105, 116, 119
+src\linkedin_visual_labs\projects\p28_sampled_recommendation_metrics\sampling.py                  117      2     48      2    98%   105, 120
+src\linkedin_visual_labs\projects\p28_sampled_recommendation_metrics\schemas.py                     7      0      0      0   100%
+src\linkedin_visual_labs\projects\p28_sampled_recommendation_metrics\simulation.py                140      0     46      0   100%
+src\linkedin_visual_labs\projects\p28_sampled_recommendation_metrics\validation.py                 31      0     10      0   100%
+-------------------------------------------------------------------------------------------------------------------------------------------
+TOTAL                                                                                           25167  21704   7654     71    11%
+169 passed in 31.98s
+
+
+STDERR:
+
+
+RETURN CODE: 0
+ELAPSED SECONDS: 33.08

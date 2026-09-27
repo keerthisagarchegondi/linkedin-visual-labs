@@ -1,0 +1,19 @@
+{
+  "project": "Project 8 \u2014 Sampled Recommendation Metrics",
+  "record_date": "2026-09-27",
+  "step9_status": "COMPLETE",
+  "manuscript_status": "FINAL_RELEASE_CANDIDATE",
+  "author": "Keerthi Sagar Chegondi",
+  "affiliation": "Independent Researcher, Phoenix, Arizona, United States",
+  "correspondence_email": "keerthisagarchegondi@gmail.com",
+  "peer_review_status": "NOT_SUBMITTED",
+  "journal_or_conference_status": "NOT_SUBMITTED",
+  "preprint_status": "NOT_POSTED",
+  "zenodo_status": "NOT_DEPOSITED",
+  "project_doi_status": "NOT_ASSIGNED",
+  "source_paper_doi": "10.1145/3394486.3403226",
+  "source_paper_doi_owner": "Krichene and Rendle (2020), not Project 8",
+  "github_release_status": "NOT_RELEASED",
+  "public_release_status": "NOT_RELEASED",
+  "truthfulness_note": "Step 9 completion means the publication-preparation package is internally complete. It does not mean the work has been submitted, peer-reviewed, published, publicly released, deposited on Zenodo, or assigned a Project 8 DOI."
+}

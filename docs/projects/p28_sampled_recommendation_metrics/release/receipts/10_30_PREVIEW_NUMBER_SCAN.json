@@ -1,0 +1,19 @@
+{
+  "hits": [],
+  "public_files_checked": [
+    "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\docs\\projects\\p28_sampled_recommendation_metrics\\release\\manuscript\\Project8_Final_Manuscript_Release_Candidate.md",
+    "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\docs\\projects\\p28_sampled_recommendation_metrics\\release\\publication\\Project8_LinkedIn_Post.md",
+    "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\docs\\projects\\p28_sampled_recommendation_metrics\\release\\publication\\Project8_LinkedIn_Resource_Comment.md",
+    "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\docs\\projects\\p28_sampled_recommendation_metrics\\release\\publication\\Project8_Alt_Text.md",
+    "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\docs\\projects\\p28_sampled_recommendation_metrics\\release\\publication\\Project8_Publication_Plan.md",
+    "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\docs\\projects\\p28_sampled_recommendation_metrics\\release\\metadata\\CITATION.cff",
+    "D:\\linkedin-visual-labs-git\\linkedin-visual-labs\\assets\\p28_sampled_recommendation_metrics\\dashboard\\index.html"
+  ],
+  "stale_values_checked": [
+    "0.3521",
+    "0.5076",
+    "0.6153"
+  ],
+  "status": "PASS",
+  "step": "10.30"
+}
