@@ -1,15 +1,12 @@
 {
-  "metadata_status": "READY_FOR_AUTHOR_REVIEW_BEFORE_DEPOSITION",
-  "title": "When Sampled Recommendation Metrics Change Model Selection: A Reproducible Toy-Example Study",
-  "upload_type": "software",
-  "publication_date": "2026-09-27",
-  "description": "Reproducible reconstruction and extension of a source-reported toy recommendation-evaluation example. The study evaluates fixed rank profiles under full-catalog and sampled candidate-set protocols, derives analytical metric expectations, performs a sample-size sensitivity sweep, uses AUC as a negative control, and validates analytical results with Monte Carlo checks.",
+  "access_right": "open",
   "creators": [
     {
-      "name": "Keerthi Sagar Chegondi",
-      "affiliation": "Independent Researcher, Phoenix, Arizona, United States"
+      "affiliation": "Independent Researcher, Phoenix, Arizona, United States",
+      "name": "Keerthi Sagar Chegondi"
     }
   ],
+  "description": "Reproducible reconstruction and extension of a source-reported toy recommendation-evaluation example. The study evaluates fixed rank profiles under full-catalog and sampled candidate-set protocols, derives analytical metric expectations, performs a sample-size sensitivity sweep, uses AUC as a negative control, and validates analytical results with Monte Carlo checks.",
   "keywords": [
     "recommender systems",
     "offline evaluation",
@@ -19,6 +16,20 @@
     "AUC",
     "reproducibility"
   ],
+  "license_decision": "APPROVED_MIXED_LICENSE_MODEL",
+  "license_scope_note": "These licenses apply to Project 8 materials only and do not establish a blanket license for unrelated projects in the linkedin-visual-labs monorepo.",
+  "licenses": {
+    "citation_metadata": "CC0-1.0",
+    "dashboard": "CC-BY-4.0",
+    "figures": "CC-BY-4.0",
+    "manuscript_documentation": "CC-BY-4.0",
+    "research_data": "CC-BY-4.0",
+    "software": "MIT",
+    "video": "CC-BY-4.0"
+  },
+  "metadata_status": "READY_FOR_AUTHOR_REVIEW_BEFORE_DEPOSITION",
+  "notes": "Metadata draft is complete for Step 9.27. No Zenodo deposition has been performed and no Project 8 DOI has been assigned. A release license and public repository/archive URL must be selected at the actual deposition step.",
+  "publication_date": "2026-09-27",
   "related_identifiers": [
     {
       "identifier": "10.1145/3394486.3403226",
@@ -26,8 +37,7 @@
       "resource_type": "publication-article"
     }
   ],
-  "access_right": "open",
-  "license_decision": "PENDING_AUTHOR_SELECTION_AT_DEPOSITION",
   "repository_url_status": "NOT_YET_PUBLICLY_RELEASED",
-  "notes": "Metadata draft is complete for Step 9.27. No Zenodo deposition has been performed and no Project 8 DOI has been assigned. A release license and public repository/archive URL must be selected at the actual deposition step."
+  "title": "When Sampled Recommendation Metrics Change Model Selection: A Reproducible Toy-Example Study",
+  "upload_type": "software"
 }
