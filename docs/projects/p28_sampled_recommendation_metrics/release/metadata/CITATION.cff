@@ -8,6 +8,8 @@ authors:
     affiliation: "Independent Researcher, Phoenix, Arizona, United States"
     email: "keerthisagarchegondi@gmail.com"
 version: "1.0.0"
+doi: "10.5281/zenodo.23058261"
+url: "https://zenodo.org/records/23058261"
 date-released: "2026-09-27"
 abstract: >-
   Reproducible reconstruction and extension of a source-reported toy
