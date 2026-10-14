@@ -51,11 +51,11 @@
   "repository_pytest_status": "ENVIRONMENT_SANDBOX",
   "local_release_package": "READY",
   "release_zip_validated": "YES",
-  "external_release": "NOT_PERFORMED",
+  "external_release": "GITHUB_PUBLISHED",
   "publication_submission": "NOT_PERFORMED",
-  "git_commit_tag_push": "NOT_PERFORMED"
+  "git_commit_tag_push": "PUBLISHED"
   ,"presentation_v6_rebuild_status": "PASS"
-  ,"release_evidence_status": "STALE_PENDING_PRESENTATION_REACCEPTANCE"
+  ,"release_evidence_status": "PASS"
   ,"step_6r_status": "PASS"
   ,"human_presentation_review_status": "APPROVED"
   ,"presentation_reacceptance_status": "PASS"
@@ -73,8 +73,13 @@
   ,"public_creator": "Keerthi Sagar Chegondi"
   ,"public_version": "0.1.0"
   ,"release_public_metadata_status": "PASS"
-  ,"release_zip_publication_status": "NOT_PUBLISHED"
-  ,"github_release_status": "NOT_PERFORMED"
-  ,"portfolio_publication_status": "NOT_PERFORMED"
-  ,"next_step": "PROJECT_9_STEP_7E_RESUME"
+  ,"release_zip_publication_status": "PUBLISHED"
+  ,"github_branch_status": "PUSHED"
+  ,"github_tag": "project9-v0.1.0"
+  ,"github_tag_status": "PUBLISHED"
+  ,"github_release_status": "PUBLISHED"
+  ,"github_release_url": "https://github.com/keerthisagarchegondi/linkedin-visual-labs/releases/tag/project9-v0.1.0"
+  ,"external_release_status": "GITHUB_PUBLISHED"
+  ,"portfolio_publication_status": "READY_FOR_STEP_8"
+  ,"next_step": "PROJECT_9_STEP_8"
 }

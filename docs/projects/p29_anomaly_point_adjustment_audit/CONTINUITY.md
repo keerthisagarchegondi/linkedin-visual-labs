@@ -27,3 +27,9 @@ Before any staging, commit, tag, push, or GitHub release action, the Step 7E pub
 ## Step 7E.A public metadata finalization
 
 The public creator is now `Keerthi Sagar Chegondi` and public version is `0.1.0`. The Project 9 publication generator emits these values into `CITATION.cff`, Zenodo metadata, publication-status metadata, and the public manuscript author field. Affiliation and ORCID are omitted because they were not provided; DOI is omitted because it is not assigned. All external-publication statuses remain `NOT_PERFORMED`. The former ZIP `5858edad757592dcac7540813c41f1b19c08b3eccfb2f3f004b30f1138858dd5` remains an accurate historical stale-package record and is not a release candidate. The metadata-refresh receipt records the refreshed archive identity and validation after package assembly. Scientific frozen inputs and canonical presentation assets remain unchanged. Next allowed action: resume Step 7E remote collision checks and release execution after its explicitly authorized preflight.
+
+## Step 7E GitHub publication
+
+The verified Project 9 commit set was published to branch `project/p29-anomaly-point-adjustment-audit`. Annotated tag `project9-v0.1.0` points to release commit `aab5a27b8d44c8da978a64b57a29b9d72c4c737b`; it was pushed without force. GitHub release `Project 9 v0.1.0 — Point Adjustment Under Random Scores` is published at https://github.com/keerthisagarchegondi/linkedin-visual-labs/releases/tag/project9-v0.1.0.
+
+The published ZIP and checksum sidecar were independently downloaded and verified: size `7,102,411` bytes and SHA-256 `885c4857f726d0b94c5874b2bf6bbc188fec160886722aafb9b5d3e6c71f27a2`. The metadata-refresh receipt is also attached. The scientific freeze, canonical video, and canonical dashboard remain unchanged. Repository-wide acceptance remains blocked only by the documented unrelated Project 8 issues. Portfolio publication was not performed; it is ready for separately authorized Step 8 work.
