@@ -80,6 +80,8 @@
   ,"github_release_status": "PUBLISHED"
   ,"github_release_url": "https://github.com/keerthisagarchegondi/linkedin-visual-labs/releases/tag/project9-v0.1.0"
   ,"external_release_status": "GITHUB_PUBLISHED"
-  ,"portfolio_publication_status": "READY_FOR_STEP_8"
-  ,"next_step": "PROJECT_9_STEP_8"
+  ,"portfolio_publication_status": "PUBLISHED"
+  ,"portfolio_root_url": "https://my-portfolio-keerthi.vercel.app/"
+  ,"portfolio_project_url": "https://my-portfolio-keerthi.vercel.app/point-adjustment-random-scores/index.html"
+  ,"next_step": "PROJECT_9_STEP_9"
 }
