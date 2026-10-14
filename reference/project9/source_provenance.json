@@ -1,0 +1,10 @@
+{
+  "access_date": "2026-10-12",
+  "sources": [
+    {"id":"S1","title":"Towards a Rigorous Evaluation of Time-Series Anomaly Detection","authors":["Siwon Kim","Kukjin Choi","Hyun-Soo Choi","Byunghan Lee","Sungroh Yoon"],"url":"https://ojs.aaai.org/index.php/AAAI/article/view/20680","doi":"10.1609/aaai.v36i7.20680","status":"AAAI 2022; published 2022-06-28"},
+    {"id":"S2","title":"Towards a Rigorous Evaluation of Time-series Anomaly Detection","authors":["Siwon Kim","Kukjin Choi","Hyun-Soo Choi","Byunghan Lee","Sungroh Yoon"],"url":"https://arxiv.org/abs/2109.05257","version":"v2, 2022-01-04","status":"preprint"},
+    {"id":"S3","title":"tadpak","url":"https://github.com/tuslkkk/tadpak","status":"reference implementation; license not verified from inspected public page"},
+    {"id":"S4","title":"outliar","url":"https://github.com/UsmarHaider/outliar","status":"overlapping public implementation; claims not independently reproduced"},
+    {"id":"S5","title":"PATE: Proximity-Aware Time series anomaly Evaluation","authors":["Ramin Ghorbani","Marcel J.T. Reinders","David M.J. Tax"],"url":"https://arxiv.org/abs/2405.12096","version":"v1, 2024-05-20","status":"accepted KDD 2024, Research Track; arXiv v1"}
+  ]
+}

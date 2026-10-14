@@ -22,6 +22,17 @@ if len(_project8_sys.argv) > 1 and _project8_sys.argv[1] == "sampled-metrics":
     raise SystemExit(_project8_sampled_metrics_main(_project8_sys.argv[2:]))
 # PROJECT8_SAMPLED_METRICS_DISPATCH_END
 
+# PROJECT9_ANOMALY_EVALUATION_DISPATCH_START
+import sys as _project9_sys
+
+from .projects.p29_anomaly_point_adjustment_audit.cli import (
+    main as _project9_anomaly_evaluation_main,
+)
+
+if len(_project9_sys.argv) > 1 and _project9_sys.argv[1] == "anomaly-evaluation":
+    raise SystemExit(_project9_anomaly_evaluation_main(_project9_sys.argv[2:]))
+# PROJECT9_ANOMALY_EVALUATION_DISPATCH_END
+
 
 from linkedin_visual_labs.cli import app
 

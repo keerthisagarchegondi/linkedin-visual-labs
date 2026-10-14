@@ -1,0 +1,12 @@
+project_id: p29_anomaly_point_adjustment_audit
+experiment_version: 1
+n_timestamps: 20000
+anomalous_timestamps: 1000
+prevalence: 0.05
+event_lengths: [1, 5, 10, 20, 50, 100, 200, 500, 1000]
+alert_probabilities: [0.001, 0.005, 0.01, 0.05, 0.1]
+primary_event_length: 200
+primary_alert_probability: 0.01
+initial_repetitions: 2000
+seed_namespace: p29-anomaly-point-adjustment-audit-v1
+output_roots: [outputs/p29_anomaly_point_adjustment_audit]
